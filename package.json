@@ -1,0 +1,58 @@
+{
+  "name": "@quasar/quasar-app-extension-qmarkdown",
+  "version": "1.0.0-alpha.1",
+  "description": "A Quasar UI Extension to display inline markdown",
+  "author": "Hawkeye64 <jeff@quasar-framework.org>",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/quasarframework/app-extension-qmarkdown/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/app-extension-qmarkdown.git"
+  },
+  "homepage": "https://github.com/quasarframework/app-extension-qmarkdown",
+  "license": "MIT",
+  "keywords": [
+    "quasar",
+    "app",
+    "app extension",
+    "extension",
+    "markdown"
+  ],
+  "dependencies": {
+    "markdown-it": "^8.4.2",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-deflist": "^2.0.3",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-footnote": "^3.0.1",
+    "markdown-it-imsize": "^2.0.1",
+    "markdown-it-ins": "^2.0.0",
+    "markdown-it-katex": "^2.0.3",
+    "markdown-it-mark": "^2.0.0",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-toc-and-anchor": "^4.2.0",
+    "prismjs": "^1.16.0"
+  },
+  "devDependencies": {
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.2",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^5.2.2"
+  }
+}
