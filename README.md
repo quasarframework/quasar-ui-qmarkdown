@@ -73,8 +73,8 @@ Given markdown that looks like this:
 The TOC data looks like this:
 ```
 [
-  {id:`h2-Heading`,title:`h2 Heading`},
-  {id:`h3-Heading`,title:`h3 Heading`, sub: true}
+  {id:`h2-Heading`,title:`h2 Heading`, level: 2},
+  {id:`h3-Heading`,title:`h3 Heading`, level: 3}
 ]
 ```
 
