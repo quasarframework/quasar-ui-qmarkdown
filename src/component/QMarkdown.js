@@ -80,9 +80,14 @@ export default Vue.extend({
           .children
           .reduce((acc, t) => acc + t.content, '')
 
+        let classes = `q-markdown--heading-${token.tag}`
+        if (token.markup === '=' || token.markup === '-') {
+          classes += ' q-markdown--title'
+        }
+
         const id = this.__slugify(title)
         token.attrSet('id', id)
-        token.attrSet('class', `q-markdown--heading-${token.tag}`)
+        token.attrSet('class', classes)
 
         if (this.toc) {
           const tokenNumber = parseInt(token.tag[1])
