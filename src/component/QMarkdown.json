@@ -4,7 +4,7 @@
     "src": {
       "type": "String",
       "desc": "[optional] Pass markdown in as a property",
-      "examples": [ "Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)" ]
+      "examples": [ "\n\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)\"" ]
     },
     "no-html": {
       "type": "Boolean",
