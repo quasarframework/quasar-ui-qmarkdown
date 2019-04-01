@@ -64,14 +64,4 @@ module.exports = function (api, ctx) {
   api.extendQuasarConf((conf) => {
     extendConf(api, conf)
   })
-
-  // api.chainWebpack((chain, invokeParams) => {
-  //   // console.log('chain:', chain)
-  //   // console.log('invokeParams:', invokeParams)
-  // })
-
-  // api.extendWebpack((webpackConfig, invokeParams) => {
-  //   console.log('webpackConfig:', webpackConfig)
-  //   console.log('invokeParams:', invokeParams)
-  // })
 }
