@@ -50,15 +50,16 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 |---|---|---|
 | src | String | Pass the markdown as a string instead of a slot |
 | no-html | Boolean | Disable HTML tags in source |
+| no-link | Boolean | Disable conversion of links |
 | no-linkify | Boolean | Disable auto-convert URL-like text to links |
 | no-typographer | Boolean | Disable language-neutral replacement + quotes beautification |
-| no-breaks | Boolean | Disable conversion of '\n' into <br> |
+| no-breaks | Boolean | Disable conversion of '\\n' into <br> |
 | no-highlight | Boolean | Disable code highlighter |
 | no-emoji | Boolean | Disable emojie conversion |
 | no-subscript | Boolean | Disable subscript conversion |
 | no-superscript | Boolean | Disable superscript conversion |
 | no-footnote | Boolean | Disable footnote conversion |
-| no-deflist | Boolean | Disable deflist conversion |
+| no-deflist | Boolean | Disable definition list conversion |
 | no-abbreviation | Boolean | Disable abbreviation conversion |
 | no-insert | Boolean | Disable insert conversion |
 | no-mark | Boolean | Disable mark conversion |

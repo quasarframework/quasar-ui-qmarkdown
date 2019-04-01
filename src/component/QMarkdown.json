@@ -24,7 +24,7 @@
     },
     "no-breaks": {
       "type": "Boolean",
-      "desc": "Disable conversion of '\n' into <br>"
+      "desc": "Disable conversion of '\\n' into <br>"
     },
     "no-highlight": {
       "type": "Boolean",
