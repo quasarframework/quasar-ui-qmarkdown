@@ -22,25 +22,6 @@ const extendConf = function (api, conf) {
     console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
   }
 
-  // // make sure there is a framework object
-  // if (!conf.framework) {
-  //   conf.framework = {}
-  // }
-
-  // // make sure there is a components array
-  // if (!conf.framework.components) {
-  //   conf.framework.components = []
-  // }
-
-  // // for brevity
-  // let components = conf.framework.components
-
-  // // make sure there is QMarkupTable
-  // if (!components.includes('QMarkupTable')) {
-  //   // add it
-  //   components.push('QMarkupTable')
-  // }
-
   // // make sure there is a css array
   if (!conf.css) {
     conf.css = []
@@ -58,7 +39,7 @@ const extendConf = function (api, conf) {
 
 module.exports = function (api, ctx) {
   // register JSON api
-  // api.registerDescribeApi('QMarkdown', './component/QMarkdown.json')
+  api.registerDescribeApi('QMarkdown', './component/QMarkdown.json')
 
   // extend quasar.conf
   api.extendQuasarConf((conf) => {
