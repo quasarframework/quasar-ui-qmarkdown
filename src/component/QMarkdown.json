@@ -6,6 +6,74 @@
       "desc": "[optional] Pass markdown in as a property",
       "examples": [ "Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)" ]
     },
+    "no-html": {
+      "type": "Boolean",
+      "desc": "Disable HTML tags in source"
+    },
+    "no-link": {
+      "type": "Boolean",
+      "desc": "Disable conversion of links"
+    },
+    "no-linkify": {
+      "type": "Boolean",
+      "desc": "Disable auto-convert URL-like text to links"
+    },
+    "no-typographer": {
+      "type": "Boolean",
+      "desc": "Disable language-neutral replacement + quotes beautification"
+    },
+    "no-breaks": {
+      "type": "Boolean",
+      "desc": "Disable conversion of '\n' into <br>"
+    },
+    "no-highlight": {
+      "type": "Boolean",
+      "desc": "Disable code highlighter"
+    },
+    "no-emoji": {
+      "type": "Boolean",
+      "desc": "Disable emojie conversion"
+    },
+    "no-subscript": {
+      "type": "Boolean",
+      "desc": "Disable subscript conversion"
+    },
+    "no-superscript": {
+      "type": "Boolean",
+      "desc": "Disable superscript conversion"
+    },
+    "no-footnote": {
+      "type": "Boolean",
+      "desc": "Disable footnote conversion"
+    },
+    "no-deflist": {
+      "type": "Boolean",
+      "desc": "Disable definition list conversion"
+    },
+    "no-abbreviation": {
+      "type": "Boolean",
+      "desc": "Disable abbreviation conversion"
+    },
+    "no-insert": {
+      "type": "Boolean",
+      "desc": "Disable insert conversion"
+    },
+    "no-mark": {
+      "type": "Boolean",
+      "desc": "Disable mark conversion"
+    },
+    "no-image": {
+      "type": "Boolean",
+      "desc": "Disable image conversion"
+    },
+    "no-tasklist": {
+      "type": "Boolean",
+      "desc": "Disable tasklist conversion"
+    },
+    "no-container": {
+      "type": "Boolean",
+      "desc": "Disable container conversion"
+    },
     "toc": {
       "type": "Boolean",
       "desc": "Set to true if you want a TOC automatically generated"
