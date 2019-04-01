@@ -81,8 +81,12 @@ export default Vue.extend({
           .reduce((acc, t) => acc + t.content, '')
 
         let classes = `q-markdown--heading-${token.tag}`
-        if (token.markup === '=' || token.markup === '-') {
-          classes += ' q-markdown--title'
+
+        if (token.markup === '=') {
+          classes += ' q-markdown--title-heavy'
+        }
+        else if (token.markup === '-') {
+          classes += ' q-markdown--title-light'
         }
 
         const id = this.__slugify(title)
