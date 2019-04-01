@@ -49,12 +49,30 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 | Vue&nbsp;Property | Type	| Description |
 |---|---|---|
 | src | String | Pass the markdown as a string instead of a slot |
+| no-html | Boolean | Disable HTML tags in source |
+| no-linkify | Boolean | Disable auto-convert URL-like text to links |
+| no-typographer | Boolean | Disable language-neutral replacement + quotes beautification |
+| no-breaks | Boolean | Disable conversion of '\n' into <br> |
+| no-highlight | Boolean | Disable code highlighter |
+| no-emoji | Boolean | Disable emojie conversion |
+| no-subscript | Boolean | Disable subscript conversion |
+| no-superscript | Boolean | Disable superscript conversion |
+| no-footnote | Boolean | Disable footnote conversion |
+| no-deflist | Boolean | Disable deflist conversion |
+| no-abbreviation | Boolean | Disable abbreviation conversion |
+| no-insert | Boolean | Disable insert conversion |
+| no-mark | Boolean | Disable mark conversion |
+| no-image | Boolean | Disable image conversion |
+| no-tasklist | Boolean | Disable tasklist conversion |
+| no-container | Boolean | Disable container conversion |
 | toc | Boolean | Generate a TOC; received with `toc` event |
 | toc-start | Number | [1-5] The number defines the starting header (ex: 1 == h1, 2 == h2, etc) |
 | toc-end | Number | [2-6] The number defines the ending header (ex: 3 == h3, 4 == h4, etc). This number must be greater than the `startingToc` property or it will be ignored |
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
 | task-lists-label | Boolean | to wrap the rendered list items in a <label> element for UX purposes |
 | task-lists-enable-after | Boolean | to add the label after the checkbox |
+| content-class | [String, Object, Array] | Style definitions to be attributed to the markdown |
+| content-style | [String, Object, Array] | Style definitions to be attributed to the markdown |
 
 # QMarkdown Vue Events
 | Vue&nbsp;Event | Description |
@@ -63,8 +81,6 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 
 Given markdown that looks like this:
 ```
-# h1 Heading 8-)
-
 ## h2 Heading
 
 ### h3 Heading
@@ -73,8 +89,8 @@ Given markdown that looks like this:
 The TOC data looks like this:
 ```
 [
-  {id:`h2-Heading`,title:`h2 Heading`, level: 2},
-  {id:`h3-Heading`,title:`h3 Heading`, level: 3}
+  {id: 'h2-Heading', title: 'h2 Heading', level: 2},
+  {id: 'h3-Heading', title: 'h3 Heading', level: 3}
 ]
 ```
 
