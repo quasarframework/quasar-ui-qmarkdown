@@ -6,11 +6,6 @@
  */
 
 const extendConf = function (api, conf) {
-  // make sure there is a boot array
-  if (!conf.boot) {
-    conf.boot = []
-  }
-
   // for brevity
   let boot = conf.boot
 
@@ -20,11 +15,6 @@ const extendConf = function (api, conf) {
     // make sure boot file transpiles
     conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src[\\/]boot/)
     console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
-  }
-
-  // // make sure there is a css array
-  if (!conf.css) {
-    conf.css = []
   }
 
   // // for brevity

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 
-// import slot from 'quasar/src/utils/slot.js'
-
 import MarkdownIt from 'markdown-it'
 import emoji from 'markdown-it-emoji'
 import subscript from 'markdown-it-sub'
@@ -87,6 +85,7 @@ export default Vue.extend({
 
   watch: {
     src (val) {
+      // TODO: "= val" instead?
       this.source = this.src
     }
   },
@@ -128,6 +127,8 @@ export default Vue.extend({
 
         if (this.toc) {
           const tokenNumber = parseInt(token.tag[1])
+
+          // TODO: same thing pushed???
           if (this.tocStart && this.tocEnd && this.tocStart < this.tocEnd && tokenNumber >= this.tocStart && tokenNumber <= this.tocEnd) {
             tocData.push({ id: id, title: title, level: tokenNumber })
           } else {
@@ -226,11 +227,10 @@ export default Vue.extend({
   },
 
   render (h) {
-    let highlight = function (str, lang) {
-      return ''
-    }
+    let highlight = () => ''
 
     if (this.__isEnabled(this.noHighlight)) {
+      // TODO: require? better import at top
       highlight = require('./highlight')
     }
 
@@ -242,6 +242,8 @@ export default Vue.extend({
       highlight
     }
 
+    // TODO: is there a better way than recreating everything from scratch?
+    // example: cache the result, use watchers to recreate cache
     const md = MarkdownIt(opts)
     if (this.__isEnabled(this.noSubscript)) {
       md.use(subscript)
