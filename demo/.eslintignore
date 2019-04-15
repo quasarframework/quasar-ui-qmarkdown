@@ -1,0 +1,6 @@
+./dist
+src/markdown/*
+src/markdown/**
+/**
+**/*
+./src/markdown/example1.vue
