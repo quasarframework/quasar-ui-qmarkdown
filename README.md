@@ -30,10 +30,10 @@ quasar ext remove @quasar/qmarkdown
 You can use `quasar describe QMarkdown`
 
 # Test Project
-Can be found [here](https://github.com/hawkeye64/quasar-app-extension-qmarkdown).
+In **demo** folder of **app-extension-qmarkdown**.
 
 # Demo
-Can be found [here](https://qmarkdown.netlify.com/#/).
+Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/).
 
 # Example Code
 Be sure to check out the Test Project for more examples.
