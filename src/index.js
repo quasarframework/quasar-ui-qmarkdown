@@ -5,7 +5,7 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-const extendQuasarConf = function (api, conf) {
+const extendQuasarConf = function (conf) {
   // make sure qmarkdown boot file is registered
   conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js')
   console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
@@ -18,7 +18,7 @@ const extendQuasarConf = function (api, conf) {
   console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
 }
 
-module.exports = function (api, ctx) {
+module.exports = function (api) {
   // quasar compatibility check
   api.compatibleWith('@quasar/app', '^1.0.0-beta.18')
 
@@ -26,7 +26,5 @@ module.exports = function (api, ctx) {
   api.registerDescribeApi('QMarkdown', './component/QMarkdown.json')
 
   // extend quasar.conf
-  api.extendQuasarConf((conf) => {
-    extendQuasarConf(api, conf)
-  })
+  api.extendQuasarConf(extendQuasarConf)
 }
