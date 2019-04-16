@@ -5,44 +5,26 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-const extendConf = function (api, conf) {
-  // make sure there is a boot array
-  if (!conf.boot) {
-    conf.boot = []
-  }
-
-  // for brevity
-  let boot = conf.boot
-
+const extendQuasarConf = function (conf) {
   // make sure qmarkdown boot file is registered
-  if (!boot.includes('~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js')) {
-    boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js')
-    // make sure boot file transpiles
-    conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src[\\/]boot/)
-    console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
-  }
+  conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js')
+  console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
 
-  // // make sure there is a css array
-  if (!conf.css) {
-    conf.css = []
-  }
-
-  // // for brevity
-  let css = conf.css
+  // make sure boot & component files transpile
+  conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
 
   // make sure qmarkdown css goes through webpack to avoid ssr issues
-  if (!css.includes('~@quasar/quasar-app-extension-qmarkdown/src/component/markdown.styl')) {
-    css.push('~@quasar/quasar-app-extension-qmarkdown/src/component/markdown.styl')
-    console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
-  }
+  conf.css.push('~@quasar/quasar-app-extension-qmarkdown/src/component/markdown.styl')
+  console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
 }
 
-module.exports = function (api, ctx) {
+module.exports = function (api) {
+  // quasar compatibility check
+  api.compatibleWith('@quasar/app', '^1.0.0-beta.18')
+
   // register JSON api
   api.registerDescribeApi('QMarkdown', './component/QMarkdown.json')
 
   // extend quasar.conf
-  api.extendQuasarConf((conf) => {
-    extendConf(api, conf)
-  })
+  api.extendQuasarConf(extendQuasarConf)
 }
