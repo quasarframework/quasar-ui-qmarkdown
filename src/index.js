@@ -6,33 +6,21 @@
  */
 
 const extendQuasarConf = function (api, conf) {
-  // for brevity
-  let boot = conf.boot
-
   // make sure qmarkdown boot file is registered
-  const bootFile = '~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js'
-  if (!boot.includes(bootFile)) {
-    boot.push(bootFile)
-    console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
-  }
+  conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/qmarkdown.js')
+  console.log(` App Extension (qmarkdown) Info: 'Adding qmarkdown boot reference to your quasar.conf.js'`)
 
-  // make sure boot file transpiles
+  // make sure boot & component files transpile
   conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
 
-  // // for brevity
-  let css = conf.css
-
   // make sure qmarkdown css goes through webpack to avoid ssr issues
-  const cssFile = '~@quasar/quasar-app-extension-qmarkdown/src/component/markdown.styl'
-  if (!css.includes(cssFile)) {
-    css.push(cssFile)
-    console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
-  }
+  conf.css.push('~@quasar/quasar-app-extension-qmarkdown/src/component/markdown.styl')
+  console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
 }
 
 module.exports = function (api, ctx) {
   // quasar compatibility check
-  api.compatibleWithQuasarApp('^1.0.0-beta.17')
+  api.compatibleWith('@quasar/app', '^1.0.0-beta.18')
 
   // register JSON api
   api.registerDescribeApi('QMarkdown', './component/QMarkdown.json')
