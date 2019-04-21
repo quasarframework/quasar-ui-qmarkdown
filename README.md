@@ -45,6 +45,29 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 </q-markdown>
 ```
 
+# Imports
+QMarkdown now allows you to import markdown files into your Vue files.
+
+```
+import markdown from '../markdown/calendar.md'
+```
+
+then,
+
+```
+  data () {
+    return {
+      markdown: markdown
+    }
+  },
+```
+
+and finally:
+
+```
+<q-markdown :src="markdown" />
+```
+
 # QMarkdown Vue Properties
 | Vue&nbsp;Property | Type	| Description |
 |---|---|---|
