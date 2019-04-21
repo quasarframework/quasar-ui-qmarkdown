@@ -18,6 +18,14 @@ const extendQuasarConf = function (conf) {
   console.log(` App Extension (qmarkdown) Info: 'Adding markdown.styl css reference to your quasar.conf.js'`)
 }
 
+const chainWebpack = function (chain, { isClient }) {
+  console.log(` App Extension (qmarkdown) Info: 'Adding markdown loader to chainWebpack in your quasar.conf.js'`)
+  chain.module.rule('md')
+    .test(/\.md$/i)
+    .use('raw-loader')
+    .loader('raw-loader')
+}
+
 module.exports = function (api) {
   // quasar compatibility check
   api.compatibleWith('@quasar/app', '^1.0.0-beta.18')
@@ -27,4 +35,7 @@ module.exports = function (api) {
 
   // extend quasar.conf
   api.extendQuasarConf(extendQuasarConf)
+
+  // chain webpack
+  api.chainWebpack(chainWebpack)
 }

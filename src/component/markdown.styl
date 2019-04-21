@@ -107,7 +107,7 @@
     text-decoration none
     outline 0
     border-bottom 1px dotted currentColor
-    vertical-align center
+    text-align center
     transition opacity .2s
     white-space nowrap
 
@@ -141,8 +141,8 @@
 
   &--token
     white-space nowrap
-    background lighten($primary, 85%)
-    color $dark-primary
+    background-color lighten($primary, 85%)
+    color darken($primary, 15%)
     font-family inherit
     border-radius $generic-border-radius
     padding 1px 5px
@@ -169,7 +169,7 @@
       background-color lighten($grey-6, 40%)
       color white
       .q-markdown--token
-        background lighten($grey-6, 55%)
+        background-color lighten($grey-6, 55%)
       .q-markdown--link
         color darken($grey-6, 35%)
 
@@ -178,7 +178,7 @@
       background-color lighten($blue-6, 20%)
       color white
       .q-markdown--token
-        background lighten($blue-6, 55%)
+        background-color lighten($blue-6, 55%)
       .q-markdown--link
         color darken($blue-6, 35%)
 
@@ -187,7 +187,7 @@
       background-color lighten($positive, 20%)
       color white
       .q-markdown--token
-        background lighten($positive, 55%)
+        background-color lighten($positive, 55%)
       .q-markdown--link
         color darken($positive, 35%)
 
@@ -205,7 +205,7 @@
       background-color lighten($negative, 60%)
       color white
       .q-markdown--token
-        background lighten($negative, 65%)
+        background-color lighten($negative, 65%)
       .q-markdown--link
         color darken($negative, 25%)
 
