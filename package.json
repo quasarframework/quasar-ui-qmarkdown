@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "A Quasar UI App Extension to display inline markdown",
   "author": "Hawkeye64 <jeff@quasar-framework.org>",
   "main": "src/index.js",
