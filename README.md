@@ -102,7 +102,6 @@ and finally:
 | Vue&nbsp;Event | Description |
 |---|---|
 | data | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
-| tree | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of hierarchial data |
 
 Given markdown that looks like this:
 ```
@@ -114,13 +113,28 @@ Given markdown that looks like this:
 The TOC data looks like this:
 ```
 [
-  {id: 'h2-Heading', title: 'h2 Heading', level: 2},
-  {id: 'h3-Heading', title: 'h3 Heading', level: 3}
+  {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: []},
+  {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
 ]
 ```
 
+# QMarkdown Vue Methods
+| Vue&nbsp;Method | Description |
+|---|---|
+| makeTree | Pass into this function the results from the @data to have the data array transformed into a hieracrhial tree. |
+
+The TOC data will be transformed to the following:
+```
+[
+  {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
+    {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
+  ]}
+  
+]
+```
 
 # QMarkdown Vue Slots
-| Vue&nbsp;Property | Description |
+| Vue&nbsp;Slot | Description |
 |---|---|
 | default | The default slot - this slot overrides anything that may be passed in via the `src` property. |
+
