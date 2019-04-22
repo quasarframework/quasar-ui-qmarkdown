@@ -223,7 +223,7 @@ export default Vue.extend({
       return val === void 0 || val === false
     },
 
-    __buildTocTree (list) {
+    makeTree (list) {
       let tree = []
       let root = null
 
@@ -331,8 +331,6 @@ export default Vue.extend({
 
     if (this.toc && tocData.length > 0) {
       this.$emit('data', tocData)
-      let tocTree = this.__buildTocTree(tocData)
-      this.$emit('tree', tocTree)
     }
 
     return h('div', {
