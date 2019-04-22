@@ -118,8 +118,7 @@ export default Vue.extend({
 
         if (token.markup === '=') {
           classes += ' q-markdown--title-heavy'
-        }
-        else if (token.markup === '-') {
+        } else if (token.markup === '-') {
           classes += ' q-markdown--title-light'
         }
 
