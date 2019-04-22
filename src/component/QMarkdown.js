@@ -61,10 +61,12 @@ export default Vue.extend({
     toc: Boolean,
     tocStart: {
       type: Number,
+      default: 1,
       validator: v => v >= 1 && v <= 5
     },
     tocEnd: {
       type: Number,
+      default: 3,
       validator: v => v >= 2 && v <= 6
     },
     // set to true to enable task lists checkboxes (not read-only)
