@@ -101,7 +101,8 @@ and finally:
 # QMarkdown Vue Events
 | Vue&nbsp;Event | Description |
 |---|---|
-| toc | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any |
+| data | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
+| tree | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of hierarchial data |
 
 Given markdown that looks like this:
 ```

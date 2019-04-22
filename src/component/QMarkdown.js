@@ -61,10 +61,12 @@ export default Vue.extend({
     toc: Boolean,
     tocStart: {
       type: Number,
+      default: 1,
       validator: v => v >= 1 && v <= 5
     },
     tocEnd: {
       type: Number,
+      default: 3,
       validator: v => v >= 2 && v <= 6
     },
     // set to true to enable task lists checkboxes (not read-only)
@@ -108,7 +110,7 @@ export default Vue.extend({
       md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
         const token = tokens[idx]
 
-        const title = tokens[idx + 1]
+        const label = tokens[idx + 1]
           .children
           .reduce((acc, t) => acc + t.content, '')
 
@@ -116,23 +118,19 @@ export default Vue.extend({
 
         if (token.markup === '=') {
           classes += ' q-markdown--title-heavy'
-        }
-        else if (token.markup === '-') {
+        } else if (token.markup === '-') {
           classes += ' q-markdown--title-light'
         }
 
-        const id = this.__slugify(title)
+        const id = this.__slugify(label)
         token.attrSet('id', id)
         token.attrSet('class', classes)
 
         if (this.toc) {
           const tokenNumber = parseInt(token.tag[1])
 
-          // TODO: same thing pushed???
           if (this.tocStart && this.tocEnd && this.tocStart < this.tocEnd && tokenNumber >= this.tocStart && tokenNumber <= this.tocEnd) {
-            tocData.push({ id: id, title: title, level: tokenNumber })
-          } else {
-            tocData.push({ id: id, title: title, level: tokenNumber })
+            tocData.push({ id: id, label: label, level: tokenNumber, children: [] })
           }
         }
 
@@ -223,6 +221,34 @@ export default Vue.extend({
 
     __isEnabled (val) {
       return val === void 0 || val === false
+    },
+
+    __buildTocTree (list) {
+      let tree = []
+      let root = null
+
+      const addToTree = (item) => {
+        if (item.level === 1) {
+          root = item
+          tree.push(item)
+        } else if (item.level === 2) {
+          root.children.push(item)
+        } else {
+          let parent = root
+          for (let k = 0; k < item.level - 2; ++k) {
+            parent = parent.children[parent.children.length - 1]
+          }
+          if (parent) {
+            parent.children.push(item)
+          }
+        }
+      }
+
+      for (let i = 0; i < list.length; ++i) {
+        addToTree(list[i])
+      }
+
+      return tree
     }
   },
 
@@ -304,7 +330,9 @@ export default Vue.extend({
     const rendered = md.render(markdown)
 
     if (this.toc && tocData.length > 0) {
-      this.$emit('toc', tocData)
+      this.$emit('data', tocData)
+      let tocTree = this.__buildTocTree(tocData)
+      this.$emit('tree', tocTree)
     }
 
     return h('div', {
