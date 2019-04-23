@@ -745,10 +745,10 @@
   resolved "https://registry.yarnpkg.com/@positron/stack-trace/-/stack-trace-1.0.0.tgz#14fcc712a530038ef9be1ce6952315a839f466a8"
   integrity sha1-FPzHEqUwA475vhzmlSMVqDn0Zqg=
 
-"@quasar/app@^1.0.0-beta.18":
-  version "1.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.0-beta.18.tgz#38fccc369eccf9f0a87ede9f602dff9919649a32"
-  integrity sha512-j8gZaeK0YrfaEozqBYKLeLFZDYdv7Tt8AIz6PC9BPICzzu4+NExLWNY4dajSCF/9hIwvkqo05uthksbkodLAxg==
+"@quasar/app@^1.0.0-beta.19":
+  version "1.0.0-beta.19"
+  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.0-beta.19.tgz#7355f8c32e853e2785e0f44806677a6cf03d28ce"
+  integrity sha512-t/d7rfYb8oph1+k3yo+4GaDC9seh2m/M8CDJsyfi04u6lmHcmLAJisUQ6q+0K8Zyhxsf2q1KZ23Iie2Y4sy20w==
   dependencies:
     "@quasar/babel-preset-app" "1.0.2"
     "@vue/preload-webpack-plugin" "1.1.0"
@@ -803,7 +803,7 @@
     url-loader "1.1.2"
     vue "2.6.10"
     vue-loader "15.7.0"
-    vue-router "3.0.4"
+    vue-router "3.0.6"
     vue-server-renderer "2.6.10"
     vue-style-loader "4.1.2"
     vue-template-compiler "2.6.10"
@@ -814,7 +814,7 @@
     webpack-dev-server "3.3.1"
     webpack-merge "4.2.1"
     webpack-node-externals "1.7.2"
-    workbox-webpack-plugin "4.2.0"
+    workbox-webpack-plugin "4.3.0"
 
 "@quasar/babel-preset-app@1.0.2":
   version "1.0.2"
@@ -6049,10 +6049,10 @@ qs@6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-quasar@^1.0.0-beta.17:
-  version "1.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.0.0-beta.17.tgz#d73a05bd41952a6bfa126e814eaadca5e7c8c414"
-  integrity sha512-MYkW2+tvc02FaJ79PPNZLHB2BFM8KLnuUTylHbWHqZfrZn53Lnf+hDCVtEqabXJdfP/WszifGn2QCfsYC3ZnFg==
+quasar@^1.0.0-beta.18:
+  version "1.0.0-beta.18"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.0.0-beta.18.tgz#665bcc6ae4796ccdc782d235652be43edc526586"
+  integrity sha512-4xJCgjh6wkS107QT+vag5Z9j0bYTBvdo8Brf+6T+HgC90BrFmlII+Yt0eHJheCcYBC2WFyDW5ypP8Ab/kV4Ayw==
 
 query-string@^5.0.1:
   version "5.1.1"
@@ -6107,6 +6107,14 @@ raw-body@2.3.3:
     http-errors "1.6.3"
     iconv-lite "0.4.23"
     unpipe "1.0.0"
+
+raw-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-2.0.0.tgz#e2813d9e1e3f80d1bbade5ad082e809679e20c26"
+  integrity sha512-kZnO5MoIyrojfrPWqrhFNLZemIAX8edMOCp++yC5RKxzFB3m92DqKNhKlU6+FvpOhWtvyh3jOaD7J6/9tpdIKg==
+  dependencies:
+    loader-utils "^1.1.0"
+    schema-utils "^1.0.0"
 
 rc@^1.2.7:
   version "1.2.8"
@@ -7457,10 +7465,10 @@ vue-loader@15.7.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.4.tgz#d6023e9db64d0b335771f0316c8bde8956f2d75d"
-  integrity sha512-wjirAFeMR53FFTRIM2ofLKH5BJte6Q9+MUiOj6fLzqhgerjVyQVeMmvgiQDslPJJHSqFfQ559EDvIi0lA1Lr6g==
+vue-router@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
+  integrity sha512-Ox0ciFLswtSGRTHYhGvx2L44sVbTPNS+uD2kRISuo8B39Y79rOo0Kw0hzupTmiVtftQYCZl87mwldhh2L9Aquw==
 
 vue-server-renderer@2.6.10:
   version "2.6.10"
@@ -7710,7 +7718,7 @@ workbox-broadcast-update@^4.3.0:
   dependencies:
     workbox-core "^4.3.0"
 
-workbox-build@^4.2.0:
+workbox-build@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-4.3.0.tgz#281fead712ecd2dce3a4c293b107e8ec46c21b98"
   integrity sha512-D2fQa2Isp/BboJ8edYmvsTCrBrPWwVCYa7zMDysLViIaGVQTFMgazRXx8wZ2gZKud13M0maUR5Ln4wS5UiqAIA==
@@ -7815,14 +7823,14 @@ workbox-sw@^4.3.0:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-4.3.0.tgz#07a8b0df4e3a4ad05bb56f5d5686723923738e56"
   integrity sha512-d4INzCxFrHixUrhYV5z+6+zX1AKO3T77JY7l1ZKh15blW3Mz9u0FpJATzz3NWaI9X/cxgRyOsR8J7deu3XjlEg==
 
-workbox-webpack-plugin@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-4.2.0.tgz#c94c3f69ff39c8a5b0c7e6bebc382cb53410a63d"
-  integrity sha512-YZsiA+y/ns/GdWRaBsfYv8dln1ebWtGnJcTOg1ppO0pO1tScAHX0yGtHIjndxz3L/UUhE8b0NQE9KeLNwJwA5A==
+workbox-webpack-plugin@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/workbox-webpack-plugin/-/workbox-webpack-plugin-4.3.0.tgz#05855fb5f9d340004640655dcdb3e5adcba2a31e"
+  integrity sha512-E2upK36Use5IUTyGjxDFhpvLfJ3hMH6m/B5Abdp3wUhtV0Gc0o6YoouMRDVODF/Khnyyz5dd9Mz+S3j5uPsZJg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     json-stable-stringify "^1.0.1"
-    workbox-build "^4.2.0"
+    workbox-build "^4.3.0"
 
 workbox-window@^4.3.0:
   version "4.3.0"

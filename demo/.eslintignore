@@ -1,4 +1,4 @@
-./dist
+/dist
 src/markdown/*
 src/markdown/**
 /**

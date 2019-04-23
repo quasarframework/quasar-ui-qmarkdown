@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="HHh Lpr lFf">
     <q-header elevated class="glossy">
       <q-toolbar>
         <q-btn
@@ -12,8 +12,11 @@
           <q-icon name="menu" />
         </q-btn>
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title v-if="$q.screen.width > 500">
+          Quasar Markdown
+          <q-tooltip v-if="$q.screen.width < 1077">
+            Quasar Markdown
+          </q-tooltip>
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -94,7 +97,7 @@
 import { openURL } from 'quasar'
 
 export default {
-  name: 'MyLayout',
+  name: 'MarkdownLayout',
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop
