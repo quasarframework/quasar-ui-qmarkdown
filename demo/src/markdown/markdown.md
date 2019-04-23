@@ -41,12 +41,12 @@ quasar ext remove @quasar/qmarkdown
 You can use `quasar describe QMarkdown`
 
 # Demo Project
-Can be found [here](https://github.com/hawkeye64/app-extension-qcalendar/demo).
+Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
 
 # Demo
-Can be found [here](https://hawkeye64.github.io/app-extension-qcalendar/#/calendar).
+Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/).
 
-# Working with QMarkdown
+# Working with markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
 
 QMarkdown also comes with a Webpack loader that allows you to import your markdown directly into your code.
@@ -59,7 +59,11 @@ You can simply use a Vue slot to display markdown.
 In your HTML:
 ```html
 <q-markdown>
-  Put your markdown here
+Put your markdown here
+
+Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
+
+Shortcuts (emoticons): :-) :-( 8-) ;)
 </q-markdown>
 ```
 However, this can be a bit inconvenient because linters, if you are using one, may cause you to get weird errors as a result of unexpected language constructs that it's unfamiliar with.
@@ -86,6 +90,58 @@ export default {
 And, in your HTML:
 ```html
 <q-markdown :src="markdown" />
+```
+# Setting up Table of Contents
+You enable a TOC by setting `:toc="true"`. The data in the TOC is based on HTML Headings (H1-H6). You can change the number of headings that you are interested in by using the `toc-start` and `toc-end` properties.
+
+To get the data for the TOC, you must use the `@data` event.
+
+HTML
+```html
+<q-markdown :src="markdown" toc @data="onToc" />
+```
+
+JavaScript:
+```js
+methods: {
+  onToc (toc) {
+    this.toc = toc
+  }
+}
+```
+
+The TOC data looks like this:
+```
+[
+  {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: []},
+  {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
+]
+```
+
+If you desire a hierarchical tree of data instead, do the following:
+
+HTML
+```html
+<q-markdown ref="markdown" :src="markdown" toc @data="onToc" />
+```
+
+JavaScript:
+```js
+methods: {
+  onToc (toc) {
+    this.toc = this.$refs.markdown.makeTree(toc)
+  }
+}
+```
+
+The TOC data will be transformed to the following:
+```
+[
+  {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
+    {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
+  ]}
+  
+]
 ```
 
 # Vue Properties
