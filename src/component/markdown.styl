@@ -149,75 +149,77 @@
     margin 0
 
   &--note
-    border-radius $generic-border-radius
-    margin 16px 0
-    padding 16px 24px
+    margin 14px 0
+    padding 14px 18px
     font-size 1em
     letter-spacing .5px
+    background-color $grey-2
+    color $blue-grey-10
+    font-weight 400
+
 
     .q-markdown--token
       color $grey-9
     .q-markdown--link
       color darken($grey-6, 35%)
 
-    // > p
-    //   margin-bottom 0
-
-    // TODO: ???
     &--
-      border-color $grey-6
-      background-color lighten($grey-6, 40%)
-      color white
+      border-left 10px solid lighten($grey-8, 30%)
       .q-markdown--token
         background-color lighten($grey-6, 55%)
       .q-markdown--link
         color darken($grey-6, 35%)
 
     &--info
-      border-color $blue-6
-      background-color lighten($blue-6, 20%)
-      color white
+      border-left 10px solid lighten($blue-8, 30%)
+      color lighten($blue-8, 30%)
+      background-color lighten($blue-8, 90%)
       .q-markdown--token
         background-color lighten($blue-6, 55%)
       .q-markdown--link
         color darken($blue-6, 35%)
+      .q-markdown--note-title
+        color lighten($blue-8, 10%)
 
     &--tip
-      border-color $positive
-      background-color lighten($positive, 20%)
-      color white
+      border-left 10px solid lighten($green-8, 30%)
+      color lighten($green-8, 30%)
+      background-color lighten($green-8, 90%)
       .q-markdown--token
-        background-color lighten($positive, 55%)
+        background-color lighten($green-6, 55%)
       .q-markdown--link
-        color darken($positive, 35%)
+        color darken($green-8, 35%)
+      .q-markdown--note-title
+        color lighten($green-8, 10%)
 
     &--warning
-      border-color $warning
-      background-color lighten($warning, 20%)
-      color white
+      border-left 10px solid lighten($orange-8, 30%)
+      color lighten($orange-8, 30%)
+      background-color lighten($warning, 90%)
       .q-markdown--token
         background-color lighten($warning, 15%)
       .q-markdown--link
         color darken($warning, 45%)
+      .q-markdown--note-title
+        color lighten($orange-8, 10%)
 
     &--danger
-      border-color $negative
-      background-color lighten($negative, 60%)
-      color white
+      border-left 10px solid lighten($negative, 30%)
+      color lighten($red-8, 30%)
+      background-color lighten($negative, 90%)
       .q-markdown--token
         background-color lighten($negative, 65%)
       .q-markdown--link
         color darken($negative, 25%)
+      .q-markdown--note-title
+        color lighten($red-8, 10%)
 
     &-title
-      font-weight 500
-      background-color rgba(0,0,0,0.1)
-      border-radius $generic-border-radius
+      font-weight 800
       margin-left -4px
       margin-right -4px
       padding 0 4px
       margin-bottom 4px
-      border-bottom: 2px solid rgba(0,0,0,0.3)
 
   &--table
     width fit-content
