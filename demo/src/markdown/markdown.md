@@ -165,7 +165,7 @@ The TOC data will be transformed to the following:
 | no-image | Boolean | Disable image conversion |
 | no-tasklist | Boolean | Disable tasklist conversion |
 | no-container | Boolean | Disable container conversion |
-| toc | Boolean | Generate a TOC; received with `toc` event |
+| toc | Boolean | Generate a TOC; received with `data` event |
 | toc-start | Number | [1-5] The number defines the starting header (ex: 1 == h1, 2 == h2, etc) |
 | toc-end | Number | [2-6] The number defines the ending header (ex: 3 == h3, 4 == h4, etc). This number must be greater than the `startingToc` property or it will be ignored |
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
