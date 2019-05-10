@@ -44,7 +44,7 @@ You can use `quasar describe QMarkdown`
 Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
 
 # Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/).
+Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/#/demo).
 
 # Working with markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
