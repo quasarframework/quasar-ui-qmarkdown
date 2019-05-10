@@ -35,3 +35,6 @@ Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/t
 
 # Documentation
 Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/).
+
+# Demo
+Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/#/demo).
