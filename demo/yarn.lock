@@ -771,10 +771,10 @@
   resolved "https://registry.yarnpkg.com/@positron/stack-trace/-/stack-trace-1.0.0.tgz#14fcc712a530038ef9be1ce6952315a839f466a8"
   integrity sha1-FPzHEqUwA475vhzmlSMVqDn0Zqg=
 
-"@quasar/app@^1.0.0-beta.24":
-  version "1.0.0-beta.24"
-  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.0-beta.24.tgz#cb75b8038b7e22c8654cddaeb07b8732f5e324f4"
-  integrity sha512-cOzGSPDP/8yfnH1lUTrcN/DOz9AP7d3THu3vxFZa+R+GO+eiRwhiaX3yMh3YJ1dJJicuWUczb1vfkOesnoZx/A==
+"@quasar/app@^1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.0-beta.25.tgz#7fae20549003b83f51090bdef671f9d7a69ca769"
+  integrity sha512-AbJfVHCieVSwFBKiK2FCA1wYgidqq1h+QnsG7NBQGRLTRC4+doxF+MQ33AJAQRs7rzEMc8/v1c2H3yDrsbAUTg==
   dependencies:
     "@quasar/babel-preset-app" "1.0.2"
     "@vue/preload-webpack-plugin" "1.1.0"
