@@ -144,7 +144,9 @@ The TOC data will be transformed to the following:
 ]
 ```
 
-# Vue Properties
+# API
+
+## Vue Properties
 | Vue&nbsp;Property | Type	| Description |
 |---|---|---|
 | src | String | Pass the markdown as a string instead of a slot |
@@ -167,14 +169,14 @@ The TOC data will be transformed to the following:
 | no-container | Boolean | Disable container conversion |
 | toc | Boolean | Generate a TOC; received with `data` event |
 | toc-start | Number | [1-5] The number defines the starting header (ex: 1 == h1, 2 == h2, etc) |
-| toc-end | Number | [2-6] The number defines the ending header (ex: 3 == h3, 4 == h4, etc). This number must be greater than the `startingToc` property or it will be ignored |
+| toc-end | Number | [2-6] The number defines the ending header (ex: 3 == h3, 4 == h4, etc). This number must be greater than the `toc-start` property or it will be ignored |
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
 | task-lists-label | Boolean | to wrap the rendered list items in a <label> element for UX purposes |
 | task-lists-enable-after | Boolean | to add the label after the checkbox |
 | content-class | [String, Object, Array] | Style definitions to be attributed to the markdown |
 | content-style | [String, Object, Array] | Style definitions to be attributed to the markdown |
 
-# Vue Events
+## Vue Events
 | Vue Event | Description |
 |---|---|
 | data | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
@@ -194,7 +196,7 @@ The TOC data looks like this:
 ]
 ```
 
-# Vue Methods
+## Vue Methods
 | Vue Method | Description |
 |---|---|
 | makeTree | Pass into this function the results from the @data to have the data array transformed into a hieracrhial tree. |
