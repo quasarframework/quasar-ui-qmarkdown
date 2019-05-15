@@ -211,7 +211,7 @@ The TOC data will be transformed to the following:
 ]
 ```
 
-# Vue Slots
+## Vue Slots
 | Vue Slot | Description |
 |---|---|
 | default | The default slot - this slot overrides anything that may be passed in via the `src` property. |
