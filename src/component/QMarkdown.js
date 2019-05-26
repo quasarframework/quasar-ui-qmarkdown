@@ -14,6 +14,8 @@ import taskLists from 'markdown-it-task-lists'
 import imsize from 'markdown-it-imsize'
 // import toc from 'markdown-it-toc-and-anchor'
 
+import { highlight } from './highlight'
+
 export default Vue.extend({
   name: 'QMarkdown',
 
@@ -253,11 +255,10 @@ export default Vue.extend({
   },
 
   render (h) {
-    let highlight = () => ''
+    let hl = () => ''
 
     if (this.__isEnabled(this.noHighlight)) {
-      // TODO: require? better import at top
-      highlight = require('./highlight')
+      hl = highlight
     }
 
     const opts = {
@@ -265,7 +266,7 @@ export default Vue.extend({
       linkify: this.__isEnabled(this.noLinkify),
       typographer: this.__isEnabled(this.noTypographer),
       breaks: this.__isEnabled(this.noBreaks),
-      highlight
+      hl
     }
 
     // TODO: is there a better way than recreating everything from scratch?
