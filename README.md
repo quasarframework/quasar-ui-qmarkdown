@@ -7,7 +7,7 @@ QMarkdown (@quasar/qmarkdown)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/app-extension-qmarkdown.svg)]()
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 
-QMarkdown is an `UI App Extension` for [Quasar Framework v1](https://v1.quasar-framework.org/). It will not work with legacy versions of Quasar Framework.
+QMarkdown is an `UI App Extension` for [Quasar Framework v1](https://quasar.dev/). It will not work with legacy versions of Quasar Framework.
 
 This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated.
 

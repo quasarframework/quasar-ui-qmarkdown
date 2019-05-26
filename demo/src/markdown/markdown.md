@@ -1,7 +1,7 @@
 QMarkdown
 ===
 
-QMarkdown is a [Quasar App Extension](https://v1.quasar-framework.org/app-extensions/introduction). It provides the ability for your web app to display markdown.
+QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your web app to display markdown.
 
 # Features
 - Abbreviations
