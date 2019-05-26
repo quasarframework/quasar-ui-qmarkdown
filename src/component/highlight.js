@@ -1,6 +1,6 @@
 const Prism = require('prismjs')
 
-module.exports = function (str, lang) {
+export const highlight = function (str, lang) {
   if (lang === '') {
     lang = 'js'
   } else if (lang === 'vue' || lang === 'html') {
