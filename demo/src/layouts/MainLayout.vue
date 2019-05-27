@@ -85,7 +85,7 @@
         </q-item>
         <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/app-extension-qmarkdown">
           <q-item-section avatar>
-            <q-icon name="bolt" />
+            <q-icon name="extension" />
           </q-item-section>
           <q-item-section>
             <q-item-label>QMarkdown home</q-item-label>
