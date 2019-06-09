@@ -4,9 +4,6 @@
   </hero>
 </template>
 
-<style>
-</style>
-
 <script>
 import Hero from '../components/Hero'
 import markdown from '../markdown/markdown.md'

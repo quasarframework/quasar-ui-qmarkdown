@@ -1,6 +1,6 @@
 <template>
   <q-list dense>
-    <q-item-label header>Supported Markdown</q-item-label>
+    <q-item-label header>Click on a link below</q-item-label>
     <q-item to="/demo/abbreviations" exact>
       <q-item-section  class="ellipsis">
         Abbreviations
