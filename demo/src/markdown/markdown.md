@@ -40,11 +40,11 @@ quasar ext remove @quasar/qmarkdown
 # Describe
 You can use `quasar describe QMarkdown`
 
-# Demo Project
+# Demo Project (source)
 Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
 
 # Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/#/demo).
+Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/demo).
 
 # Working with markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
