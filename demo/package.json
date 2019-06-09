@@ -12,17 +12,16 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.1.2",
-    "quasar": "^1.0.0-rc.2"
+    "quasar": "^1.0.0-rc.4"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-rc.4",
+    "@quasar/app": "^1.0.0-rc.5",
     "@quasar/quasar-app-extension-qmarkdown": "link:../.",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
-    "eslint-plugin-vue": "^5.2.2",
-    "strip-ansi": "=3.0.1"
+    "eslint-plugin-vue": "^5.2.2"
   },
   "engines": {
     "node": ">= 8.9.0",
