@@ -72,7 +72,7 @@
   </div>
   <q-list bordered>
     <q-expansion-item
-      group="somegroup"
+      group="markdowngroup"
       :label="label"
       default-opened
       header-class="text-primary"
@@ -112,7 +112,7 @@
       </q-card>
     </q-expansion-item>
     <q-separator />
-    <q-expansion-item group="somegroup" label="Markup" header-class="text-teal">
+    <q-expansion-item group="markdowngroup" label="Markup" header-class="text-teal">
       <q-card>
         <q-card-section>
           <pre><code>

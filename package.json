@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "lint-fix": "eslint --ext .js,.vue src --fix",
-    "build-demo": "cd ./demo && quasar build && cd .. && rm -r -f ./docs && cp -r ./demo/dist/spa/. ./docs",
+    "build-demo": "cd ./demo && yarn build && cd .. && cp ./_redirects ./demo/dist/spa && rm -r -f ./docs && cp -r ./demo/dist/spa/. ./docs",
     "test": "echo \"No test specified\" && exit 0"
   },
   "engines": {
@@ -48,12 +48,12 @@
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-toc-and-anchor": "^4.2.0",
     "prismjs": "^1.16.0",
-    "raw-loader": "^2.0.0"
+    "raw-loader": "^3.0.0"
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.2",
+    "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.2.2"
   }

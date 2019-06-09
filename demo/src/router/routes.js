@@ -2,9 +2,20 @@
 const routes = [
   {
     path: '/',
+    redirect: '/docs'
+  },
+  {
+    path: '/docs',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') }
+    ]
+  },
+  {
+    path: '/examples',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Examples.vue') }
     ]
   },
   {
@@ -37,7 +48,7 @@ const routes = [
           { path: '/demo/containers', component: () => import('pages/Containers.vue') },
           { path: '/demo/editor', component: () => import('pages/Editor.vue') }
         ]
-   
+
       }
     ]
   }
