@@ -89,7 +89,13 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      watchOptions: {
+        ignored: [
+          'node_modules',
+          '!node_modules/@quasar/quasar-app-extension-qmarkdown'
+        ]
+      }
     },
 
     // animations: 'all' --- includes all animations
