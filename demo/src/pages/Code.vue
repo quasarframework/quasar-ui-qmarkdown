@@ -19,7 +19,7 @@ Sample text here...
 
 Syntax highlighting
 
-``` js
+```js
 var foo = function (bar) {
   return bar++;
 };
@@ -45,7 +45,7 @@ Sample text here...
 
 Syntax highlighting
 
-``` js
+```js
 var foo = function (bar) {
   return bar++;
 };

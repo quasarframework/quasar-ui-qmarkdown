@@ -27,7 +27,7 @@ Ordered
    use 3 or more spaces
    :::
 1. List with code
-    ``` js
+    ```js
     var foo = function (bar) {
       return bar++;
     };
@@ -75,7 +75,7 @@ Ordered
    use 3 or more spaces
    :::
 1. List with code
-    ``` js
+    ```js
     var foo = function (bar) {
       return bar++;
     };
