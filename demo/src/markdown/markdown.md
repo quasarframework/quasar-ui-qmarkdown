@@ -173,7 +173,7 @@ The TOC data will be transformed to the following:
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
 | task-lists-label | Boolean | to wrap the rendered list items in a <label> element for UX purposes |
 | task-lists-enable-after | Boolean | to add the label after the checkbox |
-| content-class | [String, Object, Array] | Style definitions to be attributed to the markdown |
+| content-class | [String, Object, Array] | Class definitions to be attributed to the markdown |
 | content-style | [String, Object, Array] | Style definitions to be attributed to the markdown |
 
 ## Vue Events
