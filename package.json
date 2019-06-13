@@ -48,7 +48,8 @@
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-toc-and-anchor": "^4.2.0",
     "prismjs": "^1.16.0",
-    "raw-loader": "^3.0.0"
+    "raw-loader": "^3.0.0",
+    "ware-loader": "^0.2.4"
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",
