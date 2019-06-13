@@ -1,4 +1,4 @@
-export function extendBlockQuote (md) {
+export default function extendBlockQuote (md) {
   md.renderer.rules.blockquote_open = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -6,5 +6,3 @@ export function extendBlockQuote (md) {
     return self.renderToken(tokens, idx, options)
   }
 }
-
-export default extendBlockQuote

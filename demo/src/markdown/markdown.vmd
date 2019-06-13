@@ -1,9 +1,15 @@
+<template>
+  <div class="q-pa-md q-gutter-sm q-markdown">
+
 QMarkdown
 ===
 
 QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your web app to display markdown.
 
 # Features
+
+## Markdown Constructs
+
 - Abbreviations
 - Blockquotes
 - Code and Code Highlighting
@@ -24,6 +30,13 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 - Tasklists
 - Titles
 - Typography
+
+## Loaders
+- markdown (.md) loader that can load your markdown as text to be processed by QMarkdown
+- markdown+vue (.vmd) loader that can process markdown, then hand off to Vue to be processed
+
+## Utility Functions
+- `getTagParts` that can process Vue SFC file and return the `template`, `script` and `style` parts
 
 # Install
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
@@ -46,7 +59,7 @@ Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/t
 # Demo
 Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/demo).
 
-# Working with markdown
+# Working with Markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
 
 QMarkdown also comes with a Webpack loader that allows you to import your markdown directly into your code.
@@ -91,8 +104,8 @@ And, in your HTML:
 ```html
 <q-markdown :src="markdown" />
 ```
-# Setting up Table of Contents
-You enable a TOC by setting `:toc="true"`. The data in the TOC is based on HTML Headings (H1-H6). You can change the number of headings that you are interested in by using the `toc-start` and `toc-end` properties.
+## Setting up Table of Contents
+You enable a TOC by setting `:toc="true"` on the `q-markdown` component. The data in the TOC is based on HTML Headings (H1-H6). You can change the number of headings that you are interested in by using the `toc-start` and `toc-end` properties.
 
 To get the data for the TOC, you must use the `@data` event.
 
@@ -140,14 +153,103 @@ The TOC data will be transformed to the following:
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
     {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
   ]}
-  
 ]
 ```
+
+# Importing Vue+Markdown (.vmd)
+
+You are able to mix Vue (SFC: single-file component) and Markdown together. This must be in a file with an extension of `.vmd` (vue+markdown). The markdown can only reside in the `<template>` section of the Vue SFC file. The data you are reading right now, comes from a `.vmd` file.
+
+The minimal viable `.vmd` file must contain a `<template>` section. All other sections are optional.
+
+Example (from the top of this file):
+```html
+<template>
+  <div class="q-pa-md q-gutter-sm q-markdown">
+
+QMarkdown
+===
+
+QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your web app to display markdown.
+
+# Features
+... // the rest of the markdown
+</template>
+```
+As you may have noticed, your HTML code should add the `q-markdown` class to the wrapper html in order to get all proper syntax highlighting.
+
+## TOC with Vue+Markdown
+
+If you would like to generate a TOC (Table of Contents) derived from the header components (h1, h2, h3, etc), you will need to add some code to your `.vmd` file so it can be accepted. Just add the following to your `data ()` instance in the `.vmd`:
+
+```
+  data () {
+    return {
+      // eslint-disable-next-line
+      tocData: []
+    }
+  },
+```
+The Vue+Markdown (`.vmd`) loader will replace the `tocData: [ ]` (extra space in square brackets added to avoid this feature in the docs) if found and add the TOC data.
+
+::: warning
+Notice the commented line `eslint-disable-next-line`? The data added is not formatted and eslint will complain during compilation time. If you use something other than eslint, you may need to add an appropriate **ignore** statement.
+:::
+
+Finally, if your TOC data is used elsewhere, like the right-drawer in these docs, you need a way of getting it there and if you are using a Vuex store, this is relative easy:
+
+```
+  mounted () {
+    this.toc = this.tocData
+  },
+
+  computed: {
+    toc:
+    {
+      get () {
+        return this.$store.state.common.toc
+      },
+      set (toc) {
+        this.$store.commit('common/toc', toc)
+      }
+    }
+  }
+```
+
+## Vue+Markdown Comments
+Vue+Markdown is experimental. There are a few other authors doing it, like **Vue Press** and **Sable**, as well as the **Quasar Documentation**. However, none of them are using a `.vmd` extension. This was used to distinguish vue+markdown from regular markdown. As such, your favorite editor may not have syntax highlighting that works with `.vmd` files. Hopefully, in the future, this will be resolved.
+
+# Extracting Vue SFC parts
+Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). There are two ways you can import the function:
+
+```js
+import getTagParts from '@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts'
+// or
+const getTagParts = require('@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts').default
+```
+And then, you can use it like this:
+```
+  mounted () {
+    // eslint-disable-next-line import/no-webpack-loader-syntax
+    const results = getTagParts(require('!!raw-loader!../components/Hero.vue').default)
+
+    console.log('template', results.template)
+    console.log('script', results.script)
+    console.log('css', results.css)
+  },
+```
+This makes use of the `raw-loader` Webpack loader. The exclamations are needed to tell Webpack to overload the default loader.
+
+::: tip
+`raw-loader` is already loaded via QMarkdown and you do not need to install it.
+:::
+
+Now, you will have access to the tag parts of the Vue file.
 
 # API
 
 ## Vue Properties
-| Vue&nbsp;Property | Type	| Description |
+| Vue&nbsp;Property | Type | Description |
 |---|---|---|
 | src | String | Pass the markdown as a string instead of a slot |
 | no-html | Boolean | Disable HTML tags in source |
@@ -171,7 +273,7 @@ The TOC data will be transformed to the following:
 | toc-start | Number | [1-5] The number defines the starting header (ex: 1 == h1, 2 == h2, etc) |
 | toc-end | Number | [2-6] The number defines the ending header (ex: 3 == h3, 4 == h4, etc). This number must be greater than the `toc-start` property or it will be ignored |
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
-| task-lists-label | Boolean | to wrap the rendered list items in a <label> element for UX purposes |
+| task-lists-label | Boolean | to wrap the rendered list items in a label element for UX purposes |
 | task-lists-enable-after | Boolean | to add the label after the checkbox |
 | content-class | [String, Object, Array] | Class definitions to be attributed to the markdown |
 | content-style | [String, Object, Array] | Style definitions to be attributed to the markdown |
@@ -207,7 +309,6 @@ The TOC data will be transformed to the following:
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
     {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
   ]}
-  
 ]
 ```
 
@@ -218,3 +319,32 @@ The TOC data will be transformed to the following:
 
 ---
 This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images).
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      // eslint-disable-next-line
+      tocData: []
+    }
+  },
+
+  mounted () {
+    this.toc = this.tocData
+  },
+
+  computed: {
+    toc:
+    {
+      get () {
+        return this.$store.state.common.toc
+      },
+      set (toc) {
+        this.$store.commit('common/toc', toc)
+      }
+    }
+  }
+}
+</script>

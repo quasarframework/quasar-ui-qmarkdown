@@ -1,4 +1,4 @@
-export function extendLink (md) {
+export default function extendLink (md) {
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -13,5 +13,3 @@ export function extendLink (md) {
     return self.renderToken(tokens, idx, options)
   }
 }
-
-export default extendLink
