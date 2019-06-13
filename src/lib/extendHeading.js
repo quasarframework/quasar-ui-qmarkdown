@@ -1,6 +1,6 @@
 import slugify from '../lib/slugify'
 
-export function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3) {
+export default function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3) {
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -31,5 +31,3 @@ export function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocE
     return self.renderToken(tokens, idx, options)
   }
 }
-
-export default extendHeading

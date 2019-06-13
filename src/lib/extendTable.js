@@ -1,4 +1,4 @@
-export function extendTable (md) {
+export default function extendTable (md) {
   md.renderer.rules.table_open = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -7,5 +7,3 @@ export function extendTable (md) {
     return self.renderToken(tokens, idx, options)
   }
 }
-
-export default extendTable

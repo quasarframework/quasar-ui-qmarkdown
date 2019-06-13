@@ -18,7 +18,7 @@ function createContainer (className, defaultTitle) {
   ]
 }
 
-export function extendContainers (md) {
+export default function extendContainers (md) {
   md
     .use(...createContainer('info', 'INFO'))
     .use(...createContainer('tip', 'TIP'))
@@ -33,5 +33,3 @@ export function extendContainers (md) {
         : `</div>\n`
     })
 }
-
-export default extendContainers

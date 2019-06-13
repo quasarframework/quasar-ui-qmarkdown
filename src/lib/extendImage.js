@@ -1,4 +1,4 @@
-export function extendImage (md) {
+export default function extendImage (md) {
   md.renderer.rules.image = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
@@ -6,5 +6,3 @@ export function extendImage (md) {
     return self.renderToken(tokens, idx, options)
   }
 }
-
-export default extendImage
