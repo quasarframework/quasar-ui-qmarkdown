@@ -216,6 +216,11 @@ Finally, if your TOC data is used elsewhere, like the right-drawer in these docs
   }
 ```
 
+## Vue+Markdown Issues
+So far, a couple of issues have been found.
+1. When using `-` over multiple rows for an unorder list, the markdown processor is not putting in the end `</ul>` tag. You can make this an ordered list with `1.` notation.
+2. When using text interpolation, better known as moustache or handle bars, the Vue Loader sees these in the markdown and may complain. You can fix this, by taking the text from the interpolation and use the `v-text="my text"` instead.
+
 ## Vue+Markdown Comments
 Vue+Markdown is experimental. There are a few other authors doing it, like **Vue Press** and **Sable**, as well as the **Quasar Documentation**. However, none of them are using a `.vmd` extension. This was used to distinguish vue+markdown from regular markdown. As such, your favorite editor may not have syntax highlighting that works with `.vmd` files. Hopefully, in the future, this will be resolved.
 
@@ -319,6 +324,7 @@ The TOC data will be transformed to the following:
 
 ---
 This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images).
+
   </div>
 </template>
 
