@@ -12,6 +12,20 @@ const mark = require('markdown-it-mark')
 const taskLists = require('markdown-it-task-lists')
 const imsize = require('markdown-it-imsize')
 
+const fm = require('front-matter')
+
+function removeFrontMatter (source) {
+  return source.replace(/^---(.|\n)*?---\n/, '')
+}
+
+function replaceFrontMatter (source, content) {
+  return String(source).replace('frontMatter: {}', `frontMatter: ${JSON.stringify(content)}`)
+}
+
+function replaceToc (source, tocData) {
+  return String(source).replace('tocData: []', `tocData: ${JSON.stringify(tocData)}`)
+}
+
 function slugify (str) {
   return encodeURIComponent(String(str).trim().replace(/\s+/g, '-'))
 }
@@ -185,8 +199,11 @@ function renderMarkdown (source) {
   extendToken(md)
   extendContainers(md)
 
+  let content = fm(source)
+  source = removeFrontMatter(source)
   let rendered = md.render(source)
-  rendered = String(rendered).replace('tocData: []', `tocData: ${JSON.stringify(tocData)}`)
+  rendered = replaceFrontMatter(rendered, content.attributes)
+  rendered = replaceToc(rendered, tocData)
 
   return rendered
 }

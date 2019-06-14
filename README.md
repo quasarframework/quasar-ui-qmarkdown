@@ -14,6 +14,10 @@ This work is currently in `beta` and there are expected changes while things get
 # Info
 QMarkdown allows you to have markdown in your web pages. You can either use the standard default slot or use the property `src` to define your markdown.
 
+Beside the QMarkdown component a couple of loaders are also included:
+1. automatically import markdown (.md) files as text so they can be processed client-side with QMarkdown
+2. automatically import vue+markdown (.vmd) files, as well as pre-process any front-matter included in the .vmd
+
 # Install
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
@@ -27,7 +31,7 @@ quasar ext remove @quasar/qmarkdown
 ```
 
 # Describe
-You can use `quasar describe QMarkdown`
+You can use `quasar describe QMarkdown` for the QMarkdown component
 
 # Demo Project
 Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
