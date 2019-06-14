@@ -9,7 +9,7 @@
 // import getTagParts from '@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts'
 const getTagParts = require('@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts').default
 import Hero from '../components/Hero'
-import markdown from '../markdown/markdown.md'
+// import markdown from '../markdown/markdown.md'
 import markdownVue from '../markdown/markdown.vmd'
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -28,7 +28,7 @@ export default {
 
   data () {
     return {
-      markdown: markdown
+      // markdown: markdown
     }
   },
 

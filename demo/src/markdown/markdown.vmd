@@ -178,6 +178,25 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 ```
 As you may have noticed, your HTML code should add the `q-markdown` class to the wrapper html in order to get all proper syntax highlighting.
 
+Now, as far as getting it to be displayed on your page, do the following in your `<script>` section:
+
+```js
+import markdownVue from '../markdown/markdown.vmd'
+
+export default {
+
+  components: {
+    markdownVue
+  },
+
+```
+
+and in your HTML `<template>` section:
+
+```html
+  <markdown-vue />
+```
+
 ## TOC with Vue+Markdown
 
 If you would like to generate a TOC (Table of Contents) derived from the header components (h1, h2, h3, etc), you will need to add some code to your `.vmd` file so it can be accepted. Just add the following to your `data ()` instance in the `.vmd`:
@@ -218,8 +237,8 @@ Finally, if your TOC data is used elsewhere, like the right-drawer in these docs
 
 ## Vue+Markdown Issues
 So far, a couple of issues have been found.
-1. When using `-` over multiple rows for an unorder list, the markdown processor is not putting in the end `</ul>` tag. You can make this an ordered list with `1.` notation.
-2. When using text interpolation, better known as moustache or handle bars, the Vue Loader sees these in the markdown and may complain. You can fix this, by taking the text from the interpolation and use the `v-text="my text"` instead.
+1. When using `-` over multiple rows for an unorder list, the markdown processor sometimes is not putting in the end `</ul>` tag which causes an issue with Vue transpiling. You can make this an ordered list with `1.` notation.
+2. When using text interpolation, better known as moustache or handle bars, the Vue Loader sees these in the markdown and tries to do substitution which will cause Vue Loader to complain that the variable does not exist. You can fix this, by taking the text from the interpolation and use the `v-text="my text"` instead (like a `span` tag).
 
 ## Vue+Markdown Comments
 Vue+Markdown is experimental. There are a few other authors doing it, like **Vue Press** and **Sable**, as well as the **Quasar Documentation**. However, none of them are using a `.vmd` extension. This was used to distinguish vue+markdown from regular markdown. As such, your favorite editor may not have syntax highlighting that works with `.vmd` files. Hopefully, in the future, this will be resolved.
