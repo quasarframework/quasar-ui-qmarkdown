@@ -33,6 +33,7 @@
     "markdown"
   ],
   "dependencies": {
+    "front-matter": "^3.0.2",
     "markdown-it": "^8.4.2",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-container": "^2.0.0",

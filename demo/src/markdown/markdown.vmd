@@ -1,3 +1,7 @@
+---
+title: QMarkdown Docs
+desc: This is the documentation for QMarkdown
+---
 <template>
   <div class="q-pa-md q-gutter-sm q-markdown">
 
@@ -34,6 +38,9 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 ## Loaders
 - markdown (.md) loader that can load your markdown as text to be processed by QMarkdown
 - markdown+vue (.vmd) loader that can process markdown, then hand off to Vue to be processed
+
+## Front-Matter
+- The front-matter functonality is only available to vue+markdown (`.vmd`) files.
 
 ## Utility Functions
 - `getTagParts` that can process Vue SFC file and return the `template`, `script` and `style` parts
@@ -212,7 +219,7 @@ If you would like to generate a TOC (Table of Contents) derived from the header 
 The Vue+Markdown (`.vmd`) loader will replace the `tocData: [ ]` (extra space in square brackets added to avoid this feature in the docs) if found and add the TOC data.
 
 ::: warning
-Notice the commented line `eslint-disable-next-line`? The data added is not formatted and eslint will complain during compilation time. If you use something other than eslint, you may need to add an appropriate **ignore** statement.
+Notice the commented line `eslint-disable-next-line`? The data added is not formatted and eslint will complain during compilation time. If you use something other than eslint, you may need to add an appropriate **ignore** statement for your linter.
 :::
 
 Finally, if your TOC data is used elsewhere, like the right-drawer in these docs, you need a way of getting it there and if you are using a Vuex store, this is relative easy:
@@ -242,6 +249,54 @@ So far, a couple of issues have been found.
 
 ## Vue+Markdown Comments
 Vue+Markdown is experimental. There are a few other authors doing it, like **Vue Press** and **Sable**, as well as the **Quasar Documentation**. However, none of them are using a `.vmd` extension. This was used to distinguish vue+markdown from regular markdown. As such, your favorite editor may not have syntax highlighting that works with `.vmd` files. Hopefully, in the future, this will be resolved.
+
+## Front-Matter with Vue+Markdown
+Front-Matter is a way of extracting meta data from the beginning of a file and converting it to object format. The format for Front-Matter is in YAML format.
+
+::: tip
+All Front-Matter meta data defined in your .vmd file **must** be at the top of the file.
+:::
+
+An example of Front-Matter YAML:
+
+```yaml
+---
+title: QMarkdown Docs
+desc: This is the documentation for QMarkdown
+---
+```
+This will be converted to:
+
+```js
+{
+  title: "QMarkdown Docs",
+  desc: "This is the documentation for QMarkdown"
+}
+```
+
+This is injected into your Vue data by having the following:
+
+```
+  data () {
+    return {
+      // eslint-disable-next-line
+      frontMatter: {}
+    }
+  },
+```
+
+The Vue+Markdown (`.vmd`) loader will replace the `frontMatter: { }` (extra space in parentheis added to avoid this feature in the docs) if found and add the Front-Matter data.
+
+::: warning
+Notice the commented line `eslint-disable-next-line`? The data added is not formatted and eslint will complain during compilation time. If you use something other than eslint, you may need to add an appropriate **ignore** statement for your linter.
+:::
+
+Finally, you can use the Front-Matter data like this:
+```js
+  mounted () {
+    document.title = this.frontMatter.title
+  },
+```
 
 # Extracting Vue SFC parts
 Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). There are two ways you can import the function:
@@ -352,12 +407,15 @@ export default {
   data () {
     return {
       // eslint-disable-next-line
+      frontMatter: {},
+      // eslint-disable-next-line
       tocData: []
     }
   },
 
   mounted () {
     this.toc = this.tocData
+    document.title = this.frontMatter.title
   },
 
   computed: {
