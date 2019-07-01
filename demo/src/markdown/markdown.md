@@ -25,6 +25,16 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 - Titles
 - Typography
 
+## Loaders
+- markdown (.md) loader that can load your markdown as text to be processed by QMarkdown
+- vue+markdown (.vmd) loader that can process markdown, then hand off to Vue to be processed
+
+## Front-Matter
+- The front-matter functonality is only available to vue+markdown (`.vmd`) files.
+
+## Utility Functions
+- `getTagParts` that can process a Vue SFC file and return the `template`, `script` and `style` parts
+
 # Install
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
