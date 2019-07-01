@@ -396,6 +396,9 @@ The TOC data will be transformed to the following:
 |---|---|
 | default | The default slot - this slot overrides anything that may be passed in via the `src` property. |
 
+# Donate
+If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
+
 ---
 This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images).
 
