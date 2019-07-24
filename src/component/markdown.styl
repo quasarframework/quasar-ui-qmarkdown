@@ -7,8 +7,8 @@
   code
     padding 2px 4px
     font-size 90%
-    color $grey-8
-    background-color $yellow-2
+    background-color $grey-2
+    color $blue-grey-10
     border-radius $generic-border-radius
 
   pre
@@ -25,8 +25,8 @@
     margin 0
     position relative
     font-size 12px
-    color lighten($grey-9, 10%)
-    background-color lighten($blue-2, .80)
+    background-color $grey-2
+    color $blue-grey-10
     text-align left
     white-space pre
     word-spacing normal
@@ -113,7 +113,7 @@
 
     &:hover
       opacity .8
-      background-color yellow
+      color red
 
     &-local
       font-family inherit
@@ -165,6 +165,7 @@
 
     &--
       border-left 10px solid lighten($grey-8, 30%)
+      border-radius 8px 0 0 8px
       .q-markdown--token
         background-color lighten($grey-6, 55%)
       .q-markdown--link
@@ -172,7 +173,8 @@
 
     &--info
       border-left 10px solid lighten($blue-8, 30%)
-      color lighten($blue-8, 30%)
+      border-radius 8px 0 0 8px
+      color $grey-9
       background-color lighten($blue-8, 90%)
       .q-markdown--token
         background-color lighten($blue-6, 55%)
@@ -183,7 +185,8 @@
 
     &--tip
       border-left 10px solid lighten($green-8, 30%)
-      color lighten($green-8, 30%)
+      border-radius 8px 0 0 8px
+      color $grey-9
       background-color lighten($green-8, 90%)
       .q-markdown--token
         background-color lighten($green-6, 55%)
@@ -194,7 +197,8 @@
 
     &--warning
       border-left 10px solid lighten($orange-10, 30%)
-      color lighten($orange-8, 30%)
+      border-radius 8px 0 0 8px
+      color $grey-9
       background-color lighten($orange-10, 90%)
       .q-markdown--token
         background-color lighten($orange-10, 15%)
@@ -205,7 +209,8 @@
 
     &--danger
       border-left 10px solid lighten($negative, 30%)
-      color lighten($red-8, 30%)
+      border-radius 8px 0 0 8px
+      color $grey-9
       background-color lighten($negative, 90%)
       .q-markdown--token
         background-color lighten($negative, 65%)
@@ -230,11 +235,27 @@
     border-style solid
     border-color $grey
 
-.q-markdown--table td, .q-markdown--table th
+.q-markdown--table
+  border-color $grey-4
+
+.q-markdown--table thead
+  background-color: $grey-4
+
+.q-markdown--table thead tr th
   padding 8px
   border-width 1px
   border-style solid
-  border-color $grey
+
+.q-markdown--table tbody
+  background-color: $grey-1
+
+.q-markdown--table tbody td, .q-markdown--table tbody th
+  padding 8px
+  border-width 1px
+  border-style solid
+
+.q-markdown--table tbody tr:nth-child(odd)
+  background-color: $grey-4
 
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom 22px
@@ -244,7 +265,8 @@ blockquote .q-markdown--token
   color $grey-9
 
 blockquote.q-markdown--note
-  border-width 1px 3px 1px
-  border-style dotted solid
+  border-width 1px 8px 1px 8px
+  border-radius 8px
+  border-style solid
   border-color $grey-6 $teal-6
 
