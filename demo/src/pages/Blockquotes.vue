@@ -3,6 +3,7 @@
     <show-markdown label="Blockquotes">
       <template v-slot:markdown>
 > This is a Blockquote
+> with a `token` and a [link](https://quasar.dev)
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
@@ -10,6 +11,7 @@
       </template>
       <template v-slot:input>
 > This is a Blockquote
+> with a `token` and a [link](https://quasar.dev)
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
