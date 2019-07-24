@@ -172,7 +172,7 @@ function extendBlockQuote (md) {
 const opts = {
   html: true,
   linkify: true,
-  typographer: true,
+  typographer: false,
   breaks: true,
   highlight
 }

@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "1.0.0-beta.13",
+  "version": "1.0.0-beta.14",
   "description": "Display inline markdown in your Quasar App",
   "author": "Hawkeye64 <jeff@quasar.dev>",
   "main": "src/index.js",
@@ -34,12 +34,12 @@
   ],
   "dependencies": {
     "front-matter": "^3.0.2",
-    "markdown-it": "^8.4.2",
+    "markdown-it": "^9.0.1",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-container": "^2.0.0",
     "markdown-it-deflist": "^2.0.3",
     "markdown-it-emoji": "^1.4.0",
-    "markdown-it-footnote": "^3.0.1",
+    "markdown-it-footnote": "^3.0.2",
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-ins": "^2.0.0",
     "markdown-it-katex": "^2.0.3",
@@ -48,15 +48,15 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-toc-and-anchor": "^4.2.0",
-    "prismjs": "^1.16.0",
-    "raw-loader": "^3.0.0",
+    "prismjs": "^1.17.1",
+    "raw-loader": "^3.1.0",
     "ware-loader": "^0.2.4"
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.2",
-    "eslint": "^6.0.1",
-    "eslint-loader": "^2.1.2",
+    "eslint": "^6.1.0",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-vue": "^5.2.3"
   }
 }
