@@ -150,7 +150,7 @@ The TOC data will be transformed to the following:
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
     {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
   ]}
-  
+
 ]
 ```
 
@@ -189,7 +189,7 @@ The TOC data will be transformed to the following:
 ## Vue Events
 | Vue Event | Description |
 |---|---|
-| data | If the `toc` proerty is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
+| data | If the `toc` property is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
 
 Given markdown that looks like this:
 ```
@@ -217,7 +217,7 @@ The TOC data will be transformed to the following:
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
     {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
   ]}
-  
+
 ]
 ```
 
