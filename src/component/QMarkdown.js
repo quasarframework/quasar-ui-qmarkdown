@@ -23,6 +23,7 @@ import extendImage from '../lib/extendImage'
 import extendLink from '../lib/extendLink'
 import extendTable from '../lib/extendTable'
 import extendToken from '../lib/extendToken'
+import extendFenceLineNumbers from '../lib/extendFenceLineNumbers'
 
 export default Vue.extend({
   name: 'QMarkdown',
@@ -67,6 +68,8 @@ export default Vue.extend({
     noTasklist: Boolean,
     // no containers
     noContainer: Boolean,
+    // no line-numbers
+    noLineNumbers: Boolean,
     // set to true to enable Table of Contents (sent via emit)
     toc: Boolean,
     tocStart: {
@@ -195,6 +198,9 @@ export default Vue.extend({
     extendToken(md)
     if (this.__isEnabled(this.noContainer)) {
       extendContainers(md)
+    }
+    if (this.__isEnabled(this.noLineNumbers)) {
+      extendFenceLineNumbers(md)
     }
 
     let markdown = this.src

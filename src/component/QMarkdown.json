@@ -74,6 +74,10 @@
       "type": "Boolean",
       "desc": "Disable container conversion"
     },
+    "no-line-numbers": {
+      "type": "Boolean",
+      "desc": "Disable line numbers on code blocks"
+    },
     "toc": {
       "type": "Boolean",
       "desc": "Set to true if you want a TOC automatically generated"

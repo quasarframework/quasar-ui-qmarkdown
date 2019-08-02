@@ -1,10 +1,35 @@
+.q-markdown--line-numbers-wrapper
+  display flex
+  font-size 12px
+  justify-content flex-start
+  font-size 12px
+  background-color $blue-grey-1
+  color $grey-10
+  font-family Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+  margin-bottom 0!important
+
+.q-markdown--line-numbers
+  padding 5px
+
+.q-markup--line-number
+  color $grey-6
+  margin 0
+  position relative
+  text-align left
+  white-space pre
+  word-spacing normal
+  word-break normal
+  word-wrap normal
+  line-height 1.5
+  tab-size 4
+  hyphens none
+
+.q-markdown--code-wrapper
+  width: 100%
+
 .q-markdown--code, .q-markdown--code__inner
   margin 0
   position relative
-  font-size 12px
-  color $grey-9
-  background-color #fdfdfd
-  font-family Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   text-align left
   white-space pre
   word-spacing normal
@@ -63,7 +88,9 @@
 .token.inserted
   color #2f9c0a
 
-.token.operator,
+.token.operator
+  color #ff2211
+
 .token.entity,
 .token.url,
 .token.variable
