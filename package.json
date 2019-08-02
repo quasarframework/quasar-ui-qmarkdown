@@ -1,8 +1,8 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "1.0.0-beta.16",
+  "version": "1.0.0-beta.17",
   "description": "Display inline markdown in your Quasar App",
-  "author": "Hawkeye64 <jeff@quasar.dev>",
+  "author": "Jeff <jeff@quasar.dev>",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
