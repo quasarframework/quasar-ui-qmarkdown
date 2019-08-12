@@ -2,6 +2,7 @@
 title: QMarkdown Docs
 desc: This is the documentation for QMarkdown
 ---
+
 <template>
   <div class="q-pa-md q-gutter-sm q-markdown">
 
@@ -94,6 +95,7 @@ The recommended way, would be to import the markdown to be used so that it doesn
 QMarkdown comes with a Webpack loader for importing markdown files directly into your code.
 
 In your JavaScript:
+
 ```js
 import markdown from '../markdown/calendar.md'
 
@@ -107,16 +109,19 @@ export default {
   },
 ...
 ```
+
 And, in your HTML:
 ```html
 <q-markdown :src="markdown" />
 ```
+
 ## Setting up Table of Contents
 You enable a TOC by setting `:toc="true"` on the `q-markdown` component. The data in the TOC is based on HTML Headings (H1-H6). You can change the number of headings that you are interested in by using the `toc-start` and `toc-end` properties.
 
 To get the data for the TOC, you must use the `@data` event.
 
 HTML
+
 ```html
 <q-markdown :src="markdown" toc @data="onToc" />
 ```
@@ -131,6 +136,7 @@ methods: {
 ```
 
 The TOC data looks like this:
+
 ```
 [
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: []},
@@ -141,11 +147,13 @@ The TOC data looks like this:
 If you desire a hierarchical tree of data instead, do the following:
 
 HTML
+
 ```html
 <q-markdown ref="markdown" :src="markdown" toc @data="onToc" />
 ```
 
 JavaScript:
+
 ```js
 methods: {
   onToc (toc) {
@@ -155,6 +163,7 @@ methods: {
 ```
 
 The TOC data will be transformed to the following:
+
 ```
 [
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
@@ -170,6 +179,7 @@ You are able to mix Vue (SFC: single-file component) and Markdown together. This
 The minimal viable `.vmd` file must contain a `<template>` section. All other sections are optional.
 
 Example (from the top of this file):
+
 ```html
 <template>
   <div class="q-pa-md q-gutter-sm q-markdown">
@@ -183,6 +193,7 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 ... // the rest of the markdown
 </template>
 ```
+
 As you may have noticed, your HTML code should add the `q-markdown` class to the wrapper html in order to get all proper syntax highlighting.
 
 Now, as far as getting it to be displayed on your page, do the following in your `<script>` section:
@@ -218,6 +229,7 @@ If you would like to generate a TOC (Table of Contents) derived from the header 
     }
   },
 ```
+
 The Vue+Markdown (`.vmd`) loader will replace the `tocData: [ ]` (extra space in square brackets added to avoid this feature in the docs) if found and add the TOC data.
 
 ::: warning
@@ -267,6 +279,7 @@ title: QMarkdown Docs
 desc: This is the documentation for QMarkdown
 ---
 ```
+
 This will be converted to:
 
 ```js
@@ -278,7 +291,7 @@ This will be converted to:
 
 This is injected into your Vue data by having the following:
 
-```
+```js
   data () {
     return {
       // eslint-disable-next-line
@@ -294,6 +307,7 @@ Notice the commented line `eslint-disable-next-line`? The data added is not form
 :::
 
 Finally, you can use the Front-Matter data like this:
+
 ```js
   mounted () {
     document.title = this.frontMatter.title
@@ -308,7 +322,9 @@ import getTagParts from '@quasar/quasar-app-extension-qmarkdown/src/lib/getTagPa
 // or
 const getTagParts = require('@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts').default
 ```
+
 And then, you can use it like this:
+
 ```
   mounted () {
     // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -319,6 +335,7 @@ And then, you can use it like this:
     console.log('css', results.css)
   },
 ```
+
 This makes use of the `raw-loader` Webpack loader. The exclamations are needed to tell Webpack to overload the default loader.
 
 ::: tip
@@ -326,6 +343,38 @@ This makes use of the `raw-loader` Webpack loader. The exclamations are needed t
 :::
 
 Now, you will have access to the tag parts of the Vue file.
+
+# Extending Markdown-it!
+You can use the `extend` property to extend the Markdown-it! markdown processor. The extend function takes a single argument of the md (markdown) instance.
+
+Now, you can extend QMarkdown with either your own code or Markdown-it! [plugins](https://www.npmjs.com/search?q=keywords:markdown-it-plugin). Please read the Markdown-It [documentation](https://github.com/markdown-it/markdown-it#readme) on how to do this.
+
+Syntax:
+
+```html
+<q-markdown :extend="extendMarkdown" />
+```
+
+```js
+methods: {
+  // to extend links
+  extendMarkdown (md) {
+    md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+      const token = tokens[idx]
+
+      const hrefIndex = token.attrIndex('href')
+      if (token.attrs[hrefIndex][1][0] === '/') {
+        token.attrSet('class', 'q-markdown--link q-markdown--link-local')
+      } else {
+        token.attrSet('class', 'q-markdown--link q-markdown--link-external')
+        token.attrSet('target', '_blank')
+      }
+
+      return self.renderToken(tokens, idx, options)
+    }
+  }
+}
+```
 
 # API
 
@@ -357,6 +406,7 @@ Now, you will have access to the tag parts of the Vue file.
 | task-lists-enable | Boolean | set to true to enable task lists checkboxes (not read-only) |
 | task-lists-label | Boolean | to wrap the rendered list items in a label element for UX purposes |
 | task-lists-enable-after | Boolean | to add the label after the checkbox |
+| extend | Function | extend the markdown-it! processor |
 | content-class | [String, Object, Array] | Class definitions to be attributed to the markdown |
 | content-style | [String, Object, Array] | Style definitions to be attributed to the markdown |
 
@@ -366,6 +416,7 @@ Now, you will have access to the tag parts of the Vue file.
 | data | If the `toc` property is set to `true`, this event will occur containing any TOC data, if there is any. This is an array of flat data |
 
 Given markdown that looks like this:
+
 ```
 ## h2 Heading
 
@@ -373,6 +424,7 @@ Given markdown that looks like this:
 ```
 
 The TOC data looks like this:
+
 ```
 [
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: []},
@@ -386,6 +438,7 @@ The TOC data looks like this:
 | makeTree | Pass into this function the results from the @data to have the data array transformed into a hieracrhial tree. |
 
 The TOC data will be transformed to the following:
+
 ```
 [
   {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: [
@@ -403,7 +456,7 @@ The TOC data will be transformed to the following:
 If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
 
 ---
-This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images).
+This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images). It is in the `vmd` format. You can view it's source [here](https://github.com/quasarframework/app-extension-qmarkdown/blob/dev/demo/src/markdown/markdown.vmd)
 
   </div>
 </template>
