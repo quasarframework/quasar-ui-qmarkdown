@@ -88,6 +88,8 @@ export default Vue.extend({
     taskListsLabel: Boolean,
     // to add the label after the checkbox
     taskListsLabelAfter: Boolean,
+    // extend markdown-it!
+    extend: Function,
     contentStyle: [String, Object, Array],
     contentClass: [String, Object, Array]
   },
@@ -108,6 +110,10 @@ export default Vue.extend({
   methods: {
     __isEnabled (val) {
       return val === void 0 || val === false
+    },
+
+    __isFunction (f) {
+      return f && {}.toString.call(f) === '[object Function]'
     },
 
     makeTree (list) {
@@ -217,6 +223,10 @@ export default Vue.extend({
     }
     if (disabled.length > 0) {
       md.disable(disabled)
+    }
+
+    if (this.__isFunction(this.extend)) {
+      this.extend(md)
     }
 
     const rendered = md.render(markdown)
