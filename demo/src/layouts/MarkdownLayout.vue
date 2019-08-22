@@ -13,9 +13,9 @@
         </q-btn>
 
         <q-toolbar-title v-if="$q.screen.width > 500">
-          QMarkdown
+          QMarkdown <span class="text-subtitle2">v{{ version }}</span>
           <q-tooltip v-if="$q.screen.width < 1077">
-            QMarkdown
+            QMarkdown <span class="text-subtitle2">v{{ version }}</span>
           </q-tooltip>
         </q-toolbar-title>
 
@@ -131,6 +131,7 @@
 <script>
 import { openURL } from 'quasar'
 import MarkdownTypes from '../components/MarkdownTypes'
+import { version } from '@quasar/quasar-app-extension-qmarkdown/package.json'
 
 export default {
   name: 'MarkdownLayout',
@@ -139,6 +140,7 @@ export default {
   },
   data () {
     return {
+      version: version,
       leftDrawerOpen: this.$q.platform.is.desktop
     }
   },
