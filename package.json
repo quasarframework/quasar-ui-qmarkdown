@@ -43,7 +43,7 @@
     "markdown-it-imsize": "^2.0.1",
     "markdown-it-ins": "^2.0.0",
     "markdown-it-katex": "^2.0.3",
-    "markdown-it-mark": "^2.0.0",
+    "markdown-it-mark": "^3.0.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
