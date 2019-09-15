@@ -11,8 +11,7 @@ export default function prismHighlight (str, lang) {
     const code = Prism.highlight(str, Prism.languages[lang], lang)
 
     return `<pre class="q-markdown--code q-markdown--code__inner language-${lang}">` +
-      `<code>${code}</code>` +
-      `</pre>`
+      `<code>${code}</code></pre>\n`
   }
 
   return ''

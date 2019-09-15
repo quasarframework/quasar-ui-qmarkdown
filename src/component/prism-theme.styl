@@ -1,15 +1,14 @@
 .q-markdown--line-numbers-wrapper
   display flex
-  font-size 12px
   justify-content flex-start
   font-size 12px
-  background-color $blue-grey-1
+  background $blue-grey-1
   color $grey-10
   font-family Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-  margin-bottom 0!important
+  border-radius $generic-border-radius
 
 .q-markdown--line-numbers
-  padding 5px
+  padding 5px 5px 0 5px
 
 .q-markup--line-number
   color $grey-6
@@ -25,7 +24,8 @@
   hyphens none
 
 .q-markdown--code-wrapper
-  width: 100%
+  width 100%
+  margin-bottom -16px!important
 
 .q-markdown--code, .q-markdown--code__inner
   margin 0

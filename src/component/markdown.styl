@@ -5,9 +5,9 @@
     font-family Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 
   code
-    padding 2px 4px
+    padding 2px 0
     font-size 90%
-    background-color $blue-grey-1
+    background $blue-grey-1
     color $grey-10
     border-radius $generic-border-radius
 
@@ -24,7 +24,7 @@
     margin 0
     position relative
     font-size 12px
-    background-color $blue-grey-1
+    background $blue-grey-1
     color $grey-10
     text-align left
     white-space pre
@@ -38,7 +38,7 @@
 
   pre code
     white-space pre-wrap
-    border-radius: 0
+    border-radius 0
 
   &--heading
     color $primary
@@ -87,10 +87,10 @@
       margin 1rem 0
 
   &--title-heavy
-    border-bottom: 3px solid #ccc;
+    border-bottom 3px solid #ccc;
 
   &--title-light
-    border-bottom: 1px solid #ccc;
+    border-bottom 1px solid #ccc;
 
   &--image
     max-width 100%
@@ -136,7 +136,7 @@
 
   &--token
     white-space nowrap
-    background-color $blue-grey-1
+    background $blue-grey-1
     color $grey-10
     font-family inherit
     border-radius $generic-border-radius
@@ -148,7 +148,7 @@
     padding 14px 18px
     font-size 1em
     letter-spacing .5px
-    background-color $blue-grey-1
+    background $blue-grey-1
     color $grey-10
     font-weight 400
 
@@ -162,7 +162,7 @@
       border-left 10px solid lighten($grey-8, 30%)
       border-radius 8px 0 0 8px
       .q-markdown--token
-        background-color lighten($grey-8, 70%)
+        background lighten($grey-8, 70%)
         color $grey-10
       .q-markdown--link
         color darken($grey-6, 35%)
@@ -171,9 +171,9 @@
       border-left 10px solid lighten($blue-8, 30%)
       border-radius 8px 0 0 8px
       color $grey-9
-      background-color lighten($blue-8, 90%)
+      background lighten($blue-8, 90%)
       .q-markdown--token
-        background-color lighten($blue-8, 70%)
+        background lighten($blue-8, 70%)
         color $grey-10
       .q-markdown--link
         color lighten($blue-8, 10%)
@@ -184,9 +184,9 @@
       border-left 10px solid lighten($green-8, 30%)
       border-radius 8px 0 0 8px
       color $grey-9
-      background-color lighten($green-8, 90%)
+      background lighten($green-8, 90%)
       .q-markdown--token
-        background-color lighten($green-8, 70%)
+        background lighten($green-8, 70%)
         color $grey-10
       .q-markdown--link
         color lighten($green-8, 10%)
@@ -197,9 +197,9 @@
       border-left 10px solid lighten($orange-10, 30%)
       border-radius 8px 0 0 8px
       color $grey-9
-      background-color lighten($orange-10, 90%)
+      background lighten($orange-10, 90%)
       .q-markdown--token
-        background-color lighten($orange-10, 70%)
+        background lighten($orange-10, 70%)
         color $grey-10
       .q-markdown--link
         color lighten($orange-10, 10%)
@@ -210,9 +210,9 @@
       border-left 10px solid lighten($negative, 30%)
       border-radius 8px 0 0 8px
       color $grey-9
-      background-color lighten($negative, 90%)
+      background lighten($negative, 90%)
       .q-markdown--token
-        background-color lighten($red-8, 70%)
+        background lighten($red-8, 70%)
         color $grey-10
       .q-markdown--link
         color lighten($red-8, 10%)
@@ -237,19 +237,19 @@
 
 .q-markdown--table
   border-color $grey-4
-  background-color: $grey-1
+  background $grey-1
 
 .q-markdown--table thead
-  background-color: $grey-4
+  background $grey-4
 
 .q-markdown--table thead tr th
   padding 8px
   border-width 1px
   border-style solid
-  background-color: $grey-2
+  background $grey-2
 
 .q-markdown--table tbody
-  background-color: $grey-1
+  background $grey-1
 
 .q-markdown--table tbody td, .q-markdown--table tbody th
   padding 8px
@@ -257,17 +257,17 @@
   border-style solid
 
 .q-markdown--table tbody tr:nth-child(odd)
-  background-color: $grey-4
+  background $grey-4
 
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom 22px
 
 blockquote .q-markdown--token
-  background-color lighten($grey-8, 70%)
+  background lighten($grey-8, 70%)
   color $grey-8
 
 blockquote .q-markdown--link
-  background-color transparent
+  background transparent
   color $primary !important
 
   &:hover
@@ -279,4 +279,3 @@ blockquote.q-markdown--note
   border-radius 8px
   border-style solid
   border-color $grey-6 $teal-6
-
