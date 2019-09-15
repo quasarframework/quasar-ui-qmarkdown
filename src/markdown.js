@@ -186,7 +186,7 @@ function extendFenceLineNumbers (md) {
       .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
 
     const lineNumbersWrapperCode =
-      `<div class="q-markdown--line-numbers">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
+      `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
 
     const finalCode =
       `<div class="q-markdown--line-numbers-wrapper">${lineNumbersWrapperCode}</div>`
@@ -224,6 +224,7 @@ function renderMarkdown (source) {
   extendTable(md)
   extendToken(md)
   extendContainers(md)
+  // bug: this is causing numbers to show up twice
   // extendFenceLineNumbers(md)
 
   let content = fm(source)

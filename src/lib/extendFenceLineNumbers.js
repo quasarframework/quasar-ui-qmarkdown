@@ -13,10 +13,10 @@ export default function extendFenceLineNumbers (md) {
     }
 
     const lineNumbersCode = [...Array(lines.length - 1)]
-      .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
+      .map((line, index) => `<div class="q-markup--line-number">${index + 1}</div>`).join('')
 
     const lineNumbersWrapperCode =
-      `<div class="q-markdown--line-numbers">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
+      `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
 
     const finalCode =
       `<div class="q-markdown--line-numbers-wrapper">${lineNumbersWrapperCode}</div>`
