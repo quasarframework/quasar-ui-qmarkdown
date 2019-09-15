@@ -12,7 +12,7 @@ export default function extendFenceLineNumbers (md) {
       return rawCode
     }
 
-    const lineNumbersCode = [...Array(lines.length)]
+    const lineNumbersCode = [...Array(lines.length - 1)]
       .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
 
     const lineNumbersWrapperCode =

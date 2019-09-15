@@ -40,9 +40,8 @@ function highlight (str, lang) {
   if (Prism.languages[lang] !== void 0) {
     const code = Prism.highlight(str, Prism.languages[lang], lang)
 
-    return `<pre class="q-markdown--code">\n` +
-      `<code class="q-markdown--code__inner language-${lang}">${code}</code>\n` +
-      `</pre>\n`
+    return `<pre class="q-markdown--code">` +
+      `<code class="q-markdown--code__inner language-${lang}">${code}</code></pre>\n`
   }
 
   return ''
@@ -183,7 +182,7 @@ function extendFenceLineNumbers (md) {
       return rawCode
     }
 
-    const lineNumbersCode = [...Array(lines.length)]
+    const lineNumbersCode = [...Array(lines.length - 1)]
       .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
 
     const lineNumbersWrapperCode =
