@@ -102,7 +102,20 @@
     },
     "task-lists-label-after": {
       "type": "Boolean",
-      "desc": "to add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
+      "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
+    },
+    "extend": {
+      "type": "Function",
+      "desc": "Used to extend the markdown processor. You can use any 'markdown-it' plugin or write your own",
+      "params": {
+        "md": {
+          "type": "Object",
+          "desc": "The 'markdown-it instance"
+        }
+      },
+      "examples": [
+        ":extend=\"extendMarkdown\" // extendMarkdown (md) is your function"
+      ]
     },
     "content-class": {
       "type": [ "Array", "String", "Object" ],
