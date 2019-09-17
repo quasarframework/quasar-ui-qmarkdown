@@ -70,6 +70,11 @@ export default Vue.extend({
     noContainer: Boolean,
     // no line-numbers
     noLineNumbers: Boolean,
+    // alternative character to use instead of line numbers
+    lineNumberAlt: {
+      type: String,
+      validator: v => v.length === 1
+    },
     // set to true to enable Table of Contents (sent via emit)
     toc: Boolean,
     tocStart: {
@@ -206,7 +211,7 @@ export default Vue.extend({
       extendContainers(md)
     }
     if (this.__isEnabled(this.noLineNumbers)) {
-      extendFenceLineNumbers(md)
+      extendFenceLineNumbers(md, this.lineNumberAlt)
     }
 
     let markdown = this.src

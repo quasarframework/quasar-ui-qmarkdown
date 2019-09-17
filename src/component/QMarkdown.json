@@ -78,6 +78,14 @@
       "type": "Boolean",
       "desc": "Disable line numbers on code blocks"
     },
+    "line-number-alt": {
+      "type": "String",
+      "desc": "Provide an alternative character to be used instead of line numbers - must be 1 char in length",
+      "examples":[
+        "line-number-alt=\"$\"",
+        "line-number-alt=\">\""
+      ]
+    },
     "toc": {
       "type": "Boolean",
       "desc": "Set to true if you want a TOC automatically generated"
@@ -102,7 +110,20 @@
     },
     "task-lists-label-after": {
       "type": "Boolean",
-      "desc": "to add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
+      "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
+    },
+    "extend": {
+      "type": "Function",
+      "desc": "Used to extend the markdown processor. You can use any 'markdown-it' plugin or write your own",
+      "params": {
+        "md": {
+          "type": "Object",
+          "desc": "The 'markdown-it instance"
+        }
+      },
+      "examples": [
+        ":extend=\"extendMarkdown\" // extendMarkdown (md) is your function"
+      ]
     },
     "content-class": {
       "type": [ "Array", "String", "Object" ],

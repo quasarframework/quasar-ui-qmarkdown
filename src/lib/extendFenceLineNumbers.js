@@ -1,4 +1,4 @@
-export default function extendFenceLineNumbers (md) {
+export default function extendFenceLineNumbers (md, alt) {
   const fence = md.renderer.rules.fence
   md.renderer.rules.fence = (...args) => {
     const rawCode = fence(...args)
@@ -7,13 +7,13 @@ export default function extendFenceLineNumbers (md) {
       rawCode.indexOf('</code>')
     )
 
-    const lines = code.split('\n')
+    const lines = code.trim().split('\n')
     if (lines.length < 3) {
       return rawCode
     }
 
-    const lineNumbersCode = [...Array(lines.length - 1)]
-      .map((line, index) => `<div class="q-markup--line-number">${index + 1}</div>`).join('')
+    const lineNumbersCode = [...Array(lines.length)]
+      .map((line, index) => `<div class="q-markup--line-number">${alt === void 0 ? index + 1 : alt}</div>`).join('')
 
     const lineNumbersWrapperCode =
       `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
