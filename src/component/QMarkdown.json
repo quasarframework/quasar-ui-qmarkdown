@@ -78,6 +78,14 @@
       "type": "Boolean",
       "desc": "Disable line numbers on code blocks"
     },
+    "line-number-alt": {
+      "type": "String",
+      "desc": "Provide an alternative character to be used instead of line numbers - must be 1 char in length",
+      "examples":[
+        "line-number-alt=\"$\"",
+        "line-number-alt=\">\""
+      ]
+    },
     "toc": {
       "type": "Boolean",
       "desc": "Set to true if you want a TOC automatically generated"
