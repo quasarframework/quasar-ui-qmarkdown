@@ -7,12 +7,12 @@ export default function extendFenceLineNumbers (md) {
       rawCode.indexOf('</code>')
     )
 
-    const lines = code.split('\n')
+    const lines = code.trim().split('\n')
     if (lines.length < 3) {
       return rawCode
     }
 
-    const lineNumbersCode = [...Array(lines.length - 1)]
+    const lineNumbersCode = [...Array(lines.length)]
       .map((line, index) => `<div class="q-markup--line-number">${index + 1}</div>`).join('')
 
     const lineNumbersWrapperCode =
