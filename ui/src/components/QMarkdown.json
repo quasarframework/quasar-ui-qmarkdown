@@ -1,0 +1,222 @@
+{
+  "props": {
+    "src": {
+      "type": "String",
+      "category": "model",
+      "desc": "[optional] Pass markdown in as a property",
+      "examples": [ "\n\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)\"" ]
+    },
+    "no-html": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable HTML tags in source"
+    },
+    "no-link": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable conversion of links"
+    },
+    "no-linkify": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable auto-convert URL-like text to links"
+    },
+    "no-typographer": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable language-neutral replacement + quotes beautification"
+    },
+    "no-breaks": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable conversion of '\\n' into <br>"
+    },
+    "no-highlight": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable code highlighter"
+    },
+    "no-emoji": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable emojie conversion"
+    },
+    "no-subscript": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable subscript conversion"
+    },
+    "no-superscript": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable superscript conversion"
+    },
+    "no-footnote": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable footnote conversion"
+    },
+    "no-deflist": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable definition list conversion"
+    },
+    "no-abbreviation": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable abbreviation conversion"
+    },
+    "no-insert": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable insert conversion"
+    },
+    "no-mark": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable mark conversion"
+    },
+    "no-image": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable image conversion"
+    },
+    "no-tasklist": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable tasklist conversion"
+    },
+    "no-container": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable container conversion"
+    },
+    "no-line-numbers": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable line numbers on code blocks"
+    },
+    "line-number-alt": {
+      "type": "String",
+      "category": "content",
+      "desc": "Provide an alternative character to be used instead of line numbers - must be 1 char in length",
+      "examples":[
+        "line-number-alt=\"$\"",
+        "line-number-alt=\">\""
+      ]
+    },
+    "toc": {
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": "Set to true if you want a TOC automatically generated"
+    },
+    "toc-start": {
+      "type": "Number",
+      "category": "behavior",
+      "desc": "The starting Header number for generating a TOC",
+      "values": [ 1, 2, 3, 4, 5 ]
+    },
+    "toc-end": {
+      "type": "Number",
+      "category": "behavior",
+      "desc": "The ending Header number for generating a TOC. Must be greater than tocStart",
+      "values": [ 2, 3, 4, 5, 6 ]
+    },
+    "task-lists-enable": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Set to true to enable (not read-only) Task Lists"
+    },
+    "task-lists-label": {
+      "type": "Boolean",
+      "category": "style",
+      "desc": "Set to true to wrap the rendered list items in a <label> element for UX purposes"
+    },
+    "task-lists-label-after": {
+      "type": "Boolean",
+      "category": "style",
+      "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
+    },
+    "extend": {
+      "type": "Function",
+      "category": "extend",
+      "desc": "Used to extend the markdown processor. You can use any 'markdown-it' plugin or write your own",
+      "params": {
+        "md": {
+          "type": "Object",
+          "desc": "The `markdown-it` instance",
+          "__exemption": [ "examples" ]
+        }
+      },
+      "examples": [
+        ":extend=\"extendMarkdownFn\"",
+        ":extend=\"(md) => extendMarkdownFn(md)\""
+      ],
+      "returns": null
+    },
+    "content-class": {
+      "type": [ "Array", "String", "Object" ],
+      "category": "style",
+      "desc": "Class definitions to be attributed to the markdown container",
+      "examples": [
+        "my-special-class",
+        ":content-class=\"{ 'my-special-class': <condition> }\""
+      ]
+    },
+    "content-style": {
+      "type": [ "Array", "String", "Object" ],
+      "category": "style",
+      "desc": "Style definitions to be attributed to the markdown container",
+      "examples": [
+        "background-color: #ff0000",
+        ":content-style=\"{ backgroundColor: '#ff0000' }\""
+      ]
+    }
+  },
+  "events": {
+    "toc": {
+      "desc": "If `toc` property is `true` then if a TOC is generated it is emitted via this event",
+      "params": {
+        "tocData": {
+          "type": "Array",
+          "desc": "Array of one or more TOC data objects",
+          "definition": {
+            "id": {
+              "type": "String",
+              "desc": "The id for the TOC header",
+              "__exemption": [ "examples" ]
+            },
+            "title": {
+              "type": "String",
+              "desc": "The TOC header title",
+              "__exemption": [ "examples" ]
+            },
+            "level": {
+              "type": "Number",
+              "desc": "The TOC header type (1=h1, 2=h2, etc)",
+              "__exemption": [ "examples" ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "slots": {
+    "default": {
+      "desc": "This is the default slot to be used for markdown"
+    }
+  },
+  "methods": {
+    "makeTree": {
+      "type": "Function",
+      "desc": "Pass into this function the results from the @data to have the data array transformed into a hieracrhial tree",
+      "params": {
+        "data": {
+          "type": "Object",
+          "desc": "The results from the @data event",
+          "__exemption": [ "examples" ]
+        }
+      }
+    }
+  }
+}

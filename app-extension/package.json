@@ -1,0 +1,47 @@
+{
+  "name": "@quasar/quasar-app-extension-qmarkdown",
+  "version": "1.0.0",
+  "description": "Display inline markdown in your Quasar App",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar-ui-qmarkdown.git"
+  },
+  "bugs": "https://github.com/quasarframework/quasar-ui-qmarkdown/issues",
+  "homepage": "https://github.com/quasarframework/quasar-ui-qmarkdown",
+  "dependencies": {
+    "front-matter": "^3.0.2",
+    "@quasar/quasar-ui-qmarkdown": "^1.0.0",
+    "raw-loader": "^3.1.0",
+    "ware-loader": "^0.2.4"
+  },
+  "devDependencies": {
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.4.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-vue": "^5.2.3"
+  },
+  "keywords": [
+    "quasar",
+    "app",
+    "app extension",
+    "extension",
+    "markdown"
+  ],
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  }
+}

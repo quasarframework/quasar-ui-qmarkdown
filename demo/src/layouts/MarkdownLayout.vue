@@ -57,7 +57,7 @@
 <script>
 import { openURL } from 'quasar'
 import MarkdownTypes from '../components/MarkdownTypes'
-import { version } from '@quasar/quasar-app-extension-qmarkdown/package.json'
+import { version } from '@quasar/quasar-ui-qmarkdown/package.json'
 
 export default {
   name: 'MarkdownLayout',

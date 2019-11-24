@@ -62,10 +62,10 @@ quasar ext remove @quasar/qmarkdown
 You can use `quasar describe QMarkdown`
 
 # Demo Project (source)
-Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
+Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/master/demo).
 
-# Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/demo).
+# Live Demo
+Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/demo).
 
 # Working with Markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
@@ -100,8 +100,6 @@ In your JavaScript:
 import markdown from '../markdown/calendar.md'
 
 export default {
-  name: 'MyPageOrComponent',
-
   data () {
     return {
       markdown: markdown
@@ -318,9 +316,9 @@ Finally, you can use the Front-Matter data like this:
 Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). There are two ways you can import the function:
 
 ```js
-import getTagParts from '@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts'
+import getTagParts from '@quasar/quasar-ui-qmarkdown/src/lib/getTagParts'
 // or
-const getTagParts = require('@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts').default
+const getTagParts = require('@quasar/quasar-ui-qmarkdown/src/lib/getTagParts').default
 ```
 
 And then, you can use it like this:
@@ -336,7 +334,7 @@ And then, you can use it like this:
   },
 ```
 
-This makes use of the `raw-loader` Webpack loader. The exclamations are needed to tell Webpack to overload the default loader.
+This makes use of the `raw-loader` Webpack loader. The exclamations (or bang characters) are needed to tell Webpack to overload the default loader.
 
 ::: tip
 `raw-loader` is already loaded via QMarkdown and you do not need to install it.
@@ -456,7 +454,7 @@ The TOC data will be transformed to the following:
 If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
 
 ---
-This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown/demo/dist/spa/#/images). It is in the `vmd` format. You can view it's source [here](https://github.com/quasarframework/app-extension-qmarkdown/blob/dev/demo/src/markdown/markdown.vmd)
+This page created with [QMarkdown](https://quasarframework.github.io/quasar-ui-qmarkdown/demo/dist/spa/#/images). It is in the `vmd` format. You can view it's source [here](https://github.com/quasarframework/quasar-ui-qmarkdown/blob/dev/demo/src/markdown/markdown.vmd)
 
   </div>
 </template>

@@ -77,7 +77,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { scroll } from 'quasar'
-import { version } from '@quasar/quasar-app-extension-qmarkdown/package.json'
+import { version } from '@quasar/quasar-ui-qmarkdown/package.json'
 
 export default {
   name: 'MyLayout',
