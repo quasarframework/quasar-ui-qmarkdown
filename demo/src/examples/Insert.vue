@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-markdown>
+    <q-toggle v-model="model" label="Disable insert"></q-toggle>
+    <q-markdown
+      :no-insert="model"
+    >
 ++This sentence is is inserted.++
 
 This is ++inserted++ in the middle of a sentence.
@@ -12,6 +15,7 @@ This is ++inserted++ in the middle of a sentence.
 export default {
   data () {
     return {
+      model: false
     }
   }
 }

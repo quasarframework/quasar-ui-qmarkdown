@@ -6,10 +6,60 @@
       "desc": "[optional] Pass markdown in as a property",
       "examples": [ "\n\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)\"" ]
     },
+    "no-abbreviation": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable abbreviation conversion"
+    },
+    "no-breaks": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable conversion of '\\n' into <br>"
+    },
+    "no-container": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable container conversion"
+    },
+    "no-deflist": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable definition list conversion"
+    },
+    "no-emoji": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable emojie conversion"
+    },
+    "no-footnote": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable footnote conversion"
+    },
+    "no-highlight": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable code highlighter"
+    },
     "no-html": {
       "type": "Boolean",
       "category": "content",
       "desc": "Disable HTML tags in source"
+    },
+    "no-image": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable image conversion"
+    },
+    "no-insert": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable insert conversion"
+    },
+    "no-line-numbers": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Disable line numbers on code blocks"
     },
     "no-link": {
       "type": "Boolean",
@@ -21,25 +71,10 @@
       "category": "content",
       "desc": "Disable auto-convert URL-like text to links"
     },
-    "no-typographer": {
+    "no-mark": {
       "type": "Boolean",
       "category": "content",
-      "desc": "Disable language-neutral replacement + quotes beautification"
-    },
-    "no-breaks": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable conversion of '\\n' into <br>"
-    },
-    "no-highlight": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable code highlighter"
-    },
-    "no-emoji": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable emojie conversion"
+      "desc": "Disable mark conversion"
     },
     "no-subscript": {
       "type": "Boolean",
@@ -51,50 +86,15 @@
       "category": "content",
       "desc": "Disable superscript conversion"
     },
-    "no-footnote": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable footnote conversion"
-    },
-    "no-deflist": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable definition list conversion"
-    },
-    "no-abbreviation": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable abbreviation conversion"
-    },
-    "no-insert": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable insert conversion"
-    },
-    "no-mark": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable mark conversion"
-    },
-    "no-image": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable image conversion"
-    },
     "no-tasklist": {
       "type": "Boolean",
       "category": "content",
       "desc": "Disable tasklist conversion"
     },
-    "no-container": {
+    "no-typographer": {
       "type": "Boolean",
       "category": "content",
-      "desc": "Disable container conversion"
-    },
-    "no-line-numbers": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable line numbers on code blocks"
+      "desc": "Disable language-neutral replacement + quotes beautification"
     },
     "line-number-alt": {
       "type": "String",

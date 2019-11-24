@@ -16,7 +16,9 @@
           QMarkdown <span class="text-subtitle2">v{{ version }}</span>
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-space />
+
+        <div v-if="$q.screen.width > 500">Quasar v{{ $q.version }}</div>
 
         <q-btn
           flat
@@ -77,7 +79,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import { scroll } from 'quasar'
-import { version } from '@quasar/quasar-ui-qmarkdown/package.json'
+const { setScrollPosition } = scroll
+import { version } from 'ui'
 
 export default {
   name: 'MyLayout',
@@ -92,8 +95,14 @@ export default {
       activeToc: 0
     }
   },
-  beforeDestroy () {
-    clearTimeout(this.scrollTimer)
+  mounted () {
+    // code to handle anchor link on refresh/new page, etc
+    if (location.hash !== '') {
+      const id = location.hash.substring(1, location.hash.length)
+      setTimeout(() => {
+        this.scrollTo(id)
+      }, 200)
+    }
   },
   computed: {
     ...mapGetters({
@@ -104,22 +113,18 @@ export default {
     scrollTo (id) {
       this.activeToc = id
       const el = document.getElementById(id)
-      clearTimeout(this.scrollTimer)
 
       if (el) {
-        this.scrollPage(el)
+        setTimeout(() => {
+          this.scrollPage(el)
+        }, 200)
       }
     },
     scrollPage (el) {
-      const
-        target = scroll.getScrollTarget(el),
-        offset = el.offsetTop - el.scrollHeight
-
-      this.scrollingPage = true
-      this.scrollTimer = setTimeout(() => {
-        this.scrollingPage = false
-      }, 510)
-      scroll.setScrollPosition(target, offset, 500)
+      // const target = getScrollTarget(el)
+      const offset = el.offsetTop - 50
+      // setScrollPosition(target, offset, 500)
+      setScrollPosition(window, offset, 500)
     }
   }
 }

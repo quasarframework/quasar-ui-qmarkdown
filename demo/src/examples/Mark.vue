@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-markdown>
+    <q-toggle v-model="model" label="Disable mark"></q-toggle>
+    <q-markdown
+      :no-mark="model"
+    >
 ==This sentence is is marked.==
 
 This is ==marked== in the middle of a sentence.
@@ -12,6 +15,7 @@ This is ==marked== in the middle of a sentence.
 export default {
   data () {
     return {
+      model: false
     }
   }
 }

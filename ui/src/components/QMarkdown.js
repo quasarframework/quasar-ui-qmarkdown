@@ -25,6 +25,11 @@ import extendTable from '../util/extendTable.js'
 import extendToken from '../util/extendToken.js'
 import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 
+import uid from 'quasar/src/utils/uid.js'
+
+const cache = {
+}
+
 export default {
   name: 'QMarkdown',
 
@@ -34,42 +39,42 @@ export default {
       type: String,
       default: ''
     },
+    // no abbreviations
+    noAbbreviation: Boolean,
+    // no breaks
+    noBreaks: Boolean,
+    // no containers
+    noContainer: Boolean,
+    // no Deflists
+    noDeflist: Boolean,
+    // no emojies
+    noEmoji: Boolean,
+    // no footnotes
+    noFootnote: Boolean,
+    // no code highlights
+    noHighlight: Boolean,
     // no html entities
     noHtml: Boolean,
+    // no images
+    noImage: Boolean,
+    // no inserts
+    noInsert: Boolean,
+    // no line-numbers
+    noLineNumbers: Boolean,
     // no links
     noLink: Boolean,
     // no automatic links
     noLinkify: Boolean,
-    // no typographer
-    noTypographer: Boolean,
-    // no breaks
-    noBreaks: Boolean,
-    // no code highlights
-    noHighlight: Boolean,
-    // no emojies
-    noEmoji: Boolean,
+    // no marks
+    noMark: Boolean,
     // no subscript
     noSubscript: Boolean,
     // no superscript
     noSuperscript: Boolean,
-    // no footnotes
-    noFootnote: Boolean,
-    // no Deflists
-    noDeflist: Boolean,
-    // no abbreviations
-    noAbbreviation: Boolean,
-    // no inserts
-    noInsert: Boolean,
-    // no marks
-    noMark: Boolean,
-    // no images
-    noImage: Boolean,
     // no tasklists
     noTasklist: Boolean,
-    // no containers
-    noContainer: Boolean,
-    // no line-numbers
-    noLineNumbers: Boolean,
+    // no typographer
+    noTypographer: Boolean,
     // alternative character to use instead of line numbers
     lineNumberAlt: {
       type: String,
@@ -103,8 +108,21 @@ export default {
   data () {
     return {
       source: this.src,
-      md: void 0,
-      rebuild: true
+      rebuild: true,
+      uid: 0
+    }
+  },
+
+  beforeMount () {
+    // create uid for caching md object
+    this.uid = uid()
+    cache[this.uid] = {}
+    cache[this.uid].md = null
+  },
+
+  destroyed () {
+    if (cache[this.uid]) {
+      delete cache[this.uid]
     }
   },
 
@@ -113,23 +131,24 @@ export default {
       // TODO: "= val" instead?
       this.source = this.src
     },
+    noAbbreviation () { this.rebuild = true },
+    noBreaks () { this.rebuild = true },
+    noContainer () { this.rebuild = true },
+    noDeflist () { this.rebuild = true },
+    noEmoji () { this.rebuild = true },
+    noFootnote () { this.rebuild = true },
+    noHighlight () { this.rebuild = true },
     noHtml () { this.rebuild = true },
+    noImage () { this.rebuild = true },
+    noInsert () { this.rebuild = true },
+    noLineNumbers () { this.rebuild = true },
     noLink () { this.rebuild = true },
     noLinkify () { this.rebuild = true },
-    noTypographer () { this.rebuild = true },
-    noBreaks () { this.rebuild = true },
-    noHighlight () { this.rebuild = true },
-    noEmoji () { this.rebuild = true },
+    noMark () { this.rebuild = true },
     noSubscript () { this.rebuild = true },
     noSuperscript () { this.rebuild = true },
-    noFootnote () { this.rebuild = true },
-    noDeflist () { this.rebuild = true },
-    noAbbreviation () { this.rebuild = true },
-    noInsert () { this.rebuild = true },
-    noImage () { this.rebuild = true },
     noTasklist () { this.rebuild = true },
-    noContainer () { this.rebuild = true },
-    noLineNumbers () { this.rebuild = true },
+    noTypographer () { this.rebuild = true },
     lineNumberAlt () { this.rebuild = true },
     toc () { this.rebuild = true },
     tocStart () { this.rebuild = true },
@@ -181,9 +200,14 @@ export default {
   render (h) {
     let tocData = []
 
-    // TODO: is there a better way than recreating everything from scratch?
-    // example: cache the result, use watchers to recreate cache
-    if (this.md === void 0 || this.rebuild === true) {
+    // get the markdown - slot overrides 'src'
+    let markdown = this.src
+    if (this.$slots.default) {
+      markdown = this.$slots.default[0].text
+    }
+
+    // if no cache or options have dynamically changed
+    if (cache[this.uid].md === null || this.rebuild === true) {
       this.rebuild = false
 
       if (this.__isFunction(this.extendPrism)) {
@@ -205,49 +229,49 @@ export default {
         highlight: highlight
       }
 
-      this.md = markdownIt(opts)
+      cache[this.uid].md = markdownIt(opts)
       if (this.__isEnabled(this.noSubscript)) {
-        this.md.use(subscript)
+        cache[this.uid].md.use(subscript)
       }
       if (this.__isEnabled(this.noSuperscript)) {
-        this.md.use(superscript)
+        cache[this.uid].md.use(superscript)
       }
       if (this.__isEnabled(this.noFootnote)) {
-        this.md.use(footnote)
+        cache[this.uid].md.use(footnote)
       }
       if (this.__isEnabled(this.noDeflist)) {
-        this.md.use(deflist)
+        cache[this.uid].md.use(deflist)
       }
       if (this.__isEnabled(this.noAbbreviation)) {
-        this.md.use(abbreviation)
+        cache[this.uid].md.use(abbreviation)
       }
       if (this.__isEnabled(this.noInsert)) {
-        this.md.use(insert)
+        cache[this.uid].md.use(insert)
       }
       if (this.__isEnabled(this.noMark)) {
-        this.md.use(mark)
+        cache[this.uid].md.use(mark)
       }
       if (this.__isEnabled(this.noEmoji)) {
-        this.md.use(emoji)
+        cache[this.uid].md.use(emoji)
       }
       if (this.__isEnabled(this.noImage)) {
-        this.md.use(imsize)
+        cache[this.uid].md.use(imsize)
       }
       if (this.__isEnabled(this.noTasklist)) {
-        this.md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
+        cache[this.uid].md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
       }
 
-      extendBlockQuote(this.md)
-      extendHeading(this.md, tocData, this.toc, this.tocStart, this.tocEnd)
-      extendImage(this.md)
-      extendLink(this.md)
-      extendTable(this.md)
-      extendToken(this.md)
+      extendBlockQuote(cache[this.uid].md)
+      extendHeading(cache[this.uid].md, tocData, this.toc, this.tocStart, this.tocEnd)
+      extendImage(cache[this.uid].md)
+      extendLink(cache[this.uid].md)
+      extendTable(cache[this.uid].md)
+      extendToken(cache[this.uid].md)
       if (this.__isEnabled(this.noContainer)) {
-        extendContainers(this.md)
+        extendContainers(cache[this.uid].md)
       }
       if (this.__isEnabled(this.noLineNumbers)) {
-        extendFenceLineNumbers(this.md, this.lineNumberAlt)
+        extendFenceLineNumbers(cache[this.uid].md, this.lineNumberAlt)
       }
 
       let disabled = []
@@ -258,21 +282,15 @@ export default {
         disabled.push('link')
       }
       if (disabled.length > 0) {
-        this.md.disable(disabled)
+        cache[this.uid].md.disable(disabled)
       }
 
       if (this.__isFunction(this.extend)) {
-        this.extend(this.md)
+        this.extend(cache[this.uid].md)
       }
     }
 
-    // get the markdown - slot overrides 'src'
-    let markdown = this.src
-    if (this.$slots.default) {
-      markdown = this.$slots.default[0].text
-    }
-
-    const rendered = this.md.render(markdown)
+    const rendered = cache[this.uid].md.render(markdown)
 
     if (this.toc && tocData.length > 0) {
       this.$emit('data', tocData)

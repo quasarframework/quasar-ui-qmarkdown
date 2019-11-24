@@ -1,8 +1,10 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-toggle v-model="model" label="Disable container"></q-toggle>
+    <q-toggle v-model="model2" label="Disable links"></q-toggle>
     <q-markdown
       :no-container="model"
+      :no-link="model2"
     >
 :::
 here be **dragons**
@@ -49,7 +51,8 @@ with a `token` and a [link](https://quasar.dev)
 export default {
   data () {
     return {
-      model: false
+      model: false,
+      model2: false
     }
   }
 }

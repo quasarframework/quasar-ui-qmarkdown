@@ -4,12 +4,12 @@
   code, pre
     font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 
-  code
-    padding: 2px 0
-    font-size: 90%
-    background: $blue-grey-1
-    color: $grey-10
-    border-radius: $generic-border-radius
+  // code
+  //   padding: 2px
+  //   font-size: 90%
+  //   background: $grey-1
+  //   color: $grey-10
+  //   border-radius: $generic-border-radius
 
   pre
     border-radius: $generic-border-radius
@@ -135,12 +135,12 @@
 
   &--token
     white-space: nowrap
-    background: $blue-grey-1
+    background: $grey-1
     color: $grey-10
+    border: $grey-8 solid 1px
+    padding: 2px
     font-family: inherit
     border-radius: $generic-border-radius
-    padding: 1px 5px
-    margin: 0
 
   &--note
     margin: 14px 0
@@ -154,8 +154,8 @@
     > p:last-child, .q-markdown--note:last-child
       margin-bottom: 0
 
-    .q-markdown--token
-      color: $grey-9
+    // .q-markdown--token
+    //   color: $grey-9
 
     .q-markdown--link
       color: darken($grey-6, 35%)
@@ -163,11 +163,11 @@
     &--
       border-left: 10px solid lighten($grey-8, 30%)
       border-radius: 8px 0 0 8px
-      .q-markdown--token
-        background: $grey-2
-        color: $grey-10
-        border: $grey-8 solid 1px
-        padding: 2px
+      // .q-markdown--token
+      //   background: $blue-grey-1
+      //   color: $grey-10
+      //   border: $grey-8 solid 1px
+      //   padding: 2px
       .q-markdown--link
         color: darken($grey-6, 35%)
 
@@ -176,11 +176,11 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $blue-2
-      .q-markdown--token
-        background: $grey-2
-        color: $grey-10
-        border: $blue-8 solid 1px
-        padding: 2px
+      // .q-markdown--token
+      //   background: $grey-2
+      //   color: $grey-10
+      //   border: $blue-8 solid 1px
+      //   padding: 2px
       .q-markdown--link
         color: lighten($blue-8, 10%)
       .q-markdown--note-title
@@ -206,11 +206,11 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $orange-2
-      .q-markdown--token
-        background: $grey-2
-        color: $grey-10
-        border: $orange-8 solid 1px
-        padding: 2px
+      // .q-markdown--token
+      //   background: $grey-2
+      //   color: $grey-10
+      //   border: $orange-8 solid 1px
+      //   padding: 2px
       .q-markdown--link
         color: lighten($orange-10, 10%)
       .q-markdown--note-title
@@ -221,11 +221,11 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $red-2
-      .q-markdown--token
-        background: $grey-2
-        color: $grey-10
-        border: $red-8 solid 1px
-        padding: 2px
+      // .q-markdown--token
+      //   background: $grey-2
+      //   color: $grey-10
+      //   border: $red-8 solid 1px
+      //   padding: 2px
       .q-markdown--link
         color: lighten($red-8, 10%)
       .q-markdown--note-title
@@ -274,11 +274,11 @@
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom: 22px
 
-blockquote .q-markdown--token
-  background: lighten($grey-8, 70%)
-  color: $grey-8
+// blockquote .q-markdown--token
+//   background: lighten($grey-8, 70%)
+//   color: $grey-8
 
-blockquote .q-markdown--link
+blockquote.q-markdown--link
   background: transparent
   color: $primary !important
 

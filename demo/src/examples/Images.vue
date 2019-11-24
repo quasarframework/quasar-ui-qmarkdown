@@ -1,6 +1,13 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-markdown>
+    <q-toggle v-model="model" label="Disable images"></q-toggle>
+    <q-toggle v-model="model2" label="Disable links"></q-toggle>
+    <q-toggle v-model="model3" label="Disable linkify"></q-toggle>
+    <q-markdown
+      :no-image="model"
+      :no-link="model2"
+      :no-linkify="model3"
+    >
 Max fixed size image: 200x200; responsive
 ![Minion](https://octodex.github.com/images/minion.png =200x200)
 
@@ -14,7 +21,7 @@ Like links, Images also have a footnote style syntax
 
 ![Alt text][id]
 
-With a reference later in the document defining the URL location:
+With a reference later in the document defining the URL location (see code for markdown):
 
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
 
@@ -26,6 +33,9 @@ With a reference later in the document defining the URL location:
 export default {
   data () {
     return {
+      model: false,
+      model2: false,
+      model3: false
     }
   }
 }

@@ -3,7 +3,7 @@
     <q-markdown>
 Unordered
 
-+ Create a list by starting a line with `+`, `-`, or `*`
++ Create an unordered list by starting a line with `+`, `-`, or `*`
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
     * Ac tristique libero volutpat at
@@ -13,9 +13,10 @@ Unordered
 
 Ordered
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
+1. Create an ordered list by starting a line with a number (ie: `1.`)
+2. Lorem ipsum dolor sit amet
+3. Consectetur adipiscing elit
+4. Integer molestie lorem at massa
 ---
 
 1. You can use sequential numbers...
@@ -34,7 +35,7 @@ Ordered
     console.log(foo(5));
     ```
 
-Lists must be split or you get this behavior:
+Different lists must be split or the lists will be combined (see code):
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
