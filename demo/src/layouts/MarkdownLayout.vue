@@ -19,6 +19,7 @@
           </q-tooltip>
         </q-toolbar-title>
 
+        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'" />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -26,7 +27,6 @@
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-style="background-color: #f8f8ff"
     >
       <q-expansion-item
         expand-separator

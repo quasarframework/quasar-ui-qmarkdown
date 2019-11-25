@@ -281,3 +281,50 @@ blockquote.q-markdown--note
   border-radius 8px
   border-style solid
   border-color $grey-6 $teal-6
+
+.q-dark
+  .q-markdown
+    code
+      background $grey-9
+      color white
+
+    blockquote.q-markdown--note
+      background $dark
+      color white
+      border-color $grey-9 $teal-10
+    pre, pre code, .q-markdown--line-numbers-wrapper
+      background $grey-10
+
+    .q-markdown--note
+      background $grey-10
+      color white
+      border-top 1px solid $grey-9
+      border-bottom 1px solid $grey-9
+    .q-markdown--note--
+      border-left 10px solid $grey-9
+    .q-markdown--note--info
+      border-left 10px solid $light-blue-10
+      .q-markdown--token
+        color white
+        background $light-blue-10
+    .q-markdown--note--tip
+      border-left 10px solid $light-green-10
+      .q-markdown--token
+        color white
+        background $light-green-10
+    .q-markdown--note--warning
+      border-left 10px solid $orange-10
+      .q-markdown--token
+        color white
+        background $orange-10
+    .q-markdown--note--danger
+      border-left 10px solid $red-10
+      .q-markdown--token
+        color white
+        background $red-10
+
+    .q-markdown--table thead tr th,
+    .q-markdown--table tbody
+      background-color $dark
+    .q-markdown--table tbody tr:nth-child(2n+1)
+      background-color $dark-page
