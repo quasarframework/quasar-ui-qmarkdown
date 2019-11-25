@@ -151,7 +151,7 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 :::
 
 ## Testing on Codepen
-[UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/RwwwKQL)
+[UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/ExxzdMp?editors=1010)
 
 
 # Docs
