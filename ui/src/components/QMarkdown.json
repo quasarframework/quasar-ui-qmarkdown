@@ -4,7 +4,7 @@
       "type": "String",
       "category": "model",
       "desc": "[optional] Pass markdown in as a property",
-      "examples": [ "\n\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\n\nShortcuts (emoticons): :-) :-( 8-) ;)\"" ]
+      "examples": [ "src=\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\"" ]
     },
     "no-abbreviation": {
       "type": "Boolean",
