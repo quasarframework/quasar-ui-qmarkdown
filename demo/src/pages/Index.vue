@@ -1,37 +1,43 @@
 <template>
   <hero>
-    <!-- <q-markdown :src="markdown" toc @data="onToc" /> -->
-    <markdown-vue />
+    <q-markdown :src="markdown" toc @data="onToc" />
+    <component-api
+      title="QMarkdown API"
+      :json="json"
+    />
+    <q-markdown>
+# Donate
+If you appreciate the work that went into this, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
+
+---
+
+This page created with [QMarkdown](https://quasarframework.github.io/app-extension-qmarkdown), another great Quasar App Extension.
+    </q-markdown>
+    <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
+      <q-btn fab icon="keyboard_arrow_up" color="primary" />
+    </q-page-scroller>
   </hero>
 </template>
 
 <script>
-// import getTagParts from '@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts'
-// const getTagParts = require('@quasar/quasar-app-extension-qmarkdown/src/lib/getTagParts').default
 import Hero from '../components/Hero'
-import markdownVue from '../markdown/markdown.vmd'
+// import markdownVue from '../markdown/markdown.vmd'
+import markdown from '../markdown/markdown.md'
+import Api from '@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json'
 
 export default {
   name: 'PageIndex',
 
   components: {
-    Hero,
-    markdownVue
+    Hero
+    // markdownVue
   },
 
   data () {
     return {
-      // markdown: markdown
+      markdown: markdown,
+      json: Api
     }
-  },
-
-  mounted () {
-    // eslint-disable-next-line import/no-webpack-loader-syntax
-    // const results = getTagParts(require('!!raw-loader!../components/Hero.vue').default)
-
-    // console.log('template', results.template)
-    // console.log('script', results.script)
-    // console.log('css', results.css)
   },
 
   computed: {
@@ -48,6 +54,10 @@ export default {
 
   methods: {
     onToc (toc) {
+      // add the manual ones
+      toc.push({ id: 'QMarkdown-API', label: 'QMarkdown API', level: 1, children: Array(0) })
+      toc.push({ id: 'Donate', label: 'Donate', level: 1, children: Array(0) })
+
       this.toc = toc
     }
   }

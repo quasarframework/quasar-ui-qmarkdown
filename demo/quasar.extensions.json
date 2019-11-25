@@ -1,7 +1,4 @@
 {
-  "@quasar/qmarkdown": {},
-  "qautomate": {
-    "quasarConfFixMode": "automatic",
-    "sort": true
-  }
+  "@quasar/qpublish": {},
+  "@quasar/qribbon": {}
 }
