@@ -4,13 +4,6 @@
   code, pre
     font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 
-  // code
-  //   padding: 2px
-  //   font-size: 90%
-  //   background: $grey-1
-  //   color: $grey-10
-  //   border-radius: $generic-border-radius
-
   pre
     border-radius: $generic-border-radius
     padding: 5px 10px
@@ -96,7 +89,7 @@
     height: auto
 
   &--link
-    color: $primary
+    // color: $primary
     font-weight: 500
     text-decoration: none
     outline: 0
@@ -154,20 +147,12 @@
     > p:last-child, .q-markdown--note:last-child
       margin-bottom: 0
 
-    // .q-markdown--token
-    //   color: $grey-9
-
     .q-markdown--link
-      color: darken($grey-6, 35%)
+      color: $grey-2
 
     &--
       border-left: 10px solid lighten($grey-8, 30%)
       border-radius: 8px 0 0 8px
-      // .q-markdown--token
-      //   background: $blue-grey-1
-      //   color: $grey-10
-      //   border: $grey-8 solid 1px
-      //   padding: 2px
       .q-markdown--link
         color: darken($grey-6, 35%)
 
@@ -176,11 +161,6 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $blue-2
-      // .q-markdown--token
-      //   background: $grey-2
-      //   color: $grey-10
-      //   border: $blue-8 solid 1px
-      //   padding: 2px
       .q-markdown--link
         color: lighten($blue-8, 10%)
       .q-markdown--note-title
@@ -191,11 +171,6 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $green-2
-      // .q-markdown--token
-      //   background: $grey-2
-      //   color: $grey-10
-      //   border: $green-8 solid 1px
-      //   padding: 2px
       .q-markdown--link
         color: lighten($green-8, 10%)
       .q-markdown--note-title
@@ -206,11 +181,6 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $orange-2
-      // .q-markdown--token
-      //   background: $grey-2
-      //   color: $grey-10
-      //   border: $orange-8 solid 1px
-      //   padding: 2px
       .q-markdown--link
         color: lighten($orange-10, 10%)
       .q-markdown--note-title
@@ -221,11 +191,6 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $red-2
-      // .q-markdown--token
-      //   background: $grey-2
-      //   color: $grey-10
-      //   border: $red-8 solid 1px
-      //   padding: 2px
       .q-markdown--link
         color: lighten($red-8, 10%)
       .q-markdown--note-title
@@ -295,7 +260,6 @@
     padding: 0
 
     &__inner
-      // border-left 2px solid lighten($red-2, .80)
       max-height: inherit
       height: inherit
       display: block
@@ -326,12 +290,14 @@
   &--table tbody tr:nth-child(odd)
     background: $grey-4
 
+.body--dark
+  .q-markdown
+    a
+      color: $grey-2
+
+
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom: 22px
-
-// blockquote .q-markdown--token
-//   background: lighten($grey-8, 70%)
-//   color: $grey-8
 
 blockquote.q-markdown--link
   background: transparent
@@ -346,3 +312,50 @@ blockquote.q-markdown--note
   border-radius: 8px
   border-style: solid
   border-color: $grey-6 $teal-6
+
+.q-dark
+  .q-markdown
+    background $dark-page
+    color $grey-2
+    code
+      background $grey-9
+      color $grey-2
+
+    blockquote.q-markdown--note
+      background $dark
+      color white
+      border-color $grey-9 $teal-10
+    pre, pre code, .q-markdown--line-numbers-wrapper
+      background $grey-10
+
+    .q-markdown--token
+      background: $grey-6
+      color: $grey-10
+      border: $grey-2 solid 1px
+
+    .q-markdown--code
+      background: $grey-6
+      color: $grey-10
+      border: $grey-2 solid 1px
+
+    .q-markdown--note
+      background: $grey-10
+      color: white
+      border-top: 1px solid $grey-9
+      border-bottom: 1px solid $grey-9
+    .q-markdown--note--
+      border-left: 10px solid $grey-9
+    .q-markdown--note--info
+      border-left: 10px solid $light-blue-10
+    .q-markdown--note--tip
+      border-left: 10px solid $light-green-10
+    .q-markdown--note--warning
+      border-left: 10px solid $orange-10
+    .q-markdown--note--danger
+      border-left: 10px solid $red-10
+
+    .q-markdown--table thead tr th,
+    .q-markdown--table tbody
+      background-color: $dark
+    .q-markdown--table tbody tr:nth-child(2n+1)
+      background-color: $dark-page
