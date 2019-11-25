@@ -1,47 +1,14 @@
-QMarkdown (@quasar/qmarkdown)
-===
+<img src="https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown">
+<img src="https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown">
 
-![official icon](https://img.shields.io/badge/Quasar%201.0-Official%20UI%20App%20Extension-blue.svg)
-![npm (scoped)](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?style=plastic)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/quasarframework/app-extension-qmarkdown.svg)]()
-[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/app-extension-qmarkdown.svg)]()
-[![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
-
-QMarkdown is an `UI App Extension` for [Quasar Framework v1](https://quasar.dev/). It will not work with legacy versions of Quasar Framework.
-
-This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated.
-
-# Info
-QMarkdown allows you to have markdown in your web pages. You can either use the standard default slot or use the property `src` to define your markdown.
-
-Beside the QMarkdown component a couple of loaders are also included:
-1. automatically import markdown (.md) files as text so they can be processed client-side with QMarkdown
-2. automatically import vue+markdown (.vmd) files, as well as pre-process any front-matter included in the .vmd
-
-# Install
-To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
-```
-quasar ext add @quasar/qmarkdown
-```
-
-# Uninstall
-To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
-```
-quasar ext remove @quasar/qmarkdown
-```
-
-# Describe
-You can use `quasar describe QMarkdown` for the QMarkdown component
-
-# Demo Project
-Can be found [here](https://github.com/quasarframework/app-extension-qmarkdown/tree/master/demo).
-
-
-# Documentation
-Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/).
-
-# Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qmarkdown/demo).
+# Structure
+* [/ui](ui) - standalone npm package
+* [/app-extension](app-extension) - Quasar app extension
+* [/demo](demo) - docs, demo and examples project
+* [live demo](https://quasarframework.github.io/quasar-ui-qmarkdown/docs) - live docs, demo and examples
 
 # Donate
-If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
+If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
+
+# License
+MIT (c) Jeff Galbraith <jeff@quasar.dev>
