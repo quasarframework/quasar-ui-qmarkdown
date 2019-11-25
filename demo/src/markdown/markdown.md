@@ -1,7 +1,7 @@
 QMarkdown
 ===
 
-QMarkdown is a Quasar component as well as a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your Quasar app to display markdown.
+QMarkdown is a Quasar component as well as a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your Quasar app to display markdown. If you don't know how to use Markdown or need a refresher, this site is recommended: [Markdown Guide](https://www.markdownguide.org/).
 
 # Features
 
@@ -40,26 +40,133 @@ The loaders are only available if you installed via the QMarkdown App Extension.
 ## Utility Functions
 - `getTagParts` that can process a Vue SFC file and return the `template`, `script` and `style` parts
 
-# Install
-To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
+# Installation Types
+
+## Quasar CLI
+
+**App Extension**
+
+:::
+#### Install
+
+To add as an App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
 quasar ext add @quasar/qmarkdown
 ```
 
-# Uninstall
-To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
+#### Uninstall
+
+To remove as an App Extension from your Quasar application, run the following (in your Quasar app folder):
 ```
 quasar ext remove @quasar/qmarkdown
 ```
 
-# Describe
-You can use `quasar describe QMarkdown`
+#### Describe
+When installed as an App Extension, you can use `quasar describe QMarkdown`
+:::
 
-# Demo Project (source)
+**OR**:
+
+:::
+Create and register a boot file:
+
+```js
+import Vue from 'vue'
+import Plugin from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+
+Vue.use(Plugin)
+```
+:::
+
+**OR**:
+
+:::
+```html
+<style src="@quasar/quasar-ui-qmarkdown/dist/index.css"></style>
+
+<script>
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+
+export default {
+  components: {
+    QMarkdown
+  }
+}
+</script>
+```
+:::
+
+## Vue CLI project
+
+:::
+```js
+import Vue from 'vue'
+import Plugin from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+
+Vue.use(Plugin)
+```
+:::
+
+**OR**:
+
+:::
+```html
+<style src="@quasar/quasar-ui-qmarkdown/dist/index.css"></style>
+
+<script>
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+
+export default {
+  components: {
+    QMarkdown
+  }
+}
+</script>
+```
+:::
+
+## UMD variant
+
+Exports `window.QMarkdown`.
+
+Add the following tag(s) after the Quasar ones:
+
+:::
+```html
+<head>
+  <!-- AFTER the Quasar stylesheet tags: -->
+  <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <!-- at end of body, AFTER Quasar script(s): -->
+  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.umd.min.js"></script>
+</body>
+```
+If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
+```html
+<link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css" rel="stylesheet" type="text/css">
+```
+:::
+
+## Testing on Codepen
+[UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/RwwwKQL)
+
+
+# Docs
+Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown).
+
+# Examples
+Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/examples).
+
+# Interactive Demo
+Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/demo).
+
+# Demo (source) Project
 Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/master/demo).
 
-# Live Demo
-Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/demo).
+---
 
 # Working with markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
@@ -68,22 +175,48 @@ QMarkdown App Extension also comes with a Webpack loader that allows you to impo
 
 You have the ability to get the TOC (Table of Contents), if one is generated, and display that as well.
 
+## Using the property
+It's as simple as:
+```html
+<q-markdown src=":::\nThis is a **test** of markdown\n:::"></q-markdown>
+```
+**Output**:
+
+:::
+This is a **test** of markdown
+:::
+
+
 ## Using a Vue slot
 You can simply use a Vue slot to display markdown.
 
 In your HTML:
 ```html
 <q-markdown>
+:::
 Put your markdown here
 
 Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
 
 Shortcuts (emoticons): :-) :-( 8-) ;)
+:::
 </q-markdown>
 ```
-However, this can be a bit inconvenient because linters, if you are using one, may cause you to get weird errors as a result of unexpected language constructs that it's unfamiliar with.
+**Output**:
 
-The recommended way, would be to import the markdown to be used so that it doesn't interfere with your linter.
+:::
+Put your markdown here
+
+Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
+
+Shortcuts (emoticons): :-) :-( 8-) ;)
+:::
+
+A couple of caveats to remember.
+
+Always keep your markdown left justified. It does not have to line up with your HTML. This way, the markdown processor won't process it as a blockquote.
+
+If you start getting weird linting errors, consider a markdown file and importing it.
 
 ## Importing Markdown
 QMarkdown App Extesnion comes with a Webpack loader for importing markdown files directly into your code.
