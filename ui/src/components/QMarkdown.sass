@@ -191,11 +191,11 @@
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $green-2
-      .q-markdown--token
-        background: $grey-2
-        color: $grey-10
-        border: $green-8 solid 1px
-        padding: 2px
+      // .q-markdown--token
+      //   background: $grey-2
+      //   color: $grey-10
+      //   border: $green-8 solid 1px
+      //   padding: 2px
       .q-markdown--link
         color: lighten($green-8, 10%)
       .q-markdown--note-title
@@ -247,29 +247,84 @@
     border-style: solid
     border-color: $grey
 
-.q-markdown--table
-  border-color: $grey-4
-  background: $grey-1
+  &--line-numbers-wrapper
+    display: flex
+    justify-content: flex-start
+    font-size: 12px
+    background: $blue-grey-1
+    color: $grey-10
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+    border-radius: $generic-border-radius
+    margin-bottom: 16px
 
-.q-markdown--table thead
-  background: $grey-4
+  &--line-numbers
+    padding: 5px 5px 0 5px
 
-.q-markdown--table thead tr th
-  padding: 8px
-  border-width: 1px
-  border-style: solid
-  background: $grey-2
+  &--line-number
+    color: $grey-6
+    margin: 0
+    position: relative
+    text-align: left
+    white-space: pre
+    word-spacing: normal
+    word-break: normal
+    word-wrap: normal
+    line-height: 1.5
+    tab-size: 4
+    hyphens: none
 
-.q-markdown--table tbody
-  background: $grey-1
+  &--code-wrapper
+    width: 100%
+    margin-bottom: -16px!important
 
-.q-markdown--table tbody td, .q-markdown--table tbody th
-  padding: 8px
-  border-width: 1px
-  border-style: solid
+  &--code,
+  &--code__inner
+    margin: 0
+    position: relative
+    text-align: left
+    white-space: pre
+    word-spacing: normal
+    word-break: normal
+    word-wrap: normal
+    line-height: 1.5
+    tab-size: 4
+    hyphens: none
 
-.q-markdown--table tbody tr:nth-child(odd)
-  background: $grey-4
+  &--code
+    overflow: visible
+    padding: 0
+
+    &__inner
+      // border-left 2px solid lighten($red-2, .80)
+      max-height: inherit
+      height: inherit
+      display: block
+      overflow: auto
+
+  &--table
+    border-color: $grey-4
+    background: $grey-1
+
+  &--table thead
+    background: $grey-4
+
+  &--table thead tr th
+    padding: 8px
+    border-width: 1px
+    border-style: solid
+    background: $grey-2
+
+  &--table tbody
+    background: $grey-1
+
+  &--table tbody td,
+  &--table tbody th
+    padding: 8px
+    border-width: 1px
+    border-style: solid
+
+  &--table tbody tr:nth-child(odd)
+    background: $grey-4
 
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom: 22px

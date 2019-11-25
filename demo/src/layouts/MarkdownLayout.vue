@@ -14,38 +14,24 @@
 
         <q-toolbar-title v-if="$q.screen.width > 500">
           QMarkdown <span class="text-subtitle2">v{{ version }}</span>
-          <q-tooltip v-if="$q.screen.width < 1077">
-            QMarkdown <span class="text-subtitle2">v{{ version }}</span>
-          </q-tooltip>
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-space />
+
+        <div v-if="$q.screen.width > 500">Quasar v{{ $q.version }}</div>
+
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-style="background-color: #f8f8ff"
+      content-class="bg-grey-2"
     >
-      <q-expansion-item
-        expand-separator
-        default-opened
-        group="somegroup"
-        icon="fas fa-cogs"
-        label="Playground"
-        caption="Markdown Types"
-      >
-        <markdown-types />
-      </q-expansion-item>
-        <q-expansion-item
-          expand-separator
-          group="somegroup"
-          icon="fas fa-link"
-          label="Essential Links"
-        >
-        <essential-links />
-        </q-expansion-item>
+      <q-list>
+        <q-item-label header>Essential Links</q-item-label>
+      </q-list>
+      <essential-links />
     </q-drawer>
 
     <q-page-container>
@@ -56,13 +42,11 @@
 
 <script>
 import { openURL } from 'quasar'
-import MarkdownTypes from '../components/MarkdownTypes'
 import { version } from '@quasar/quasar-ui-qmarkdown/package.json'
 
 export default {
   name: 'MarkdownLayout',
   components: {
-    MarkdownTypes,
     'essential-links': () => import('../components/EssentialLinks')
   },
   data () {

@@ -9,7 +9,7 @@ desc: This is the documentation for QMarkdown
 QMarkdown
 ===
 
-QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your web app to display markdown.
+QMarkdown is a Quasar component as well as a [Quasar App Extension](https://v1.quasar.dev/app-extensions/introduction). It provides the ability for your Quasar app to display markdown.
 
 # Features
 
@@ -37,6 +37,8 @@ QMarkdown is a [Quasar App Extension](https://v1.quasar.dev/app-extensions/intro
 - Typography
 
 ## Loaders
+The loaders are only available if you installed via the QMarkdown App Extension.
+
 - markdown (.md) loader that can load your markdown as text to be processed by QMarkdown
 - vue+markdown (.vmd) loader that can process markdown, then hand off to Vue to be processed
 
@@ -70,7 +72,7 @@ Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/demo).
 # Working with Markdown
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
 
-QMarkdown also comes with a Webpack loader that allows you to import your markdown directly into your code.
+QMarkdown App Extension also comes with a Webpack loader that allows you to import your markdown directly into your code.
 
 Also, you have the ability to get the TOC (Table of Contents), if one is generated, and display that as well.
 
@@ -92,7 +94,7 @@ However, this can be a bit inconvenient because linters, if you are using one, m
 The recommended way, would be to import the markdown to be used so that it doesn't interfere with your linter.
 
 ## Importing Markdown
-QMarkdown comes with a Webpack loader for importing markdown files directly into your code.
+QMarkdown App Extesnion comes with a Webpack loader for importing markdown files directly into your code.
 
 In your JavaScript:
 
@@ -316,9 +318,7 @@ Finally, you can use the Front-Matter data like this:
 Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). There are two ways you can import the function:
 
 ```js
-import getTagParts from '@quasar/quasar-ui-qmarkdown/src/lib/getTagParts'
-// or
-const getTagParts = require('@quasar/quasar-ui-qmarkdown/src/lib/getTagParts').default
+import { getTagParts } from '@quasar/quasar-ui-qmarkdown'
 ```
 
 And then, you can use it like this:
@@ -337,7 +337,7 @@ And then, you can use it like this:
 This makes use of the `raw-loader` Webpack loader. The exclamations (or bang characters) are needed to tell Webpack to overload the default loader.
 
 ::: tip
-`raw-loader` is already loaded via QMarkdown and you do not need to install it.
+`raw-loader` is already loaded via QMarkdown App Extension and you do not need to install it.
 :::
 
 Now, you will have access to the tag parts of the Vue file.

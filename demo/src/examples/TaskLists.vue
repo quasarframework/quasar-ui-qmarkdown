@@ -57,3 +57,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.task-list-item label {
+  color: blue;
+}
+.task-list-item-label {
+  color: red !important;
+}
+</style>

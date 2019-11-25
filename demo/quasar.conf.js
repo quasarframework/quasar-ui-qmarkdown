@@ -54,6 +54,7 @@ module.exports = function (ctx) {
         'QPageScroller',
         'QScrollArea',
         'QSeparator',
+        'QSpace',
         'QSplitter',
         'QTab',
         'QTabs',
@@ -107,6 +108,11 @@ module.exports = function (ctx) {
           '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui'),
           'sass': path.resolve(__dirname, '../ui/src/index.sass')
         })
+
+        chain.module.rule('md')
+        .test(/\.md$/i)
+        .use('raw-loader')
+        .loader('raw-loader')
       }
     },
 

@@ -64,6 +64,21 @@ You can override in CSS the `content` attribute to change the icon. Otherwise, y
       </example-card>
 
       <example-card title="Task Lists" name="TaskLists" :tag-parts="getTagParts(require('!!raw-loader!../examples/TaskLists.vue').default)">
+        <q-markdown>
+Task list have some special settings. By default, turning on these other options won't do anything. It is up to you to provide the CSS to support these options.
+
+Here is some example CSS that you can take and modify to your likeing:
+
+```css
+.task-list-item label {
+  color: blue;
+}
+.task-list-item-label {
+  color: red !important;
+}
+```
+This is what is used in the example below. Play with the controls to see how the tasklist items are affected.
+        </q-markdown>
       </example-card>
 
       <example-card title="Titles" name="Titles" :tag-parts="getTagParts(require('!!raw-loader!../examples/Titles.vue').default)">

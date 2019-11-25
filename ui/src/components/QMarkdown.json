@@ -154,6 +154,24 @@
       ],
       "returns": null
     },
+    "extend-prism": {
+      "type": "Function",
+      "category": "extend",
+      "addedIn": "v1.0.0",
+      "desc": "Used to extend the Prism code highlighter",
+      "params": {
+        "md": {
+          "type": "Object",
+          "desc": "The `Prism` instance",
+          "__exemption": [ "examples" ]
+        }
+      },
+      "examples": [
+        ":extendPrism=\"extendPrismFn\"",
+        ":extendPrism=\"(Prism) => extendPrismFn(Prism)\""
+      ],
+      "returns": null
+    },
     "content-class": {
       "type": [ "Array", "String", "Object" ],
       "category": "style",
@@ -209,12 +227,45 @@
   "methods": {
     "makeTree": {
       "type": "Function",
-      "desc": "Pass into this function the results from the @data to have the data array transformed into a hieracrhial tree",
+      "desc": "Pass into this function the results from the @data to have the data array transformed into a hierarchical tree",
       "params": {
         "data": {
           "type": "Object",
           "desc": "The results from the @data event",
           "__exemption": [ "examples" ]
+        }
+      },
+      "returns": {
+        "type": "Array",
+        "desc": "A modified version of the passed in data in a hierachical format",
+        "definition": {
+          "id": {
+            "type": "String",
+            "desc": "The slugified heading used for the html key",
+            "examples": [
+              "the-heading"
+            ]
+          },
+          "title": {
+            "type": "String",
+            "desc": "The original title",
+            "examples": [
+              "The Heading"
+            ]
+          },
+          "level": {
+            "type": "Number",
+            "desc": "The heading level: h1 == 1, h2 == 2m, etc.",
+            "examples": [
+              "1",
+              "2"
+            ]
+          },
+          "children": {
+            "type": "Array",
+            "desc": "If this object is level 1, then any level 2 objects will be in the `children` key and so on",
+            "__exemption": [ "examples" ]
+          }
         }
       }
     }
