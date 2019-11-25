@@ -18,6 +18,7 @@
 
         <q-space />
 
+         <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'" />
         <div v-if="$q.screen.width > 500">Quasar v{{ $q.version }}</div>
 
       </q-toolbar>
@@ -26,7 +27,6 @@
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
-      content-class="bg-grey-2"
     >
       <q-list>
         <q-item-label header>Essential Links</q-item-label>

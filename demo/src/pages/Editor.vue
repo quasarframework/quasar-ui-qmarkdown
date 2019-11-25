@@ -109,6 +109,7 @@ Add Markdown to the window on the left and the output will appear on the right. 
             <textarea
               v-model="markdown"
               rows="20"
+              :class="{ 'text-white bg-dark': $q.dark.isActive }"
               class="fit q-pa-sm"
             />
       </div>
