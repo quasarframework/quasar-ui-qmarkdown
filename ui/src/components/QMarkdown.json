@@ -1,6 +1,6 @@
 {
   "meta": {
-    "docsUrl": "https://quasarframework.github.io/quasar-ui-qcalendar/docs"
+    "docsUrl": "https://quasarframework.github.io/quasar-ui-qmarkdown/docs"
   },
   "props": {
     "src": {
