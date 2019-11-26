@@ -290,22 +290,21 @@
   &--table tbody tr:nth-child(odd)
     background: $grey-4
 
-.body--dark
+.q-dark, .body--dark
   .q-markdown
     a
       color: $grey-2
-
 
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom: 22px
 
 blockquote.q-markdown--link
   background: transparent
-  color: $primary !important
+  color: $primary
 
   &:hover
     opacity: .8
-    color: red !important
+    color: red
 
 blockquote.q-markdown--note
   border-width: 1px 8px 1px 8px
@@ -313,7 +312,7 @@ blockquote.q-markdown--note
   border-style: solid
   border-color: $grey-6 $teal-6
 
-.q-dark
+.q-dark, .body--dark
   .q-markdown
     background $dark-page
     color $grey-2
@@ -322,40 +321,50 @@ blockquote.q-markdown--note
       color $grey-2
 
     blockquote.q-markdown--note
+      border-color: $grey-6 $grey-6
       background $dark
-      color white
-      border-color $grey-9 $teal-10
-    pre, pre code, .q-markdown--line-numbers-wrapper
-      background $grey-10
+      color $grey-2
+
+    pre, pre code
+      background $dark-page
+
+    .q-markdown--line-numbers-wrapper
+      background: $grey-8
+      color: $grey-2
 
     .q-markdown--token
       background: $grey-6
       color: $grey-10
-      border: $grey-2 solid 1px
+      border: $grey-4 solid 1px
 
     .q-markdown--code
-      background: $grey-6
+      background: $grey-3
       color: $grey-10
-      border: $grey-2 solid 1px
 
     .q-markdown--note
       background: $grey-10
       color: white
       border-top: 1px solid $grey-9
       border-bottom: 1px solid $grey-9
+
     .q-markdown--note--
-      border-left: 10px solid $grey-9
+      border-left: 10px solid $grey-6
+
     .q-markdown--note--info
       border-left: 10px solid $light-blue-10
+
     .q-markdown--note--tip
       border-left: 10px solid $light-green-10
+
     .q-markdown--note--warning
       border-left: 10px solid $orange-10
+
     .q-markdown--note--danger
       border-left: 10px solid $red-10
 
     .q-markdown--table thead tr th,
     .q-markdown--table tbody
       background-color: $dark
+
     .q-markdown--table tbody tr:nth-child(2n+1)
-      background-color: $dark-page
+      background-color: $grey-9
