@@ -17,7 +17,8 @@
     "dev:electron": "cd dev && yarn 'dev:electron' && cd ..",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
-    "build:css": "node build/script.css.js"
+    "build:css": "node build/script.css.js",
+    "build:api": "node build/build.api.js"
   },
   "keywords": [
     "quasar",
@@ -66,7 +67,7 @@
     "postcss": "^7.0.23",
     "postcss-rtl": "^1.5.0",
     "quasar": "^1.4.5",
-    "quasar-json-api": "^0.0.8",
+    "quasar-json-api": "^0.0.10",
     "rimraf": "^3.0.0",
     "rollup": "^1.27.5",
     "rollup-plugin-commonjs": "^10.1.0",
