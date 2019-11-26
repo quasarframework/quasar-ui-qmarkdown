@@ -1,11 +1,9 @@
-# Component QMarkdown
+# QMarkdown
+
+Display inline markdown in your Quasar App
 
 [![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
-
-# Component QMarkdown
-> Short description of the component
-
 
 # Usage
 
