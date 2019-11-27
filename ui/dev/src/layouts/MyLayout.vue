@@ -14,6 +14,9 @@
           QMarkdown v{{ version }}
         </q-toolbar-title>
 
+        <q-space />
+
+        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'" />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
