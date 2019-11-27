@@ -6,6 +6,8 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
+const renderMarkdown = require('./markdown')
+
 function extendConf (conf) {
   // register our boot file
   conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/register.js')
@@ -31,10 +33,10 @@ module.exports = function (api) {
   api.extendQuasarConf(extendConf)
 
   // chain webpack
-  api.chainWebpack((chain, { isClient }) => chainWebpack(api, chain, isClient))
+  api.chainWebpack((chain) => chainWebpack(api, chain))
 }
 
-const chainWebpack = function (api, chain, { isClient }) {
+const chainWebpack = function (api, chain) {
 
   if (api.prompts.import_md !== void 0 && api.prompts.import_md === true) {
     console.log(` App Extension (qmarkdown) Info: 'Adding markdown loader to chainWebpack in your quasar.conf.js'`)

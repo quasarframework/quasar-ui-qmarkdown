@@ -1,4 +1,4 @@
 {
-  "@quasar/qpublish": {},
-  "@quasar/qribbon": {}
+  "@quasar/qribbon": {},
+  "json-api-viewer": {}
 }
