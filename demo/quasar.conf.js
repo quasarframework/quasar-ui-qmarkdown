@@ -106,7 +106,7 @@ module.exports = function (ctx) {
       chainWebpack (chain) {
         chain.resolve.alias.merge({
           'ui': path.resolve(__dirname, '../ui/src/index.js'),
-          '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui'),
+          // '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui'),
           'sass': path.resolve(__dirname, '../ui/src/index.sass')
         })
 
