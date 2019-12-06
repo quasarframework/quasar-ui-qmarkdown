@@ -27,8 +27,7 @@ import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 
 import uid from 'quasar/src/utils/uid.js'
 
-const cache = {
-}
+const cache = {}
 
 export default {
   name: 'QMarkdown',
@@ -116,19 +115,14 @@ export default {
   beforeMount () {
     // create uid for caching md object
     this.uid = uid()
-    cache[this.uid] = {}
-    cache[this.uid].md = null
   },
 
   destroyed () {
-    if (cache[this.uid]) {
-      delete cache[this.uid]
-    }
+    this.__deleteCache(this.uid)
   },
 
   watch: {
-    src (val) {
-      // TODO: "= val" instead?
+    src () {
       this.source = this.src
     },
     noAbbreviation () { this.rebuild = true },
@@ -166,6 +160,20 @@ export default {
 
     __isFunction (f) {
       return f && {}.toString.call(f) === '[object Function]'
+    },
+
+    __setCache (key, value) {
+      cache[key] = value
+    },
+
+    __getCache (key) {
+      return cache[key]
+    },
+
+    __deleteCache (key) {
+      if (cache[key]) {
+        delete cache[key]
+      }
     },
 
     makeTree (list) {
@@ -207,7 +215,7 @@ export default {
     }
 
     // if no cache or options have dynamically changed
-    if (cache[this.uid].md === null || this.rebuild === true) {
+    if (this.rebuild === true) {
       this.rebuild = false
 
       if (this.__isFunction(this.extendPrism)) {
@@ -229,49 +237,49 @@ export default {
         highlight: highlight
       }
 
-      cache[this.uid].md = markdownIt(opts)
+      let md = markdownIt(opts)
       if (this.__isEnabled(this.noSubscript)) {
-        cache[this.uid].md.use(subscript)
+        md.use(subscript)
       }
       if (this.__isEnabled(this.noSuperscript)) {
-        cache[this.uid].md.use(superscript)
+        md.use(superscript)
       }
       if (this.__isEnabled(this.noFootnote)) {
-        cache[this.uid].md.use(footnote)
+        md.use(footnote)
       }
       if (this.__isEnabled(this.noDeflist)) {
-        cache[this.uid].md.use(deflist)
+        md.use(deflist)
       }
       if (this.__isEnabled(this.noAbbreviation)) {
-        cache[this.uid].md.use(abbreviation)
+        md.use(abbreviation)
       }
       if (this.__isEnabled(this.noInsert)) {
-        cache[this.uid].md.use(insert)
+        md.use(insert)
       }
       if (this.__isEnabled(this.noMark)) {
-        cache[this.uid].md.use(mark)
+        md.use(mark)
       }
       if (this.__isEnabled(this.noEmoji)) {
-        cache[this.uid].md.use(emoji)
+        md.use(emoji)
       }
       if (this.__isEnabled(this.noImage)) {
-        cache[this.uid].md.use(imsize)
+        md.use(imsize)
       }
       if (this.__isEnabled(this.noTasklist)) {
-        cache[this.uid].md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
+        md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
       }
 
-      extendBlockQuote(cache[this.uid].md)
-      extendHeading(cache[this.uid].md, tocData, this.toc, this.tocStart, this.tocEnd)
-      extendImage(cache[this.uid].md)
-      extendLink(cache[this.uid].md)
-      extendTable(cache[this.uid].md)
-      extendToken(cache[this.uid].md)
+      extendBlockQuote(md)
+      extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd)
+      extendImage(md)
+      extendLink(md)
+      extendTable(md)
+      extendToken(md)
       if (this.__isEnabled(this.noContainer)) {
-        extendContainers(cache[this.uid].md)
+        extendContainers(md)
       }
       if (this.__isEnabled(this.noLineNumbers)) {
-        extendFenceLineNumbers(cache[this.uid].md, this.lineNumberAlt)
+        extendFenceLineNumbers(md, this.lineNumberAlt)
       }
 
       let disabled = []
@@ -282,15 +290,19 @@ export default {
         disabled.push('link')
       }
       if (disabled.length > 0) {
-        cache[this.uid].md.disable(disabled)
+        md.disable(disabled)
       }
 
       if (this.__isFunction(this.extend)) {
-        this.extend(cache[this.uid].md)
+        this.extend(md)
       }
+
+      this.__setCache(this.uid, md)
     }
 
-    const rendered = cache[this.uid].md.render(markdown)
+    let md = this.__getCache(this.uid)
+
+    const rendered = md.render(markdown)
 
     if (this.toc && tocData.length > 0) {
       this.$emit('data', tocData)

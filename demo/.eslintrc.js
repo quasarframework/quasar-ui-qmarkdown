@@ -51,6 +51,7 @@ module.exports = {
 
     'quasar/check-valid-props': 1,
 
+    'no-void': 'off',
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow debugger during development only
