@@ -6,9 +6,9 @@
       :no-highlight="model"
       :no-line-numbers="model2"
     >
-Inline `code`
+    Indented code
 
-Indented code
+Inline `code`
 
     // Some comments
     line 1 of code
