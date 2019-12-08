@@ -177,7 +177,7 @@ export default {
     },
 
     makeTree (list) {
-      let tree = []
+      const tree = []
       let root = null
 
       const addToTree = (item) => {
@@ -206,7 +206,7 @@ export default {
   },
 
   render (h) {
-    let tocData = []
+    const tocData = []
 
     // get the markdown - slot overrides 'src'
     let markdown = this.src
@@ -237,7 +237,7 @@ export default {
         highlight: highlight
       }
 
-      let md = markdownIt(opts)
+      const md = markdownIt(opts)
       if (this.__isEnabled(this.noSubscript)) {
         md.use(subscript)
       }
@@ -282,7 +282,7 @@ export default {
         extendFenceLineNumbers(md, this.lineNumberAlt)
       }
 
-      let disabled = []
+      const disabled = []
       if (!this.__isEnabled(this.noImage)) {
         disabled.push('image')
       }
@@ -300,7 +300,7 @@ export default {
       this.__setCache(this.uid, md)
     }
 
-    let md = this.__getCache(this.uid)
+    const md = this.__getCache(this.uid)
 
     const rendered = md.render(markdown)
 
