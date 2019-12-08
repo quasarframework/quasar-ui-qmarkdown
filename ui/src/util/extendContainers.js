@@ -13,7 +13,7 @@ function createContainer (className, defaultTitle) {
         if (token.nesting === 1) {
           return `<div class="q-markdown--note q-markdown--note--${className}"><p class="q-markdown--note-title">${info || defaultTitle}</p>\n`
         } else {
-          return `</div>\n`
+          return '</div>\n'
         }
       }
     }
@@ -31,8 +31,8 @@ export default function extendContainers (md) {
     // explicitly escape Vue syntax
     .use(container, 'v-pre', {
       render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<div v-pre>\n`
-        : `</div>\n`
+        ? '<div v-pre>\n'
+        : '</div>\n'
     })
 }
 
