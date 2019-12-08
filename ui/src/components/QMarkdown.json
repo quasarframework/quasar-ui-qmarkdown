@@ -234,7 +234,7 @@
       "params": {
         "data": {
           "type": "Object",
-          "desc": "The results from the @data event",
+          "desc": "The results from the `@data` event",
           "__exemption": [ "examples" ]
         }
       },
