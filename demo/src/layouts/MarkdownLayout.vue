@@ -26,6 +26,7 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
+      show-if-above
       bordered
     >
       <q-list>
@@ -54,7 +55,7 @@ export default {
   data () {
     return {
       version: version,
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: false
     }
   },
   methods: {
