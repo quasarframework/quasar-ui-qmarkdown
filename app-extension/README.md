@@ -1,7 +1,7 @@
 # Quasar App Extension QMarkdown
 
 The QMarkdown app extension can do the following:
-1. Automatically inject the `quasar-ui-qmarkdown` component using the Quasar CLI.
+1. Automatically inject the `@quasar/quasar-ui-qmarkdown` component using the Quasar CLI.
 2. Modify webpack to allow importing of markdown (\*.md) files.
 3. Modify webpack to allow importing of vue+markdown (\*.vmd) files.
 
@@ -23,7 +23,7 @@ At which point you will be asked two questions about importing markdown (\*.md) 
 
 # New Install
 ```bash
-quasar ext add qmarkdown
+quasar ext add @quasar/qmarkdown
 ```
 Quasar CLI will retrieve it from NPM and install the extension.
 
@@ -57,7 +57,7 @@ components: {
 
 # Uninstall
 ```bash
-quasar ext remove qmarkdown
+quasar ext remove @quasar/qmarkdown
 ```
 
 # Describe
