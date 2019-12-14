@@ -36,6 +36,7 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
+      show-if-above
       bordered
     >
       <q-list>
@@ -49,6 +50,7 @@
     <q-drawer
       v-model="rightDrawerOpen"
       side="right"
+      show-if-above
       bordered
     >
       <q-scroll-area class="fit">
@@ -91,8 +93,8 @@ export default {
   data () {
     return {
       version: version,
-      leftDrawerOpen: this.$q.platform.is.desktop,
-      rightDrawerOpen: this.$q.platform.is.desktop,
+      leftDrawerOpen: false,
+      rightDrawerOpen: false,
       activeToc: 0
     }
   },
