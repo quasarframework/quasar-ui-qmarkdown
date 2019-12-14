@@ -30,8 +30,9 @@
     margin-bottom: 1rem
 
   pre code
-    white-space: pre-wrap
+    // white-space: pre-wrap
     border-radius: 0
+    width: max-content
 
   &--heading
     color: $primary
@@ -89,7 +90,6 @@
     height: auto
 
   &--link
-    // color: $primary
     font-weight: 500
     text-decoration: none
     outline: 0
@@ -100,7 +100,7 @@
 
     &:hover
       opacity: .8
-      color: red
+      // color: red
 
     &-local
       font-family: inherit
@@ -290,11 +290,6 @@
   &--table tbody tr:nth-child(odd)
     background: $grey-4
 
-.q-dark, .body--dark
-  .q-markdown
-    a
-      color: $grey-2
-
 .q-markdown--page > div, .q-markdown--page > pre
   margin-bottom: 22px
 
@@ -315,9 +310,16 @@ blockquote.q-markdown--note
 .body--dark
   .q-markdown
     color: $grey-2
+
     code
       background: $grey-9
       color: $grey-2
+
+    .q-markdown--link
+      color: $teal-6
+
+      &:hover
+        color: yellow
 
     blockquote.q-markdown--note
       border-color: $grey-6 $grey-6
