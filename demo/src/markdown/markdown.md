@@ -434,6 +434,34 @@ Finally, you can use the Front-Matter data like this:
   },
 ```
 
+# Overriding Links
+QMarkdown requires the `Material Design` font for external links. If you wish to override this to avoid the font dependency or provide a different icon, you can override this sass:
+
+```sass
+.q-markdown--link-external
+  &:after
+    content: '\e895'
+    font-family: Material Icons
+```
+To change colors of your links you can do the following:
+
+```sass
+.q-markdown--link
+  color: blue
+  &:hover
+    color: green
+```
+
+And to change it for dark mode:
+
+```sass
+.body--dark
+  .q-markdown--link
+    color: $green-10
+    &:hover
+      color: yellow
+```
+
 # Extracting Vue SFC parts
 Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). To import, do the following:
 
@@ -454,10 +482,10 @@ And then, you can use it like this:
   },
 ```
 
-This makes use of the `raw-loader` Webpack loader. The exclamations (or bang characters) are needed to tell Webpack to overload the default loader.
+This makes use of the `raw-loader` Webpack loader. The exclamations (or bang characters) are needed to tell Webpack to override the default loader.
 
 ::: tip
-`raw-loader` is already loaded via QMarkdown App Extension and you do not need to install it. If you do not install via the App extension, just include `raw-loaded` in your `devDependencies`.
+`raw-loader` is already loaded via QMarkdown App Extension and you do not need to install it. If you do not install via the App extension, just include `raw-loader` in your `devDependencies`.
 :::
 
 Now, you will have access to the tag parts of the Vue file.
