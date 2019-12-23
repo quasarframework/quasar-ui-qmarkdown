@@ -51,7 +51,7 @@
     "prismjs": "^1.17.1"
   },
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.20.0",
+    "@rollup/plugin-buble": "^0.21.0",
     "@rollup/plugin-json": "^4.0.0",
     "@vue/eslint-config-standard": "^5.0.1",
     "autoprefixer": "^9.7.3",
