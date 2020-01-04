@@ -12,6 +12,8 @@
 
 [link with title](https://github.com/quasarframework/quasar/ "title text!")
 
+[anchor link](#test)
+
 Auto-converted link: https://github.com/quasarframework/quasar
     </q-markdown>
   </div>

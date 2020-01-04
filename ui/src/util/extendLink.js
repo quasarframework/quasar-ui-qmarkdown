@@ -5,7 +5,10 @@ export default function extendLink (md) {
     const token = tokens[idx]
 
     const hrefIndex = token.attrIndex('href')
-    if (token.attrs[hrefIndex][1][0] === '/') {
+
+    if (token.attrs[hrefIndex][1][0] === '/' ||
+      token.attrs[hrefIndex][1][0] === '#' ||
+      token.attrs[hrefIndex][1].startsWith('..')) {
       token.attrSet('class', 'q-markdown--link q-markdown--link-local')
     } else {
       token.attrSet('class', 'q-markdown--link q-markdown--link-external')
