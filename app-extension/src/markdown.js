@@ -114,6 +114,7 @@ function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3)
 
     const id = slugify(label)
     token.attrSet('id', id)
+    token.attrSet('name', id)
     token.attrSet('class', classes)
 
     if (toc) {

@@ -20,6 +20,7 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
 
     const id = slugify(label)
     token.attrSet('id', id)
+    token.attrSet('name', id)
     token.attrSet('class', classes)
 
     if (toc) {
