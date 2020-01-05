@@ -4,66 +4,35 @@
 
       <example-title title="Markdown" />
 
-      <example-card title="Abbreviations" name="Abbreviations" :tag-parts="getTagParts(require('!!raw-loader!../examples/Abbreviations.vue').default)">
+      <example-viewer title="Abbreviations" file="Abbreviations" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
 Hover over the word **HTML** below to see the abbreviation.
         </q-markdown>
-      </example-card>
+      </example-viewer>
 
-      <example-card title="Blockquotes" name="Blockquotes" :tag-parts="getTagParts(require('!!raw-loader!../examples/Blockquotes.vue').default)">
-      </example-card>
-
-      <example-card title="Code" name="Code" :tag-parts="getTagParts(require('!!raw-loader!../examples/Code.vue').default)">
-      </example-card>
-
-      <example-card title="Containers" name="Containers" :tag-parts="getTagParts(require('!!raw-loader!../examples/Containers.vue').default)">
-      </example-card>
-
-      <example-card title="Definition Lists" name="DefinitionLists" :tag-parts="getTagParts(require('!!raw-loader!../examples/DefinitionLists.vue').default)">
-      </example-card>
-
-      <example-card title="Emojies" name="Emojies" :tag-parts="getTagParts(require('!!raw-loader!../examples/Emojies.vue').default)">
-      </example-card>
-
-      <example-card title="Emphasis" name="Emphasis" :tag-parts="getTagParts(require('!!raw-loader!../examples/Emphasis.vue').default)">
-      </example-card>
-
-      <example-card title="Footnotes" name="Footnotes" :tag-parts="getTagParts(require('!!raw-loader!../examples/Footnotes.vue').default)">
-      </example-card>
-
-      <example-card title="Heading" name="Heading" :tag-parts="getTagParts(require('!!raw-loader!../examples/Heading.vue').default)">
-      </example-card>
-
-      <example-card title="Horizontal Rules" name="HorizontalRules" :tag-parts="getTagParts(require('!!raw-loader!../examples/HorizontalRules.vue').default)">
-      </example-card>
-
-      <example-card title="Images" name="Images" :tag-parts="getTagParts(require('!!raw-loader!../examples/Images.vue').default)">
-      </example-card>
-
-      <example-card title="Insert" name="Insert" :tag-parts="getTagParts(require('!!raw-loader!../examples/Insert.vue').default)">
-      </example-card>
-
-      <example-card title="Links" name="Links" :tag-parts="getTagParts(require('!!raw-loader!../examples/Links.vue').default)">
+      <example-viewer title="Blockquotes" file="Blockquotes" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Code" file="Code" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Containers" file="Containers" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Definition Lists" file="DefinitionLists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Emojies" file="Emojies" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Emphasis" file="Emphasis" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Footnotes" file="Footnotes" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Heading" file="Heading" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Horizontal Rules" file="HorizontalRules" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Images" file="Images" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Insert" file="Insert" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Links" file="Links" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
 Links are auto-detected for local or external. External links use `.q-markdown--link-external:after` to show an icon indicator.
 
 You can override in CSS the `content` attribute to change the icon. Otherwise, you need to load Material icons.
         </q-markdown>
-      </example-card>
-
-      <example-card title="Lists" name="Lists" :tag-parts="getTagParts(require('!!raw-loader!../examples/Lists.vue').default)">
-      </example-card>
-
-      <example-card title="Mark" name="Mark" :tag-parts="getTagParts(require('!!raw-loader!../examples/Mark.vue').default)">
-      </example-card>
-
-      <example-card title="Subscript/Superscript" name="SubscriptSuperscript" :tag-parts="getTagParts(require('!!raw-loader!../examples/SubscriptSuperscript.vue').default)">
-      </example-card>
-
-      <example-card title="Tables" name="Tables" :tag-parts="getTagParts(require('!!raw-loader!../examples/Tables.vue').default)">
-      </example-card>
-
-      <example-card title="Task Lists" name="TaskLists" :tag-parts="getTagParts(require('!!raw-loader!../examples/TaskLists.vue').default)">
+      </example-viewer>
+      <example-viewer title="Lists" file="Lists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Mark" file="Mark" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Subscript/Superscript" file="SubscriptSuperscript" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Tables" file="Tables" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Task Lists" file="TaskLists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
 Task list have some special settings. By default, turning on these other options won't do anything. It is up to you to provide the CSS to support these options.
 
@@ -79,13 +48,9 @@ Here is some example CSS that you can take and modify to your likeing:
 ```
 This is what is used in the example below. Play with the controls to see how the tasklist items are affected.
         </q-markdown>
-      </example-card>
-
-      <example-card title="Titles" name="Titles" :tag-parts="getTagParts(require('!!raw-loader!../examples/Titles.vue').default)">
-      </example-card>
-
-      <example-card title="Typography" name="Typography" :tag-parts="getTagParts(require('!!raw-loader!../examples/Typography.vue').default)">
-      </example-card>
+      </example-viewer>
+      <example-viewer title="Titles" file="Titles" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="Typography" file="Typography" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
     </div>
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
@@ -101,22 +66,26 @@ This is what is used in the example below. Play with the controls to see how the
 <script>
 import Hero from '../components/Hero'
 import ExampleTitle from '../components/ExampleTitle'
-import ExampleCard from '../components/ExampleCard'
 import { slugify } from 'assets/page-utils'
-import { getTagParts } from 'ui'
+import { version } from 'ui'
 
 export default {
   name: 'Examples',
 
   components: {
     Hero,
-    ExampleTitle,
-    ExampleCard
+    ExampleTitle
   },
 
   data () {
     return {
-      tempToc: []
+      tempToc: [],
+      locationUrl: 'https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev/demo/src/examples/',
+      jsPaths: [`https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.umd.min.js`],
+      cssPaths: [
+        `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.min.css`,
+        'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.css'
+      ]
     }
   },
 
@@ -161,9 +130,12 @@ export default {
   },
 
   methods: {
-    getTagParts,
     addToToc (name, level = 1) {
-      const slug = slugify(name)
+      let n = name
+      if (level > 1) {
+        n = 'example-' + n
+      }
+      const slug = slugify(n)
       this.tempToc.push({
         children: [],
         id: slug,
