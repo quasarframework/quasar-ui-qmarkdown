@@ -74,8 +74,18 @@ function extendLink (md) {
 
     const hrefIndex = token.attrIndex('href')
 
-    if (token.attrs[hrefIndex][1][0] === '/' ||
-      token.attrs[hrefIndex][1][0] === '#' ||
+    if (token.attrs[hrefIndex][1][0] === '#') {
+      if (location) {
+        token.attrs[hrefIndex][1] = location.pathname + token.attrs[hrefIndex][1]
+      }
+    }
+
+    if (token.attrs[hrefIndex][1] === '') {
+      token.attrSet('class', 'q-markdown--link q-markdown--link-local')
+      if (tokens[idx + 1] && tokens[idx + 1].type === 'text' && tokens[idx + 1].content) {
+        token.attrSet('id', slugify(tokens[idx + 1].content))
+      }
+    } else if (token.attrs[hrefIndex][1][0] === '/' ||
       token.attrs[hrefIndex][1].startsWith('..')) {
       token.attrSet('class', 'q-markdown--link q-markdown--link-local')
     } else {
