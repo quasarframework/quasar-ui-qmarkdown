@@ -1,8 +1,5 @@
 {
   "@quasar/qribbon": {},
   "json-api-viewer": {},
-  "@quasar/qmarkdown": {
-    "import_md": true,
-    "import_vmd": true
-  }
+  "example-viewer": {}
 }

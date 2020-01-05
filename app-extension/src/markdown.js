@@ -73,7 +73,10 @@ function extendLink (md) {
     const token = tokens[idx]
 
     const hrefIndex = token.attrIndex('href')
-    if (token.attrs[hrefIndex][1][0] === '/') {
+
+    if (token.attrs[hrefIndex][1][0] === '/' ||
+      token.attrs[hrefIndex][1][0] === '#' ||
+      token.attrs[hrefIndex][1].startsWith('..')) {
       token.attrSet('class', 'q-markdown--link q-markdown--link-local')
     } else {
       token.attrSet('class', 'q-markdown--link q-markdown--link-external')
@@ -111,6 +114,7 @@ function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3)
 
     const id = slugify(label)
     token.attrSet('id', id)
+    token.attrSet('name', id)
     token.attrSet('class', classes)
 
     if (toc) {

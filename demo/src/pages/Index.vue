@@ -27,7 +27,7 @@ This page created with [QMarkdown](https://quasarframework.github.io/quasar-ui-q
 import Hero from '../components/Hero'
 // import markdownVue from '../markdown/markdown.vmd'
 import markdown from '../markdown/markdown.md'
-import Api from '@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json'
+import Api from '@quasar/quasar-ui-qmarkdown/../dist/api/QMarkdown.json'
 
 export default {
   name: 'PageIndex',

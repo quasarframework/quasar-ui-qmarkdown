@@ -11,7 +11,7 @@ import mark from 'markdown-it-mark'
 import taskLists from 'markdown-it-task-lists'
 // import imsize from 'markdown-it-imsize'
 import imsize from 'markdown-it-imsize/dist/markdown-it-imsize.js'
-// import toc from 'markdown-it-toc-and-anchor'
+// import tocAndAnchor from 'markdown-it-toc-and-anchor'
 
 import Prism from 'prismjs'
 import prismHighlight from '../util/highlight.js'

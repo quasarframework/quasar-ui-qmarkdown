@@ -161,9 +161,9 @@
       "type": "Function",
       "category": "extend",
       "addedIn": "v1.0.0",
-      "desc": "Used to extend the Prism code highlighter",
+      "desc": "Used to extend the [Prism](https://prismjs.com/extending.html) code highlighter",
       "params": {
-        "md": {
+        "Prism": {
           "type": "Object",
           "desc": "The `Prism` instance",
           "__exemption": [ "examples" ]
