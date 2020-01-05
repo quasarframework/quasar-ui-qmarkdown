@@ -18,7 +18,7 @@ QMarkdown is a Quasar component as well as a [Quasar App Extension](https://v1.q
 - Headings
 - Images
 - Inserts
-- Links
+- Links (+ Anchor Links)
 - Lists
 - Marks
 - Rules
@@ -175,7 +175,7 @@ QMarkdown App Extension also comes with a Webpack loader that allows you to impo
 
 You have the ability to get the TOC (Table of Contents), if one is generated, and display that as well.
 
-## Using the property
+## Using the `src` property
 It's as simple as:
 ```html
 <q-markdown src=":::\nThis is a **test** of markdown\n:::"></q-markdown>
@@ -461,6 +461,20 @@ And to change it for dark mode:
     &:hover
       color: yellow
 ```
+
+# Anchor Links
+An **Anchor Link** is simply a link that points to an element on a page with a corresponding **id**.
+
+To show an achor link on this page, to the **Installation Types** (above), then you must use the slugified verion that matches the id, whihc in this case is **Installation-Types** (notice the hypen).
+
+You do it in Markdown like this:
+```
+[Jump to Installation Types](#Installation-Types)
+```
+
+Notice, that for the current page only, you use the hashtag to start. This produces the following (be aware you will jump to **Installation Types** if yu cli8ck it):
+
+[Jump to Installation Types](#Installation-Types)
 
 # Extracting Vue SFC parts
 Additionally, QMarkdown comes with a utility function to extract SFC files into their tag parts (where tag is one of `template`, `script` and `style`). To import, do the following:
