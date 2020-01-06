@@ -8,7 +8,7 @@
     >
 [External Link](https://github.com/quasarframework/quasar)
 
-[local link](/heading)
+[local link](/demo)
 
 [link with title](https://github.com/quasarframework/quasar/ "title text!")
 
