@@ -25,10 +25,6 @@ import extendTable from '../util/extendTable.js'
 import extendToken from '../util/extendToken.js'
 import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 
-import uid from 'quasar/src/utils/uid.js'
-
-const cache = {}
-
 export default {
   name: 'QMarkdown',
 
@@ -107,50 +103,45 @@ export default {
   data () {
     return {
       source: this.src,
-      rebuild: true,
-      uid: 0
+      rendered: void 0
     }
   },
 
-  beforeMount () {
-    // create uid for caching md object
-    this.uid = uid()
-  },
-
   destroyed () {
-    this.__deleteCache(this.uid)
+    // this.__deleteCache(this.uid)
   },
 
   watch: {
     src () {
       this.source = this.src
+      this.rendered = void 0
     },
-    noAbbreviation () { this.rebuild = true },
-    noBreaks () { this.rebuild = true },
-    noContainer () { this.rebuild = true },
-    noDeflist () { this.rebuild = true },
-    noEmoji () { this.rebuild = true },
-    noFootnote () { this.rebuild = true },
-    noHighlight () { this.rebuild = true },
-    noHtml () { this.rebuild = true },
-    noImage () { this.rebuild = true },
-    noInsert () { this.rebuild = true },
-    noLineNumbers () { this.rebuild = true },
-    noLink () { this.rebuild = true },
-    noLinkify () { this.rebuild = true },
-    noMark () { this.rebuild = true },
-    noSubscript () { this.rebuild = true },
-    noSuperscript () { this.rebuild = true },
-    noTasklist () { this.rebuild = true },
-    noTypographer () { this.rebuild = true },
-    lineNumberAlt () { this.rebuild = true },
-    toc () { this.rebuild = true },
-    tocStart () { this.rebuild = true },
-    tocEnd () { this.rebuild = true },
-    taskListsEnable () { this.rebuild = true },
-    taskListsLabel () { this.rebuild = true },
-    taskListsLabelAfter () { this.rebuild = true },
-    extend () { this.rebuild = true }
+    noAbbreviation () { this.rendered = void 0 },
+    noBreaks () { this.rendered = void 0 },
+    noContainer () { this.rendered = void 0 },
+    noDeflist () { this.rendered = void 0 },
+    noEmoji () { this.rendered = void 0 },
+    noFootnote () { this.rendered = void 0 },
+    noHighlight () { this.rendered = void 0 },
+    noHtml () { this.rendered = void 0 },
+    noImage () { this.rendered = void 0 },
+    noInsert () { this.rendered = void 0 },
+    noLineNumbers () { this.rendered = void 0 },
+    noLink () { this.rendered = void 0 },
+    noLinkify () { this.rendered = void 0 },
+    noMark () { this.rendered = void 0 },
+    noSubscript () { this.rendered = void 0 },
+    noSuperscript () { this.rendered = void 0 },
+    noTasklist () { this.rendered = void 0 },
+    noTypographer () { this.rendered = void 0 },
+    lineNumberAlt () { this.rendered = void 0 },
+    toc () { this.rendered = void 0 },
+    tocStart () { this.rendered = void 0 },
+    tocEnd () { this.rendered = void 0 },
+    taskListsEnable () { this.rendered = void 0 },
+    taskListsLabel () { this.rendered = void 0 },
+    taskListsLabelAfter () { this.rendered = void 0 },
+    extend () { this.rendered = void 0 }
   },
 
   methods: {
@@ -162,19 +153,19 @@ export default {
       return f && {}.toString.call(f) === '[object Function]'
     },
 
-    __setCache (key, value) {
-      cache[key] = value
-    },
+    // __setCache (key, value) {
+    //   cache[key] = value
+    // },
 
-    __getCache (key) {
-      return cache[key]
-    },
+    // __getCache (key) {
+    //   return cache[key]
+    // },
 
-    __deleteCache (key) {
-      if (cache[key]) {
-        delete cache[key]
-      }
-    },
+    // __deleteCache (key) {
+    //   if (cache[key]) {
+    //     delete cache[key]
+    //   }
+    // },
 
     makeTree (list) {
       const tree = []
@@ -206,17 +197,14 @@ export default {
   },
 
   render (h) {
-    const tocData = []
+    if (this.rendered === void 0) {
+      const tocData = []
 
-    // get the markdown - slot overrides 'src'
-    let markdown = this.src
-    if (this.$slots.default) {
-      markdown = this.$slots.default[0].text
-    }
-
-    // if no cache or options have dynamically changed
-    if (this.rebuild === true) {
-      this.rebuild = false
+      // get the markdown - slot overrides 'src'
+      let markdown = this.src
+      if (this.$slots.default) {
+        markdown = this.$slots.default[0].text
+      }
 
       if (this.__isFunction(this.extendPrism)) {
         this.extendPrism(Prism)
@@ -238,6 +226,7 @@ export default {
       }
 
       const md = markdownIt(opts)
+
       if (this.__isEnabled(this.noSubscript)) {
         md.use(subscript)
       }
@@ -275,6 +264,7 @@ export default {
       extendLink(md)
       extendTable(md)
       extendToken(md)
+
       if (this.__isEnabled(this.noContainer)) {
         extendContainers(md)
       }
@@ -297,15 +287,11 @@ export default {
         this.extend(md)
       }
 
-      this.__setCache(this.uid, md)
-    }
+      this.rendered = md.render(markdown)
 
-    const md = this.__getCache(this.uid)
-
-    const rendered = md.render(markdown)
-
-    if (this.toc && tocData.length > 0) {
-      this.$emit('data', tocData)
+      if (this.toc && tocData.length > 0) {
+        this.$emit('data', tocData)
+      }
     }
 
     return h('div', {
@@ -313,7 +299,7 @@ export default {
       class: this.contentClass,
       style: this.contentStyle,
       domProps: {
-        innerHTML: rendered
+        innerHTML: this.rendered
       }
     })
   }
