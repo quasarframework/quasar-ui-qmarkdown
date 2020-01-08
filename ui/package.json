@@ -59,7 +59,7 @@
     "@rollup/plugin-buble": "^0.21.0",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
-    "@rollup/plugin-node-resolve": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
     "@vue/eslint-config-standard": "^5.0.1",
     "autoprefixer": "^9.7.3",
     "chalk": "^3.0.0",
