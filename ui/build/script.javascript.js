@@ -21,8 +21,8 @@ const rollupPlugins = [
     preferBuiltins: false
   }),
   json(),
-  buble(bubleConfig),
-  cjs()
+  cjs(),
+  buble(bubleConfig)
 ]
 
 const builds = [
