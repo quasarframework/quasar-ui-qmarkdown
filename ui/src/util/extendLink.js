@@ -9,7 +9,7 @@ export default function extendLink (md) {
     const hrefIndex = token.attrIndex('href')
 
     if (token.attrs[hrefIndex][1][0] === '#') {
-      if (location) {
+      if (typeof location !== 'undefined') {
         token.attrs[hrefIndex][1] = location.pathname + token.attrs[hrefIndex][1]
       }
     }
