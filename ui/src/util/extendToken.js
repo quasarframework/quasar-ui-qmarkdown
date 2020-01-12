@@ -1,5 +1,3 @@
-// 'use strict'
-
 export default function extendToken (md) {
   const defaultRender = md.renderer.rules.code_inline
 
@@ -10,13 +8,3 @@ export default function extendToken (md) {
     return defaultRender(tokens, idx, options, env, self)
   }
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = extendToken
-//   export default extendToken
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.extendToken = extendToken
-// }

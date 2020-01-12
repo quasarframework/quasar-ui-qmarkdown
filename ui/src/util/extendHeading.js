@@ -1,5 +1,3 @@
-// 'use strict'
-
 import slugify from './slugify'
 
 export default function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3) {
@@ -34,13 +32,3 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
     return self.renderToken(tokens, idx, options)
   }
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = extendHeading
-//   export default extendHeading
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.extendHeading = extendHeading
-// }

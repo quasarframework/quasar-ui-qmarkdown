@@ -1,5 +1,3 @@
-// 'use strict'
-
 import slugify from './slugify'
 
 export default function extendLink (md) {
@@ -30,13 +28,3 @@ export default function extendLink (md) {
     return self.renderToken(tokens, idx, options)
   }
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = extendLink
-//   export default extendLink
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.extendLink = extendLink
-// }
