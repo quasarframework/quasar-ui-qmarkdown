@@ -28,6 +28,8 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      aria-label="Menu"
+      class="menu"
     >
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
