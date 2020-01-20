@@ -7,6 +7,7 @@ const buble = require('@rollup/plugin-buble')
 const json = require('@rollup/plugin-json')
 const cjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
+const babel = require('rollup-plugin-babel')
 
 const buildConf = require('./config')
 const buildUtils = require('./utils')
@@ -15,13 +16,26 @@ const bubleConfig = {
   objectAssign: 'Object.assign'
 }
 
+const babelConfig = {
+  // exclude: 'node_modules/**',
+  babelrc: false // ,
+  // presets: [['env', { modules: false }]]
+}
+
+const cjsConfig = {
+  include: [
+    /node_modules/
+  ]
+}
+
 const rollupPlugins = [
   nodeResolve({
     extensions: ['.js'],
     preferBuiltins: false
   }),
   json(),
-  cjs(),
+  cjs(cjsConfig),
+  // babel(babelConfig),
   buble(bubleConfig)
 ]
 
