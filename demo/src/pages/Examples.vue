@@ -3,6 +3,11 @@
     <div>
 
       <example-title title="Markdown" />
+      <q-markdown>
+::: warning
+Note that below, markdown is being used to display markdown examples, which could be interpreted, so you may not be able to see the exact markup being used. If you suspect this to be the case, view the source on Github instead (click Github icon).
+:::
+      </q-markdown>
 
       <example-viewer title="Abbreviations" file="Abbreviations" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
         <q-markdown>
@@ -112,6 +117,7 @@ export default {
     this.addToToc('Subscript/Superscript', 2)
     this.addToToc('Tables', 2)
     this.addToToc('Task Lists', 2)
+    this.addToToc('Titles', 2)
     this.addToToc('Typography', 2)
 
     this.toc = this.tempToc

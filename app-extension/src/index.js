@@ -12,8 +12,9 @@ function extendConf (conf) {
   // register our boot file
   conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/register.js')
 
-  // make sure app extension files & ui package gets transpiled
+  // make sure app extension files & ui packages get transpiled
   conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
+  conf.build.transpileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
   conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')

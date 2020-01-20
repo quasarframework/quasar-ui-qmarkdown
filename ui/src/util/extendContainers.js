@@ -1,5 +1,3 @@
-// 'use strict'
-
 import container from 'markdown-it-container'
 
 function createContainer (className, defaultTitle) {
@@ -35,13 +33,3 @@ export default function extendContainers (md) {
         : '</div>\n'
     })
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = extendContainers
-//   export default extendContainers
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.extendContainers = extendContainers
-// }

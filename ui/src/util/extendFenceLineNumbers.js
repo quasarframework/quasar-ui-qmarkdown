@@ -1,5 +1,3 @@
-// 'use strict'
-
 export default function extendFenceLineNumbers (md, alt) {
   const fence = md.renderer.rules.fence
   md.renderer.rules.fence = (...args) => {
@@ -26,13 +24,3 @@ export default function extendFenceLineNumbers (md, alt) {
     return finalCode
   }
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = extendFenceLineNumbers
-//   export default extendFenceLineNumbers
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.extendFenceLineNumbers = extendFenceLineNumbers
-// }

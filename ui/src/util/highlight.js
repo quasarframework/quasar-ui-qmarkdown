@@ -1,5 +1,3 @@
-// 'use strict'
-
 export default function prismHighlight (Prism, str, lang) {
   if (lang === '') {
     lang = 'js' // default language
@@ -16,13 +14,3 @@ export default function prismHighlight (Prism, str, lang) {
 
   return ''
 }
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = prismHighlight
-//   export default prismHighlight
-// }
-
-// // hack for components to work correctly in node.js
-// if (typeof global !== 'undefined') {
-//  global.prismHighlight = prismHighlight
-// }

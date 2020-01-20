@@ -1,5 +1,3 @@
-// 'use strict'
-
 const getTemplate = (html) => {
   let content = ''
   if (html && html.length > 0) {
