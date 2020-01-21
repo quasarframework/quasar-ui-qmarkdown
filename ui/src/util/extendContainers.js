@@ -26,7 +26,7 @@ export default function extendContainers (md) {
   md.use(...createContainer('danger', 'IMPORTANT'))
   md.use(...createContainer('', ''))
 
-    // explicitly escape Vue syntax
+  // explicitly escape Vue syntax
   md.use(container, 'v-pre', {
     render: (tokens, idx) => tokens[idx].nesting === 1
       ? '<div v-pre>\n'
