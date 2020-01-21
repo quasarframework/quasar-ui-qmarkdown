@@ -16,6 +16,11 @@ const bubleConfig = {
   objectAssign: 'Object.assign'
 }
 
+const nodeResolveConfig = {
+  extensions: ['.js'],
+  preferBuiltins: false
+}
+
 const babelConfig = {
   // exclude: 'node_modules/**',
   babelrc: false // ,
@@ -29,10 +34,7 @@ const cjsConfig = {
 }
 
 const rollupPlugins = [
-  nodeResolve({
-    extensions: ['.js'],
-    preferBuiltins: false
-  }),
+  nodeResolve(nodeResolveConfig),
   json(),
   cjs(cjsConfig),
   // babel(babelConfig),
@@ -51,8 +53,9 @@ const builds = [
       }
     },
     build: {
-      // unminified: true,
-      minified: true
+      unminified: true,
+      minified: true,
+      minExt: true
     }
   },
   {
@@ -144,9 +147,13 @@ function build (builds) {
 }
 
 function genConfig (opts) {
+  // const { dependencies } = require(path.resolve(__dirname, '../package.json'))
+  // const external = Object.keys(dependencies || [])
+  const external = []
+
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: [ 'vue', 'quasar' ]
+    external: [ 'vue', 'quasar', ...external ]
   })
 
   Object.assign(opts.rollup.output, {

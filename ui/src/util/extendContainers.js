@@ -1,4 +1,5 @@
-import container from 'markdown-it-container'
+// import container from 'markdown-it-container'
+import container from './markdownitContainer'
 
 function createContainer (className, defaultTitle) {
   return [
@@ -19,17 +20,16 @@ function createContainer (className, defaultTitle) {
 }
 
 export default function extendContainers (md) {
-  md
-    .use(...createContainer('info', 'INFO'))
-    .use(...createContainer('tip', 'TIP'))
-    .use(...createContainer('warning', 'WARNING'))
-    .use(...createContainer('danger', 'IMPORTANT'))
-    .use(...createContainer('', ''))
+  md.use(...createContainer('info', 'INFO'))
+  md.use(...createContainer('tip', 'TIP'))
+  md.use(...createContainer('warning', 'WARNING'))
+  md.use(...createContainer('danger', 'IMPORTANT'))
+  md.use(...createContainer('', ''))
 
     // explicitly escape Vue syntax
-    .use(container, 'v-pre', {
-      render: (tokens, idx) => tokens[idx].nesting === 1
-        ? '<div v-pre>\n'
-        : '</div>\n'
-    })
+  md.use(container, 'v-pre', {
+    render: (tokens, idx) => tokens[idx].nesting === 1
+      ? '<div v-pre>\n'
+      : '</div>\n'
+  })
 }

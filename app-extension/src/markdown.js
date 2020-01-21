@@ -158,15 +158,14 @@ function createContainer (className, defaultTitle) {
 }
 
 function extendContainers (md) {
-  md
-    .use(...createContainer('info', 'INFO'))
-    .use(...createContainer('tip', 'TIP'))
-    .use(...createContainer('warning', 'WARNING'))
-    .use(...createContainer('danger', 'IMPORTANT'))
-    .use(...createContainer('', ''))
+  md.use(...createContainer('info', 'INFO'))
+  md.use(...createContainer('tip', 'TIP'))
+  md.use(...createContainer('warning', 'WARNING'))
+  md.use(...createContainer('danger', 'IMPORTANT'))
+  md.use(...createContainer('', ''))
 
     // explicitly escape Vue syntax
-    .use(container, 'v-pre', {
+  md.use(container, 'v-pre', {
       render: (tokens, idx) => tokens[idx].nesting === 1
         ? `<div v-pre>\n`
         : `</div>\n`
