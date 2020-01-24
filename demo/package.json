@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.5.0",
-    "quasar": "^1.7.4"
+    "quasar": "^1.8.2"
   },
   "devDependencies": {
     "@quasar/app": "^1.5.2",
@@ -29,7 +29,7 @@
     "eslint-plugin-quasar": "^1.0.0-alpha.18",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
-    "quasar-app-extension-example-viewer": "^0.0.19",
+    "quasar-app-extension-example-viewer": "^0.0.20",
     "quasar-app-extension-json-api-viewer": "^1.0.12",
     "raw-loader": "^4.0.0"
   },
