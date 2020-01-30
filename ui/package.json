@@ -38,6 +38,10 @@
     "quasarframework",
     "markdown"
   ],
+  "vetur": {
+    "tags": "dist/vetur/tags.json",
+    "attributes": "dist/vetur/attributes.json"
+  },
   "dependencies": {
     "markdown-it": "^10.0.0",
     "markdown-it-abbr": "^1.0.4",
