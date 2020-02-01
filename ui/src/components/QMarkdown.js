@@ -172,14 +172,14 @@ export default {
       let root = null
 
       const addToTree = (item) => {
-        if (item.level === 1) {
+        if (item.level === this.tocStart) {
           root = item
           tree.push(item)
-        } else if (item.level === 2) {
+        } else if (item.level === this.tocStart + 1) {
           root.children.push(item)
         } else {
           let parent = root
-          for (let k = 0; k < item.level - 2; ++k) {
+          for (let k = 0; k < item.level - (this.tocStart + 1); ++k) {
             parent = parent.children[parent.children.length - 1]
           }
           if (parent) {
