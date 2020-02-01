@@ -239,6 +239,21 @@ And, in your HTML:
 <q-markdown :src="markdown" />
 ```
 
+Or, alternatively, you can import it in your vue-router `routes.js` file:
+
+```js
+const routes = [
+  {
+    path: '/',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: 'contact', component: () => import('pages/contact.vmd') }
+    ]
+  }
+]
+```
+
 # Setting up Table of Contents
 You enable a TOC by setting `:toc="true"`. The data in the TOC is based on HTML Headings (H1-H6). You can change the number of headings that you are interested in by using the `toc-start` and `toc-end` properties.
 
@@ -261,8 +276,8 @@ methods: {
 The TOC data looks like this:
 ```
 [
-  {id: 'h2-Heading', title: 'h2 Heading', level: 2, children: []},
-  {id: 'h3-Heading', title: 'h3 Heading', level: 3, children: []}
+  {id: 'h2-Heading', label: 'h2 Heading', level: 2, children: []},
+  {id: 'h3-Heading', label: 'h3 Heading', level: 3, children: []}
 ]
 ```
 
@@ -384,7 +399,7 @@ So far, a couple of issues have been found.
 ## Vue+Markdown Comments
 Vue+Markdown is experimental. There are a few other authors doing it, like **Vue Press** and **Sable**, as well as the **Quasar Documentation**. However, none of them are using a `.vmd` extension. This was used to distinguish `vue+markdown` from regular markdown. As such, your favorite editor may not have syntax highlighting that works with `.vmd` files. Hopefully, in the future, this will be resolved.
 
-# Front-Matter with Vue+Markdown
+## Front-Matter with Vue+Markdown
 Front-Matter is a way of extracting meta data from the beginning of a file and converting it to object format. The format for Front-Matter is in YAML format.
 
 ::: tip
@@ -434,6 +449,137 @@ Finally, you can use the Front-Matter data like this:
   },
 ```
 
+## Importing markdown in a VMD (Vue+Markdown)
+Did you know you can also import markdown in a `.vmd` component?
+
+Here is an example of how to do just that:
+
+```html
+---
+title: Contact us
+desc: Our contact details
+---
+
+<template>
+<div>
+  <qm-toc ref="qm-toc" :toc-tree="tocTree"></qm-toc>
+  <q-markdown
+    :src="markdown"
+    toc
+    :toc-start="2"
+    :toc-end="3"
+    @data="onToc"
+    ref="markdown"
+    class="q-pa-md"
+  />
+</div>
+</template>
+
+<script>
+import mdMixin from 'src/md/md-mixin'
+import markdown from './contact.md'
+
+export default {
+  mixins: [mdMixin],
+
+  data () {
+    return {
+      // eslint-disable-next-line
+      frontMatter: {},
+      // eslint-disable-next-line
+      tocData: [],
+
+      markdown
+    }
+  }
+}
+</script>
+```
+
+Notice the mixin used?
+
+Here is the code for that to generate your table of contents:
+```html
+<template>
+  <!-- We display the TOC only if it is not empty (v-if) and the screen is wide
+  enough (class: gt-xs). We apply a medium margin: 'q-ma-md' -->
+  <q-card
+    v-if="tocTree.length"
+    class="gt-xs float-right q-ma-md"
+    flat
+    bordered
+  >
+    <!-- We use the 'horizontal' to remove paddings -->
+    <q-card-section horizontal>
+      <!-- We use 'q-expansion-item' to enable toggling (hide/show) the TOC -->
+      <q-expansion-item
+        default-opened
+        icon="toc"
+        label="Table of contents"
+      >
+        <q-separator />
+        <q-list>
+          <!-- loop through items of tocTree -->
+          <template v-for="item in tocTree">
+            <!-- if the item does not have children we use 'q-item' -->
+            <q-item
+              v-if="!item.children.length"
+              :key="item.id"
+              :to="`#${item.id}`"
+            >
+              <q-item-section>{{ item.label }}</q-item-section>
+            </q-item>
+            <!-- if the item has children we use 'q-expansion-item' to enable
+            toggling (hiding/showing) them -->
+            <q-expansion-item
+              v-else
+              :key="item.id"
+              default-opened
+              :label="item.label"
+              :to="`#${item.id}`"
+            >
+              <!-- children are displayed in a q-list below their parent -->
+              <q-list>
+                <!-- each child is indented a little (inset-level).
+                Dense mode uses less space -->
+                <q-item
+                  v-for="childItem in item.children"
+                  :key="childItem.id"
+                  dense
+                  :inset-level="0.2"
+                  :to="`#${childItem.id}`"
+                >
+                  <q-item-section>{{ childItem.label }}</q-item-section>
+                </q-item>
+              </q-list>
+            </q-expansion-item>
+          </template>
+        </q-list>
+      </q-expansion-item>
+    </q-card-section>
+  </q-card>
+</template>
+
+<script>
+export default {
+  props: {
+    // 'tocTree' will be provided by the component using QmToc (vmd components)
+    tocTree: {
+      type: Array,
+      default () { return [] }
+    }
+  }
+}
+</script>
+
+<style lang="sass">
+// When navigating (scrolling) to an anchor and to avoid that the anchor gets
+// hidden by the fixed page header we offset the scrolling by the header height.
+.q-markdown [class^="q-markdown--heading-h"]
+  scroll-margin-top: $toolbar-min-height
+</style>
+```
+
 # Overriding Links
 QMarkdown requires the `Material Design` font for external links. If you wish to override this to avoid the font dependency or provide a different icon, you can override this sass:
 
@@ -465,7 +611,7 @@ And to change it for dark mode:
 # Anchor Links
 An **Anchor Link** is simply a link that points to an element on a page with a corresponding **id**.
 
-To show an achor link on this page, to the **Installation Types** (above), then you must use the slugified verion that matches the id, whihc in this case is **Installation-Types** (notice the hypen).
+To show an achor link on this page, to the **Installation Types** (above), then you must use the slugified verion that matches the id, which in this case is **Installation-Types** (notice the hypen).
 
 You do it in Markdown like this:
 ```
