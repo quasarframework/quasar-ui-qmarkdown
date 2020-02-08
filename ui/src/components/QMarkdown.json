@@ -207,14 +207,19 @@
               "desc": "The id for the TOC header",
               "__exemption": [ "examples" ]
             },
-            "title": {
+            "label": {
               "type": "String",
-              "desc": "The TOC header title",
+              "desc": "The TOC header label",
               "__exemption": [ "examples" ]
             },
             "level": {
               "type": "Number",
               "desc": "The TOC header type (1=h1, 2=h2, etc)",
+              "__exemption": [ "examples" ]
+            },
+            "children": {
+              "type": "Array",
+              "desc": "This is normally empty, unless you pass this toc array to the `makeTree` method",
               "__exemption": [ "examples" ]
             }
           }
@@ -230,10 +235,10 @@
   "methods": {
     "makeTree": {
       "type": "Function",
-      "desc": "Pass into this function the results from the @data to have the data array transformed into a hierarchical tree",
+      "desc": "Pass into this function the results from the `@data` event to have the data array transformed into a hierarchical tree",
       "params": {
         "data": {
-          "type": "Object",
+          "type": "Array",
           "desc": "The results from the `@data` event",
           "__exemption": [ "examples" ]
         }
@@ -249,9 +254,9 @@
               "the-heading"
             ]
           },
-          "title": {
+          "label": {
             "type": "String",
-            "desc": "The original title",
+            "desc": "The original label",
             "examples": [
               "The Heading"
             ]

@@ -8,9 +8,6 @@ export default function extendFenceLineNumbers (md, alt) {
     )
 
     const lines = code.trim().split('\n')
-    if (lines.length < 3) {
-      return rawCode
-    }
 
     const lineNumbersCode = [...Array(lines.length)]
       .map((line, index) => `<div class="q-markup--line-number">${alt === void 0 ? index + 1 : alt}</div>`).join('')
@@ -19,7 +16,7 @@ export default function extendFenceLineNumbers (md, alt) {
       `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
 
     const finalCode =
-      `<div class="q-markdown--line-numbers-wrapper">${lineNumbersWrapperCode}</div>`
+      `<div class="q-markdown--line-numbers-wrapper">${lines.length < 3 ? rawCode : lineNumbersWrapperCode}</div>`
 
     return finalCode
   }
