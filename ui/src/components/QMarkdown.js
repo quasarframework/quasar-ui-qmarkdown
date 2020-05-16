@@ -102,8 +102,14 @@ export default {
 
   data () {
     return {
-      source: this.src,
+      source: '',
       rendered: void 0
+    }
+  },
+
+  beforeMount () {
+    if (this.src && this.src.length > 0) {
+      this.source = this.src.replace(/\\n/gi, '\n')
     }
   },
 
@@ -113,7 +119,7 @@ export default {
 
   watch: {
     src () {
-      this.source = this.src
+      this.source = this.src.replace(/\\n/gi, '\n')
       this.rendered = void 0
     },
     noAbbreviation () { this.rendered = void 0 },
@@ -201,7 +207,7 @@ export default {
       const tocData = []
 
       // get the markdown - slot overrides 'src'
-      let markdown = this.src
+      let markdown = this.source
       if (this.$slots.default) {
         markdown = this.$slots.default[0].text
       }
