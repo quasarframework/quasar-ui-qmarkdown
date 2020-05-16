@@ -37,44 +37,7 @@ module.exports = function (ctx) {
 
       // all: true, // --- includes everything; for dev only!
 
-      components: [
-        'QAvatar',
-        'QBtn',
-        'QCard',
-        'QCardSection',
-        'QDrawer',
-        'QEditor',
-        'QExpansionItem',
-        'QHeader',
-        'QIcon',
-        'QItem',
-        'QItemLabel',
-        'QItemSection',
-        'QLayout',
-        'QList',
-        'QMenu',
-        'QPage',
-        'QPageContainer',
-        'QPageScroller',
-        'QScrollArea',
-        'QSeparator',
-        'QSpace',
-        'QSplitter',
-        'QTab',
-        'QTabs',
-        'QTabPanel',
-        'QTabPanels',
-        'QToggle',
-        'QToolbar',
-        'QToolbarTitle',
-        'QTooltip'
-      ],
-
-      directives: [
-        'ClosePopup',
-        'Ripple',
-        'Scroll'
-      ],
+      all: 'auto',
 
       // Quasar plugins
       plugins: [
@@ -110,15 +73,16 @@ module.exports = function (ctx) {
       chainWebpack (chain) {
         chain.resolve.alias.merge({
           ui: path.resolve(__dirname, '../ui/src/index.js'),
+          '@quasar/quasar-ui-qmarkdown/src/index.sass': path.resolve(__dirname, '../ui/src/index.sass'),
           '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui/src'),
           sass: path.resolve(__dirname, '../ui/src/index.sass'),
           examples: path.resolve(__dirname, './src/examples')
         })
 
         chain.module.rule('md')
-        .test(/\.md$/i)
-        .use('raw-loader')
-        .loader('raw-loader')
+          .test(/\.md$/i)
+          .use('raw-loader')
+          .loader('raw-loader')
       }
     },
 
