@@ -43,7 +43,7 @@
     "attributes": "dist/vetur/attributes.json"
   },
   "dependencies": {
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^11.0.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-container": "^2.0.0",
     "markdown-it-deflist": "^2.0.3",
@@ -87,7 +87,7 @@
     "quasar": "^1.11.3",
     "quasar-json-api": "^0.0.21",
     "rimraf": "^3.0.2",
-    "rollup": "^2.10.2",
+    "rollup": "^2.10.5",
     "rollup-plugin-babel": "^4.4.0",
     "uglify-es": "^3.3.9",
     "zlib": "^1.0.5"
