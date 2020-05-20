@@ -40,13 +40,13 @@ module.exports = function () {
     {
       type: 'confirm',
       name: 'import_md',
-      message: "Do you want to be able to import markdown (*.md) files?",
+      message: 'Do you want to be able to import markdown (*.md) files?',
       default: true
     },
     {
       type: 'confirm',
       name: 'import_vmd',
-      message: "Do you want to be able to import vue+markdown (*.vmd) files?",
+      message: 'Do you want to be able to import vue+markdown (*.vmd) files?',
       default: true
     }
   ]

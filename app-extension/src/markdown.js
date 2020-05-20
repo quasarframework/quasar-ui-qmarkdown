@@ -37,10 +37,10 @@ function highlight (str, lang) {
     lang = 'html'
   }
 
-  if (Prism.languages[lang] !== void 0) {
+  if (Prism.languages[lang] !== undefined) {
     const code = Prism.highlight(str, Prism.languages[lang], lang)
 
-    return `<pre class="q-markdown--code">` +
+    return '<pre class="q-markdown--code">' +
       `<code class="q-markdown--code__inner language-${lang}">${code}</code></pre>\n`
   }
 
@@ -150,7 +150,7 @@ function createContainer (className, defaultTitle) {
         if (token.nesting === 1) {
           return `<div class="q-markdown--note q-markdown--note--${className}"><p class="q-markdown--note-title">${info || defaultTitle}</p>\n`
         } else {
-          return `</div>\n`
+          return '</div>\n'
         }
       }
     }
@@ -164,12 +164,12 @@ function extendContainers (md) {
   md.use(...createContainer('danger', 'IMPORTANT'))
   md.use(...createContainer('', ''))
 
-    // explicitly escape Vue syntax
+  // explicitly escape Vue syntax
   md.use(container, 'v-pre', {
-      render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<div v-pre>\n`
-        : `</div>\n`
-    })
+    render: (tokens, idx) => tokens[idx].nesting === 1
+      ? '<div v-pre>\n'
+      : '</div>\n'
+  })
 }
 
 function extendBlockQuote (md) {
@@ -181,32 +181,32 @@ function extendBlockQuote (md) {
   }
 }
 
-function extendFenceLineNumbers (md) {
-  const fence = md.renderer.rules.fence
-  md.renderer.rules.fence = (...args) => {
-    const rawCode = fence(...args)
-    const code = rawCode.slice(
-      rawCode.indexOf('<code>') + 6,
-      rawCode.indexOf('</code>')
-    )
+// function extendFenceLineNumbers (md) {
+//   const fence = md.renderer.rules.fence
+//   md.renderer.rules.fence = (...args) => {
+//     const rawCode = fence(...args)
+//     const code = rawCode.slice(
+//       rawCode.indexOf('<code>') + 6,
+//       rawCode.indexOf('</code>')
+//     )
 
-    const lines = code.trim().split('\n')
-    if (lines.length < 3) {
-      return rawCode
-    }
+//     const lines = code.trim().split('\n')
+//     if (lines.length < 3) {
+//       return rawCode
+//     }
 
-    const lineNumbersCode = [...Array(lines.length)]
-      .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
+//     const lineNumbersCode = [...Array(lines.length)]
+//       .map((line, index) => `<span class="q-markup--line-number">${index + 1}</span><br>`).join('')
 
-    const lineNumbersWrapperCode =
-      `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
+//     const lineNumbersWrapperCode =
+//       `<div class="q-markdown--line-numbers non-selectable">${lineNumbersCode}</div><div class="q-markdown--code-wrapper">${rawCode}</div>`
 
-    const finalCode =
-      `<div class="q-markdown--line-numbers-wrapper">${lineNumbersWrapperCode}</div>`
+//     const finalCode =
+//       `<div class="q-markdown--line-numbers-wrapper">${lineNumbersWrapperCode}</div>`
 
-    return finalCode
-  }
-}
+//     return finalCode
+//   }
+// }
 
 const opts = {
   html: true,
@@ -229,7 +229,7 @@ md.use(imsize)
 md.use(taskLists, { enabled: true, label: true, labelAfter: true })
 
 function renderMarkdown (source) {
-  let tocData = []
+  const tocData = []
   extendHeading(md, tocData, true)
   extendBlockQuote(md)
   extendImage(md)
@@ -240,7 +240,7 @@ function renderMarkdown (source) {
   // bug: this is causing numbers to show up twice
   // extendFenceLineNumbers(md)
 
-  let content = fm(source)
+  const content = fm(source)
   source = removeFrontMatter(source)
   let rendered = md.render(source)
   rendered = replaceFrontMatter(rendered, content.attributes)
