@@ -69,6 +69,10 @@
       v-model="noContainer"
       label="Disable Container"
     />
+    <q-toggle
+      v-model="noBlockquote"
+      label="Disable Blockquote"
+    />
   </div>
   <q-list bordered>
     <q-expansion-item
@@ -97,6 +101,7 @@
             :noImage="noImage"
             :noTasklist="noTasklist"
             :noContainer="noContainer"
+            :noBlockquote="noBlockquote"
             :toc="toc"
             :tocStart="tocStart"
             :tocEnd="tocEnd"
@@ -157,7 +162,8 @@ export default {
       noMark: false,
       noImage: false,
       noTasklist: false,
-      noContainer: false
+      noContainer: false,
+      noBlockquote: false
     }
   }
 }

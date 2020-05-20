@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-markdown>
+    <q-toggle v-model="model" label="Disable blockquote"></q-toggle>
+    <q-markdown
+      :no-blockquote="model"
+    >
 > This is a Blockquote
 > with a `token` and a [link](https://quasar.dev)
 
@@ -15,6 +18,7 @@
 export default {
   data () {
     return {
+      model: false
     }
   }
 }

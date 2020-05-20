@@ -38,17 +38,16 @@ module.exports = function (api) {
 }
 
 const chainWebpack = function (api, chain) {
-
-  if (api.prompts.import_md !== void 0 && api.prompts.import_md === true) {
-    console.log(` App Extension (qmarkdown) Info: 'Adding markdown loader to chainWebpack'`)
+  if (api.prompts.import_md !== undefined && api.prompts.import_md === true) {
+    console.log(' App Extension (qmarkdown) Info: \'Adding markdown loader to chainWebpack\'')
     chain.module.rule('md')
       .test(/\.md$/i)
       .use('raw-loader')
       .loader('raw-loader')
   }
 
-  if (api.prompts.import_vmd !== void 0 && api.prompts.import_vmd === true) {
-    console.log(` App Extension (qmarkdown) Info: 'Adding .vmd (vue+markdown) loader to chainWebpack'`)
+  if (api.prompts.import_vmd !== undefined && api.prompts.import_vmd === true) {
+    console.log(' App Extension (qmarkdown) Info: \'Adding .vmd (vue+markdown) loader to chainWebpack\'')
     const rule = chain.module.rule('vmd')
       .test(/\.vmd$/)
       .pre()
@@ -73,7 +72,7 @@ const chainWebpack = function (api, chain) {
       .options({
         raw: true,
         middleware: function (source) {
-          let rendered = renderMarkdown(source)
+          const rendered = renderMarkdown(source)
           return `${rendered}`
         }
       })
