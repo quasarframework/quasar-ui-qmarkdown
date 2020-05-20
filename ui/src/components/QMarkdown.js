@@ -36,6 +36,8 @@ export default {
     },
     // no abbreviations
     noAbbreviation: Boolean,
+    // no blockquotes
+    noBlockquote: Boolean,
     // no breaks
     noBreaks: Boolean,
     // no containers
@@ -123,6 +125,7 @@ export default {
       this.rendered = void 0
     },
     noAbbreviation () { this.rendered = void 0 },
+    noBlockquote () { this.rendered = void 0 },
     noBreaks () { this.rendered = void 0 },
     noContainer () { this.rendered = void 0 },
     noDeflist () { this.rendered = void 0 },
@@ -278,12 +281,16 @@ export default {
         extendFenceLineNumbers(md, this.lineNumberAlt)
       }
 
+      // handle disabled rules
       const disabled = []
       if (!this.__isEnabled(this.noImage)) {
         disabled.push('image')
       }
       if (!this.__isEnabled(this.noLink)) {
         disabled.push('link')
+      }
+      if (!this.__isEnabled(this.noBlockquote)) {
+        disabled.push('blockquote')
       }
       if (disabled.length > 0) {
         md.disable(disabled)
