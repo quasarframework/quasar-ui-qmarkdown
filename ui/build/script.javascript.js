@@ -6,8 +6,7 @@ const uglify = require('uglify-es')
 const buble = require('@rollup/plugin-buble')
 const json = require('@rollup/plugin-json')
 const cjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
-const babel = require('rollup-plugin-babel')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
 const buildConf = require('./config')
 const buildUtils = require('./utils')
@@ -21,12 +20,6 @@ const nodeResolveConfig = {
   preferBuiltins: false
 }
 
-const babelConfig = {
-  // exclude: 'node_modules/**',
-  babelrc: false // ,
-  // presets: [['env', { modules: false }]]
-}
-
 const cjsConfig = {
   include: [
     /node_modules/
@@ -37,7 +30,6 @@ const rollupPlugins = [
   nodeResolve(nodeResolveConfig),
   json(),
   cjs(cjsConfig),
-  // babel(babelConfig),
   buble(bubleConfig)
 ]
 
@@ -45,26 +37,25 @@ const builds = [
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.esm.js`)
+        input: resolve('entry/index.esm.js')
       },
       output: {
-        file: resolve(`../dist/index.esm.js`),
+        file: resolve('../dist/index.esm.js'),
         format: 'es'
       }
     },
     build: {
-      unminified: true,
-      minified: true,
-      minExt: true
+      // unminified: true,
+      minified: true
     }
   },
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.common.js`)
+        input: resolve('entry/index.common.js')
       },
       output: {
-        file: resolve(`../dist/index.common.js`),
+        file: resolve('../dist/index.common.js'),
         format: 'cjs'
       }
     },
@@ -76,11 +67,11 @@ const builds = [
   {
     rollup: {
       input: {
-        input: resolve(`entry/index.umd.js`)
+        input: resolve('entry/index.umd.js')
       },
       output: {
         name: 'QMarkdown',
-        file: resolve(`../dist/index.umd.js`),
+        file: resolve('../dist/index.umd.js'),
         format: 'umd'
       }
     },
@@ -97,9 +88,9 @@ const builds = [
 // addAssets(builds, 'lang', 'lang')
 
 build(builds)
-.then(() => {
-  require('./build.api')
-})
+  .then(() => {
+    require('./build.api')
+  })
 
 /**
  * Helpers
@@ -109,13 +100,14 @@ function resolve (_path) {
   return path.resolve(__dirname, _path)
 }
 
+// eslint-disable-next-line no-unused-vars
 function addAssets (builds, type, injectName) {
   const
     files = fs.readdirSync(resolve('../../ui/src/components/' + type)),
-    plugins = [ buble(bubleConfig) ],
+    plugins = [buble(bubleConfig)],
     outputDir = resolve(`../dist/${type}`)
 
-    fse.mkdirp(outputDir)
+  fse.mkdirp(outputDir)
 
   files
     .filter(file => file.endsWith('.js'))
@@ -147,13 +139,9 @@ function build (builds) {
 }
 
 function genConfig (opts) {
-  // const { dependencies } = require(path.resolve(__dirname, '../package.json'))
-  // const external = Object.keys(dependencies || [])
-  const external = []
-
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: [ 'vue', 'quasar', ...external ]
+    external: ['vue', 'quasar']
   })
 
   Object.assign(opts.rollup.output, {
@@ -212,6 +200,7 @@ function buildEntry (config) {
 }
 
 function injectVueRequirement (code) {
+  // eslint-disable-next-line
   const index = code.indexOf(`Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue`)
 
   if (index === -1) {
