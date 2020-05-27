@@ -21,14 +21,14 @@
   "homepage": "https://github.com/quasarframework/quasar-ui-qmarkdown",
   "dependencies": {
     "@quasar/quasar-ui-qmarkdown": "^1.0.27",
-    "front-matter": "^4.0.0",
+    "front-matter": "^4.0.1",
     "raw-loader": "^4.0.1",
     "ware-loader": "^0.2.4"
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.0.0",
+    "eslint": "^7.1.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
