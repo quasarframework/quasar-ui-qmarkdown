@@ -618,7 +618,7 @@ You do it in Markdown like this:
 [Jump to Installation Types](#Installation-Types)
 ```
 
-Notice, that for the current page only, you use the hashtag to start. This produces the following (be aware you will jump to **Installation Types** if yu cli8ck it):
+Notice, that for the current page only, you use the hashtag to start. This produces the following (be aware you will jump to **Installation Types** if you click it):
 
 [Jump to Installation Types](#Installation-Types)
 
