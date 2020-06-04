@@ -56,8 +56,6 @@ module.exports = function (/* ctx */) {
         dark: 'auto'
       },
 
-
-
       // Quasar plugins
       plugins: [
         'Dark',
@@ -103,7 +101,6 @@ module.exports = function (/* ctx */) {
           ui: path.resolve(__dirname, '../ui/src/index.js'),
           '@quasar/quasar-ui-qmarkdown/src/index.sass': path.resolve(__dirname, '../ui/src/index.sass'),
           '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../ui/src'),
-          sass: path.resolve(__dirname, '../ui/src/index.sass'),
           examples: path.resolve(__dirname, './src/examples')
         })
 
