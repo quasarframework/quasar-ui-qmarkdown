@@ -5,8 +5,11 @@ const rollup = require('rollup')
 const uglify = require('uglify-es')
 const buble = require('@rollup/plugin-buble')
 const json = require('@rollup/plugin-json')
-const cjs = require('@rollup/plugin-commonjs')
+const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const multiEntry = require('@rollup/plugin-multi-entry')
+const nodePolyfills = require('rollup-plugin-node-polyfills')
+const { babel } = require('@rollup/plugin-babel')
 
 const buildConf = require('./config')
 const buildUtils = require('./utils')
@@ -18,19 +21,30 @@ const bubleConfig = {
 const nodeResolveConfig = {
   extensions: ['.js'],
   preferBuiltins: false
+  // preferBuiltins: true
+  // jsnext: true,
+  // browser: true
 }
 
-const cjsConfig = {
+const commonjsConfig = {
   include: [
     /node_modules/
   ]
 }
 
+const babelConfig = {
+  exclude: 'node_modules/**',
+  babelHelpers: 'bundled'
+}
+
 const rollupPlugins = [
+  // multiEntry(),
+  nodePolyfills(),
   nodeResolve(nodeResolveConfig),
   json(),
-  cjs(cjsConfig),
-  buble(bubleConfig)
+  babel(babelConfig),
+  commonjs(commonjsConfig)
+  // buble(bubleConfig),
 ]
 
 const builds = [

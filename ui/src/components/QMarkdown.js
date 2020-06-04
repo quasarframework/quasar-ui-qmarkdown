@@ -13,7 +13,9 @@ import taskLists from 'markdown-it-task-lists'
 import imsize from 'markdown-it-imsize/dist/markdown-it-imsize.js'
 // import tocAndAnchor from 'markdown-it-toc-and-anchor'
 
-import Prism from 'prismjs'
+const Prism = require('prismjs')
+// import Prism from 'prismjs'
+// import Prism from 'prismjs/components/prism-core'
 import prismHighlight from '../util/highlight.js'
 
 import extendBlockQuote from '../util/extendBlockQuote.js'
