@@ -41,7 +41,7 @@ You can override in CSS the `content` attribute to change the icon. Otherwise, y
         <q-markdown>
 Task list have some special settings. By default, turning on these other options won't do anything. It is up to you to provide the CSS to support these options.
 
-Here is some example CSS that you can take and modify to your likeing:
+Here is some example CSS that you can take and modify to your liking:
 
 ```css
 .task-list-item label {
