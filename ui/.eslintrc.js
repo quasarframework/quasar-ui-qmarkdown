@@ -3,30 +3,35 @@ module.exports = {
 
   parserOptions: {
     parser: 'babel-eslint',
-    sourceType: 'module'
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
 
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
 
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
-    '@vue/standard'
+    // 'plugin:vue/essential',
+    // '@vue/standard'
   ],
 
   // required to lint *.vue files
   plugins: [
-    'vue'
+    // 'vue'
   ],
 
   globals: {
-    'ga': true, // Google Analytics
-    'cordova': true,
-    '__statics': true,
-    'process': true
+    ga: true, // Google Analytics
+    cordova: true,
+    __statics: true,
+    process: true
   },
 
   // add your custom rules here
@@ -37,15 +42,15 @@ module.exports = {
     'arrow-parens': 'off',
     'one-var': 'off',
 
-    'import/first': 'off',
-    'import/named': 'error',
-    'import/namespace': 'error',
-    'import/default': 'error',
-    'import/export': 'error',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'prefer-promise-reject-errors': 'off',
+    // 'import/first': 'off',
+    // 'import/named': 'error',
+    // 'import/namespace': 'error',
+    // 'import/default': 'error',
+    // 'import/export': 'error',
+    // 'import/extensions': 'off',
+    // 'import/no-unresolved': 'off',
+    // 'import/no-extraneous-dependencies': 'off',
+    // 'prefer-promise-reject-errors': 'off',
 
     'no-void': 'off',
     // allow console.log during development only
