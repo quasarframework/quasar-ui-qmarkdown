@@ -169,6 +169,10 @@ Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/
 ---
 
 # Working with markdown
+::: tip
+When working with markdown, you must always left-justify the content to avoid it being converted to blockquotes or other issues.
+:::
+
 There are two way to pass your markdown content to QMarkdown: Vue slot or property.
 
 QMarkdown App Extension also comes with a Webpack loader that allows you to import your markdown directly into your code.
