@@ -4,7 +4,7 @@ export default ({ Vue }) => {
     import(
       /* webpackChunkName: "examples" */
       /* webpackMode: "lazy-once" */
-      `../examples/${examples[index].file}.vue`
+      '../examples/' + examples[index].file + '.vue'
     ).then(comp => {
       Vue.component(examples[index].file, comp.default)
     })

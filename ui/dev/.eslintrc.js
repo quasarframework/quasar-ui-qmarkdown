@@ -27,8 +27,6 @@ module.exports = {
     // 'plugin:vue/strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
-    'plugin:quasar/standard',
-
     'standard'
 
   ],
@@ -37,7 +35,7 @@ module.exports = {
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-file
     // required to lint *.vue files
     'vue',
-    'quasar'
+
   ],
 
   globals: {
@@ -67,14 +65,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'prefer-promise-reject-errors': 'off',
 
-    'import/no-webpack-loader-syntax': 'off',
 
-    'quasar/check-valid-props': 1,
-    'quasar/no-invalid-qfield-usage': 1,
-
-    'no-void': 'off',
-    // allow console.log during development only
-    // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
