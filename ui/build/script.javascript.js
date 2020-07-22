@@ -8,8 +8,9 @@ const json = require('@rollup/plugin-json')
 const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const multiEntry = require('@rollup/plugin-multi-entry')
-const nodePolyfills = require('rollup-plugin-node-polyfills')
+// const inject = require('@rollup/plugin-inject')
 const { babel } = require('@rollup/plugin-babel')
+// const legacy = require('@rollup/plugin-legacy')
 
 const buildConf = require('./config')
 const buildUtils = require('./utils')
@@ -38,8 +39,8 @@ const babelConfig = {
 }
 
 const rollupPlugins = [
+  // inject(injectConfig),
   // multiEntry(),
-  nodePolyfills(),
   nodeResolve(nodeResolveConfig),
   json(),
   babel(babelConfig),
@@ -70,7 +71,8 @@ const builds = [
       },
       output: {
         file: resolve('../dist/index.common.js'),
-        format: 'cjs'
+        format: 'cjs',
+        exports: 'auto'
       }
     },
     build: {

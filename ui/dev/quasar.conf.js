@@ -1,5 +1,11 @@
+/*
+ * This file runs in a Node context (it's NOT transpiled by Babel), so use only
+ * the ES6 features that are supported by your Node version. https://node.green/
+ */
+
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
+/* eslint-env node */
 
 const path = require('path')
 
@@ -13,17 +19,20 @@ module.exports = function (ctx) {
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
+    // https://quasar.dev/quasar-cli/boot-files
     boot: [
       'register.js'
     ],
 
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
       'app.sass'
     ],
 
+    // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v4',
+      // 'mdi-v5',
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
@@ -34,6 +43,7 @@ module.exports = function (ctx) {
       'material-icons' // optional, you are not bound to it
     ],
 
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'history',
       // transpile: false,
@@ -43,7 +53,7 @@ module.exports = function (ctx) {
       // Applies only if "transpile" is set to true.
       // transpileDependencies: [],
 
-      // vueCompiler: true,
+      // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       // showProgress: false,
       // gzip: true,
@@ -52,19 +62,31 @@ module.exports = function (ctx) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
+      // https://quasar.dev/quasar-cli/handling-webpack
+      extendWebpack (cfg) {
+        cfg.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
+        })
+      },
+
       chainWebpack (chain) {
         chain.resolve.alias.merge({
-          'ui': path.resolve(__dirname, '../src/index.js')
+          ui: path.resolve(__dirname, '../src/index.js')
         })
       }
     },
 
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      // port: 8080,
+      port: 8080,
       open: true // opens browser window automatically
     },
 
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
@@ -75,7 +97,7 @@ module.exports = function (ctx) {
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
       // * 'all'  - Manually specify what to import
-      importStrategy: '',
+      importStrategy: 'auto',
 
       // Quasar plugins
       plugins: []
@@ -84,6 +106,7 @@ module.exports = function (ctx) {
     supportIE: false,
 
     // animations: 'all', // --- includes all animations
+    // https://quasar.dev/options/animations
     animations: []
   }
 }
