@@ -3,29 +3,31 @@
   "version": "0.0.1",
   "description": "QCalendar docs, examples and demo site",
   "productName": "QMarkdown demo app",
-  "cordovaId": "org.cordova.quasar.app",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "private": true,
   "scripts": {
-    "build-demo": "quasar build && cp ./src/404.html ./dist/spa && rm -rf ../docs && cp -r ./dist/spa/. ../docs",
+    "build-demo": "quasar build && rm -rf ../docs && cp -r ./dist/spa/. ../docs",
     "lint": "eslint --ext .js,.vue src",
     "lint-fix": "eslint --ext .js,.vue src --fix",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.8.2",
-    "quasar": "^1.12.8"
+    "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
+    "@quasar/extras": "^1.0.0",
+    "core-js": "^3.6.5",
+    "quasar": "^1.0.0"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.1",
+    "@quasar/app": "^2.0.6",
     "@quasar/quasar-app-extension-qribbon": "^1.0.0-beta.15",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
     "devtron": "^1.4.0",
-    "electron": "^9.0.5",
-    "electron-debug": "^3.1.0",
-    "electron-devtools-installer": "^3.1.0",
-    "eslint": "^7.4.0",
+    "electron": "^9.0.0",
+    "electron-debug": "^3.0.1",
+    "electron-devtools-installer": "^3.0.0",
+    "eslint": "^7.5.0",
+    "eslint-config-standard": "^14.1.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
@@ -33,20 +35,16 @@
     "eslint-plugin-quasar": "^1.0.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
-    "quasar-app-extension-example-viewer": "^0.0.25",
-    "quasar-app-extension-json-api-viewer": "^1.0.15",
+    "quasar-app-extension-example-viewer": "^1.0.0",
+    "quasar-app-extension-json-api-viewer": "^1.0.16",
     "raw-loader": "^4.0.1"
   },
   "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
   },
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
-  ],
-  "resolutions": {
-    "ajv": "6.10.2",
-    "@babel/parser": "7.7.5"
-  }
+  ]
 }
