@@ -57,6 +57,14 @@ This is what is used in the example below. Play with the controls to see how the
       <example-viewer title="Titles" file="Titles" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Typography" file="Typography" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
+      <example-viewer title="Extend (add plugins)" file="extend" :location-url="locationUrl" no-edit>
+        <q-markdown>
+QMarkdown can be extended with **markdown-it plugins** by using the `extend` property.
+
+Unfortunately, the `markdown-it-mermaid` plugin used in this example does not have a UMD version and therefore cannot be displayed with CodePen.
+        </q-markdown>
+      </example-viewer>
+
     </div>
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
       <q-btn
@@ -119,6 +127,7 @@ export default {
     this.addToToc('Task Lists', 2)
     this.addToToc('Titles', 2)
     this.addToToc('Typography', 2)
+    this.addToToc('Extend (add plugins)', 2)
 
     this.toc = this.tempToc
   },
