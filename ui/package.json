@@ -65,7 +65,7 @@
     "@rollup/plugin-inject": "^4.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-legacy": "^2.0.0",
-    "@rollup/plugin-multi-entry": "^3.0.1",
+    "@rollup/plugin-multi-entry": "^4.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
