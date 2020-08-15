@@ -82,7 +82,7 @@
     "quasar": "^1.12.13",
     "quasar-json-api": "^0.0.21",
     "rimraf": "^3.0.2",
-    "rollup": "^2.25.0",
+    "rollup": "^2.26.0",
     "uglify-es": "^3.3.9",
     "zlib": "^1.0.5"
   },
