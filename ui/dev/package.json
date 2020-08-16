@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@quasar/extras": "^1.9.3",
+    "@quasar/extras": "^1.9.4",
     "core-js": "^3.6.5",
     "quasar": "^1.12.13"
   },
@@ -21,7 +21,7 @@
     "@quasar/app": "^2.0.6",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.0",
