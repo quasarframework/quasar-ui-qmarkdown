@@ -1,10 +1,19 @@
-<img src="https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown">
-<img src="https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown">
+QMarkdown (Vue Plugin, UMD and Quasar App Extension)
+===
+
+![@quasar/quasar-ui-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown)
+![@quasar/quasar-app-extension-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/quasarframework/quasar-ui-qmarkdown.svg)]()
+[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/quasar-ui-qmarkdown.svg)]()
+
+## Everything you need for a complete Markdown solution.
+
+QMarkdown is a [Quasar](https://quasar.dev) component. It is a powerful markdown processor that plugs right into your Quasar application.
 
 # Structure
-* [/ui](ui) - standalone npm package
+* [/ui](ui) - standalone npm package (go here for more information)
 * [/app-extension](app-extension) - Quasar app extension
-* [/demo](demo) - docs, demo and examples project
+* [/demo](demo) - sources for docs, demo and examples project
 * [live demo](https://quasarframework.github.io/quasar-ui-qmarkdown/docs) - live docs, demo and examples
 
 # Donate
