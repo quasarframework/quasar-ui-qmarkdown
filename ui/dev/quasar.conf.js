@@ -9,7 +9,7 @@
 
 const path = require('path')
 
-module.exports = function (ctx) {
+module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -46,6 +46,7 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'history',
+
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -74,7 +75,8 @@ module.exports = function (ctx) {
 
       chainWebpack (chain) {
         chain.resolve.alias.merge({
-          ui: path.resolve(__dirname, '../src/index.js')
+          ui: path.resolve(__dirname, '../src/index.js'),
+          '@quasar/quasar-ui-qmarkdown': path.resolve(__dirname, '../src')
         })
       }
     },
@@ -102,8 +104,6 @@ module.exports = function (ctx) {
       // Quasar plugins
       plugins: []
     },
-
-    supportIE: false,
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations

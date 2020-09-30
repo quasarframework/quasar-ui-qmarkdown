@@ -17,5 +17,17 @@ yarn-error.log*
 *.njsproj
 *.sln
 .editorconfig
+
+# Linters
 .eslintignore
 .eslintrc.js
+.babelrc
+
+# Other
+/src/components/QMarkdown.json
+jsconfig.json
+
+# Testing
+/test
+.env.jest
+jest.config.js

@@ -11,7 +11,7 @@
           aria-label="Menu"
         />
 
-        <q-toolbar-title v-if="$q.screen.width > 500">
+        <q-toolbar-title>
           QMarkdown <span class="text-subtitle2">v{{ version }}</span>
         </q-toolbar-title>
 
@@ -24,10 +24,11 @@
           flat
           dense
           round
-          icon="menu"
           @click="rightDrawerOpen = !rightDrawerOpen"
           aria-label="Table of Contents"
-        />
+        >
+          <q-icon name="menu" />
+        </q-btn>
 
       </q-toolbar>
     </q-header>
@@ -44,13 +45,13 @@
         <q-separator />
       </q-list>
       <essential-links />
-      <q-separator />
     </q-drawer>
 
     <q-drawer
+      ref="drawer"
       v-model="rightDrawerOpen"
-      side="right"
       show-if-above
+      side="right"
       bordered
       aria-label="Table of Contents"
       class="toc"
@@ -76,7 +77,9 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <transition name="fade">
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -88,15 +91,15 @@ const { setScrollPosition } = scroll
 import { version } from 'ui'
 
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
   components: {
     'essential-links': () => import('../components/EssentialLinks')
   },
   data () {
     return {
       version: version,
-      leftDrawerOpen: false,
-      rightDrawerOpen: false,
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      rightDrawerOpen: this.$q.platform.is.desktop,
       activeToc: 0
     }
   },
@@ -148,7 +151,7 @@ export default {
           continue
         }
 
-        if (item.offsetTop >= position + 100) {
+        if (item.offsetTop >= position + 50) {
           if (last === void 0) {
             last = section.id
           }
