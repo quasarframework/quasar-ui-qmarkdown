@@ -12,7 +12,8 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
 
     if (token.markup === '=') {
       classes += ' q-markdown--title-heavy'
-    } else if (token.markup === '-') {
+    }
+    else if (token.markup === '-') {
       classes += ' q-markdown--title-light'
     }
 

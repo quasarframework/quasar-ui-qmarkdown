@@ -186,9 +186,11 @@ export default {
         if (item.level === this.tocStart) {
           root = item
           tree.push(item)
-        } else if (item.level === this.tocStart + 1) {
+        }
+        else if (item.level === this.tocStart + 1) {
           root.children.push(item)
-        } else {
+        }
+        else {
           let parent = root
           for (let k = 0; k < item.level - (this.tocStart + 1); ++k) {
             parent = parent.children[parent.children.length - 1]

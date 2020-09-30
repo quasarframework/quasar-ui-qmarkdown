@@ -5,11 +5,11 @@ const rollup = require('rollup')
 const uglify = require('uglify-es')
 const buble = require('@rollup/plugin-buble')
 const json = require('@rollup/plugin-json')
-const commonjs = require('@rollup/plugin-commonjs')
+const cjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
-const multiEntry = require('@rollup/plugin-multi-entry')
+// const multiEntry = require('@rollup/plugin-multi-entry')
 // const inject = require('@rollup/plugin-inject')
-const { babel } = require('@rollup/plugin-babel')
+// const { babel } = require('@rollup/plugin-babel')
 // const legacy = require('@rollup/plugin-legacy')
 
 const buildConf = require('./config')
@@ -27,7 +27,7 @@ const nodeResolveConfig = {
   // browser: true
 }
 
-const commonjsConfig = {
+const cjsConfig = {
   include: [
     /node_modules/
   ]
@@ -43,8 +43,8 @@ const rollupPlugins = [
   // multiEntry(),
   nodeResolve(nodeResolveConfig),
   json(),
-  babel(babelConfig),
-  commonjs(commonjsConfig)
+  // babel(babelConfig),
+  cjs(cjsConfig)
   // buble(bubleConfig),
 ]
 
@@ -157,7 +157,7 @@ function build (builds) {
 function genConfig (opts) {
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: ['vue', 'quasar']
+    external: [ 'vue', 'quasar' ]
   })
 
   Object.assign(opts.rollup.output, {
