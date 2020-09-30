@@ -11,7 +11,8 @@ function createContainer (className, defaultTitle) {
         const info = token.info.trim().slice(className.length).trim()
         if (token.nesting === 1) {
           return `<div class="q-markdown--note q-markdown--note--${className}"><p class="q-markdown--note-title">${info || defaultTitle}</p>\n`
-        } else {
+        }
+        else {
           return '</div>\n'
         }
       }

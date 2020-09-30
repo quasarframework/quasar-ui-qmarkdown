@@ -1,7 +1,8 @@
 export default function prismHighlight (Prism, str, lang) {
   if (lang === '') {
     lang = 'js' // default language
-  } else if (lang === 'vue') {
+  }
+  else if (lang === 'vue') {
     lang = 'html'
   }
 

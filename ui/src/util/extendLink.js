@@ -17,10 +17,12 @@ export default function extendLink (md) {
       if (tokens[idx + 1] && tokens[idx + 1].type === 'text' && tokens[idx + 1].content) {
         token.attrSet('id', slugify(tokens[idx + 1].content))
       }
-    } else if (token.attrs[hrefIndex][1][0] === '/' ||
+    }
+    else if (token.attrs[hrefIndex][1][0] === '/' ||
       token.attrs[hrefIndex][1].startsWith('..')) {
       token.attrSet('class', 'q-markdown--link q-markdown--link-local')
-    } else {
+    }
+    else {
       token.attrSet('class', 'q-markdown--link q-markdown--link-external')
       token.attrSet('target', '_blank')
     }
