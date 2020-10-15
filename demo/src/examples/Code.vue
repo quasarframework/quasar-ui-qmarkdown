@@ -2,9 +2,11 @@
   <div class="q-pa-md q-gutter-sm">
     <q-toggle v-model="model" label="Disable highlighting"></q-toggle>
     <q-toggle v-model="model2" label="Disable line numbers"></q-toggle>
+    <q-toggle v-model="model3" label="Toggle line numbers"></q-toggle>
     <q-markdown
       :no-highlight="model"
       :no-line-numbers="model2"
+      :line-number-alt="model3 ? '$' : undefined"
     >
     Indented code
 
@@ -39,7 +41,8 @@ export default {
   data () {
     return {
       model: false,
-      model2: false
+      model2: false,
+      model3: false
     }
   }
 }
