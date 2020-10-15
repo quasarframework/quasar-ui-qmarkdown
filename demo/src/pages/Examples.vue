@@ -19,6 +19,14 @@ Hover over the word **HTML** below to see the abbreviation.
       <example-viewer title="Code" file="Code" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Containers" file="Containers" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Definition Lists" file="DefinitionLists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+
+      <q-markdown>
+::: info
+Emojis are rendered as appropriate unicode chars and are universal. This means what you see is based on what is installed on the client system, but the unicode char is the same intent for all systems.
+
+For instance, different versions of Linux can have different sets of emojies as can browsers. So, what you see on one system may not match exactly what you see on another system. But, a :heart: is still a **heart** and :joy: is still **joy**.
+:::
+      </q-markdown>
       <example-viewer title="Emojies" file="Emojies" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Emphasis" file="Emphasis" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Footnotes" file="Footnotes" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
@@ -161,6 +169,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

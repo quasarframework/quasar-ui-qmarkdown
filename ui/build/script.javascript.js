@@ -99,7 +99,7 @@ const builds = [
   }
 ]
 
-// Add your asset folders here
+// Add your asset folders here, if needed
 // addAssets(builds, 'icon-set', 'iconSet')
 // addAssets(builds, 'lang', 'lang')
 

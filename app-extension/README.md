@@ -1,5 +1,9 @@
 # Quasar App Extension QMarkdown
 
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+[![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+
+
 The QMarkdown app extension can do the following:
 1. Automatically inject the `@quasar/quasar-ui-qmarkdown` component using the Quasar CLI.
 2. Modify webpack to allow importing of markdown (\*.md) files.
@@ -63,7 +67,7 @@ quasar ext remove @quasar/qmarkdown
 # Describe
 You can use `quasar describe QMarkdown` for the QMarkdown component
 
-# Demo Project
+# Demo Project (source)
 Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/master/demo).
 
 
