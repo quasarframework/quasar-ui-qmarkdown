@@ -6,14 +6,13 @@
           flat
           dense
           round
+          icon="menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
           aria-label="Menu"
-        >
-          <q-icon name="menu" />
-        </q-btn>
+        />
 
         <q-toolbar-title v-if="$q.screen.width > 500">
-          QMarkdown <span class="text-subtitle2">v{{ version }}</span>
+          QMarkdown <span class="text-subtitle2">v{{ version }}</span> (markdown-it! <span class="text-subtitle2">v{{ mdVersion }}</span>)
         </q-toolbar-title>
 
         <q-space />
@@ -48,6 +47,7 @@
 <script>
 import { openURL } from 'quasar'
 import { version } from 'ui'
+import { version as mdVersion } from 'markdown-it/package.json'
 
 export default {
   name: 'MarkdownLayout',
@@ -56,7 +56,8 @@ export default {
   },
   data () {
     return {
-      version: version,
+      version,
+      mdVersion,
       leftDrawerOpen: false
     }
   },
@@ -65,6 +66,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
