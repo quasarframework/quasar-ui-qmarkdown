@@ -76,26 +76,6 @@
 Add Markdown to the window on the left and the output will appear on the right. You can even add HTML, but you cannot add Vue components as they would not be compiled in the browser.
     </q-markdown>
     <div class="q-pa-md q-gutter-sm fit">
-      <q-markdown
-        :noHtml="noHtml"
-        :noLink="noLink"
-        :noLinkify="noLinkify"
-        :noTypographer="noTypographer"
-        :noBreaks="noBreaks"
-        :noHighlight="noHighlight"
-        :noEmoji="noEmoji"
-        :noSubscript="noSubscript"
-        :noSuperscript="noSuperscript"
-        :noFootnote="noFootnote"
-        :noDeflist="noDeflist"
-        :noAbbreviation="noAbbreviation"
-        :noInsert="noInsert"
-        :noMark="noMark"
-        :noImage="noImage"
-        :noTasklist="noTasklist"
-        :noContainer="noContainer"
-      >
-      </q-markdown>
       <q-splitter
         v-model="splitterModel"
         style="height: 500px;"
@@ -119,6 +99,23 @@ Add Markdown to the window on the left and the output will appear on the right. 
           <div class="q-pa-md" style="height: 467px;">
             <q-markdown
               :src="markdown"
+              :no-html="noHtml"
+              :no-link="noLink"
+              :no-linkify="noLinkify"
+              :no-typographer="noTypographer"
+              :no-breaks="noBreaks"
+              :no-highlight="noHighlight"
+              :no-emoji="noEmoji"
+              :no-subscript="noSubscript"
+              :no-superscript="noSuperscript"
+              :no-footnote="noFootnote"
+              :no-deflist="noDeflist"
+              :no-abbreviation="noAbbreviation"
+              :no-insert="noInsert"
+              :no-mark="noMark"
+              :no-image="noImage"
+              :no-tasklist="noTasklist"
+              :no-container="noContainer"
               class="fit bordered q-pa-sm"
             >
             </q-markdown>
