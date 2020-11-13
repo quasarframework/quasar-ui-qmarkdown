@@ -205,6 +205,7 @@
       "params": {
         "tocData": {
           "type": "Array",
+          "tsType": "TocDefinitionArray",
           "desc": "Array of one or more TOC data objects",
           "definition": {
             "id": {
@@ -224,6 +225,7 @@
             },
             "children": {
               "type": "Array",
+              "tsType": "TocDefinitionArray",
               "desc": "This is normally empty, unless you pass this toc array to the `makeTree` method",
               "__exemption": [ "examples" ]
             }
@@ -240,16 +242,18 @@
   "methods": {
     "makeTree": {
       "type": "Function",
-      "desc": "Pass into this function the results from the `@data` event to have the data array transformed into a hierarchical tree",
+      "desc": "Pass into this function the results from the `@toc` event to have the data array transformed into a hierarchical tree",
       "params": {
         "data": {
           "type": "Array",
-          "desc": "The results from the `@data` event",
+          "tsType": "TocDefinitionArray",
+          "desc": "The results from the `@toc` event",
           "__exemption": [ "examples" ]
         }
       },
       "returns": {
         "type": "Array",
+        "tsType": "TocDefinitionArray",
         "desc": "A modified version of the passed in data in a hierachical format",
         "definition": {
           "id": {
@@ -276,6 +280,7 @@
           },
           "children": {
             "type": "Array",
+            "tsType": "TocDefinitionArray",
             "desc": "If this object is level 1, then any level 2 objects will be in the `children` key and so on",
             "__exemption": [ "examples" ]
           }

@@ -105,7 +105,7 @@ const builds = [
 
 build(builds)
   .then(() => {
-    require('./build.api')
+    // require('./build.api.js')
   })
 
 /**
@@ -157,7 +157,7 @@ function build (builds) {
 function genConfig (opts) {
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: [ 'vue', 'quasar' ]
+    external: ['vue', 'quasar']
   })
 
   Object.assign(opts.rollup.output, {
@@ -223,7 +223,7 @@ function injectVueRequirement (code) {
     return code
   }
 
-  const checkMe = ` if (Vue === void 0) {
+  const checkMe = ` if (Vue === undefined) {
     console.error('[ Quasar ] Vue is required to run. Please add a script tag for it before loading Quasar.')
     return
   }
