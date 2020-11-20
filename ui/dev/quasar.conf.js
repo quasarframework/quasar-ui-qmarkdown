@@ -8,6 +8,7 @@
 /* eslint-env node */
 
 const path = require('path')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = function (/* ctx */) {
   return {
@@ -64,15 +65,14 @@ module.exports = function (/* ctx */) {
       // extractCSS: false,
 
       // https://quasar.dev/quasar-cli/handling-webpack
-      extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
+      extendWebpack (cfg, { isServer, isClient }) {
+        cfg.plugins.push(new ESLintPlugin({
+          files: './src',
+          extensions: ['js', 'vue']
+        }))
       },
 
+      // https://quasar.dev/quasar-cli/handling-webpack
       chainWebpack (chain) {
         chain.resolve.alias.merge({
           ui: path.resolve(__dirname, '../src/index.js'),

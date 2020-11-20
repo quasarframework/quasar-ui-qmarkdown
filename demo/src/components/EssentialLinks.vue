@@ -1,5 +1,5 @@
 <template>
-  <q-list>
+  <q-list class="menu">
     <q-item clickable to="/docs">
       <q-item-section avatar>
         <q-icon name="fab fa-markdown" />
@@ -18,6 +18,7 @@
         <q-item-label caption>Interactively play with properties</q-item-label>
       </q-item-section>
     </q-item>
+
     <q-item clickable to="/examples">
       <q-item-section avatar>
         <q-icon name="fab fa-markdown" />
@@ -51,7 +52,7 @@
     <q-separator />
     <q-item clickable tag="a" target="_blank" href="http://quasar.dev">
       <q-item-section avatar>
-        <q-icon name="school"></q-icon>
+        <q-icon name="school" />
       </q-item-section>
       <q-item-section>
         <q-item-label>Docs</q-item-label>
@@ -60,7 +61,7 @@
     </q-item>
     <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
       <q-item-section avatar>
-        <q-icon name="code"></q-icon>
+        <q-icon name="code" />
       </q-item-section>
       <q-item-section>
         <q-item-label>Github</q-item-label>
@@ -69,7 +70,7 @@
     </q-item>
     <q-item clickable tag="a" target="_blank" href="http://chat.quasar.dev">
       <q-item-section avatar>
-        <q-icon name="chat"></q-icon>
+        <q-icon name="chat" />
       </q-item-section>
       <q-item-section>
         <q-item-label>Discord Chat Channel</q-item-label>
@@ -78,7 +79,7 @@
     </q-item>
     <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
       <q-item-section avatar>
-        <q-icon name="record_voice_over"></q-icon>
+        <q-icon name="record_voice_over" />
       </q-item-section>
       <q-item-section>
         <q-item-label>Forum</q-item-label>
@@ -87,7 +88,7 @@
     </q-item>
     <q-item clickable tag="a" target="_blank" href="https://twitter.com/quasarframework">
       <q-item-section avatar>
-        <q-icon name="rss_feed"></q-icon>
+        <q-icon name="rss_feed" />
       </q-item-section>
       <q-item-section>
         <q-item-label>Twitter</q-item-label>
@@ -99,12 +100,9 @@
 
 <script>
 export default {
-  name: 'EssentailLinks',
+  name: 'EssentialLinks',
   data () {
     return {}
   }
 }
 </script>
-
-<style>
-</style>

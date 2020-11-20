@@ -34,7 +34,6 @@ export default {
 
   components: {
     Hero
-    // markdownVue
   },
 
   data () {
