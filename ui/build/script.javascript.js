@@ -52,10 +52,10 @@ const builds = [
   {
     rollup: {
       input: {
-        input: resolve('entry/index.esm.js')
+        input: pathResolve('entry/index.esm.js')
       },
       output: {
-        file: resolve('../dist/index.esm.js'),
+        file: pathResolve('../dist/index.esm.js'),
         format: 'es'
       }
     },
@@ -67,10 +67,10 @@ const builds = [
   {
     rollup: {
       input: {
-        input: resolve('entry/index.common.js')
+        input: pathResolve('entry/index.common.js')
       },
       output: {
-        file: resolve('../dist/index.common.js'),
+        file: pathResolve('../dist/index.common.js'),
         format: 'cjs',
         exports: 'auto'
       }
@@ -83,11 +83,11 @@ const builds = [
   {
     rollup: {
       input: {
-        input: resolve('entry/index.umd.js')
+        input: pathResolve('entry/index.umd.js')
       },
       output: {
         name: 'QMarkdown',
-        file: resolve('../dist/index.umd.js'),
+        file: pathResolve('../dist/index.umd.js'),
         format: 'umd'
       }
     },
@@ -112,16 +112,16 @@ build(builds)
  * Helpers
  */
 
-function resolve (_path) {
+function pathResolve (_path) {
   return path.resolve(__dirname, _path)
 }
 
 // eslint-disable-next-line no-unused-vars
 function addAssets (builds, type, injectName) {
   const
-    files = fs.readdirSync(resolve('../../ui/src/components/' + type)),
+    files = fs.readdirSync(pathResolve('../../ui/src/components/' + type)),
     plugins = [buble(bubleConfig)],
-    outputDir = resolve(`../dist/${type}`)
+    outputDir = pathResolve(`../dist/${type}`)
 
   fse.mkdirp(outputDir)
 
@@ -132,11 +132,11 @@ function addAssets (builds, type, injectName) {
       builds.push({
         rollup: {
           input: {
-            input: resolve(`../src/components/${type}/${file}`),
+            input: pathResolve(`../src/components/${type}/${file}`),
             plugins
           },
           output: {
-            file: addExtension(resolve(`../dist/${type}/${file}`), 'umd'),
+            file: addExtension(pathResolve(`../dist/${type}/${file}`), 'umd'),
             format: 'umd',
             name: `QMarkdown.${injectName}.${name}`
           }
@@ -223,7 +223,7 @@ function injectVueRequirement (code) {
     return code
   }
 
-  const checkMe = ` if (Vue === undefined) {
+  const checkMe = ` if (Vue === void 0) {
     console.error('[ Quasar ] Vue is required to run. Please add a script tag for it before loading Quasar.')
     return
   }

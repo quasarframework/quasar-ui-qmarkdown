@@ -99,7 +99,10 @@ export default {
     extend: Function,
     extendPrism: Function,
     contentStyle: [String, Object, Array],
-    contentClass: [String, Object, Array]
+    contentClass: [String, Object, Array],
+
+    noNoopener: Boolean,
+    noNoreferrer: Boolean
   },
 
   data () {
@@ -272,7 +275,7 @@ export default {
       extendBlockQuote(md)
       extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd)
       extendImage(md)
-      extendLink(md)
+      extendLink(md, { noopener: !this.noNoopener, noreferrer: !this.noNoreferrer })
       extendTable(md)
       extendToken(md)
 

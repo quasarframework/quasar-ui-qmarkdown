@@ -7,18 +7,21 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module' // Allows for the use of imports
+    sourceType: 'module', // Allows for the use of imports
+    ecmaFeatures: {
+      jsx: true
+    }
   },
 
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
 
   // Rules order is important, please avoid shuffling them
   extends: [
     // Base ESLint recommended rules
     // 'eslint:recommended',
-
 
     // Uncomment any of the lines below to choose desired strictness,
     // but leave only one uncommented!
@@ -32,6 +35,7 @@ module.exports = {
     'standard'
   ],
 
+  // required to lint *.vue files
   plugins: [
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-file
     // required to lint *.vue files
@@ -68,7 +72,7 @@ module.exports = {
 
     'import/no-webpack-loader-syntax': 'off',
 
-    'brace-style': [2, 'stroustrup', { allowSingleLine: true }],
+    'brace-style': [2, 'stroustrup', { allowSingleLine: false }],
 
     'quasar/no-invalid-props': 'error',
     'quasar/no-invalid-qfield-usage': 'error',
