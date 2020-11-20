@@ -2,7 +2,6 @@ import slugify from './slugify'
 
 export default function extendLink (md, { noopener, noreferrer }) {
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-    debugger
     const token = tokens[idx]
 
     const hrefIndex = token.attrIndex('href')
