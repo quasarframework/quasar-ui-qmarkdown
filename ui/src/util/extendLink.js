@@ -1,7 +1,8 @@
 import slugify from './slugify'
 
-export default function extendLink (md) {
+export default function extendLink (md, { noopener, noreferrer }) {
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+    debugger
     const token = tokens[idx]
 
     const hrefIndex = token.attrIndex('href')
@@ -25,6 +26,12 @@ export default function extendLink (md) {
     else {
       token.attrSet('class', 'q-markdown--link q-markdown--link-external')
       token.attrSet('target', '_blank')
+      if (noopener === true || noreferrer === true) {
+        const rel = []
+        noopener === true && rel.push('noopener')
+        noreferrer === true && rel.push('noreferrer')
+        token.attrSet('rel', rel.join(' '))
+      }
     }
 
     return self.renderToken(tokens, idx, options)

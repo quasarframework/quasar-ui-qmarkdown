@@ -197,6 +197,18 @@
         "background-color: #ff0000",
         ":content-style=\"{ backgroundColor: '#ff0000' }\""
       ]
+    },
+    "no-noopener": {
+      "addedIn": "v1.2.0",
+      "type": "Boolean",
+      "category": "Behavior",
+      "desc": "All external links will have the `rel=\"noopener\" applied if this is not set"
+    },
+    "no-noreferrer": {
+      "addedIn": "v1.2.0",
+      "type": "Boolean",
+      "category": "Behavior",
+      "desc": "All external links will have the `rel=\"noreferrer\" applied if this is not set"
     }
   },
   "events": {
