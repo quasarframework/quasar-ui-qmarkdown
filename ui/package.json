@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-ui-qmarkdown",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "description": "Display inline markdown in your Quasar App",
   "license": "MIT",
