@@ -71,7 +71,7 @@ module.exports = {
 
     'import/no-webpack-loader-syntax': 'off',
 
-    'brace-style': [2, 'stroustrup', { allowSingleLine: true }],
+    'brace-style': [2, 'stroustrup', { allowSingleLine: false }],
 
     'quasar/no-invalid-props': 'error',
     'quasar/no-invalid-qfield-usage': 'error',
