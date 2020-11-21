@@ -104,9 +104,6 @@ const builds = [
 // addAssets(builds, 'lang', 'lang')
 
 build(builds)
-  .then(() => {
-    // require('./build.api.js')
-  })
 
 /**
  * Helpers
