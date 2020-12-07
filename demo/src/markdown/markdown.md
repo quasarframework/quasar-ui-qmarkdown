@@ -707,3 +707,33 @@ methods: {
   }
 }
 ```
+
+However, we have seen issues with this. If all you want to do is add more languages, you can do it easily. `Prism` sets itself up as a global window object. All official language load themselves into `Prism`.
+
+Let's say you want to load the `java` language for `Prism`:
+```js
+import 'prismjs/components/prism-java'
+```
+Yep, that's all there is to it. Simple.
+
+# Copy to Clipboard
+
+As of v1.3.0, QMarkdown has the ability to allow your viewers to **Copy to Clipboard**. It all begins with using the `show-copy` property; this turns it all on. When text is copied to the clipboard, a Quasar dialog will be displayed telling end-user it was copied to clipboard. 
+
+::: warning
+For the notification to work, add the `dialog` plugin to your quasar.conf.js
+:::
+
+::: tip
+If you are showing code blocks, you should turn off line numbers with the `no-line-numbers` property. Leaving line numbers in does not work as you would expect as you'll get a column of numbers and then your content.
+:::
+
+Other properties you can use to modify things:
+
+| Property | Description |
+| -------- | ----------- |
+| show-copy | Add behavior that allows end-users to copy content to the clipboard |
+| copy-icon | Name of icon from icon font or svg icon to use as the copy icon |
+| no-copy-tooltip | Turn off the tooltip associated with the copy icon. |
+| copy-tooltip-text | Replacement text for the tooltip. Default: **Copy to Clipboard** |
+| copy-response-text | Replacement text for the response. Default: **Copied to Clipboard** |
