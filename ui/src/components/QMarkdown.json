@@ -201,14 +201,58 @@
     "no-noopener": {
       "addedIn": "v1.2.0",
       "type": "Boolean",
-      "category": "Behavior",
+      "category": "behavior",
       "desc": "All external links will have the `rel=\"noopener\" applied if this is not set"
     },
     "no-noreferrer": {
       "addedIn": "v1.2.0",
       "type": "Boolean",
-      "category": "Behavior",
+      "category": "behavior",
       "desc": "All external links will have the `rel=\"noreferrer\" applied if this is not set"
+    },
+    "show-copy": {
+      "addedIn": "v1.3.0",
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": "Use this property to turn on \"Copy to Clipboard\" functionality"
+    },
+    "copy-icon": {
+      "addedIn": "v1.3.0",
+      "type": "String",
+      "category": "behavior",
+      "desc": "Change the default icon used for Copy to Clipboard",
+      "examples": [
+        "copy-icon=\"copy\"",
+        ":copy-icon=\"matCopy\""
+      ]
+    },
+    "no-copy-tooltip": {
+      "addedIn": "v1.3.0",
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": "Turns off the tooltip associated with the **Copy to Clipboard** icon"
+    },
+    "copy-tooltip-text": {
+      "addedIn": "v1.3.0",
+      "type": "String",
+      "category": "behavior",
+      "desc": "Change the tooltip text associated with the **Copy to Clipboard** icon",
+      "default": "Copy to clipboard",
+      "examples": [
+        "copy-tooltip-text=\"Click here for content to be copied to the clipboard\"",
+        ":copy-tooltip-text=\"$t('copy-tooltip-text')\""
+      ]
+    },
+    "copy-response-text": {
+      "addedIn": "v1.3.0",
+      "type": "String",
+      "category": "behavior",
+      "desc": "Change the response text associated with the **Copy to Clipboard** icon (note: you **must** have the `dialog` plugin added to your quasar.conf.js)",
+      "default": "Copied to clipboard",
+      "examples": [
+        "copy-response-text=\"The content was copied to the clipboard\"",
+        ":copy-response-text=\"$t('copy-response-text')\""
+      ]
     }
   },
   "events": {

@@ -25,6 +25,15 @@ import extendTable from '../util/extendTable.js'
 import extendToken from '../util/extendToken.js'
 import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 
+import {
+  QBtn,
+  QTooltip,
+  copyToClipboard
+} from 'quasar'
+
+const mdiContentCopy = 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
+const matDone = 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
+
 export default {
   name: 'QMarkdown',
 
@@ -102,7 +111,19 @@ export default {
     contentClass: [String, Object, Array],
 
     noNoopener: Boolean,
-    noNoreferrer: Boolean
+    noNoreferrer: Boolean,
+
+    showCopy: Boolean,
+    copyIcon: String,
+    noCopyTooltip: Boolean,
+    copyTooltipText: { // tooltip
+      type: String,
+      default: 'Copy to clipboard'
+    },
+    copyResponseText: {
+      type: String,
+      default: 'Copied to clipboard'
+    }
   },
 
   data () {
@@ -110,6 +131,11 @@ export default {
       source: '',
       rendered: void 0
     }
+  },
+
+  created () {
+    this.copy = mdiContentCopy
+    this.done = matDone
   },
 
   beforeMount () {
@@ -207,6 +233,45 @@ export default {
       }
 
       return tree
+    },
+
+    __copyMarkdownToClipboard () {
+      // let markdown = this.source
+      // if (this.$slots.default) {
+      //   markdown = this.$slots.default[0].text
+      // }
+
+      copyToClipboard(this.$refs.markdown.innerText)
+
+      if (this.$q.notify) {
+        this.$q.notify({
+          message: this.copyResponseText,
+          color: this.$q.dark.isActive ? 'grey-10' : 'white',
+          textColor: this.$q.dark.isActive ? 'amber' : 'primary',
+          icon: this.done,
+          position: 'top',
+          timeout: 2000
+        })
+      }
+    },
+
+    __renderCopy (h) {
+      if (this.showCopy !== true) return
+      return h(QBtn, {
+        staticClass: 'q-markdown__copy',
+        props: {
+          color: this.$q.dark.isActive ? 'amber' : 'primary',
+          dense: true,
+          flat: true,
+          round: true,
+          icon: (this.copyIcon ? this.copyIcon : this.copy)
+        },
+        on: {
+          click: v => { this.__copyMarkdownToClipboard() }
+        }
+      }, [
+        this.noCopyTooltip !== true && h(QTooltip, this.copyTooltipText)
+      ])
     }
   },
 
@@ -312,7 +377,8 @@ export default {
       }
     }
 
-    return h('div', {
+    const renderedMarkdown = h('div', {
+      ref: 'markdown',
       staticClass: 'q-markdown',
       class: this.contentClass,
       style: this.contentStyle,
@@ -320,5 +386,16 @@ export default {
         innerHTML: this.rendered
       }
     })
+
+    const renderedCopyWrapper = h('div', {
+      style: {
+        position: 'relative'
+      }
+    }, [
+      renderedMarkdown,
+      this.__renderCopy(h)
+    ])
+
+    return this.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
   }
 }

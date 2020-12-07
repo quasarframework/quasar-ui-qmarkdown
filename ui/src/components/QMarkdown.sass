@@ -1,6 +1,8 @@
 @import './prism-theme.sass'
 
 .q-markdown
+  position: relative
+
   code, pre
     font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
 
@@ -303,6 +305,11 @@ blockquote.q-markdown--note
   border-radius: 8px
   border-style: solid
   border-color: $grey-6 $teal-6
+
+.q-markdown__copy
+  position: absolute
+  top: 15px
+  right: 15px
 
 .body--dark
   .q-markdown

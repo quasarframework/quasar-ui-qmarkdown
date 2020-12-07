@@ -9,11 +9,10 @@ Note that below, markdown is being used to display markdown examples, which coul
 :::
       </q-markdown>
 
-      <example-viewer title="Abbreviations" file="Abbreviations" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
-        <q-markdown>
+      <q-markdown>
 Hover over the word **HTML** below to see the abbreviation.
-        </q-markdown>
-      </example-viewer>
+      </q-markdown>
+      <example-viewer title="Abbreviations" file="Abbreviations" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
       <example-viewer title="Blockquotes" file="Blockquotes" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Code" file="Code" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
@@ -34,19 +33,20 @@ For instance, different versions of Linux can have different sets of emojies as 
       <example-viewer title="Horizontal Rules" file="HorizontalRules" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Images" file="Images" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Insert" file="Insert" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
-      <example-viewer title="Links" file="Links" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
-        <q-markdown>
+
+      <q-markdown>
 Links are auto-detected for local or external. External links use `.q-markdown--link-external:after` to show an icon indicator.
 
 You can override in CSS the `content` attribute to change the icon. Otherwise, you need to load Material icons.
-        </q-markdown>
-      </example-viewer>
+      </q-markdown>
+      <example-viewer title="Links" file="Links" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+
       <example-viewer title="Lists" file="Lists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Mark" file="Mark" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Subscript/Superscript" file="SubscriptSuperscript" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Tables" file="Tables" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
-      <example-viewer title="Task Lists" file="TaskLists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths">
-        <q-markdown>
+
+      <q-markdown>
 Task list have some special settings. By default, turning on these other options won't do anything. It is up to you to provide the CSS to support these options.
 
 Here is some example CSS that you can take and modify to your liking:
@@ -60,18 +60,43 @@ Here is some example CSS that you can take and modify to your liking:
 }
 ```
 This is what is used in the example below. Play with the controls to see how the tasklist items are affected.
-        </q-markdown>
-      </example-viewer>
+      </q-markdown>
+
+      <example-viewer title="Task Lists" file="TaskLists" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+
       <example-viewer title="Titles" file="Titles" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
       <example-viewer title="Typography" file="Typography" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
-      <example-viewer title="Extend (add plugins)" file="extend" :location-url="locationUrl" no-edit>
-        <q-markdown>
+      <q-markdown>
 QMarkdown can be extended with **markdown-it plugins** by using the `extend` property.
 
 Unfortunately, the `markdown-it-mermaid` plugin used in this example does not have a UMD version and therefore cannot be displayed with CodePen.
-        </q-markdown>
-      </example-viewer>
+      </q-markdown>
+      <example-viewer title="Extend (add plugins)" file="extend" :location-url="locationUrl" no-edit />
+
+      <example-title title="Extras" />
+      <q-markdown>
+As of v1.3.0, QMarkdown has the ability to allow your viewers to **Copy to Clipboard**. It all begins with using the `show-copy` property; this turns it all on. When text is copied to the clipboard, a Quasar dialog will be displayed telling end-user it was copied to clipboard. 
+
+::: warning
+For the notification to work, add the `dialog` plugin to your quasar.conf.js
+:::
+
+::: tip
+If you are showing code blocks, you should turn off line numbers with the `no-line-numbers` property. Leaving line numbers in does not work as you would expect as you'll get a column of numbers and then your content.
+:::
+
+if you need to change positioning or color of the copy icon, just override this css (sass):
+      </q-markdown>
+      <q-markdown no-line-numbers show-copy>
+```css
+.q-markdown__copy
+  position: absolute
+  top: 15px
+  right: 15px
+```
+      </q-markdown>
+      <example-viewer title="Copy to Clipboard" file="CopyToClipboard" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
     </div>
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
@@ -136,6 +161,9 @@ export default {
     this.addToToc('Titles', 2)
     this.addToToc('Typography', 2)
     this.addToToc('Extend (add plugins)', 2)
+
+    this.addToToc('Extras')
+    this.addToToc('Copy to Clipboard', 2)
 
     this.toc = this.tempToc
   },
