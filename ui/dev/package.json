@@ -20,7 +20,7 @@
     "quasar": "^1.14.7"
   },
   "devDependencies": {
-    "@quasar/app": "^2.1.10",
+    "@quasar/app": "^2.1.11",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.15.0",
