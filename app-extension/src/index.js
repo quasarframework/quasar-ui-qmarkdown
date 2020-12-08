@@ -16,6 +16,10 @@ function extendConf (conf) {
   conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
   conf.build.transpileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
 
+  // make sure these plugins are in the build
+  conf.framework.plugins.push('Dialog')
+
+
   // make sure the stylesheet goes through webpack to avoid SSR issues
   conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')
 }
