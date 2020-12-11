@@ -25,7 +25,7 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
     if (toc) {
       const tokenNumber = parseInt(token.tag[1])
 
-      if (tocStart && tocEnd && tocStart < tocEnd && tokenNumber >= tocStart && tokenNumber <= tocEnd) {
+      if (tocStart && tocEnd && tocStart <= tocEnd && tokenNumber >= tocStart && tokenNumber <= tocEnd) {
         tocData.push({ id: id, label: label, level: tokenNumber, children: [] })
       }
     }
