@@ -60,7 +60,7 @@
     "prismjs": "^1.22.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.12.10",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -86,13 +86,13 @@
     "eslint-plugin-nodeca": "^1.0.3",
     "fs-extra": "^9.0.1",
     "open": "^7.3.0",
-    "postcss": "8.2.0",
+    "postcss": "8.2.1",
     "punycode": "^2.1.1",
     "quasar": "^1.14.7",
     "quasar-json-api": "^1.2.4",
     "rimraf": "^3.0.2",
     "rollup": "^2.34.2",
-    "rtlcss": "^2.6.2",
+    "rtlcss": "^3.0.0",
     "sass": "^1.30.0",
     "uglify-es": "^3.3.9",
     "zlib": "^1.0.5"
