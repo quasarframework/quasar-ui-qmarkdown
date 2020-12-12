@@ -107,9 +107,9 @@ export default {
     // code to handle anchor link on refresh/new page, etc
     if (location.hash !== '') {
       const id = location.hash.substring(1, location.hash.length)
-      setTimeout(() => {
+      window.onload = () => {
         this.scrollTo(id)
-      }, 200)
+      }
     }
   },
   computed: {
@@ -123,22 +123,24 @@ export default {
       const el = document.getElementById(id)
 
       if (el) {
-        setTimeout(() => {
-          this.scrollPage(el)
-        }, 200)
+        this.scrollPage(el)
       }
     },
+
     scrollPage (el) {
-      // const target = getScrollTarget(el)
-      const offset = el.offsetTop - 50
-      // setScrollPosition(target, offset, 500)
+      const rect = el.getBoundingClientRect(),
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+        offset = rect.top + scrollTop - 50
+
       setScrollPosition(window, offset, 500)
     },
+
     onScroll ({ position }) {
       if (this.scrollingPage !== true) {
         this.updateActiveToc(position)
       }
     },
+
     updateActiveToc (position) {
       const toc = this.toc
       let last
