@@ -35,15 +35,6 @@
     width: max-content
 
   &--heading
-    color: $primary
-    cursor: pointer
-
-    &:after
-      content: ' #'
-      opacity: 0
-
-    &:hover:after
-      opacity: 1
 
     &-h1
       font-size: 2rem
@@ -78,6 +69,21 @@
     &-h6
       font-size: 0.8rem
       margin: 1rem 0
+
+    .q-markdown--link
+      border-bottom: inherit
+      color: inherit
+
+    &--anchor-link
+      cursor: pointer
+
+      &:after
+        content: ' #'
+        opacity: 0
+        transition: opacity .2s
+
+      &:hover:after
+        opacity: 1
 
   &--title-heavy
     border-bottom: 3px solid #ccc

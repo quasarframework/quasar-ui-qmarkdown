@@ -186,6 +186,9 @@ export default {
       if (level > 1) {
         n = 'example-' + n
       }
+      else {
+        n = 'title-' + n
+      }
       const slug = slugify(n)
       this.tempToc.push({
         children: [],
