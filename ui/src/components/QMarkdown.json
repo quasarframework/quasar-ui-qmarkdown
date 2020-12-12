@@ -79,6 +79,12 @@
       "category": "content",
       "desc": "Disable auto-convert URL-like text to links"
     },
+    "no-heading-anchor-links": {
+      "addedIn": "v1.4.0",
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Your headings will automatically be turned into anchor links, unless you use this property (default is H1-H3)"
+    },
     "no-mark": {
       "type": "Boolean",
       "category": "content",

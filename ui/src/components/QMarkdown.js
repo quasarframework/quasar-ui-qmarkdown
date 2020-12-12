@@ -71,6 +71,8 @@ export default {
     noLink: Boolean,
     // no automatic links
     noLinkify: Boolean,
+    // no heading (h1-h6) anchor (#) links
+    noHeadingAnchorLinks: Boolean,
     // no marks
     noMark: Boolean,
     // no subscript
@@ -91,12 +93,12 @@ export default {
     tocStart: {
       type: Number,
       default: 1,
-      validator: v => v >= 1 && v <= 5
+      validator: v => v >= 1 && v <= 6
     },
     tocEnd: {
       type: Number,
       default: 3,
-      validator: v => v >= 2 && v <= 6
+      validator: v => v >= 1 && v <= 6
     },
     // set to true to enable task lists checkboxes (not read-only)
     taskListsEnable: Boolean,
@@ -167,6 +169,7 @@ export default {
     noLineNumbers () { this.rendered = void 0 },
     noLink () { this.rendered = void 0 },
     noLinkify () { this.rendered = void 0 },
+    noHeadingAnchorLinks () { this.rendered = void 0 },
     noMark () { this.rendered = void 0 },
     noSubscript () { this.rendered = void 0 },
     noSuperscript () { this.rendered = void 0 },
@@ -179,7 +182,13 @@ export default {
     taskListsEnable () { this.rendered = void 0 },
     taskListsLabel () { this.rendered = void 0 },
     taskListsLabelAfter () { this.rendered = void 0 },
-    extend () { this.rendered = void 0 }
+    extend () { this.rendered = void 0 },
+
+    contentStyle () { this.rendered = void 0 },
+    contentClass () { this.rendered = void 0 },
+
+    noNoopener () { this.rendered = void 0 },
+    noNoreferrer () { this.rendered = void 0 }
   },
 
   methods: {
@@ -338,7 +347,7 @@ export default {
       }
 
       extendBlockQuote(md)
-      extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd)
+      extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd, this.noHeadingAnchorLinks)
       extendImage(md)
       extendLink(md, { noopener: !this.noNoopener, noreferrer: !this.noNoreferrer })
       extendTable(md)
