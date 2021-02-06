@@ -70,23 +70,23 @@
     />
     <div class="q-pa-md q-gutter-sm fit">
       <q-markdown
-        :noHtml="noHtml"
-        :noLink="noLink"
-        :noLinkify="noLinkify"
-        :noTypographer="noTypographer"
-        :noBreaks="noBreaks"
-        :noHighlight="noHighlight"
-        :noEmoji="noEmoji"
-        :noSubscript="noSubscript"
-        :noSuperscript="noSuperscript"
-        :noFootnote="noFootnote"
-        :noDeflist="noDeflist"
-        :noAbbreviation="noAbbreviation"
-        :noInsert="noInsert"
-        :noMark="noMark"
-        :noImage="noImage"
-        :noTasklist="noTasklist"
-        :noContainer="noContainer"
+        :no-html="noHtml"
+        :no-link="noLink"
+        :no-linkify="noLinkify"
+        :no-typographer="noTypographer"
+        :no-breaks="noBreaks"
+        :no-highlight="noHighlight"
+        :no-emoji="noEmoji"
+        :no-subscript="noSubscript"
+        :no-superscript="noSuperscript"
+        :no-footnote="noFootnote"
+        :no-deflist="noDeflist"
+        :no-abbreviation="noAbbreviation"
+        :no-insert="noInsert"
+        :no-mark="noMark"
+        :no-image="noImage"
+        :no-tasklist="noTasklist"
+        :no-container="noContainer"
       >
 ## Interactive Editor
 
@@ -96,11 +96,16 @@ Add Markdown to the window on the left and the output will appear on the right.
         v-model="splitterModel"
         style="height: 500px;"
       >
-        <template v-slot:separator>
-          <q-avatar color="primary" text-color="white" size="28px" icon="fas fa-arrows-alt-h" />
+        <template #separator>
+          <q-avatar
+            color="primary"
+            text-color="white"
+            size="28px"
+            icon="fas fa-arrows-alt-h"
+          />
         </template>
 
-        <template v-slot:before>
+        <template #before>
           <div class="q-pa-md">
             <textarea
               v-model="markdown"
@@ -110,13 +115,15 @@ Add Markdown to the window on the left and the output will appear on the right.
           </div>
         </template>
 
-        <template v-slot:after>
-          <div class="q-pa-md" style="height: 467px;">
+        <template #after>
+          <div
+            class="q-pa-md"
+            style="height: 467px;"
+          >
             <q-markdown
               :src="markdown"
               class="fit bordered q-pa-sm"
-            >
-            </q-markdown>
+            />
           </div>
         </template>
       </q-splitter>

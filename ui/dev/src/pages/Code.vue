@@ -1,7 +1,13 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable highlighting"></q-toggle>
-    <q-toggle v-model="model2" label="Disable line numbers"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable highlighting"
+    />
+    <q-toggle
+      v-model="model2"
+      label="Disable line numbers"
+    />
     <q-markdown
       :no-highlight="model"
       :no-line-numbers="model2"

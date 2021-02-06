@@ -17,10 +17,10 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.9.16",
     "core-js": "^3.8.3",
-    "quasar": "^1.15.2"
+    "quasar": "^2.0.0-beta.1"
   },
   "devDependencies": {
-    "@quasar/app": "^2.1.14",
+    "@quasar/app": "^3.0.0-beta.1",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",

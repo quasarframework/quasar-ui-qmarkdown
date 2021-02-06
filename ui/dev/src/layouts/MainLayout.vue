@@ -14,7 +14,12 @@
           QMarkdown <span class="text-subtitle2">v{{ version }}</span>
         </q-toolbar-title>
 
-        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'" />
+        <q-btn
+          flat
+          round
+          :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'"
+          @click="$q.dark.toggle()"
+        />
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -29,7 +34,7 @@
 import { version } from 'ui' // "ui" is aliased in quasar.conf.js
 
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
 
   data () {
     return {

@@ -1,7 +1,13 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable links"></q-toggle>
-    <q-toggle v-model="model1" label="Disable linkify"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable links"
+    />
+    <q-toggle
+      v-model="model1"
+      label="Disable linkify"
+    />
     <q-markdown
       :no-link="model"
       :no-linkify="model1"

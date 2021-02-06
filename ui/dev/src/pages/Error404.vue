@@ -5,11 +5,14 @@
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
+      <div
+        class="text-h2"
+        style="opacity:.4"
+      >
         Oops. Nothing here...
       </div>
 
-    <q-btn
+      <q-btn
         class="q-mt-xl"
         color="white"
         text-color="blue"

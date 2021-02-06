@@ -1,6 +1,12 @@
 <template>
-  <div class="q-pa-md q-gutter-sm" style="max-width: 800px; width: 100%;">
-    <q-toggle v-model="model" label="Disable Heading Anchor Links (hover to see difference)"></q-toggle>
+  <div
+    class="q-pa-md q-gutter-sm"
+    style="max-width: 800px; width: 100%;"
+  >
+    <q-toggle
+      v-model="model"
+      label="Disable Heading Anchor Links (hover to see difference)"
+    />
     <div class="q-ma-md q-gutter-sm">
       <div>The TOC (Table of Contents) Start and End properties also control the Heading anchor links</div>
       <div>TOC Start: {{ range.min }}</div>

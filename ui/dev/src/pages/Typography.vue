@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable typographer"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable typographer"
+    />
     <q-markdown
       :no-typographer="model"
     >

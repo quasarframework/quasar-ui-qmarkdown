@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable definition lists"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable definition lists"
+    />
     <q-markdown
       :no-deflist="model"
     >
