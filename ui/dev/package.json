@@ -15,22 +15,22 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@quasar/extras": "^1.9.13",
-    "core-js": "^3.8.2",
-    "quasar": "^1.15.0"
+    "@quasar/extras": "^1.9.16",
+    "core-js": "^3.8.3",
+    "quasar": "^1.15.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.1.14",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.17.0",
+    "eslint": "^7.19.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-quasar": "^1.0.0",
-    "eslint-plugin-vue": "^7.4.1",
-    "eslint-webpack-plugin": "^2.4.1"
+    "eslint-plugin-vue": "^7.5.0",
+    "eslint-webpack-plugin": "^2.5.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
