@@ -3,13 +3,13 @@
 
 export default function containerPlugin (md, name, options) {
   function validateDefault (params) {
-    return params.trim().split(' ', 2)[0] === name
+    return params.trim().split(' ', 2)[ 0 ] === name
   }
 
   function renderDefault (tokens, idx, _options, env, self) {
     // add a class to the opening tag
-    if (tokens[idx].nesting === 1) {
-      tokens[idx].attrPush(['class', name])
+    if (tokens[ idx ].nesting === 1) {
+      tokens[ idx ].attrPush([ 'class', name ])
     }
 
     return self.renderToken(tokens, idx, _options, env, self)
@@ -17,7 +17,7 @@ export default function containerPlugin (md, name, options) {
 
   options = options || {}
 
-  var minMarkers = 3,
+  const minMarkers = 3,
     markerStr = options.marker || ':',
     markerChar = markerStr.charCodeAt(0),
     markerLen = markerStr.length,
@@ -25,11 +25,10 @@ export default function containerPlugin (md, name, options) {
     render = options.render || renderDefault
 
   function container (state, startLine, endLine, silent) {
-    var pos, nextLine, markerCount, markup, params, token,
-      oldParent, oldLineMax,
+    let pos, nextLine, token,
       autoClosed = false,
-      start = state.bMarks[startLine] + state.tShift[startLine],
-      max = state.eMarks[startLine]
+      start = state.bMarks[ startLine ] + state.tShift[ startLine ],
+      max = state.eMarks[ startLine ]
 
     // Check out the first character quickly,
     // this should filter out most of non-containers
@@ -39,17 +38,17 @@ export default function containerPlugin (md, name, options) {
     // Check out the rest of the marker string
     //
     for (pos = start + 1; pos <= max; pos++) {
-      if (markerStr[(pos - start) % markerLen] !== state.src[pos]) {
+      if (markerStr[ (pos - start) % markerLen ] !== state.src[ pos ]) {
         break
       }
     }
 
-    markerCount = Math.floor((pos - start) / markerLen)
+    const markerCount = Math.floor((pos - start) / markerLen)
     if (markerCount < minMarkers) { return false }
     pos -= (pos - start) % markerLen
 
-    markup = state.src.slice(start, pos)
-    params = state.src.slice(pos, max)
+    const markup = state.src.slice(start, pos)
+    const params = state.src.slice(pos, max)
     if (!validate(params)) { return false }
 
     // Since start is found, we can report success here in validation mode
@@ -68,10 +67,10 @@ export default function containerPlugin (md, name, options) {
         break
       }
 
-      start = state.bMarks[nextLine] + state.tShift[nextLine]
-      max = state.eMarks[nextLine]
+      start = state.bMarks[ nextLine ] + state.tShift[ nextLine ]
+      max = state.eMarks[ nextLine ]
 
-      if (start < max && state.sCount[nextLine] < state.blkIndent) {
+      if (start < max && state.sCount[ nextLine ] < state.blkIndent) {
         // non-empty line with negative indent should stop the list:
         // - ```
         //  test
@@ -80,13 +79,13 @@ export default function containerPlugin (md, name, options) {
 
       if (markerChar !== state.src.charCodeAt(start)) { continue }
 
-      if (state.sCount[nextLine] - state.blkIndent >= 4) {
+      if (state.sCount[ nextLine ] - state.blkIndent >= 4) {
         // closing fence should be indented less than 4 spaces
         continue
       }
 
       for (pos = start + 1; pos <= max; pos++) {
-        if (markerStr[(pos - start) % markerLen] !== state.src[pos]) {
+        if (markerStr[ (pos - start) % markerLen ] !== state.src[ pos ]) {
           break
         }
       }
@@ -105,8 +104,8 @@ export default function containerPlugin (md, name, options) {
       break
     }
 
-    oldParent = state.parentType
-    oldLineMax = state.lineMax
+    const oldParent = state.parentType
+    const oldLineMax = state.lineMax
     state.parentType = 'container'
 
     // this will prevent lazy continuations from ever going past our end marker
@@ -116,7 +115,7 @@ export default function containerPlugin (md, name, options) {
     token.markup = markup
     token.block = true
     token.info = params
-    token.map = [startLine, nextLine]
+    token.map = [ startLine, nextLine ]
 
     state.md.block.tokenize(state, startLine + 1, nextLine)
 
@@ -132,8 +131,8 @@ export default function containerPlugin (md, name, options) {
   }
 
   md.block.ruler.before('fence', 'container_' + name, container, {
-    alt: ['paragraph', 'reference', 'blockquote', 'list']
+    alt: [ 'paragraph', 'reference', 'blockquote', 'list' ]
   })
-  md.renderer.rules['container_' + name + '_open'] = render
-  md.renderer.rules['container_' + name + '_close'] = render
+  md.renderer.rules[ 'container_' + name + '_open' ] = render
+  md.renderer.rules[ 'container_' + name + '_close' ] = render
 };

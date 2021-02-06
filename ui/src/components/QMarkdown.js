@@ -1,3 +1,14 @@
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  h,
+  onBeforeMount,
+  onUnmounted,
+  ref,
+  watch
+} from 'vue'
+
 import markdownIt from 'markdown-it'
 import emoji from 'markdown-it-emoji'
 import subscript from 'markdown-it-sub'
@@ -28,13 +39,11 @@ import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 import {
   QBtn,
   QTooltip,
-  copyToClipboard
+  copyToClipboard,
+  useQuasar
 } from 'quasar'
 
-const mdiContentCopy = 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
-const matDone = 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
-
-export default {
+export default defineComponent({
   name: 'QMarkdown',
 
   props: {
@@ -109,8 +118,8 @@ export default {
     // extend markdown-it!
     extend: Function,
     extendPrism: Function,
-    contentStyle: [String, Object, Array],
-    contentClass: [String, Object, Array],
+    contentStyle: [ String, Object, Array ],
+    contentClass: [ String, Object, Array ],
 
     noNoopener: Boolean,
     noNoreferrer: Boolean,
@@ -118,6 +127,7 @@ export default {
     showCopy: Boolean,
     copyIcon: String,
     noCopyTooltip: Boolean,
+    doneIcon: String,
     copyTooltipText: { // tooltip
       type: String,
       default: 'Copy to clipboard'
@@ -128,108 +138,221 @@ export default {
     }
   },
 
-  data () {
-    return {
-      source: '',
-      rendered: void 0
+  emits: [
+    'data'
+  ],
+
+  setup (props, { slots, emit }) {
+    const $q = useQuasar(),
+      rendered = ref(null),
+      source = ref(null),
+      markdownRef = ref(null)
+
+    const vm = getCurrentInstance()
+    if (vm === null) {
+      throw new Error('current instance is null')
     }
-  },
 
-  created () {
-    this.copy = mdiContentCopy
-    this.done = matDone
-  },
+    onBeforeMount(() => {
+      if (props.src && props.src.length > 0) {
+        source.value = props.src.replace(/\\n/gi, '\n')
+      }
+    })
 
-  beforeMount () {
-    if (this.src && this.src.length > 0) {
-      this.source = this.src.replace(/\\n/gi, '\n')
-    }
-  },
+    onUnmounted(() => {
+      // __deleteCache(this.uid)
+    })
 
-  destroyed () {
-    // this.__deleteCache(this.uid)
-  },
+    const parsedCopyIcon = computed(() => {
+      // default mdiContentCopy
+      return props.copyIcon
+        ? props.copyIcon
+        : 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
+    })
 
-  watch: {
-    src () {
-      this.source = this.src.replace(/\\n/gi, '\n')
-      this.rendered = void 0
-    },
-    noAbbreviation () { this.rendered = void 0 },
-    noBlockquote () { this.rendered = void 0 },
-    noBreaks () { this.rendered = void 0 },
-    noContainer () { this.rendered = void 0 },
-    noDeflist () { this.rendered = void 0 },
-    noEmoji () { this.rendered = void 0 },
-    noFootnote () { this.rendered = void 0 },
-    noHighlight () { this.rendered = void 0 },
-    noHtml () { this.rendered = void 0 },
-    noImage () { this.rendered = void 0 },
-    noInsert () { this.rendered = void 0 },
-    noLineNumbers () { this.rendered = void 0 },
-    noLink () { this.rendered = void 0 },
-    noLinkify () { this.rendered = void 0 },
-    noHeadingAnchorLinks () { this.rendered = void 0 },
-    noMark () { this.rendered = void 0 },
-    noSubscript () { this.rendered = void 0 },
-    noSuperscript () { this.rendered = void 0 },
-    noTasklist () { this.rendered = void 0 },
-    noTypographer () { this.rendered = void 0 },
-    lineNumberAlt () { this.rendered = void 0 },
-    toc () { this.rendered = void 0 },
-    tocStart () { this.rendered = void 0 },
-    tocEnd () { this.rendered = void 0 },
-    taskListsEnable () { this.rendered = void 0 },
-    taskListsLabel () { this.rendered = void 0 },
-    taskListsLabelAfter () { this.rendered = void 0 },
-    extend () { this.rendered = void 0 },
+    const parsedDoneIcon = computed(() => {
+      // default matDone
+      return props.doneIcon
+        ? props.doneIcon
+        : 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
+    })
 
-    contentStyle () { this.rendered = void 0 },
-    contentClass () { this.rendered = void 0 },
+    watch(() => props.src, val => {
+      source.value = props.src.replace(/\\n/gi, '\n')
+      rendered.value = null
+    })
 
-    noNoopener () { this.rendered = void 0 },
-    noNoreferrer () { this.rendered = void 0 }
-  },
+    watch(() => props.noAbbreviation, val => {
+      rendered.value = null
+    })
 
-  methods: {
-    __isEnabled (val) {
+    watch(() => props.noBlockquote, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noBreaks, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noContainer, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noDeflist, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noEmoji, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noFootnote, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noHighlight, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noHtml, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noImage, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noInsert, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noLineNumbers, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noLink, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noLinkify, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noHeadingAnchorLinks, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noMark, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noSubscript, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noSuperscript, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noTasklist, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noTypographer, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.lineNumberAlt, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.toc, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.tocStart, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.tocEnd, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.taskListsEnable, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.taskListsLabel, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.taskListsLabelAfter, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.extend, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.contentStyle, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.contentClass, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noNoopener, val => {
+      rendered.value = null
+    })
+
+    watch(() => props.noNoreferrer, val => {
+      rendered.value = null
+    })
+
+    // TODO:: Jeff - can all of the above watches be replaced with
+    // watch(() => props, val => {
+    //   rendered.value = null
+    // })
+
+    function __isEnabled (val) {
       return val === void 0 || val === false
-    },
+    }
 
-    __isFunction (f) {
+    function __isFunction (f) {
       return f && {}.toString.call(f) === '[object Function]'
-    },
+    }
 
-    // __setCache (key, value) {
+    // function __setCache (key, value) {
     //   cache[key] = value
-    // },
+    // }
 
-    // __getCache (key) {
+    // function __getCache (key) {
     //   return cache[key]
-    // },
+    // }
 
-    // __deleteCache (key) {
+    // function __deleteCache (key) {
     //   if (cache[key]) {
     //     delete cache[key]
     //   }
-    // },
+    // }
 
-    makeTree (list) {
+    function makeTree (list) {
       const tree = []
       let root = null
 
       const addToTree = (item) => {
-        if (item.level === this.tocStart) {
+        if (item.level === props.tocStart) {
           root = item
           tree.push(item)
         }
-        else if (item.level === this.tocStart + 1) {
+        else if (item.level === props.tocStart + 1) {
           root.children.push(item)
         }
         else {
           let parent = root
-          for (let k = 0; k < item.level - (this.tocStart + 1); ++k) {
-            parent = parent.children[parent.children.length - 1]
+          for (let k = 0; k < item.level - (props.tocStart + 1); ++k) {
+            parent = parent.children[ parent.children.length - 1 ]
           }
           if (parent) {
             parent.children.push(item)
@@ -238,173 +361,180 @@ export default {
       }
 
       for (let i = 0; i < list.length; ++i) {
-        addToTree(list[i])
+        addToTree(list[ i ])
       }
 
       return tree
-    },
+    }
 
-    __copyMarkdownToClipboard () {
-      // let markdown = this.source
-      // if (this.$slots.default) {
-      //   markdown = this.$slots.default[0].text
+    function __copyMarkdownToClipboard () {
+      // let markdown = source.value
+      // if (slots.default) {
+      //   markdown = slots.default[0].text
       // }
 
-      copyToClipboard(this.$refs.markdown.innerText)
+      copyToClipboard(markdownRef.value.innerText)
 
-      if (this.$q.notify) {
-        this.$q.notify({
-          message: this.copyResponseText,
-          color: this.$q.dark.isActive ? 'grey-10' : 'white',
-          textColor: this.$q.dark.isActive ? 'amber' : 'primary',
-          icon: this.done,
+      if ($q.notify) {
+        $q.notify({
+          message: props.copyResponseText,
+          color: $q.dark.isActive ? 'grey-10' : 'white',
+          textColor: $q.dark.isActive ? 'amber' : 'primary',
+          icon: parsedDoneIcon.value,
           position: 'top',
           timeout: 2000
         })
       }
-    },
+    }
 
-    __renderCopy (h) {
-      if (this.showCopy !== true) return
+    function __renderCopy () {
+      if (props.showCopy !== true) return
       return h(QBtn, {
-        staticClass: 'q-markdown__copy',
+        class: 'q-markdown__copy',
         props: {
-          color: this.$q.dark.isActive ? 'amber' : 'primary',
+          color: $q.dark.isActive ? 'amber' : 'primary',
           dense: true,
           flat: true,
           round: true,
-          icon: (this.copyIcon ? this.copyIcon : this.copy)
+          icon: parsedCopyIcon.value
         },
-        on: {
-          click: v => { this.__copyMarkdownToClipboard() }
-        }
+        onClick: v => { __copyMarkdownToClipboard() }
       }, [
-        this.noCopyTooltip !== true && h(QTooltip, this.copyTooltipText)
+        props.noCopyTooltip !== true && h(QTooltip, props.copyTooltipText)
       ])
     }
-  },
 
-  render (h) {
-    if (this.rendered === void 0) {
-      const tocData = []
+    function __renderMarkdown () {
+      if (rendered.value === null) {
+        const tocData = []
 
-      // get the markdown - slot overrides 'src'
-      let markdown = this.source
-      if (this.$slots.default) {
-        markdown = this.$slots.default[0].text
-      }
-
-      if (this.__isFunction(this.extendPrism)) {
-        this.extendPrism(Prism)
-      }
-
-      const highlight = (str, lang) => {
-        if (this.__isEnabled(this.noHighlight)) {
-          return prismHighlight(Prism, str, lang)
+        // get the markdown - slot overrides 'src'
+        let markdown = source.value
+        if (slots.default) {
+          markdown = slots.default[ 0 ].text
         }
-        return ''
+
+        if (__isFunction(props.extendPrism)) {
+          props.extendPrism(Prism)
+        }
+
+        const highlight = (str, lang) => {
+          if (__isEnabled(props.noHighlight)) {
+            return prismHighlight(Prism, str, lang)
+          }
+          return ''
+        }
+
+        const opts = {
+          html: __isEnabled(props.noHtml),
+          linkify: __isEnabled(props.noLinkify),
+          typographer: __isEnabled(props.noTypographer),
+          breaks: __isEnabled(props.noBreaks),
+          highlight: highlight
+        }
+
+        const md = markdownIt(opts)
+
+        if (__isEnabled(props.noSubscript)) {
+          md.use(subscript)
+        }
+        if (__isEnabled(props.noSuperscript)) {
+          md.use(superscript)
+        }
+        if (__isEnabled(props.noFootnote)) {
+          md.use(footnote)
+        }
+        if (__isEnabled(props.noDeflist)) {
+          md.use(deflist)
+        }
+        if (__isEnabled(props.noAbbreviation)) {
+          md.use(abbreviation)
+        }
+        if (__isEnabled(props.noInsert)) {
+          md.use(insert)
+        }
+        if (__isEnabled(props.noMark)) {
+          md.use(mark)
+        }
+        if (__isEnabled(props.noEmoji)) {
+          md.use(emoji)
+        }
+        if (__isEnabled(props.noImage)) {
+          md.use(imsize)
+        }
+        if (__isEnabled(props.noTasklist)) {
+          md.use(taskLists, { enabled: props.taskListsEnable, label: props.taskListsLabel, labelAfter: props.taskListsLabelAfter })
+        }
+
+        extendBlockQuote(md)
+        extendHeading(md, tocData, props.toc, props.tocStart, props.tocEnd, props.noHeadingAnchorLinks)
+        extendImage(md)
+        extendLink(md, { noopener: !props.noNoopener, noreferrer: !props.noNoreferrer })
+        extendTable(md)
+        extendToken(md)
+
+        if (__isEnabled(props.noContainer)) {
+          extendContainers(md)
+        }
+        if (__isEnabled(props.noLineNumbers)) {
+          extendFenceLineNumbers(md, props.lineNumberAlt)
+        }
+
+        // handle disabled rules
+        const disabled = []
+        if (!__isEnabled(props.noImage)) {
+          disabled.push('image')
+        }
+        if (!__isEnabled(props.noLink)) {
+          disabled.push('link')
+        }
+        if (!__isEnabled(props.noBlockquote)) {
+          disabled.push('blockquote')
+        }
+        if (disabled.length > 0) {
+          md.disable(disabled)
+        }
+
+        if (__isFunction(props.extend)) {
+          props.extend(md)
+        }
+
+        rendered.value = md.render(markdown)
+
+        if (props.toc && tocData.length > 0) {
+          emit('data', tocData)
+        }
       }
 
-      const opts = {
-        html: this.__isEnabled(this.noHtml),
-        linkify: this.__isEnabled(this.noLinkify),
-        typographer: this.__isEnabled(this.noTypographer),
-        breaks: this.__isEnabled(this.noBreaks),
-        highlight: highlight
-      }
+      const renderedMarkdown = h('div', {
+        ref: markdownRef,
+        class: {
+          'q-markdown': true,
+          ...props.contentClass
+        },
+        style: props.contentStyle,
+        domProps: {
+          innerHTML: rendered.value
+        }
+      })
 
-      const md = markdownIt(opts)
+      const renderedCopyWrapper = h('div', {
+        style: {
+          position: 'relative'
+        }
+      }, [
+        renderedMarkdown,
+        __renderCopy(h)
+      ])
 
-      if (this.__isEnabled(this.noSubscript)) {
-        md.use(subscript)
-      }
-      if (this.__isEnabled(this.noSuperscript)) {
-        md.use(superscript)
-      }
-      if (this.__isEnabled(this.noFootnote)) {
-        md.use(footnote)
-      }
-      if (this.__isEnabled(this.noDeflist)) {
-        md.use(deflist)
-      }
-      if (this.__isEnabled(this.noAbbreviation)) {
-        md.use(abbreviation)
-      }
-      if (this.__isEnabled(this.noInsert)) {
-        md.use(insert)
-      }
-      if (this.__isEnabled(this.noMark)) {
-        md.use(mark)
-      }
-      if (this.__isEnabled(this.noEmoji)) {
-        md.use(emoji)
-      }
-      if (this.__isEnabled(this.noImage)) {
-        md.use(imsize)
-      }
-      if (this.__isEnabled(this.noTasklist)) {
-        md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
-      }
-
-      extendBlockQuote(md)
-      extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd, this.noHeadingAnchorLinks)
-      extendImage(md)
-      extendLink(md, { noopener: !this.noNoopener, noreferrer: !this.noNoreferrer })
-      extendTable(md)
-      extendToken(md)
-
-      if (this.__isEnabled(this.noContainer)) {
-        extendContainers(md)
-      }
-      if (this.__isEnabled(this.noLineNumbers)) {
-        extendFenceLineNumbers(md, this.lineNumberAlt)
-      }
-
-      // handle disabled rules
-      const disabled = []
-      if (!this.__isEnabled(this.noImage)) {
-        disabled.push('image')
-      }
-      if (!this.__isEnabled(this.noLink)) {
-        disabled.push('link')
-      }
-      if (!this.__isEnabled(this.noBlockquote)) {
-        disabled.push('blockquote')
-      }
-      if (disabled.length > 0) {
-        md.disable(disabled)
-      }
-
-      if (this.__isFunction(this.extend)) {
-        this.extend(md)
-      }
-
-      this.rendered = md.render(markdown)
-
-      if (this.toc && tocData.length > 0) {
-        this.$emit('data', tocData)
-      }
+      return props.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
     }
 
-    const renderedMarkdown = h('div', {
-      ref: 'markdown',
-      staticClass: 'q-markdown',
-      class: this.contentClass,
-      style: this.contentStyle,
-      domProps: {
-        innerHTML: this.rendered
-      }
+    // expose public methods
+    Object.assign(vm.proxy, {
+      makeTree
     })
 
-    const renderedCopyWrapper = h('div', {
-      style: {
-        position: 'relative'
-      }
-    }, [
-      renderedMarkdown,
-      this.__renderCopy(h)
-    ])
-
-    return this.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
+    return () => __renderMarkdown()
   }
-}
+})
