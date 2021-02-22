@@ -232,6 +232,16 @@
         ":copy-icon=\"matCopy\""
       ]
     },
+    "done-icon": {
+      "addedIn": "v2.0.0-beta.1",
+      "type": "String",
+      "category": "behavior",
+      "desc": "Change the default icon used for notify response after Copy to Clipboard",
+      "examples": [
+        "copy-icon=\"copy\"",
+        ":copy-icon=\"matCopy\""
+      ]
+    },
     "no-copy-tooltip": {
       "addedIn": "v1.3.0",
       "type": "Boolean",

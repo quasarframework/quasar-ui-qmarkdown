@@ -513,9 +513,7 @@ export default defineComponent({
           ...props.contentClass
         },
         style: props.contentStyle,
-        domProps: {
-          innerHTML: rendered.value
-        }
+        innerHTML: rendered.value
       })
 
       const renderedCopyWrapper = h('div', {
