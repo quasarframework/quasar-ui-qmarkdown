@@ -63,7 +63,7 @@
     "@babel/core": "^7.12.17",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-inject": "^4.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-legacy": "^2.1.0",
