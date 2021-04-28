@@ -85,7 +85,7 @@
     "eslint-plugin-vue": "^7.6.0",
     "eslint-plugin-nodeca": "^1.0.3",
     "fs-extra": "^9.1.0",
-    "open": "^7.4.2",
+    "open": "^8.0.7",
     "postcss": "8.2.6",
     "punycode": "^2.1.1",
     "quasar": "^1.15.4",
