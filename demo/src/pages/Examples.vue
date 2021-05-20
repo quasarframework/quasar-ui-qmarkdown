@@ -76,7 +76,7 @@ Unfortunately, the `markdown-it-mermaid` plugin used in this example does not ha
 
       <example-title title="Extras" />
       <q-markdown>
-As of v1.3.0, QMarkdown has the ability to allow your viewers to **Copy to Clipboard**. It all begins with using the `show-copy` property; this turns it all on. When text is copied to the clipboard, a Quasar dialog will be displayed telling end-user it was copied to clipboard. 
+As of v1.3.0, QMarkdown has the ability to allow your viewers to **Copy to Clipboard**. It all begins with using the `show-copy` property; this turns it all on. When text is copied to the clipboard, a Quasar dialog will be displayed telling end-user it was copied to clipboard.
 
 ::: warning
 For the notification to work, add the `dialog` plugin to your quasar.conf.js
