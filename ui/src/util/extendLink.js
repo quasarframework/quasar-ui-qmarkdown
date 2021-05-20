@@ -1,6 +1,6 @@
 import slugify from './slugify'
 
-export default function extendLink (md, { noopener, noreferrer }) {
+export default function extendLink (md, { noopener = true, noreferrer = true }) {
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
     const token = tokens[ idx ]
 
