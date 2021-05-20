@@ -411,7 +411,8 @@ export default defineComponent({
         // get the markdown - slot overrides 'src'
         let markdown = source.value
         if (slots.default) {
-          markdown = slots.default[ 0 ].text
+          // markdown = slots.default[ 0 ].text
+          markdown = slots.default()[ 0 ].children.replace(/\\ /g, '\n').replace(/'/g, '')
         }
 
         if (__isFunction(props.extendPrism)) {
