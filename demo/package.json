@@ -15,7 +15,7 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.10.5",
     "core-js": "^3.12.1",
-    "quasar": "^1.15.15"
+    "quasar": "^1.15.16"
   },
   "devDependencies": {
     "@quasar/app": "^2.2.6",
@@ -26,9 +26,9 @@
     "electron": "^12.0.9",
     "electron-debug": "^3.2.0",
     "electron-devtools-installer": "^3.2.0",
-    "eslint": "^7.26.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.2",
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-quasar": "^1.0.0",
