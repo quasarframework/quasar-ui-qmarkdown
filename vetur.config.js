@@ -11,9 +11,9 @@ module.exports = {
   // override vscode settings
   // Notice: It only affects the settings used by Vetur.
   settings: {
-    'vetur.useWorkspaceDependencies': true,
+    'vetur.useWorkspaceDependencies': false,
     'vetur.validation.template': false,
-    'vetur.experimental.templateInterpolationService': true,
+    'vetur.experimental.templateInterpolationService': false,
   },
   // support monorepos
   projects
