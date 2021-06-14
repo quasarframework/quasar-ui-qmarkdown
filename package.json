@@ -1,12 +1,13 @@
 {
   "name": "qmarkdown",
   "version": "1.0.0",
-  "description": "Vetur config for mono-repos",
-  "main": "vetur.config.js",
+  "description": "QMarkdown mono-repo",
+  "workspaces": [
+    "ui",
+    "docs",
+    "app-extension"
+  ],
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
-  "private": true,
-  "devDependencies": {
-    "fast-glob": "^3.2.5"
-  }
+  "private": true
 }

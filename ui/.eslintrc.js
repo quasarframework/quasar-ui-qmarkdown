@@ -4,13 +4,11 @@ module.exports = {
   // Remove this if you have an higher level ESLint config file (it usually happens into a monorepos)
   root: true,
 
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2019, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
-    ecmaFeatures: {
-      jsx: true
-    }
+    requireConfigFile: false
   },
 
   env: {
@@ -25,15 +23,15 @@ module.exports = {
 
     // Uncomment any of the lines below to choose desired strictness,
     // but leave only one uncommented!
-    'plugin:vue/vue3-recommended',
     // See https://eslint.vuejs.org/rules/#available-rules
-    // 'plugin:vue/essential', // Priority A: Essential (Error Prevention)
-    // 'plugin:vue/strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
-    // 'plugin:vue/recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
+    'plugin:vue/vue3-essential', // Priority A: Essential (Error Prevention)
+    // 'plugin:vue/vue3-strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
+    // 'plugin:vue/vue3-recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
     // 'plugin:quasar/standard',
 
-    'standard',
+    // 'standard',
+    // 'plugin:jest/recommended',
     'plugin:promise/recommended'
   ],
 
@@ -51,6 +49,10 @@ module.exports = {
     ga: true, // Google Analytics
     cordova: true,
     __statics: true,
+    __QUASAR_SSR__: true,
+    __QUASAR_SSR_SERVER__: true,
+    __QUASAR_SSR_CLIENT__: true,
+    __QUASAR_SSR_PWA__: true,
     process: true,
     Capacitor: true,
     chrome: true
@@ -70,7 +72,7 @@ module.exports = {
     'one-var': 'off',
     'no-void': 'off',
     'no-lone-blocks': 'error',
-    'no-unused-expressions': 'error',
+    'no-unused-expressions': [ 'error', { allowTernary: true, "allowShortCircuit": true } ],
     'no-useless-concat': 'error',
     'no-useless-return': 'error',
     'no-unneeded-ternary': 'error',
@@ -96,7 +98,6 @@ module.exports = {
 
     'vue/singleline-html-element-content-newline': 'off',
     'vue/no-multiple-template-root': 'off',
-    'vue/require-default-prop': 'off',
 
     'jsdoc/check-param-names': 1,
     'jsdoc/check-tag-names': 1,
@@ -111,6 +112,12 @@ module.exports = {
     'jsdoc/require-param-type': 1,
     'jsdoc/require-returns-description': 1,
     'jsdoc/require-returns-type': 0,
+
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
 
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off'

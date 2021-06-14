@@ -19,6 +19,9 @@ function extendConf (conf) {
   // make sure these plugins are in the build
   conf.framework.plugins.push('Dialog')
 
+  // This needs to be set for Vue 3
+  const oldPreTagFunc = conf.build.vueLoaderOptions.compilerOptions.isPreTag
+  conf.build.vueLoaderOptions.compilerOptions.isPreTag = (tag) => tag === 'q-markdown' || typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
   conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')

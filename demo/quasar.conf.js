@@ -49,6 +49,12 @@ module.exports = function (/* ctx */) {
       // scopeHoisting: true,
       vueRouterMode: 'history',
       publicPath: 'quasar-ui-qmarkdown',
+      vueLoaderOptions: {
+        compilerOptions: {
+          isPreTag: (tag) => tag === 'q-markdown'
+        }
+      },
+
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)

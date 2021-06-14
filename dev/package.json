@@ -18,11 +18,11 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.10.7",
     "core-js": "^3.14.0",
-    "quasar": "^2.0.0-beta.1",
+    "quasar": "^2.0.0-beta.1"
   },
   "devDependencies": {
     "@quasar/app": "^3.0.0-beta.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",

@@ -49,6 +49,11 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueLoaderOptions: {
+        compilerOptions: {
+          isPreTag: (tag) => tag === 'q-markdown'
+        }
+      },
 
       // transpile: false,
 
