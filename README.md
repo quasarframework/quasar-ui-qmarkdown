@@ -13,8 +13,8 @@ QMarkdown is a [Quasar](https://quasar.dev) component. It is a powerful markdown
 # Structure
 * [/ui](ui) - standalone npm package (go here for more information)
 * [/app-extension](app-extension) - Quasar app extension
-* [/demo](demo) - sources for docs, demo and examples project
-* [live demo](https://quasarframework.github.io/quasar-ui-qmarkdown/docs) - live docs, demo and examples
+* [/docs](docs) - sources for docs, demo and examples project
+* [live docs](https://qmarkdown.netlify.app/) - live docs, demo and examples
 
 # Donate
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
