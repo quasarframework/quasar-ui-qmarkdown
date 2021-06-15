@@ -51,7 +51,7 @@ module.exports = configure(function (ctx) {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       vueLoaderOptions: {
         compilerOptions: {
-          isPreTag: (tag) => tag === 'q-markdown'
+          isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown'
         }
       },
 
