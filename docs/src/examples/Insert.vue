@@ -4,7 +4,7 @@
     <q-markdown
       :no-insert="model"
     >
-++This sentence is is inserted.++
+++This sentence is inserted.++
 
 This is ++inserted++ in the middle of a sentence.
     </q-markdown>

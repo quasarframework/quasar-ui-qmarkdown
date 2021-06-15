@@ -4,7 +4,7 @@
     <q-markdown
       :no-mark="model"
     >
-==This sentence is is marked.==
+==This sentence is marked.==
 
 This is ==marked== in the middle of a sentence.
     </q-markdown>
