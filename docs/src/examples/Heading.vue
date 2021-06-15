@@ -31,6 +31,7 @@
 <script>
 import { defineComponent, ref, reactive } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
+import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
 export default defineComponent({
   name: 'Heading',

@@ -15,6 +15,7 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 <script>
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
+import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
 export default defineComponent({
   name: 'Emojies',

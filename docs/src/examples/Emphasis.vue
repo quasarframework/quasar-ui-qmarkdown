@@ -22,6 +22,7 @@ ___This is bold italic text, second way___
 <script>
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
+import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
 export default defineComponent({
   name: 'Emphasis',

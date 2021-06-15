@@ -51,6 +51,7 @@ with a `token` and a [link](https://quasar.dev)
 <script>
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
+import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
 export default defineComponent({
   name: 'Containers',

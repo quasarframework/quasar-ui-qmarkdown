@@ -128,6 +128,7 @@ Add Markdown to the window on the left and the output will appear on the right.
 <script>
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
+import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
 export default defineComponent({
   name: 'Editor',
