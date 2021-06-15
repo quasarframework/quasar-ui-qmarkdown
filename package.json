@@ -9,5 +9,8 @@
   ],
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build:all": "yarn && cd ./ui && yarn build && cd ../docs && quasar build"
+  }
 }
