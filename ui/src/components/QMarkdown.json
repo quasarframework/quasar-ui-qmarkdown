@@ -344,7 +344,7 @@
           },
           "level": {
             "type": "Number",
-            "desc": "The heading level: h1 == 1, h2 == 2m, etc.",
+            "desc": "The heading level: h1 == 1, h2 == 2, etc.",
             "examples": [
               "1",
               "2"
