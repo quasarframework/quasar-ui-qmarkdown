@@ -391,13 +391,11 @@ export default defineComponent({
       if (props.showCopy !== true) return
       return h(QBtn, {
         class: 'q-markdown__copy',
-        props: {
-          color: $q.dark.isActive ? 'amber' : 'primary',
-          dense: true,
-          flat: true,
-          round: true,
-          icon: parsedCopyIcon.value
-        },
+        color: $q.dark.isActive ? 'amber' : 'primary',
+        dense: true,
+        flat: true,
+        round: true,
+        icon: parsedCopyIcon.value,
         onClick: v => { __copyMarkdownToClipboard() }
       }, [
         props.noCopyTooltip !== true && h(QTooltip, props.copyTooltipText)
