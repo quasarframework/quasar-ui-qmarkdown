@@ -8,154 +8,163 @@ components:
 ## API
 <q-markdown-json-api />
 
-## Abbreviations
+## Markdown
+### Abbreviations
 <example-viewer
   title=""
   file="Abbreviations"
   codepen-title="QMarkdown"
 />
 
-## Blockquotes
+### Blockquotes
 <example-viewer
   title=""
   file="Blockquotes"
   codepen-title="QMarkdown"
 />
 
-## Code
+### Code
 <example-viewer
   title=""
   file="Code"
   codepen-title="QMarkdown"
 />
 
-## Copy to clipboard
+### Copy to clipboard
 <example-viewer
   title=""
   file="CopyToClipboard"
   codepen-title="QMarkdown"
 />
 
-## Containers
+### Containers
 <example-viewer
   title=""
   file="Containers"
   codepen-title="QMarkdown"
 />
 
-## Definition lists
+### Definition lists
 <example-viewer
   title=""
   file="DefinitionLists"
   codepen-title="QMarkdown"
 />
 
-## Emojies
+### Emojies
 <example-viewer
   title=""
   file="Emojies"
   codepen-title="QMarkdown"
 />
 
-## Emphasis
+### Emphasis
 <example-viewer
   title=""
   file="Emphasis"
   codepen-title="QMarkdown"
 />
 
-## Footnotes
+### Footnotes
 <example-viewer
   title=""
   file="Footnotes"
   codepen-title="QMarkdown"
 />
 
-## Heading
+### Heading
 <example-viewer
   title=""
   file="Heading"
   codepen-title="QMarkdown"
 />
 
-## Horizontal rules
+### Horizontal rules
 <example-viewer
   title=""
   file="HorizontalRules"
   codepen-title="QMarkdown"
 />
 
-## Images
+### Images
 <example-viewer
   title=""
   file="Images"
   codepen-title="QMarkdown"
 />
 
-## Insert
+### Insert
 <example-viewer
   title=""
   file="Insert"
   codepen-title="QMarkdown"
 />
 
-## Links
+### Links
 <example-viewer
   title=""
   file="Links"
   codepen-title="QMarkdown"
 />
 
-## Lists
+### Lists
 <example-viewer
   title=""
   file="Lists"
   codepen-title="QMarkdown"
 />
 
-## Mark
+### Mark
 <example-viewer
   title=""
   file="Mark"
   codepen-title="QMarkdown"
 />
 
-## Subscript/superscript
+### Subscript/superscript
 <example-viewer
   title=""
   file="SubscriptSuperscript"
   codepen-title="QMarkdown"
 />
 
-## Tables
+### Tables
 <example-viewer
   title=""
   file="Tables"
   codepen-title="QMarkdown"
 />
 
-## Task lists
+### Task lists
 <example-viewer
   title=""
   file="TaskLists"
   codepen-title="QMarkdown"
 />
 
-## Titles
+### Titles
 <example-viewer
   title=""
   file="Titles"
   codepen-title="QMarkdown"
 />
 
-## Typography
+### Typography
 <example-viewer
   title=""
   file="Typography"
   codepen-title="QMarkdown"
 />
 
-## Editor
+## Advanced
+### Extend
+<example-viewer
+  title=""
+  file="Extend"
+  codepen-title="QMarkdown"
+/>
+
+### Editor
 <example-viewer
   title=""
   file="Editor"
