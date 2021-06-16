@@ -8,6 +8,9 @@ related:
   - /contributing/documentation
   - /contributing/sponsor
 ---
+::: warning
+There are some issues with initial alpha version of QMarkdown. We promise, we will get them resolved as soon as possible. Once this message goes away, feel free to add an issue if you see one that remains.
+:::
 
 ::: warning
 Please note that the codepen links, in the documentation examples, do not work at this time.
