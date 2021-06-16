@@ -24,8 +24,8 @@ const menu = [
     expanded: false,
     children: [
       {
-        name: 'Getting started',
-        path: 'getting-started'
+        name: 'Using QMarkdown',
+        path: 'using-qmarkdown'
       }
     ]
   },

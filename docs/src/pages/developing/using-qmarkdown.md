@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Using QMarkdown
 desc: How to use QMarkdown
 keys: developing
 components:
