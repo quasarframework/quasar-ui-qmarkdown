@@ -70,23 +70,6 @@
     />
     <div class="q-pa-md q-gutter-sm fit">
       <q-markdown
-        :noHtml="noHtml"
-        :noLink="noLink"
-        :noLinkify="noLinkify"
-        :noTypographer="noTypographer"
-        :noBreaks="noBreaks"
-        :noHighlight="noHighlight"
-        :noEmoji="noEmoji"
-        :noSubscript="noSubscript"
-        :noSuperscript="noSuperscript"
-        :noFootnote="noFootnote"
-        :noDeflist="noDeflist"
-        :noAbbreviation="noAbbreviation"
-        :noInsert="noInsert"
-        :noMark="noMark"
-        :noImage="noImage"
-        :noTasklist="noTasklist"
-        :noContainer="noContainer"
       >
 ## Interactive Editor
 
@@ -104,7 +87,7 @@ Add Markdown to the window on the left and the output will appear on the right.
           <div class="q-pa-md">
             <textarea
               v-model="markdown"
-              rows="20"
+              :rows="20"
               class="fit q-pa-sm"
             />
           </div>
@@ -113,7 +96,24 @@ Add Markdown to the window on the left and the output will appear on the right.
         <template v-slot:after>
           <div class="q-pa-md" style="height: 467px;">
             <q-markdown
-              :src="markdown"
+              v-model:src="markdown"
+              :noHtml="noHtml"
+              :noLink="noLink"
+              :noLinkify="noLinkify"
+              :noTypographer="noTypographer"
+              :noBreaks="noBreaks"
+              :noHighlight="noHighlight"
+              :noEmoji="noEmoji"
+              :noSubscript="noSubscript"
+              :noSuperscript="noSuperscript"
+              :noFootnote="noFootnote"
+              :noDeflist="noDeflist"
+              :noAbbreviation="noAbbreviation"
+              :noInsert="noInsert"
+              :noMark="noMark"
+              :noImage="noImage"
+              :noTasklist="noTasklist"
+              :noContainer="noContainer"
               class="fit bordered q-pa-sm"
             >
             </q-markdown>
@@ -137,9 +137,10 @@ export default defineComponent({
   },
 
   setup () {
+    console.log(QMarkdown)
     const
       splitterModel = ref(50),
-      markdown = ref(''),
+      markdown = ref('Testing'),
       noHtml = ref(false),
       noLink = ref(false),
       noLinkify = ref(false),
