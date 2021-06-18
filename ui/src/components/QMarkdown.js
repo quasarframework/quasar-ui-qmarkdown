@@ -142,7 +142,7 @@ export default defineComponent({
     'data'
   ],
 
-  setup (props, { slots, emit }) {
+  setup (props, { slots, emit, expose }) {
     const $q = useQuasar(),
       rendered = ref(null),
       source = ref(null),
@@ -528,9 +528,12 @@ export default defineComponent({
     }
 
     // expose public methods
-    Object.assign(vm.proxy, {
+    expose({
       makeTree
     })
+    // Object.assign(vm.proxy, {
+    //   makeTree
+    // })
 
     return () => __renderMarkdown()
   }
