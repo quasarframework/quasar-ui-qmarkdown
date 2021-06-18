@@ -33,11 +33,11 @@ export default defineComponent({
 
   setup () {
     const model = ref(false),
-      model2 = ref(false)
+      model1 = ref(false)
 
     return {
       model,
-      model2
+      model1
     }
   }
 })
