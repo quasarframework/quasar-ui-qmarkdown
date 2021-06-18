@@ -368,10 +368,10 @@ export default defineComponent({
     }
 
     function __copyMarkdownToClipboard () {
-      // let markdown = source.value
-      // if (slots.default) {
-      //   markdown = slots.default[0].text
-      // }
+      let markdown = source.value
+      if (slots.default()[ 0 ].children.trim().length > 0) {
+        markdown = slots.default()[ 0 ].children
+      }
 
       copyToClipboard(markdownRef.value.innerText)
 
