@@ -21,7 +21,7 @@ function extendConf (conf) {
 
   // This needs to be set for Vue 3
   const oldPreTagFunc = conf.build.vueLoaderOptions.compilerOptions.isPreTag
-  conf.build.vueLoaderOptions.compilerOptions.isPreTag = (tag) => tag === 'pre' || tag === 'q-markdown' || typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false
+  conf.build.vueLoaderOptions.compilerOptions.isPreTag = (tag) => tag === 'pre' || tag === 'q-markdown' || (typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false)
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
   conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')
