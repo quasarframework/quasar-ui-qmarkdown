@@ -29,7 +29,7 @@ If using Quasar, and you did not install via the QMarkdown app-extension, then y
 build: {
   vueLoaderOptions: {
     compilerOptions: {
-      isPreTag: (tag) => tag === 'q-markdown'
+      isPreTag: (tag) => tag === 'pre ' || tag === 'q-markdown'
     }
   }
 }
