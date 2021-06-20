@@ -14,7 +14,7 @@ export default defineComponent({
 
   setup () {
     useMeta({
-      title: 'Qmarkdown » inline markdown in your Quasar apps',
+      title: 'QMarkdown » inline markdown in your Quasar apps',
       titleTemplate: title => `${ title } » QMarkdown`,
 
       meta: getMeta(
