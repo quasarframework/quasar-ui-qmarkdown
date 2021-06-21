@@ -5,7 +5,7 @@
         <h2 class="text-weight-bold text-blue-2 q-pa-sm" style="padding-left: 20px;">Inline markdown,<br>for your<br>Quasar apps</h2>
         <div class="q-pa-sm">
           <img
-            src="/qcalendarmonth-event-slots.png"
+            src="/qmarkdown--interactive-editor.png"
             class="shadow-10 rounded-borders"
             style="max-width: 340px;"
           />
