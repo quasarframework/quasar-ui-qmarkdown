@@ -14,7 +14,7 @@ export default {
   QMarkdown,
   getTagParts,
 
-  install (Vue) {
-    Vue.component(QMarkdown.name, QMarkdown)
+  install (app) {
+    app.component(QMarkdown.name, QMarkdown)
   }
 }
