@@ -30,9 +30,6 @@ import { date } from 'quasar'
 import PackageReleases from './PackageReleases'
 
 const { extractDate, formatDate } = date
-const packagesDefinitions = {
-  'QMarkdown': []
-}
 
 export default {
   name: 'QMarkdownReleases',
@@ -42,6 +39,9 @@ export default {
   },
 
   setup () {
+    const packagesDefinitions = {
+      'QMarkdown': []
+    }
     const loading = ref(false)
     const error = ref(false)
     const packages = ref(packagesDefinitions)
