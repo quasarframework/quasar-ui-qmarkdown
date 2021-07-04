@@ -407,7 +407,7 @@ export default defineComponent({
         const tocData = []
 
         // get the markdown - slot overrides 'src'
-        let markdown = source.value
+        let markdown = source.value || ''
         if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
           markdown = slots.default()[ 0 ].children.replace(/\\ /g, '\n').replace(/'/g, '')
         }
