@@ -15,7 +15,7 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.10.7",
     "core-js": "^3.14.0",
-    "quasar": "^1.15.20"
+    "quasar": "^2.0.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.2.10",
