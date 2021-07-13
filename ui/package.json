@@ -70,7 +70,7 @@
     "@rollup/plugin-multi-entry": "^4.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@vue/eslint-config-standard": "^6.0.0",
-    "autoprefixer": "10.2.6",
+    "autoprefixer": "10.3.1",
     "babel-eslint": "^10.1.0",
     "babel-preset-env": "^1.7.0",
     "chalk": "^4.1.1",
