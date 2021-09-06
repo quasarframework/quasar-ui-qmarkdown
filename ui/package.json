@@ -19,7 +19,8 @@
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
-    "build:api": "node build/build.api.js"
+    "build:api": "node build/build.api.js",
+    "release": "npm publish --tag next"
   },
   "funding": {
     "type": "github",

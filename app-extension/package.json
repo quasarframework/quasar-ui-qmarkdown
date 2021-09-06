@@ -7,7 +7,8 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
-    "lint-fix": "eslint --ext .js,.vue src --fix"
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "release": "npm publish --tag next"
   },
   "funding": {
     "type": "github",
