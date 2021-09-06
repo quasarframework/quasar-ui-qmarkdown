@@ -1,9 +1,5 @@
 # Quasar App Extension QMarkdown
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
-[![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
-
-
 The QMarkdown app extension can do the following:
 1. Automatically inject the `@quasar/quasar-ui-qmarkdown` component using the Quasar CLI.
 2. Modify webpack to allow importing of markdown (\*.md) files.
@@ -14,7 +10,10 @@ Remember, app extensions can _only_ be used with the Quasar CLI.
 [![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/quasar-app-extension-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 
+[![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
+[![Discord](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
 # Updating
+
 If you already have the app extension installed, you can use the Quasar CLI to automatically update it via:
 ```bash
 quasar upgrade -i
