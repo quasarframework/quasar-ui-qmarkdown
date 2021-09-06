@@ -45,7 +45,7 @@ For Vue CLI and Vite, you will need to extrapolate this to fit your needs.
 
 To add as an App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
-$ quasar ext add @quasar/qmarkdown
+$ quasar ext add @quasar/qmarkdown@next
 ```
 
 #### Uninstall
@@ -62,9 +62,9 @@ When installed as an App Extension, you can use `quasar describe QMarkdown`.
 ### Or Create and register a boot file
 
 ```
-$ yarn add @quasar/quasar-ui-qmarkdown
+$ yarn add @quasar/quasar-ui-qmarkdown@next
 # or
-$ npm install @quasar/quasar-ui-qmarkdown
+$ npm install @quasar/quasar-ui-qmarkdown@next
 ```
 
 Then
