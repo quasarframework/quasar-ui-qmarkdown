@@ -30,20 +30,20 @@
     "markdown"
   ],
   "dependencies": {
-    "@quasar/quasar-ui-qmarkdown": "^2.0.0-alpha.5",
+    "@quasar/quasar-ui-qmarkdown": "^2.0.0-alpha.6",
     "front-matter": "^4.0.2",
     "raw-loader": "^4.0.2",
     "ware-loader": "^0.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/eslint-parser": "^7.14.7",
-    "eslint": "^7.29.0",
-    "eslint-plugin-import": "^2.23.4",
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.4",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.11.1",
-    "eslint-webpack-plugin": "^2.5.4"
+    "eslint-plugin-vue": "^7.17.0",
+    "eslint-webpack-plugin": "^3.0.1"
   },
   "engines": {
     "node": ">= 10.0.0",
