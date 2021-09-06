@@ -135,7 +135,8 @@ export default defineComponent({
     copyResponseText: {
       type: String,
       default: 'Copied to clipboard'
-    }
+    },
+    fixCr: Boolean
   },
 
   emits: [
@@ -155,7 +156,7 @@ export default defineComponent({
 
     onBeforeMount(() => {
       if (props.src && props.src.length > 0) {
-        source.value = props.src.replace(/\\n/gi, '\n')
+        source.value = props.fixCr ? props.src.replace(/\\n/gi, '\n') : props.src
       }
     })
 
@@ -178,7 +179,8 @@ export default defineComponent({
     })
 
     watch(() => props.src, val => {
-      source.value = props.src.replace(/\\n/gi, '\n')
+      source.value = props.fixCr ? props.src.replace(/\\n/gi, '\n') : props.src
+
       rendered.value = null
     })
 

@@ -269,6 +269,11 @@
         "copy-response-text=\"The content was copied to the clipboard\"",
         ":copy-response-text=\"$t('copy-response-text')\""
       ]
+    },
+    "fix-cr": {
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": "if this is set to `true` then the following regEx is run on the `src` property: `props.src.replace(/\\n/gi, '\n')`"
     }
   },
   "events": {
