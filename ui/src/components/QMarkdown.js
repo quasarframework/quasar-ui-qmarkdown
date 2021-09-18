@@ -4,7 +4,6 @@ import {
   getCurrentInstance,
   h,
   onBeforeMount,
-  onUnmounted,
   ref,
   reactive,
   watch
@@ -179,10 +178,6 @@ export default defineComponent({
       if (allProps.value.src && allProps.value.src.length > 0) {
         source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
       }
-    })
-
-    onUnmounted(() => {
-      // __deleteCache(this.uid)
     })
 
     const allProps = computed(() => {

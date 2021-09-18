@@ -18,7 +18,7 @@ setDefaults({
   noEdit: true
 })
 
-// defaults for QMarkdown
+// defaults for QMarkdown - test
 // useQMarkdownGlobalProps({
 //   noAbbreviation: true,
 //   noBlockquote: true
