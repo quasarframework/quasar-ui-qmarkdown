@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-markdown
-      :extend="onExtend"
+      :plugins="plugins"
     >
 ```mermaid Optional Title
   graph TD
@@ -23,18 +23,16 @@ import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
 
 export default defineComponent({
-  name: 'Extend',
+  name: 'Plugins',
   components: {
     QMarkdown
   },
 
   setup () {
-    function onExtend (mdi /* markdown-it instance */) {
-      mdi.use(markdownItMermaid)
-    }
+    const plugins = [markdownItMermaid]
 
     return {
-      onExtend
+      plugins
     }
   }
 })
