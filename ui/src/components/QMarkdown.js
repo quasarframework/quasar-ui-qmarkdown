@@ -6,6 +6,7 @@ import {
   onBeforeMount,
   onUnmounted,
   ref,
+  reactive,
   watch
 } from 'vue'
 
@@ -42,6 +43,22 @@ import {
   copyToClipboard,
   useQuasar
 } from 'quasar'
+
+// QMarkdown global properties
+const globalProps = reactive({})
+
+// Composition function to set global properties
+export function useQMarkdownGlobalProps(props) {
+  // remove existing data
+  for (const key in globalProps) {
+    delete globalProps[ key ]
+  }
+
+  // add the new props
+  for (const key in props) {
+    globalProps[ key ] = props[ key ]
+  }
+}
 
 export default defineComponent({
   name: 'QMarkdown',
@@ -153,8 +170,8 @@ export default defineComponent({
     }
 
     onBeforeMount(() => {
-      if (props.src && props.src.length > 0) {
-        source.value = props.fixCr ? props.src.replace(/\\n/gi, '\n') : props.src
+      if (allProps.value.src && allProps.value.src.length > 0) {
+        source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
       }
     })
 
@@ -162,151 +179,155 @@ export default defineComponent({
       // __deleteCache(this.uid)
     })
 
+    const allProps = computed(() => {
+      return { ...props, ...globalProps }
+    })
+
     const parsedCopyIcon = computed(() => {
       // default mdiContentCopy
-      return props.copyIcon
-        ? props.copyIcon
+      return allProps.value.copyIcon
+        ? allProps.value.copyIcon
         : 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
     })
 
     const parsedDoneIcon = computed(() => {
       // default matDone
-      return props.doneIcon
-        ? props.doneIcon
+      return allProps.value.doneIcon
+        ? allProps.value.doneIcon
         : 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
     })
 
-    watch(() => props.src, val => {
-      source.value = props.fixCr ? props.src.replace(/\\n/gi, '\n') : props.src
+    watch(() => allProps.value.src, val => {
+      source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
 
       rendered.value = null
     })
 
-    watch(() => props.noAbbreviation, val => {
+    watch(() => allProps.value.noAbbreviation, val => {
       rendered.value = null
     })
 
-    watch(() => props.noBlockquote, val => {
+    watch(() => allProps.value.noBlockquote, val => {
       rendered.value = null
     })
 
-    watch(() => props.noBreaks, val => {
+    watch(() => allProps.value.noBreaks, val => {
       rendered.value = null
     })
 
-    watch(() => props.noContainer, val => {
+    watch(() => allProps.value.noContainer, val => {
       rendered.value = null
     })
 
-    watch(() => props.noDeflist, val => {
+    watch(() => allProps.value.noDeflist, val => {
       rendered.value = null
     })
 
-    watch(() => props.noEmoji, val => {
+    watch(() => allProps.value.noEmoji, val => {
       rendered.value = null
     })
 
-    watch(() => props.noFootnote, val => {
+    watch(() => allProps.value.noFootnote, val => {
       rendered.value = null
     })
 
-    watch(() => props.noHighlight, val => {
+    watch(() => allProps.value.noHighlight, val => {
       rendered.value = null
     })
 
-    watch(() => props.noHtml, val => {
+    watch(() => allProps.value.noHtml, val => {
       rendered.value = null
     })
 
-    watch(() => props.noImage, val => {
+    watch(() => allProps.value.noImage, val => {
       rendered.value = null
     })
 
-    watch(() => props.noInsert, val => {
+    watch(() => allProps.value.noInsert, val => {
       rendered.value = null
     })
 
-    watch(() => props.noLineNumbers, val => {
+    watch(() => allProps.value.noLineNumbers, val => {
       rendered.value = null
     })
 
-    watch(() => props.noLink, val => {
+    watch(() => allProps.value.noLink, val => {
       rendered.value = null
     })
 
-    watch(() => props.noLinkify, val => {
+    watch(() => allProps.value.noLinkify, val => {
       rendered.value = null
     })
 
-    watch(() => props.noHeadingAnchorLinks, val => {
+    watch(() => allProps.value.noHeadingAnchorLinks, val => {
       rendered.value = null
     })
 
-    watch(() => props.noMark, val => {
+    watch(() => allProps.value.noMark, val => {
       rendered.value = null
     })
 
-    watch(() => props.noSubscript, val => {
+    watch(() => allProps.value.noSubscript, val => {
       rendered.value = null
     })
 
-    watch(() => props.noSuperscript, val => {
+    watch(() => allProps.value.noSuperscript, val => {
       rendered.value = null
     })
 
-    watch(() => props.noTasklist, val => {
+    watch(() => allProps.value.noTasklist, val => {
       rendered.value = null
     })
 
-    watch(() => props.noTypographer, val => {
+    watch(() => allProps.value.noTypographer, val => {
       rendered.value = null
     })
 
-    watch(() => props.lineNumberAlt, val => {
+    watch(() => allProps.value.lineNumberAlt, val => {
       rendered.value = null
     })
 
-    watch(() => props.toc, val => {
+    watch(() => allProps.value.toc, val => {
       rendered.value = null
     })
 
-    watch(() => props.tocStart, val => {
+    watch(() => allProps.value.tocStart, val => {
       rendered.value = null
     })
 
-    watch(() => props.tocEnd, val => {
+    watch(() => allProps.value.tocEnd, val => {
       rendered.value = null
     })
 
-    watch(() => props.taskListsEnable, val => {
+    watch(() => allProps.value.taskListsEnable, val => {
       rendered.value = null
     })
 
-    watch(() => props.taskListsLabel, val => {
+    watch(() => allProps.value.taskListsLabel, val => {
       rendered.value = null
     })
 
-    watch(() => props.taskListsLabelAfter, val => {
+    watch(() => allProps.value.taskListsLabelAfter, val => {
       rendered.value = null
     })
 
-    watch(() => props.extend, val => {
+    watch(() => allProps.value.contentStyle, val => {
       rendered.value = null
     })
 
-    watch(() => props.contentStyle, val => {
+    watch(() => allProps.value.contentClass, val => {
       rendered.value = null
     })
 
-    watch(() => props.contentClass, val => {
+    watch(() => allProps.value.noNoopener, val => {
       rendered.value = null
     })
 
-    watch(() => props.noNoopener, val => {
+    watch(() => allProps.value.noNoreferrer, val => {
       rendered.value = null
     })
 
-    watch(() => props.noNoreferrer, val => {
+    watch(() => allProps.value.plugins, val => {
       rendered.value = null
     })
 
@@ -314,6 +335,7 @@ export default defineComponent({
     // watch(() => props, val => {
     //   rendered.value = null
     // })
+    // or, an array of props?
 
     function __isEnabled (val) {
       return val === void 0 || val === false
@@ -324,16 +346,16 @@ export default defineComponent({
       let root = null
 
       const addToTree = (item) => {
-        if (item.level === props.tocStart) {
+        if (item.level === allProps.value.tocStart) {
           root = item
           tree.push(item)
         }
-        else if (item.level === props.tocStart + 1) {
+        else if (item.level === allProps.value.tocStart + 1) {
           root.children.push(item)
         }
         else {
           let parent = root
-          for (let k = 0; k < item.level - (props.tocStart + 1); ++k) {
+          for (let k = 0; k < item.level - (allProps.value.tocStart + 1); ++k) {
             parent = parent.children[ parent.children.length - 1 ]
           }
           if (parent) {
@@ -359,7 +381,7 @@ export default defineComponent({
 
       if ($q.notify) {
         $q.notify({
-          message: props.copyResponseText,
+          message: allProps.value.copyResponseText,
           color: $q.dark.isActive ? 'grey-10' : 'white',
           textColor: $q.dark.isActive ? 'amber' : 'primary',
           icon: parsedDoneIcon.value,
@@ -370,7 +392,7 @@ export default defineComponent({
     }
 
     function __renderCopy () {
-      if (props.showCopy !== true) return
+      if (allProps.value.showCopy !== true) return
       return h(QBtn, {
         class: 'q-markdown__copy',
         color: $q.dark.isActive ? 'amber' : 'primary',
@@ -380,7 +402,7 @@ export default defineComponent({
         icon: parsedCopyIcon.value,
         onClick: v => { __copyMarkdownToClipboard() }
       }, [
-        props.noCopyTooltip !== true && h(QTooltip, props.copyTooltipText)
+        allProps.value.noCopyTooltip !== true && h(QTooltip, allProps.value.copyTooltipText)
       ])
     }
 
@@ -395,76 +417,76 @@ export default defineComponent({
         }
 
         const highlight = (str, lang) => {
-          if (__isEnabled(props.noHighlight)) {
+          if (__isEnabled(allProps.value.noHighlight)) {
             return prismHighlight(Prism, str, lang)
           }
           return str
         }
 
         const opts = {
-          html: __isEnabled(props.noHtml),
-          linkify: __isEnabled(props.noLinkify),
-          typographer: __isEnabled(props.noTypographer),
-          breaks: __isEnabled(props.noBreaks),
+          html: __isEnabled(allProps.value.noHtml),
+          linkify: __isEnabled(allProps.value.noLinkify),
+          typographer: __isEnabled(allProps.value.noTypographer),
+          breaks: __isEnabled(allProps.value.noBreaks),
           highlight: highlight
         }
 
         const md = markdownIt(opts)
 
-        if (__isEnabled(props.noSubscript)) {
+        if (__isEnabled(allProps.value.noSubscript)) {
           md.use(subscript)
         }
-        if (__isEnabled(props.noSuperscript)) {
+        if (__isEnabled(allProps.value.noSuperscript)) {
           md.use(superscript)
         }
-        if (__isEnabled(props.noFootnote)) {
+        if (__isEnabled(allProps.value.noFootnote)) {
           md.use(footnote)
         }
-        if (__isEnabled(props.noDeflist)) {
+        if (__isEnabled(allProps.value.noDeflist)) {
           md.use(deflist)
         }
-        if (__isEnabled(props.noAbbreviation)) {
+        if (__isEnabled(allProps.value.noAbbreviation)) {
           md.use(abbreviation)
         }
-        if (__isEnabled(props.noInsert)) {
+        if (__isEnabled(allProps.value.noInsert)) {
           md.use(insert)
         }
-        if (__isEnabled(props.noMark)) {
+        if (__isEnabled(allProps.value.noMark)) {
           md.use(mark)
         }
-        if (__isEnabled(props.noEmoji)) {
+        if (__isEnabled(allProps.value.noEmoji)) {
           md.use(emoji)
         }
-        if (__isEnabled(props.noImage)) {
+        if (__isEnabled(allProps.value.noImage)) {
           md.use(imsize)
         }
-        if (__isEnabled(props.noTasklist)) {
-          md.use(taskLists, { enabled: props.taskListsEnable, label: props.taskListsLabel, labelAfter: props.taskListsLabelAfter })
+        if (__isEnabled(allProps.value.noTasklist)) {
+          md.use(taskLists, { enabled: allProps.value.taskListsEnable, label: allProps.value.taskListsLabel, labelAfter: allProps.value.taskListsLabelAfter })
         }
 
         extendBlockQuote(md)
-        extendHeading(md, tocData, props.toc, props.tocStart, props.tocEnd, props.noHeadingAnchorLinks)
+        extendHeading(md, tocData, allProps.value.toc, allProps.value.tocStart, allProps.value.tocEnd, allProps.value.noHeadingAnchorLinks)
         extendImage(md)
-        extendLink(md, { noopener: !props.noNoopener, noreferrer: !props.noNoreferrer })
+        extendLink(md, { noopener: !allProps.value.noNoopener, noreferrer: !allProps.value.noNoreferrer })
         extendTable(md)
         extendToken(md)
 
-        if (__isEnabled(props.noContainer)) {
+        if (__isEnabled(allProps.value.noContainer)) {
           extendContainers(md)
         }
-        if (__isEnabled(props.noLineNumbers)) {
-          extendFenceLineNumbers(md, props.lineNumberAlt)
+        if (__isEnabled(allProps.value.noLineNumbers)) {
+          extendFenceLineNumbers(md, allProps.value.lineNumberAlt)
         }
 
         // handle disabled rules
         const disabled = []
-        if (!__isEnabled(props.noImage)) {
+        if (!__isEnabled(allProps.value.noImage)) {
           disabled.push('image')
         }
-        if (!__isEnabled(props.noLink)) {
+        if (!__isEnabled(allProps.value.noLink)) {
           disabled.push('link')
         }
-        if (!__isEnabled(props.noBlockquote)) {
+        if (!__isEnabled(allProps.value.noBlockquote)) {
           disabled.push('blockquote')
         }
         if (disabled.length > 0) {
@@ -477,7 +499,7 @@ export default defineComponent({
 
         rendered.value = md.render(markdown)
 
-        if (props.toc && tocData.length > 0) {
+        if (allProps.value.toc && tocData.length > 0) {
           emit('data', tocData)
         }
       }
@@ -486,9 +508,9 @@ export default defineComponent({
         ref: markdownRef,
         class: {
           'q-markdown': true,
-          ...props.contentClass
+          ...allProps.value.contentClass
         },
-        style: props.contentStyle,
+        style: allProps.value.contentStyle,
         innerHTML: rendered.value
       })
 
@@ -501,7 +523,7 @@ export default defineComponent({
         __renderCopy(h)
       ])
 
-      return props.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
+      return allProps.value.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
     }
 
     // expose public methods

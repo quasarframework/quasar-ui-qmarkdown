@@ -1,17 +1,19 @@
 import pkg from '../package.json'
 const { version } = pkg
-import QMarkdown from './components/QMarkdown'
+import QMarkdown, { useQMarkdownGlobalProps } from './components/QMarkdown'
 import getTagParts from './util/getTagParts'
 
 export {
   version,
   QMarkdown,
+  useQMarkdownGlobalProps,
   getTagParts
 }
 
 export default {
   version,
   QMarkdown,
+  useQMarkdownGlobalProps,
   getTagParts,
 
   install (app) {
