@@ -151,41 +151,6 @@
       "category": "style",
       "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
     },
-    "extend": {
-      "type": "Function",
-      "category": "extend",
-      "desc": "Used to extend the markdown processor. You can use any 'markdown-it' plugin or write your own",
-      "params": {
-        "md": {
-          "type": "Object",
-          "desc": "The `markdown-it` instance",
-          "__exemption": [ "examples" ]
-        }
-      },
-      "examples": [
-        ":extend=\"extendMarkdownFn\"",
-        ":extend=\"(md) => extendMarkdownFn(md)\""
-      ],
-      "returns": null
-    },
-    "extend-prism": {
-      "type": "Function",
-      "category": "extend",
-      "addedIn": "v1.0.0",
-      "desc": "Used to extend the [Prism](https://prismjs.com/extending.html) code highlighter",
-      "params": {
-        "Prism": {
-          "type": "Object",
-          "desc": "The `Prism` instance",
-          "__exemption": [ "examples" ]
-        }
-      },
-      "examples": [
-        ":extendPrism=\"extendPrismFn\"",
-        ":extendPrism=\"(Prism) => extendPrismFn(Prism)\""
-      ],
-      "returns": null
-    },
     "content-class": {
       "type": [ "Array", "Object" ],
       "category": "style",

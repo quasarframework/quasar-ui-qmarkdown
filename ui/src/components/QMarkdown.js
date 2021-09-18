@@ -115,9 +115,7 @@ export default defineComponent({
     taskListsLabel: Boolean,
     // to add the label after the checkbox
     taskListsLabelAfter: Boolean,
-    // extend markdown-it!
-    extend: Function,
-    extendPrism: Function,
+
     contentStyle: [ String, Object, Array ],
     contentClass: [ String, Object, Array ],
 
@@ -321,24 +319,6 @@ export default defineComponent({
       return val === void 0 || val === false
     }
 
-    function __isFunction (f) {
-      return f && {}.toString.call(f) === '[object Function]'
-    }
-
-    // function __setCache (key, value) {
-    //   cache[key] = value
-    // }
-
-    // function __getCache (key) {
-    //   return cache[key]
-    // }
-
-    // function __deleteCache (key) {
-    //   if (cache[key]) {
-    //     delete cache[key]
-    //   }
-    // }
-
     function makeTree (list) {
       const tree = []
       let root = null
@@ -412,10 +392,6 @@ export default defineComponent({
         let markdown = source.value || ''
         if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
           markdown = slots.default()[ 0 ].children.replace(/\\ /g, '\n').replace(/'/g, '')
-        }
-
-        if (__isFunction(props.extendPrism)) {
-          props.extendPrism(Prism)
         }
 
         const highlight = (str, lang) => {
@@ -495,8 +471,8 @@ export default defineComponent({
           md.disable(disabled)
         }
 
-        if (__isFunction(props.extend)) {
-          props.extend(md)
+
+
         }
 
         rendered.value = md.render(markdown)
