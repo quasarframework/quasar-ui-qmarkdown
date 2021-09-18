@@ -9,11 +9,6 @@
       "desc": "[optional] Pass markdown in as a property",
       "examples": [ "src=\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\"" ]
     },
-    "no-abbreviation": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable abbreviation conversion"
-    },
     "no-blockquote": {
       "type": "Boolean",
       "category": "content",
@@ -29,21 +24,6 @@
       "category": "content",
       "desc": "Disable container conversion"
     },
-    "no-deflist": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable definition list conversion"
-    },
-    "no-emoji": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable emojie conversion"
-    },
-    "no-footnote": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable footnote conversion"
-    },
     "no-highlight": {
       "type": "Boolean",
       "category": "content",
@@ -58,11 +38,6 @@
       "type": "Boolean",
       "category": "content",
       "desc": "Disable image conversion"
-    },
-    "no-insert": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable insert conversion"
     },
     "no-line-numbers": {
       "type": "Boolean",
@@ -84,26 +59,6 @@
       "type": "Boolean",
       "category": "content",
       "desc": "Your headings will automatically be turned into anchor links, unless you use this property (default is H1-H3)"
-    },
-    "no-mark": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable mark conversion"
-    },
-    "no-subscript": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable subscript conversion"
-    },
-    "no-superscript": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable superscript conversion"
-    },
-    "no-tasklist": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable tasklist conversion"
     },
     "no-typographer": {
       "type": "Boolean",
@@ -135,21 +90,6 @@
       "category": "behavior",
       "desc": "The ending Header number for generating a TOC. Must be greater than tocStart",
       "values": [ 2, 3, 4, 5, 6 ]
-    },
-    "task-lists-enable": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Set to true to enable (not read-only) Task Lists"
-    },
-    "task-lists-label": {
-      "type": "Boolean",
-      "category": "style",
-      "desc": "Set to true to wrap the rendered list items in a <label> element for UX purposes"
-    },
-    "task-lists-label-after": {
-      "type": "Boolean",
-      "category": "style",
-      "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
     },
     "content-class": {
       "type": [ "Array", "Object" ],

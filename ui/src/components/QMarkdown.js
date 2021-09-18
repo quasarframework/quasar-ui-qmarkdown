@@ -10,19 +10,8 @@ import {
 } from 'vue'
 
 import markdownIt from 'markdown-it'
-import emoji from 'markdown-it-emoji'
-import subscript from 'markdown-it-sub'
-import superscript from 'markdown-it-sup'
-import footnote from 'markdown-it-footnote'
-import deflist from 'markdown-it-deflist'
-import abbreviation from 'markdown-it-abbr'
-import insert from 'markdown-it-ins'
-import mark from 'markdown-it-mark'
-// import container from 'markdown-it-container'
-import taskLists from 'markdown-it-task-lists'
-// import imsize from 'markdown-it-imsize'
+
 import imsize from 'markdown-it-imsize/dist/markdown-it-imsize.js'
-// import tocAndAnchor from 'markdown-it-toc-and-anchor'
 
 import Prism from 'prismjs'
 import prismHighlight from '../util/highlight.js'
@@ -68,28 +57,18 @@ export default defineComponent({
       type: String,
       default: ''
     },
-    // no abbreviations
-    noAbbreviation: Boolean,
     // no blockquotes
     noBlockquote: Boolean,
     // no breaks
     noBreaks: Boolean,
     // no containers
     noContainer: Boolean,
-    // no Deflists
-    noDeflist: Boolean,
-    // no emojies
-    noEmoji: Boolean,
-    // no footnotes
-    noFootnote: Boolean,
     // no code highlights
     noHighlight: Boolean,
     // no html entities
     noHtml: Boolean,
     // no images
     noImage: Boolean,
-    // no inserts
-    noInsert: Boolean,
     // no line-numbers
     noLineNumbers: Boolean,
     // no links
@@ -98,14 +77,6 @@ export default defineComponent({
     noLinkify: Boolean,
     // no heading (h1-h6) anchor (#) links
     noHeadingAnchorLinks: Boolean,
-    // no marks
-    noMark: Boolean,
-    // no subscript
-    noSubscript: Boolean,
-    // no superscript
-    noSuperscript: Boolean,
-    // no tasklists
-    noTasklist: Boolean,
     // no typographer
     noTypographer: Boolean,
     // alternative character to use instead of line numbers
@@ -125,15 +96,9 @@ export default defineComponent({
       default: 3,
       validator: v => v >= 1 && v <= 6
     },
-    // set to true to enable task lists checkboxes (not read-only)
-    taskListsEnable: Boolean,
-    // to wrap the rendered list items in a <label> element for UX purposes
-    taskListsLabel: Boolean,
-    // to add the label after the checkbox
-    taskListsLabelAfter: Boolean,
 
-    contentStyle: [ String, Object, Array ],
-    contentClass: [ String, Object, Array ],
+    contentStyle: [ Object, Array ],
+    contentClass: [ Object, Array ],
 
     noNoopener: Boolean,
     noNoreferrer: Boolean,
@@ -204,10 +169,6 @@ export default defineComponent({
       rendered.value = null
     })
 
-    watch(() => allProps.value.noAbbreviation, val => {
-      rendered.value = null
-    })
-
     watch(() => allProps.value.noBlockquote, val => {
       rendered.value = null
     })
@@ -220,18 +181,6 @@ export default defineComponent({
       rendered.value = null
     })
 
-    watch(() => allProps.value.noDeflist, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noEmoji, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noFootnote, val => {
-      rendered.value = null
-    })
-
     watch(() => allProps.value.noHighlight, val => {
       rendered.value = null
     })
@@ -241,10 +190,6 @@ export default defineComponent({
     })
 
     watch(() => allProps.value.noImage, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noInsert, val => {
       rendered.value = null
     })
 
@@ -261,22 +206,6 @@ export default defineComponent({
     })
 
     watch(() => allProps.value.noHeadingAnchorLinks, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noMark, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noSubscript, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noSuperscript, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noTasklist, val => {
       rendered.value = null
     })
 
@@ -297,18 +226,6 @@ export default defineComponent({
     })
 
     watch(() => allProps.value.tocEnd, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.taskListsEnable, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.taskListsLabel, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.taskListsLabelAfter, val => {
       rendered.value = null
     })
 
@@ -434,35 +351,8 @@ export default defineComponent({
 
         const md = markdownIt(opts)
 
-        if (__isEnabled(allProps.value.noSubscript)) {
-          md.use(subscript)
-        }
-        if (__isEnabled(allProps.value.noSuperscript)) {
-          md.use(superscript)
-        }
-        if (__isEnabled(allProps.value.noFootnote)) {
-          md.use(footnote)
-        }
-        if (__isEnabled(allProps.value.noDeflist)) {
-          md.use(deflist)
-        }
-        if (__isEnabled(allProps.value.noAbbreviation)) {
-          md.use(abbreviation)
-        }
-        if (__isEnabled(allProps.value.noInsert)) {
-          md.use(insert)
-        }
-        if (__isEnabled(allProps.value.noMark)) {
-          md.use(mark)
-        }
-        if (__isEnabled(allProps.value.noEmoji)) {
-          md.use(emoji)
-        }
         if (__isEnabled(allProps.value.noImage)) {
           md.use(imsize)
-        }
-        if (__isEnabled(allProps.value.noTasklist)) {
-          md.use(taskLists, { enabled: allProps.value.taskListsEnable, label: allProps.value.taskListsLabel, labelAfter: allProps.value.taskListsLabelAfter })
         }
 
         extendBlockQuote(md)
