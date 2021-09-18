@@ -5,6 +5,7 @@ import MarkdownLink from '../components/MarkdownLink.vue'
 import ExampleViewer, { setDefaults } from 'quasar-ui-example-viewer/src'
 import pkg from '@quasar/quasar-ui-qmarkdown/package.json'
 const { version } = pkg
+// import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 
 
 setDefaults({
@@ -17,8 +18,13 @@ setDefaults({
   noEdit: true
 })
 
+// defaults for QMarkdown
+// useQMarkdownGlobalProps({
+//   noAbbreviation: true,
+//   noBlockquote: true
+// })
+
 export default boot(({ app }) => {
-  // app.use(VuePlugin)
   app.use(ExampleViewer)
   app.component('JsonApiViewer', JsonApiViewer)
   app.component('MarkdownPage', MarkdownPage)
