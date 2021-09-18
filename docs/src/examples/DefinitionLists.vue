@@ -1,8 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable definition lists"></q-toggle>
     <q-markdown
-      :no-deflist="model"
+      :plugins="plugins"
     >
 Term 1
 
@@ -34,6 +33,7 @@ Term 2
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import deflist from 'markdown-it-deflist'
 
 export default defineComponent({
   name: 'DefinitionLists',
@@ -42,10 +42,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false)
+    const plugins = [deflist]
 
     return {
-      model
+      plugins
     }
   }
 })

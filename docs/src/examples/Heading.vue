@@ -16,20 +16,26 @@
       :no-heading-anchor-links="model"
       :toc-start="range.min"
       :toc-end="range.max"
+      toc
+      @data="onToc"
     >
-# h1 Heading 8-)
+# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
 ##### h5 Heading
 ###### h6 Heading
     </q-markdown>
+
+    <q-separator />
+    <p>Output:</p>
+    <pre>{{ JSON.stringify(results, null, 2)}}</pre>
   </div>
 
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 
@@ -41,14 +47,21 @@ export default defineComponent({
 
   setup () {
     const model = ref(false)
-    const range = reactive({
+    const range = ref({
       min: 1,
       max: 3
     })
+    const results = ref({})
+
+    function onToc (data) {
+      results.value = data
+    }
 
     return {
       model,
-      range
+      range,
+      onToc,
+      results
     }
   }
 })

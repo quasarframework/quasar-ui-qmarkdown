@@ -1,8 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable insert"></q-toggle>
     <q-markdown
-      :no-insert="model"
+      :plugins="plugins"
     >
 ++This sentence is inserted.++
 
@@ -16,6 +15,7 @@ This is ++inserted++ in the middle of a sentence.
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import insert from 'markdown-it-ins'
 
 export default defineComponent({
   name: 'Insert',
@@ -24,10 +24,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false)
+    const plugins = [insert]
 
     return {
-      model
+      plugins
     }
   }
 })

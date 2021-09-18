@@ -1,27 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle
-      v-model="model"
-      label="Disable tasklist"
-    />
-    <q-toggle
-      v-model="taskListsEnable"
-      label="Tasklist enable"
-    />
-    <q-toggle
-      v-model="taskListsLabel"
-      label="Tasklist label"
-    />
-    <q-toggle
-      v-model="taskListsLabelAfter"
-      label="Tasklist label after"
-      :disable="!taskListsLabel"
-    />
     <q-markdown
-      :no-tasklist="model"
-      :task-lists-enable="taskListsEnable"
-      :task-lists-label="taskListsLabel"
-      :task-lists-label-after="taskListsLabelAfter"
+      :plugins="plugins"
     >
 ### Solar System Exploration, 1950s – 1960s
 
@@ -43,6 +23,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import taskLists from 'markdown-it-task-lists'
 
 export default defineComponent({
   name: 'TaskLists',
@@ -51,22 +32,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false),
-      taskListsEnable = ref(false),
-      taskListsLabel = ref(false),
-      taskListsLabelAfter = ref(false)
-
-    watch(() => taskListsLabel, (val) => {
-      if (!val) {
-        taskListsLabelAfter.value = false
-      }
-    })
+    const plugins = [taskLists]
 
     return {
-      model,
-      taskListsEnable,
-      taskListsLabel,
-      taskListsLabelAfter
+      plugins
     }
   }
 })

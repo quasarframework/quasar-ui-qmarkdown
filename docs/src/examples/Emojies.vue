@@ -1,8 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable emojies"></q-toggle>
     <q-markdown
-      :no-emoji="model"
+      :plugins="plugins"
     >
 Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
 
@@ -16,6 +15,7 @@ Shortcuts (emoticons): :-) :-( 8-) ;)
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import emoji from 'markdown-it-emoji'
 
 export default defineComponent({
   name: 'Emojies',
@@ -24,10 +24,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false)
+    const plugins = [emoji]
 
     return {
-      model
+      plugins
     }
   }
 })

@@ -25,12 +25,12 @@
       label="Disable Highlight"
     />
     <q-toggle
-      v-model="noEmoji"
-      label="Disable Emoji"
-    />
-    <q-toggle
       v-model="noSubscript"
       label="Disable Subscript"
+    />
+    <q-toggle
+      v-model="noEmoji"
+      label="Disable Emoji"
     />
     <q-toggle
       v-model="noSuperscript"
@@ -68,6 +68,10 @@
       v-model="noContainer"
       label="Disable Container"
     />
+    <q-toggle
+      v-model="noMermaid"
+      label="Disable Mermaid"
+    />
     <div class="q-pa-md q-gutter-sm fit">
       <q-markdown
       >
@@ -96,6 +100,7 @@ Add Markdown to the window on the left and the output will appear on the right.
         <template v-slot:after>
           <div class="q-pa-md" style="height: 467px;">
             <q-markdown
+              :key="count"
               v-model:src="markdown"
               :noHtml="noHtml"
               :noLink="noLink"
@@ -103,17 +108,9 @@ Add Markdown to the window on the left and the output will appear on the right.
               :noTypographer="noTypographer"
               :noBreaks="noBreaks"
               :noHighlight="noHighlight"
-              :noEmoji="noEmoji"
-              :noSubscript="noSubscript"
-              :noSuperscript="noSuperscript"
-              :noFootnote="noFootnote"
-              :noDeflist="noDeflist"
-              :noAbbreviation="noAbbreviation"
-              :noInsert="noInsert"
-              :noMark="noMark"
               :noImage="noImage"
-              :noTasklist="noTasklist"
               :noContainer="noContainer"
+              :plugins="plugins"
               class="fit bordered q-pa-sm"
             >
             </q-markdown>
@@ -126,9 +123,19 @@ Add Markdown to the window on the left and the output will appear on the right.
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch, onMounted, getCurrentInstance } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import abbreviation from 'markdown-it-abbr'
+import deflist from 'markdown-it-deflist'
+import emoji from 'markdown-it-emoji'
+import footnote from 'markdown-it-footnote'
+import insert from 'markdown-it-ins'
+import mark from 'markdown-it-mark'
+import subscript from 'markdown-it-sub'
+import superscript from 'markdown-it-sup'
+import taskLists from 'markdown-it-task-lists'
+import mermaid from '@datatraccorporation/markdown-it-mermaid'
 
 export default defineComponent({
   name: 'Editor',
@@ -157,7 +164,48 @@ export default defineComponent({
       noMark = ref(false),
       noImage = ref(false),
       noTasklist = ref(false),
-      noContainer = ref(false)
+      noContainer = ref(false),
+      noMermaid = ref(false),
+      plugins = ref([]),
+      count = ref(0)
+
+    watch([
+      noAbbreviation,
+      noDeflist,
+      noEmoji,
+      noFootnote,
+      noInsert,
+      noMark,
+      noSubscript,
+      noSuperscript,
+      noTasklist,
+      noMermaid
+    ], () => {
+      rebuildPlugins()
+    })
+
+    function rebuildPlugins () {
+      plugins.value.splice(0, plugins.value.length)
+
+      if (noAbbreviation.value !== true) plugins.value.push(abbreviation)
+      if (noDeflist.value !== true) plugins.value.push(deflist)
+      if (noEmoji.value !== true) plugins.value.push(emoji)
+      if (noFootnote.value !== true) plugins.value.push(footnote)
+      if (noInsert.value !== true) plugins.value.push(insert)
+      if (noMark.value !== true) plugins.value.push(mark)
+      if (noSubscript.value !== true) plugins.value.push(subscript)
+      if (noSuperscript.value !== true) plugins.value.push(superscript)
+      if (noTasklist.value !== true) plugins.value.push(taskLists)
+      if (noMermaid.value !== true) plugins.value.push(mermaid)
+
+      // by having `:key="count"` on the q-markdown component,
+      // we can force Vue to do a refresh when the plugins change
+      count.value += 1
+    }
+
+    onMounted(() => {
+      rebuildPlugins()
+    })
 
     return {
       splitterModel,
@@ -178,7 +226,10 @@ export default defineComponent({
       noMark,
       noImage,
       noTasklist,
-      noContainer
+      noContainer,
+      noMermaid,
+      plugins,
+      count
     }
   }
 })

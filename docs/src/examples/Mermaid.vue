@@ -23,7 +23,7 @@ import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
 import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
 
 export default defineComponent({
-  name: 'Plugins',
+  name: 'Mermaid',
   components: {
     QMarkdown
   },

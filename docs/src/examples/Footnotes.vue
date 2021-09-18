@@ -1,8 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable footnotes"></q-toggle>
     <q-markdown
-      :no-footnote="model"
+      :plugins="plugins"
     >
 Footnote 1 link[^first].
 
@@ -25,6 +24,7 @@ Duplicated footnote reference[^second].
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import footnote from 'markdown-it-footnote'
 
 export default defineComponent({
   name: 'Footnotes',
@@ -33,10 +33,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false)
+    const plugins = [footnote]
 
     return {
-      model
+      plugins
     }
   }
 })

@@ -1,10 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable subscript"></q-toggle>
-    <q-toggle v-model="model2" label="Disable superscript"></q-toggle>
     <q-markdown
-      :no-subscript="model"
-      :no-superscript="model2"
+      :plugins="plugins"
     >
 - 19^th^
 - H~2~O
@@ -17,6 +14,8 @@
 import { defineComponent, ref } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import subscript from 'markdown-it-sub'
+import superscript from 'markdown-it-sup'
 
 export default defineComponent({
   name: 'SubscriptSuperscript',
@@ -25,12 +24,10 @@ export default defineComponent({
   },
 
   setup () {
-    const model = ref(false),
-      model2 = ref(false)
+    const plugins = [ subscript, superscript ]
 
     return {
-      model,
-      model2
+      plugins
     }
   }
 })
