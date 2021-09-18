@@ -422,7 +422,7 @@ export default defineComponent({
           if (__isEnabled(props.noHighlight)) {
             return prismHighlight(Prism, str, lang)
           }
-          return ''
+          return str
         }
 
         const opts = {
