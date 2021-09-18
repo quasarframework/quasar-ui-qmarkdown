@@ -9,6 +9,53 @@ components:
 <q-markdown-json-api />
 
 ## Markdown
+
+### Extending Prism
+
+The `prismjs` package is used for language highlighting. When Prism is installed by QMarkdown, it loads itself globally. You can acces it via `window.Prism`. Visit their [documentation](https://prismjs.com/) on modifying the run-time, like adding additional language support.
+
+### Global Properties
+
+QMarkdown has the ability to set some global properties via the `useQMarkdownGlobalProps` function.
+
+To set it up site wide, put it into a boot file. The function takes an object containing the **camelCase** naming of the props for QMarkdown.
+
+::: tip
+Any property for QMarkdown can be passed, but must be **camelCased**. Any global properties will overwrite local properties you set on an instance.
+:::
+
+```js
+import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
+
+// defaults for QMarkdown
+useQMarkdownGlobalProps({
+  noAbbreviation: true,
+  noBlockquote: true
+})
+```
+
+Essentially, the above code makes it so that QMarkdown will no longer render `abbreviations` or `block quotes`.
+
+::: warning
+The keys are not validated in any way, so make sure to adhere to the proper type, for that property, to avoid issues.
+:::
+
+### Global Plugins
+
+As well, a new property, `plugins`, has been added to replace the `extend` property. In the case of using it in the globalproperties, you can do something like this in a boot file:
+
+```js
+import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
+import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
+
+// defaults for QMarkdown
+useQMarkdownGlobalProps({
+  plugins: [markdownItMermaid]
+})
+```
+
+In this case, the `markdown-it-mermaid` will be made available to all QMarkdown instances.
+
 ### Abbreviations
 <example-viewer
   title=""
@@ -157,10 +204,11 @@ components:
 />
 
 ## Advanced
-### Extend
+
+### Plugins
 <example-viewer
   title=""
-  file="Extend"
+  file="Plugins"
   codepen-title="QMarkdown"
 />
 

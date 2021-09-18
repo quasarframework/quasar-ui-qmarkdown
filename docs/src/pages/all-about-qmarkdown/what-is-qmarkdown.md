@@ -44,4 +44,21 @@ QMarkdown allows you to write markdown via slotted content (or a `src` property)
 19. Titles
 20. Typography
 
-QMarkdown is also extensible via the `extend` property.
+QMarkdown is also extensible via the `plugins` property.
+
+## GlobalProperties
+
+For all properties that can be used on QMarkdown, you can set the global properties via the `useQMarkdownGlobalProps` function.
+
+Here is an example using the `markdown`-it-mermaid` plugin:
+
+```js
+import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
+import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
+
+// defaults for QMarkdown
+useQMarkdownGlobalProps({
+  plugins: [markdownItMermaid]
+})
+```
+
