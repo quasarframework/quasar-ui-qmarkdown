@@ -239,6 +239,12 @@
       "type": "Boolean",
       "category": "behavior",
       "desc": "if this is set to `true` then the following regEx is run on the `src` property: `props.src.replace(/\\n/gi, '\n')`"
+    },
+    "plugins": {
+      "type": "Array",
+      "category":"extend",
+      "desc": "[optional] An array of `markdown-it!` plugins.",
+      "__exemption": [ "examples" ]
     }
   },
   "events": {

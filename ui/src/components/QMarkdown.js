@@ -151,7 +151,13 @@ export default defineComponent({
       type: String,
       default: 'Copied to clipboard'
     },
-    fixCr: Boolean
+    fixCr: Boolean,
+
+    // markdown-it plugins
+    plugins: {
+      type: Array,
+      default: () => []
+    }
   },
 
   emits: [
@@ -493,8 +499,10 @@ export default defineComponent({
           md.disable(disabled)
         }
 
-
-
+        if (allProps.value.plugins.length > 0) {
+          allProps.value.plugins.forEach(plugin => {
+            md.use(plugin)
+          })
         }
 
         rendered.value = md.render(markdown)
