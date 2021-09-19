@@ -169,94 +169,30 @@ export default defineComponent({
       rendered.value = null
     })
 
-    watch(() => allProps.value.noBlockquote, val => {
+    watch(() => [
+      allProps.value.noBlockquote,
+      allProps.value.noBreaks,
+      allProps.value.noContainer,
+      allProps.value.noHighlight,
+      allProps.value.noHtml,
+      allProps.value.noImage,
+      allProps.value.noLineNumbers,
+      allProps.value.noLink,
+      allProps.value.noLinkify,
+      allProps.value.noHeadingAnchorLinks,
+      allProps.value.noTypographer,
+      allProps.value.lineNumberAlt,
+      allProps.value.toc,
+      allProps.value.tocStart,
+      allProps.value.tocEnd,
+      allProps.value.contentStyle,
+      allProps.value.contentClass,
+      allProps.value.noNoopener,
+      allProps.value.noNoreferrer,
+      allProps.value.plugins
+     ], () => {
       rendered.value = null
     })
-
-    watch(() => allProps.value.noBreaks, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noContainer, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noHighlight, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noHtml, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noImage, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noLineNumbers, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noLink, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noLinkify, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noHeadingAnchorLinks, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noTypographer, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.lineNumberAlt, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.toc, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.tocStart, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.tocEnd, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.contentStyle, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.contentClass, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noNoopener, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.noNoreferrer, val => {
-      rendered.value = null
-    })
-
-    watch(() => allProps.value.plugins, val => {
-      rendered.value = null
-    })
-
-    // TODO:: Jeff - can all of the above watches be replaced with
-    //
-    // watch(() => props, val => {
-    //   rendered.value = null
-    // })
-    // or, an array of props?
-    // TODO:: Chris - its also possible with multiple values:
-    // watch([firstName, lastName], (newValues, prevValues) => {
 
     function __isEnabled (val) {
       return val === void 0 || val === false
