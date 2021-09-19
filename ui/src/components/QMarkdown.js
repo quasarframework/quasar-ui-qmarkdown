@@ -250,10 +250,13 @@ export default defineComponent({
     })
 
     // TODO:: Jeff - can all of the above watches be replaced with
+    //
     // watch(() => props, val => {
     //   rendered.value = null
     // })
     // or, an array of props?
+    // TODO:: Chris - its also possible with multiple values:
+    // watch([firstName, lastName], (newValues, prevValues) => {
 
     function __isEnabled (val) {
       return val === void 0 || val === false
@@ -319,9 +322,7 @@ export default defineComponent({
         round: true,
         icon: parsedCopyIcon.value,
         onClick: v => { __copyMarkdownToClipboard() }
-      }, [
-        allProps.value.noCopyTooltip !== true && h(QTooltip, allProps.value.copyTooltipText)
-      ])
+      }, () => [allProps.value.noCopyTooltip !== true && h(QTooltip, () => allProps.value.copyTooltipText)])
     }
 
     function __renderMarkdown () {
@@ -413,7 +414,7 @@ export default defineComponent({
         }
       }, [
         renderedMarkdown,
-        __renderCopy(h)
+        __renderCopy()
       ])
 
       return allProps.value.showCopy !== true ? renderedMarkdown : renderedCopyWrapper

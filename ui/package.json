@@ -2,6 +2,13 @@
   "name": "@quasar/quasar-ui-qmarkdown",
   "version": "2.0.0-alpha.6",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "contributors": [
+    {
+      "name": "Christian Behon",
+      "email": "christian.behon@knusperleicht.at",
+      "url": "https://knusperleicht.at"
+    }
+  ],
   "description": "Display inline markdown in your Quasar App",
   "license": "MIT",
   "module": "dist/index.esm.js",
@@ -10,12 +17,6 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "lint-fix": "eslint --ext .js,.vue src --fix",
-    "dev": "cd ../dev && yarn dev && cd ..",
-    "dev:umd": "yarn build && node build/script.open-umd.js",
-    "dev:ssr": "cd ../dev && yarn 'dev:ssr' && cd ..",
-    "dev:ios": "cd ../dev && yarn 'dev:ios' && cd ..",
-    "dev:android": "cd ../dev && yarn 'dev:android' && cd ..",
-    "dev:electron": "cd ../dev && yarn 'dev:electron' && cd ..",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
