@@ -32,7 +32,7 @@ import PackageReleases from './PackageReleases'
 const { extractDate, formatDate } = date
 
 export default {
-  name: 'QMarkdownReleases',
+  name: 'Releases',
 
   components: {
     PackageReleases
