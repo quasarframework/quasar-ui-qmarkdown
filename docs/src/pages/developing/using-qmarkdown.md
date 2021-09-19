@@ -232,6 +232,8 @@ The rest of the plugins are custom with QMarkdown or deemed necessary (like the 
   codepen-title="QMarkdown"
 />
 
+## Advanced
+
 ### Editor
 <example-viewer
   title=""
