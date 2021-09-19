@@ -32,7 +32,7 @@
 
 <script>
 import { ref, computed, watch } from 'vue'
-import { mdiMagnify } from '@quasar/extras/mdi-v5'
+import { mdiMagnify } from '@quasar/extras/mdi-v6'
 
 import sanitize from './sanitize'
 import parseMdTable from './md-table-parser'
