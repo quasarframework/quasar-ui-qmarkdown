@@ -24,41 +24,47 @@ QMarkdown allows you to write markdown via slotted content (or a `src` property)
 
 ## Features
 
-1. Abbreviations
-2. Blockquotes
-3. Code blocks (with copy to clipboard and line numbers support)
-4. Containers
-5. Definition lists
-6. Emojies
-7. Emphasis
-8. Footnotes
-10. Headings
-11. Horizontal rules
-12. Insert
-13. Links (specific and magic links)
-14. Lists
-15. Mark
-16. Subscript/superscript
-17. Tables
-18. Task lists
-19. Titles
-20. Typography
+1. Blockquotes
+2. Code blocks (with copy to clipboard and line numbers support)
+3. Containers
+4. Emphasis
+5. Headings
+6. Horizontal rules
+7. Links (specific and magic links)
+8. Lists
+9. Tables
+10. Titles
+11. Typography
 
 QMarkdown is also extensible via the `plugins` property.
 
-## GlobalProperties
+Try out these fine plugins for additional functionality:
 
-For all properties that can be used on QMarkdown, you can set the global properties via the `useQMarkdownGlobalProps` function.
+1. [Abbreviations](https://www.npmjs.com/package/markdown-it-abbr)
+2. [Definition lists](https://www.npmjs.com/package/markdown-it-deflist)
+3. [Emojies](https://www.npmjs.com/package/markdown-it-emoji)
+4. [Footnotes](https://www.npmjs.com/package/markdown-it-footnote)
+5. [Insert](https://www.npmjs.com/package/markdown-it-ins)
+6. [Mark](https://www.npmjs.com/package/markdown-it-mark)
+7. [Subscript](https://www.npmjs.com/package/markdown-it-sub)/[Superscript](https://www.npmjs.com/package/markdown-it-sup)
+8. [Task lists](https://www.npmjs.com/package/markdown-it-task-lists)
+9. [Mermaid](https://www.npmjs.com/package/@datatraccorporation/markdown-it-mermaid)
 
-Here is an example using the `markdown`-it-mermaid` plugin:
+
+## Global Properties
+
+For all properties that can be used with QMarkdown, you can set the global properties via the `useQMarkdownGlobalProps` function.
+
+Here is an example using the `markdown-it-mermaid` plugin from a boot file:
 
 ```js
 import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
-import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
+import mermaid from '@datatraccorporation/markdown-it-mermaid'
 
 // defaults for QMarkdown
 useQMarkdownGlobalProps({
-  plugins: [markdownItMermaid]
+  plugins: [mermaid]
 })
 ```
 
+The `markdown-it-mermaid` plugin is now globally available wherever you use QMarkdown.

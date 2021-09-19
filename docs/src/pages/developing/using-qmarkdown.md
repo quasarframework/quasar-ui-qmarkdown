@@ -16,7 +16,7 @@ The `prismjs` package is used for language highlighting. When Prism is installed
 
 ## Global Properties
 
-QMarkdown has the ability to set some global properties via the `useQMarkdownGlobalProps` function.
+QMarkdown has the ability to set global properties via the `useQMarkdownGlobalProps` function.
 
 To set it up site wide, put it into a boot file. The function takes an object containing the **camelCase** naming of the props for QMarkdown.
 
@@ -29,12 +29,10 @@ import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
 
 // defaults for QMarkdown
 useQMarkdownGlobalProps({
-  noAbbreviation: true,
-  noBlockquote: true
+  noLineNumbers: true,
+  lineNumberAlt: '$'
 })
 ```
-
-Essentially, the above code makes it so that QMarkdown will no longer render `abbreviations` or `block quotes`.
 
 ::: warning
 The keys are not validated in any way, so make sure to adhere to the proper type, for that property, to avoid issues.
@@ -42,7 +40,7 @@ The keys are not validated in any way, so make sure to adhere to the proper type
 
 ## Global Plugins
 
-As well, a new property, `plugins`, has been added to replace the `extend` property. In the case of using it in the globalproperties, you can do something like this in a boot file:
+As well, the property, `plugins`, has been added to enhance QMarkdown with `markdown-it` plugins. You can do something like this in a boot file:
 
 ```js
 import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
@@ -56,7 +54,7 @@ useQMarkdownGlobalProps({
 
 In this case, the `markdown-it-mermaid` will be made available to all QMarkdown instances.
 
-## Native QMarkdown
+## QMarkdown Native Handling
 
 QMarkdown has a number of built-in processors to handle inline markdown. These are listed below:
 
