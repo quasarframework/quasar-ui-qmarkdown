@@ -5,4 +5,4 @@ keys: latest-news
 components:
 - releases/Releases
 ---
-<q-markdown-releases class="q-mt-sm"/>
+<releases class="q-mt-sm"/>
