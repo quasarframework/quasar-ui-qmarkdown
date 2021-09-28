@@ -1,8 +1,8 @@
 QMarkdown (Vue Plugin, UMD and Quasar App Extension)
 ===
 
-![@quasar/quasar-ui-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown)
-![@quasar/quasar-app-extension-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown)
+![@quasar/quasar-ui-qmarkdown@next](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/next?label=@quasar/quasar-ui-qmarkdown@next)
+![@quasar/quasar-app-extension-qmarkdown@next](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown/next?label=@quasar/quasar-app-extension-qmarkdown@next)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/quasarframework/quasar-ui-qmarkdown.svg)]()
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/quasar-ui-qmarkdown)]()
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
@@ -20,6 +20,9 @@ QMarkdown is a [Quasar](https://quasar.dev) component. It is a powerful markdown
 * [/app-extension](app-extension) - Quasar app extension
 * [/docs](docs) - sources for docs, demo and examples project
 * [live docs](https://qmarkdown.netlify.app/) - live docs, demo and examples
+
+# Testing
+* [CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV)
 
 # Donate
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).

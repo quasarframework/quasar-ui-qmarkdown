@@ -2,8 +2,8 @@
 
 Display inline markdown in your Quasar App
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown.svg?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
-[![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/next?label=@quasar/quasar-ui-qmarkdown@next)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown@next)
+[![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
 [![Discord](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
@@ -104,7 +104,11 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css" rel="stylesheet" type="text/css">
 ```
 
+Test UMD version on [CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV).
+
 # Setup
+This project is a yarn workspace mono-repo.
+
 ```bash
 $ yarn
 $ yarn build:all

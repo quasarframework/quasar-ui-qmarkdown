@@ -224,7 +224,7 @@ app.mount("#app");
 
 
 ## Testing on Codepen
-[QMarkdown UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/ZEemBjm) // TBD
+[QMarkdown UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/PojXVmV)
 
 # Project source
 Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next).
