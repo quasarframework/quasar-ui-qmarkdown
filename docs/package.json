@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@quasar/extras": "^1.11.0",
+    "@quasar/extras": "^1.11.1",
     "@quasar/quasar-ui-qmarkdown": "./ui",
-    "core-js": "^3.17.3",
+    "core-js": "^3.18.1",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-emoji": "^2.0.0",
@@ -30,7 +30,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
     "quasar": "^2.1.0",
-    "quasar-ui-example-viewer": "^2.0.0-alpha.6",
+    "quasar-ui-example-viewer": "^2.0.0-alpha.9",
     "quasar-ui-json-api-viewer": "^2.0.0-alpha.6"
   },
   "devDependencies": {
