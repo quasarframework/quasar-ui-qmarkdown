@@ -323,7 +323,13 @@ export default defineComponent({
 
         if (allProps.value.plugins.length > 0) {
           allProps.value.plugins.forEach(plugin => {
-            md.use(plugin)
+            if (plugin instanceof Function) {
+              md.use(plugin)
+            } else {
+              if (plugin.plugin instanceof Function && plugin.options) {
+                md.use(plugin.plugin, plugin.options)
+              }
+            }
           })
         }
 
