@@ -15,6 +15,8 @@ console.log(` 📦 Building ${ green('v' + require('../package.json').version) }
 
 createFolder('dist')
 
+require('./script.version.js')
+
 require('./build.api.js')
 require('./script.javascript')
 require('./script.css')

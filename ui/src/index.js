@@ -1,7 +1,7 @@
-import pkg from '../package.json'
-const { version } = pkg
 import QMarkdown, { useQMarkdownGlobalProps } from './components/QMarkdown'
 import getTagParts from './util/getTagParts'
+
+import { version } from './version'
 
 export {
   version,

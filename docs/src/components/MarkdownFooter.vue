@@ -54,5 +54,4 @@ export default {
 
     &:hover
       color: $red-8
-
 </style>
