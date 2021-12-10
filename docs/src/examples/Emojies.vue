@@ -3,12 +3,11 @@
     <q-markdown
       :plugins="plugins"
     >
-Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
+      Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
 
-Shortcuts (emoticons): :-) :-( 8-) ;)
+      Shortcuts (emoticons): :-) :-( 8-) ;)
     </q-markdown>
   </div>
-
 </template>
 
 <script>

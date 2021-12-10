@@ -73,21 +73,25 @@
       label="Disable Mermaid"
     />
     <div class="q-pa-md q-gutter-sm fit">
-      <q-markdown
-      >
-## Interactive Editor
+      <q-markdown>
+        ## Interactive Editor
 
-Add Markdown to the window on the left and the output will appear on the right.
+        Add Markdown to the window on the left and the output will appear on the right.
       </q-markdown>
       <q-splitter
         v-model="splitterModel"
         style="height: 500px;"
       >
-        <template v-slot:separator>
-          <q-avatar color="primary" text-color="white" size="28px" icon="fas fa-arrows-alt-h" />
+        <template #separator>
+          <q-avatar
+            color="primary"
+            text-color="white"
+            size="28px"
+            icon="fas fa-arrows-alt-h"
+          />
         </template>
 
-        <template v-slot:before>
+        <template #before>
           <div class="q-pa-md">
             <textarea
               v-model="markdown"
@@ -97,29 +101,30 @@ Add Markdown to the window on the left and the output will appear on the right.
           </div>
         </template>
 
-        <template v-slot:after>
-          <div class="q-pa-md" style="height: 467px;">
+        <template #after>
+          <div
+            class="q-pa-md"
+            style="height: 467px;"
+          >
             <q-markdown
               :key="count"
               v-model:src="markdown"
-              :noHtml="noHtml"
-              :noLink="noLink"
-              :noLinkify="noLinkify"
-              :noTypographer="noTypographer"
-              :noBreaks="noBreaks"
-              :noHighlight="noHighlight"
-              :noImage="noImage"
-              :noContainer="noContainer"
+              :no-html="noHtml"
+              :no-link="noLink"
+              :no-linkify="noLinkify"
+              :no-typographer="noTypographer"
+              :no-breaks="noBreaks"
+              :no-highlight="noHighlight"
+              :no-image="noImage"
+              :no-container="noContainer"
               :plugins="plugins"
               class="fit bordered q-pa-sm"
-            >
-            </q-markdown>
+            />
           </div>
         </template>
       </q-splitter>
     </div>
   </div>
-
 </template>
 
 <script>

@@ -3,21 +3,20 @@
     <q-markdown
       :plugins="plugins"
     >
-Footnote 1 link[^first].
+      Footnote 1 link[^first].
 
-Footnote 2 link[^second].
+      Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+      Inline footnote^[Text of inline footnote] definition.
 
-Duplicated footnote reference[^second].
+      Duplicated footnote reference[^second].
 
-[^first]: Footnote **can have `markup`**
-  and multiple paragraphs.
+      [^first]: Footnote **can have `markup`**
+      and multiple paragraphs.
 
-[^second]: Footnote text.
+      [^second]: Footnote text.
     </q-markdown>
   </div>
-
 </template>
 
 <script>

@@ -1,6 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable Heading Anchor Links (hover to see difference)"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable Heading Anchor Links (hover to see difference)"
+    />
     <div class="q-ma-md q-gutter-sm">
       <div>The TOC (Table of Contents) Start and End properties also control the Heading anchor links</div>
       <div>TOC Start: {{ range.min }}</div>
@@ -19,19 +22,18 @@
       toc
       @data="onToc"
     >
-# h1 Heading
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
+      # h1 Heading
+      ## h2 Heading
+      ### h3 Heading
+      #### h4 Heading
+      ##### h5 Heading
+      ###### h6 Heading
     </q-markdown>
 
     <q-separator />
     <p>Output:</p>
-    <pre>{{ JSON.stringify(results, null, 2)}}</pre>
+    <pre>{{ JSON.stringify(results, null, 2) }}</pre>
   </div>
-
 </template>
 
 <script>

@@ -3,12 +3,11 @@
     <q-markdown
       :plugins="plugins"
     >
-++This sentence is inserted.++
+      ++This sentence is inserted.++
 
-This is ++inserted++ in the middle of a sentence.
+      This is ++inserted++ in the middle of a sentence.
     </q-markdown>
   </div>
-
 </template>
 
 <script>

@@ -3,11 +3,10 @@
     <q-markdown
       :plugins="plugins"
     >
-- 19^th^
-- H~2~O
+      - 19^th^
+      - H~2~O
     </q-markdown>
   </div>
-
 </template>
 
 <script>

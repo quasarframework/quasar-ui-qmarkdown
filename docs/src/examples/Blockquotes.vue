@@ -1,18 +1,20 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-toggle v-model="model" label="Disable blockquote"></q-toggle>
+    <q-toggle
+      v-model="model"
+      label="Disable blockquote"
+    />
     <q-markdown
       :no-blockquote="model"
     >
-> This is a Blockquote
-> with a `token` and a [link](https://quasar.dev)
+      > This is a Blockquote
+      > with a `token` and a [link](https://quasar.dev)
 
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+      > Blockquotes can also be nested...
+      >> ...by using additional greater-than signs right next to each other...
+      > > > ...or with spaces between arrows.
     </q-markdown>
   </div>
-
 </template>
 
 <script>

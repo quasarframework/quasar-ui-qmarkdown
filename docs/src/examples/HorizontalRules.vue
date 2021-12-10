@@ -1,14 +1,13 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-markdown>
-___
+      ___
 
----
+      ---
 
-***
+      ***
     </q-markdown>
   </div>
-
 </template>
 
 <script>

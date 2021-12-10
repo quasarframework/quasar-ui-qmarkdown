@@ -3,14 +3,13 @@
     <q-markdown
       :plugins="plugins"
     >
-This is an HTML abbreviation example.
+      This is an HTML abbreviation example.
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+      It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
-*[HTML]: Hyper Text Markup Language
+      *[HTML]: Hyper Text Markup Language
     </q-markdown>
   </div>
-
 </template>
 
 <script>

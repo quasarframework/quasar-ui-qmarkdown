@@ -1,9 +1,9 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
     <q-markdown :plugins="plugins">
-==This sentence is marked.==
+      ==This sentence is marked.==
 
-This is ==marked== in the middle of a sentence.
+      This is ==marked== in the middle of a sentence.
     </q-markdown>
   </div>
 </template>

@@ -3,17 +3,16 @@
     <q-markdown
       :plugins="plugins"
     >
-```mermaid Optional Title
-  graph TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[Car]
-```
+      ```mermaid Optional Title
+      graph TD
+      A[Christmas] -->|Get money| B(Go shopping)
+      B --> C{Let me think}
+      C -->|One| D[Laptop]
+      C -->|Two| E[iPhone]
+      C -->|Three| F[Car]
+      ```
     </q-markdown>
   </div>
-
 </template>
 
 <script>
