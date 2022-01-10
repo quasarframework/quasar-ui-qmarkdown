@@ -15,6 +15,7 @@
       :max="6"
       label-always
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-heading-anchor-links="model"
       :toc-start="range.min"
@@ -22,14 +23,14 @@
       toc
       @data="onToc"
     >
-      # h1 Heading
-      ## h2 Heading
-      ### h3 Heading
-      #### h4 Heading
-      ##### h5 Heading
-      ###### h6 Heading
+# h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
     </q-markdown>
-
+    <!-- eslint-enable vue/html-indent -->
     <q-separator />
     <p>Output:</p>
     <pre>{{ JSON.stringify(results, null, 2) }}</pre>

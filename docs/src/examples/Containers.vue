@@ -8,48 +8,50 @@
       v-model="model2"
       label="Disable links"
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-container="model"
       :no-link="model2"
     >
-      :::
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+:::
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: info
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+::: info
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: info With Custom Title
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+::: info With Custom Title
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: tip
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+::: tip
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: warning
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+::: warning
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: danger
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      :::
+::: danger
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+:::
 
-      ::: danger Embedable
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      ::: warning
-      here be **dragons**
-      with a `token` and a [link](https://quasar.dev)
-      ::::::
+::: danger Embedable
+here be **dragons**
+with a `token` and a [link](https://quasar.dev)
+  ::: warning
+  here be **dragons**
+  with a `token` and a [link](https://quasar.dev)
+::::::
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

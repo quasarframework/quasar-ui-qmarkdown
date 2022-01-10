@@ -1,11 +1,13 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :plugins="plugins"
     >
-      - 19^th^
-      - H~2~O
+- 19^th^
+- H~2~O
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

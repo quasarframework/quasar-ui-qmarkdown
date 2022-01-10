@@ -1,12 +1,16 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown>
-      Top-Level Title
-      ===
+Titles become anchor links
 
-      Second-Level Title
-      ---
+Top-Level Title
+===
+
+Second-Level Title
+---
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

@@ -4,36 +4,38 @@
       v-model="model"
       label="Disable highlighting"
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-highlight="model"
       no-line-numbers
       show-copy
     >
-      Indented code
+    Indented code
 
-      Inline `code`
+Inline `code`
 
-      // Some comments
-      line 1 of code
-      line 2 of code
-      line 3 of code
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
 
-      Block code "fences"
+Block code "fences"
 
-      ```
-      Sample text here...
-      ```
+```
+Sample text here...
+```
 
-      Syntax highlighting
+Syntax highlighting
 
-      ```js
-      var foo = function (bar) {
-      return bar++;
-      };
+```js
+var foo = function (bar) {
+return bar++;
+};
 
-      console.log(foo(5));
-      ```
+console.log(foo(5));
+```
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

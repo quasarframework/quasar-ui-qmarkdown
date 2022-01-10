@@ -1,20 +1,22 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :plugins="plugins"
     >
-      ### Solar System Exploration, 1950s – 1960s
+### Solar System Exploration, 1950s – 1960s
 
-      - [ ] Mercury
-      - [x] Venus
-      - [x] Earth (Orbit/Moon)
-      - [x] Mars
-      - [ ] Jupiter
-      - [ ] Saturn
-      - [ ] Uranus
-      - [ ] Neptune
-      - [ ] Comet Haley
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
+- [x] Mars
+- [ ] Jupiter
+- [ ] Saturn
+- [ ] Uranus
+- [ ] Neptune
+- [ ] Comet Haley
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

@@ -4,17 +4,19 @@
       v-model="model"
       label="Disable typographer"
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-typographer="model"
     >
-      (c) (C) (r) (R) (tm) (TM) (p) (P) +-
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
 
-      test.. test... test..... test?..... test!...
+test.. test... test..... test?..... test!...
 
-      !!!!!! ???? ,,  -- ---
+!!!!!! ???? ,,  -- ---
 
-      Smartypants: "double quotes" and 'single quotes'
+Smartypants: "double quotes" and 'single quotes'
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

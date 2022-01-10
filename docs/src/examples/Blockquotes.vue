@@ -4,16 +4,18 @@
       v-model="model"
       label="Disable blockquote"
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-blockquote="model"
     >
-      > This is a Blockquote
-      > with a `token` and a [link](https://quasar.dev)
+> This is a Blockquote
+> with a `token` and a [link](https://quasar.dev)
 
-      > Blockquotes can also be nested...
-      >> ...by using additional greater-than signs right next to each other...
-      > > > ...or with spaces between arrows.
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

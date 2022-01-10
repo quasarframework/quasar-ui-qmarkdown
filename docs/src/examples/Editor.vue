@@ -73,11 +73,13 @@
       label="Disable Mermaid"
     />
     <div class="q-pa-md q-gutter-sm fit">
+      <!-- eslint-disable vue/html-indent -->
       <q-markdown>
-        ## Interactive Editor
+## Interactive Editor
 
-        Add Markdown to the window on the left and the output will appear on the right.
+Add Markdown to the window on the left and the output will appear on the right.
       </q-markdown>
+      <!-- eslint-enable vue/html-indent -->
       <q-splitter
         v-model="splitterModel"
         style="height: 500px;"

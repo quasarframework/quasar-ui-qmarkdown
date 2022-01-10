@@ -8,20 +8,22 @@
       v-model="model1"
       label="Disable linkify"
     />
+    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-link="model"
       :no-linkify="model1"
     >
-      [External Link](https://github.com/quasarframework/quasar)
+[External Link](https://github.com/quasarframework/quasar)
 
-      [local link](/demo)
+[local link](/demo)
 
-      [anchor link](#example-Containers)
+[anchor link](#example-Containers)
 
-      [link with title](https://github.com/quasarframework/quasar/ "title text!")
+[link with title](https://github.com/quasarframework/quasar/ "title text!")
 
-      Auto-converted link: https://github.com/quasarframework/quasar
+Auto-converted link: https://github.com/quasarframework/quasar
     </q-markdown>
+    <!-- eslint-enable vue/html-indent -->
   </div>
 </template>
 

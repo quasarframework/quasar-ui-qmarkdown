@@ -325,7 +325,8 @@ export default defineComponent({
           allProps.value.plugins.forEach(plugin => {
             if (plugin instanceof Function) {
               md.use(plugin)
-            } else {
+            }
+            else {
               if (plugin.plugin instanceof Function && plugin.options) {
                 md.use(plugin.plugin, plugin.options)
               }
