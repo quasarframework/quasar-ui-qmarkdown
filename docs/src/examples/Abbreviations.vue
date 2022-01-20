@@ -16,8 +16,8 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 import abbreviation from 'markdown-it-abbr'
 
 export default defineComponent({

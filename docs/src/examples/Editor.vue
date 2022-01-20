@@ -131,8 +131,9 @@ Add Markdown to the window on the left and the output will appear on the right.
 
 <script>
 import { defineComponent, ref, watch, onMounted, getCurrentInstance } from 'vue'
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+
 import abbreviation from 'markdown-it-abbr'
 import deflist from 'markdown-it-deflist'
 import emoji from 'markdown-it-emoji'

@@ -29,8 +29,8 @@ Auto-converted link: https://github.com/quasarframework/quasar
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 export default defineComponent({
   name: 'Links',

@@ -12,8 +12,8 @@ This is ==marked== in the middle of a sentence.
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 import mark from 'markdown-it-mark'
 
 export default defineComponent({

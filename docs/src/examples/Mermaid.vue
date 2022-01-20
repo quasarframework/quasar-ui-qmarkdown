@@ -19,8 +19,8 @@ C -->|Three| F[Car]
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
 
 export default defineComponent({
