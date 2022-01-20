@@ -17,7 +17,7 @@
     "no-breaks": {
       "type": "Boolean",
       "category": "content",
-      "desc": "Disable conversion of '\\n' into <br>"
+      "desc": "Disable conversion of `\\n` into `&lt;br&gt;`"
     },
     "no-container": {
       "type": "Boolean",
@@ -55,7 +55,6 @@
       "desc": "Disable auto-convert URL-like text to links"
     },
     "no-heading-anchor-links": {
-      "addedIn": "v1.4.0",
       "type": "Boolean",
       "category": "content",
       "desc": "Your headings will automatically be turned into anchor links, unless you use this property (default is H1-H3)"
@@ -110,28 +109,24 @@
       ]
     },
     "no-noopener": {
-      "addedIn": "v1.2.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "All external links will have the `rel=\"noopener\" applied if this is not set"
+      "desc": "All external links will have the `rel=\"noopener\"` applied if this is not set"
     },
     "no-noreferrer": {
-      "addedIn": "v1.2.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "All external links will have the `rel=\"noreferrer\" applied if this is not set"
+      "desc": "All external links will have the `rel=\"noreferrer\"` applied if this is not set"
     },
     "show-copy": {
-      "addedIn": "v1.3.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "Use this property to turn on \"Copy to Clipboard\" functionality"
+      "desc": "Use this property to turn on `Copy to Clipboard` functionality"
     },
     "copy-icon": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the default icon used for Copy to Clipboard",
+      "desc": "Change the default icon used for `Copy to Clipboard`",
       "examples": [
         "copy-icon=\"copy\"",
         ":copy-icon=\"matCopy\""
@@ -141,23 +136,21 @@
       "addedIn": "v2.0.0-beta.1",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the default icon used for notify response after Copy to Clipboard",
+      "desc": "Change the default icon used for notify response after `Copy to Clipboard`",
       "examples": [
         "copy-icon=\"copy\"",
         ":copy-icon=\"matCopy\""
       ]
     },
     "no-copy-tooltip": {
-      "addedIn": "v1.3.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "Turns off the tooltip associated with the **Copy to Clipboard** icon"
+      "desc": "Turns off the tooltip associated with the `Copy to Clipboard` icon"
     },
     "copy-tooltip-text": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the tooltip text associated with the **Copy to Clipboard** icon",
+      "desc": "Change the tooltip text associated with the `Copy to Clipboard` icon",
       "default": "Copy to clipboard",
       "examples": [
         "copy-tooltip-text=\"Click here for content to be copied to the clipboard\"",
@@ -165,10 +158,9 @@
       ]
     },
     "copy-response-text": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the response text associated with the **Copy to Clipboard** icon (note: you **must** have the `dialog` plugin added to your quasar.conf.js)",
+      "desc": "Change the response text associated with the `Copy to Clipboard` icon (note: you **must** have the `Notify` plugin added to your quasar.conf.js)",
       "default": "Copied to clipboard",
       "examples": [
         "copy-response-text=\"The content was copied to the clipboard\"",
@@ -178,7 +170,7 @@
     "fix-cr": {
       "type": "Boolean",
       "category": "behavior",
-      "desc": "if this is set to `true` then the following regEx is run on the `src` property: `props.src.replace(/\\n/gi, '\n')`"
+      "desc": "if this is set to `true` then the following regEx is run on the `src` property: `props.src.replace(/\\n/gi, '\\n')`"
     },
     "plugins": {
       "type": "Array",
@@ -224,7 +216,7 @@
   },
   "slots": {
     "default": {
-      "desc": "This is the default slot to be used for markdown"
+      "desc": "This is the default slotted content to be used for markdown. Make sure your markdown is left-aligned in your editor. Don't indent with the HTML."
     }
   },
   "methods": {
