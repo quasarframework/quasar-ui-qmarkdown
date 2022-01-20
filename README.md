@@ -1,3 +1,5 @@
+> If you are looking for QMarkdown that supports Quasar v2/Vue v3, then go [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next) or visit the [documentation](https://qmarkdown.netlify.app/).
+
 QMarkdown (Vue Plugin, UMD and Quasar App Extension)
 ===
 
