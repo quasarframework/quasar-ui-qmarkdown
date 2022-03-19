@@ -151,9 +151,9 @@ QMarkdown has a number of built-in processors to handle inline markdown. These a
 
 ## Extending with Plugins
 
-In order to reduce the payload size of QMarkdown and to increase performance, a lot of the "default" markdown-it plugins have been removed. If you have the need, you can add them back either via the `plugins` property or the global props, as descibed above.
+In order to reduce the payload size of QMarkdown and to increase performance, a lot of the "default" markdown-it plugins have been removed for v2.0.0+. If you have the need, you can add them back either via the `plugins` property or the global props, as descibed above.
 
-Here is a list of plugins that used to be in QMarkdown:
+Here is a list of plugins that used to be in QMarkdown v1.x:
 
 ```
 import abbreviation from 'markdown-it-abbr'

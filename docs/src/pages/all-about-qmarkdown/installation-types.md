@@ -23,7 +23,9 @@ compilerOptions: {
 
 As mentioned, this is buggy at the time of this writing. However, there is another way.
 
-If using Quasar, and you did not install via the QMarkdown app-extension, then you need to modify your quasar.conf.js in the following way:
+If using Quasar, and you did not install via the QMarkdown app-extension, then you need to modify your quasar.conf.js in the following ways, depending on using webpack (app-webpack) or vite (app-vite):
+
+**app-webpack:**
 
 ```js
 build: {
@@ -35,7 +37,21 @@ build: {
 }
 ```
 
-For Vue CLI and Vite, you will need to extrapolate this to fit your needs.
+**app-vite:**
+
+```js
+build: {
+  viteVuePluginOptions: {
+    template: {
+      compilerOptions: {
+        isPreTag: (tag) => tag === 'pre ' || tag === 'q-markdown'
+      }
+    }
+  }
+}
+```
+
+For the Vue CLI, you will need to extrapolate this to fit your needs.
 
 ## Quasar CLI
 
@@ -47,6 +63,8 @@ To add as an App Extension to your Quasar application, run the following (in you
 ```
 $ quasar ext add @quasar/qmarkdown@next
 ```
+
+Notice the `@next` for Quasar v2 supported version.
 
 #### Uninstall
 
@@ -110,7 +128,6 @@ build: {
 
 ### Or target as a component import
 
-:::
 ```html
 <style src="@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"></style>
 
@@ -124,12 +141,10 @@ export default {
 }
 </script>
 ```
-:::
 
 ## Vue CLI or Vite
 ### Vue project from src
 
-:::
 ```js
 import Plugin from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
@@ -138,11 +153,9 @@ import App from './App.vue'
 const app = createApp(App)
   .use(Plugin)
 ```
-:::
 
 ### Vue project from dist
 
-:::
 ```js
 import Plugin from '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.esm.js'
 import '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css'
@@ -151,11 +164,9 @@ import App from './App.vue'
 const app = createApp(App)
   .use(Plugin)
 ```
-:::
 
 ### Or component import
 
-:::
 ```html
 <style src="@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"></style>
 
@@ -169,7 +180,6 @@ export default {
 }
 </script>
 ```
-:::
 
 ## UMD variant
 
