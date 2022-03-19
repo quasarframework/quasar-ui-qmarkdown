@@ -6,10 +6,9 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
- const renderMarkdown = require('./markdown')
- const { merge } = require('webpack-merge')
+const { merge } = require('webpack-merge')
  
- function extendConf (conf, api) {
+function extendConf (conf, api) {
    // register our boot file
    conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/register.js')
  
@@ -57,7 +56,7 @@
    conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')
  }
  
- module.exports = function (api) {
+module.exports = function (api) {
    // Quasar compatibility check; you may need
    // hard dependencies, as in a minimum version of the "quasar"
    // package or a minimum version of "@quasar/app" CLI
