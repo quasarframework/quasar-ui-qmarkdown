@@ -176,6 +176,7 @@
     },
     "plugins": {
       "type": "Array",
+      "tsType": "MarkdownItPluginsArray",
       "category":"extend",
       "desc": "[optional] An array of `markdown-it!` plugins.",
       "__exemption": [ "examples" ]
