@@ -4,7 +4,7 @@ const parallel = require('os').cpus().length > 1
 // const runJob = parallel ? require('child_process').fork : require
 // const { join } = require('path')
 const { createFolder } = require('./utils')
-const { green, blue } = require('chalk')
+const { green, blue } = require('kolorist')
 
 console.log()
 
