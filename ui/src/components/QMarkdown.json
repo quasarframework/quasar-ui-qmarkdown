@@ -91,7 +91,8 @@
       "values": [ 2, 3, 4, 5, 6 ]
     },
     "content-class": {
-      "type": [ "Array", "Object" ],
+      "type": [ "Array", "Object", "String" ],
+      "tsType": "VueClassProp",
       "category": "style",
       "desc": "Class definitions to be attributed to the markdown container",
       "examples": [
@@ -100,7 +101,8 @@
       ]
     },
     "content-style": {
-      "type": [ "Array", "Object" ],
+      "type": [ "Array", "Object", "String" ],
+      "tsType": "VueClassProp",
       "category": "style",
       "desc": "Style definitions to be attributed to the markdown container",
       "examples": [

@@ -97,8 +97,8 @@ export default defineComponent({
       validator: v => v >= 1 && v <= 6
     },
 
-    contentStyle: [ Object, Array ],
-    contentClass: [ Object, Array ],
+    contentStyle: [ Object, Array, String ],
+    contentClass: [ Object, Array, String ],
 
     noNoopener: Boolean,
     noNoreferrer: Boolean,
@@ -343,10 +343,10 @@ export default defineComponent({
 
       const renderedMarkdown = h('div', {
         ref: markdownRef,
-        class: {
-          'q-markdown': true,
-          ...allProps.value.contentClass
-        },
+        class: [
+          'q-markdown',
+          allProps.value.contentClass
+        ],
         style: allProps.value.contentStyle,
         innerHTML: rendered.value
       })
