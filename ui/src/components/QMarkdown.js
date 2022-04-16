@@ -134,11 +134,6 @@ export default defineComponent({
       source = ref(null),
       markdownRef = ref(null)
 
-    const vm = getCurrentInstance()
-    if (vm === null) {
-      throw new Error('current instance is null')
-    }
-
     onBeforeMount(() => {
       if (allProps.value.src && allProps.value.src.length > 0) {
         source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
@@ -367,9 +362,6 @@ export default defineComponent({
     expose({
       makeTree
     })
-    // Object.assign(vm.proxy, {
-    //   makeTree
-    // })
 
     return () => __renderMarkdown()
   }
