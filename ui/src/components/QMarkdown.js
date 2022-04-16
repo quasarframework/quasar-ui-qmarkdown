@@ -36,7 +36,7 @@ import {
 const globalProps = reactive({})
 
 // Composition function to set global properties
-export function useQMarkdownGlobalProps(props) {
+export function useQMarkdownGlobalProps (props) {
   // remove existing data
   for (const key in globalProps) {
     delete globalProps[ key ]
@@ -190,7 +190,7 @@ export default defineComponent({
       allProps.value.noNoopener,
       allProps.value.noNoreferrer,
       allProps.value.plugins
-     ], () => {
+    ], () => {
       rendered.value = null
     })
 
