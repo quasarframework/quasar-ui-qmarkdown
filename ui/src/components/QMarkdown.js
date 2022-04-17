@@ -128,8 +128,8 @@ export default defineComponent({
   ],
 
   setup (props, { slots, emit, expose }) {
-    const $q = useQuasar(),
-      rendered = ref(null),
+    const $q = useQuasar()
+    const rendered = ref(null),
       source = ref(null),
       markdownRef = ref(null)
 
@@ -141,6 +141,17 @@ export default defineComponent({
 
     const allProps = computed(() => {
       return { ...props, ...globalProps }
+    })
+
+    const rawSource = computed(() => {
+      let rawSource = ''
+      if (allProps.value.src && allProps.value.src.length > 0) {
+        rawSource = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+      }
+      if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
+        rawSource = slots.default()[ 0 ].children
+      }
+      return rawSource
     })
 
     const parsedCopyIcon = computed(() => {
@@ -255,11 +266,7 @@ export default defineComponent({
         const tocData = []
 
         // get the markdown - slot overrides 'src'
-        let markdown = source.value || ''
-        if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
-          markdown = slots.default()[ 0 ].children.replace(/\\ /g, '\n').replace(/'/g, '')
-        }
-
+        const markdown = rawSource.value || ''
         const highlight = (str, lang) => {
           if (__isEnabled(allProps.value.noHighlight)) {
             return prismHighlight(Prism, str, lang)
