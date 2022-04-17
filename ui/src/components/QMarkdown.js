@@ -1,7 +1,6 @@
 import {
   computed,
   defineComponent,
-  getCurrentInstance,
   h,
   onBeforeMount,
   ref,
@@ -224,11 +223,6 @@ export default defineComponent({
     }
 
     function __copyMarkdownToClipboard () {
-      let markdown = source.value
-      if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
-        markdown = slots.default()[ 0 ].children
-      }
-
       copyToClipboard(markdownRef.value.innerText)
 
       if ($q.notify) {
