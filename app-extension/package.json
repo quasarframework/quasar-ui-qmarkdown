@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "Display inline markdown in your Quasar App",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "markdown"
   ],
   "dependencies": {
-    "@quasar/quasar-ui-qmarkdown": "^2.0.0-beta.4",
+    "@quasar/quasar-ui-qmarkdown": "^2.0.0-beta.5",
     "front-matter": "^4.0.2",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-deflist": "^2.1.0",
