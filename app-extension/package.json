@@ -46,7 +46,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "raw-loader": "^4.0.2",
-    "vite-raw-plugin": "^1.0.1",
     "webpack-merge": "^5.8.0"
   }
 }
