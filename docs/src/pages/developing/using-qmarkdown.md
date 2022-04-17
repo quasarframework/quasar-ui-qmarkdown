@@ -10,6 +10,30 @@ components:
 
 ## Markdown
 
+## Importing Markdown
+
+The app extension needs to be installed in order to import markdown (*.md) files. This works for both @quasar/app-webpack and @quasar/app-vite. To import markdown files, **DO NOT** place them into your `public` folder. Put them into your `assets` folder.
+
+```js
+<template>
+  <q-markdown :src="ContactUs" show-copy />
+</template>
+
+<script>
+import { defineComponent } from 'vue'
+import ContactUs from 'assets/contact-us.md'
+
+export default defineComponent({
+  setup () {
+    return {
+      ContactUs
+    }
+  }
+})
+</script>
+
+```
+
 ## Extending Prism
 
 The `prismjs` package is used for language highlighting. When Prism is installed by QMarkdown, it loads itself globally. You can acces it via `window.Prism`. Visit their [documentation](https://prismjs.com/) on modifying the run-time, like adding additional language support.
