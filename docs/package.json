@@ -19,7 +19,7 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.13.5",
     "@quasar/quasar-ui-qmarkdown": "./ui",
-    "core-js": "^3.21.1",
+    "core-js": "^3.22.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-emoji": "^2.0.0",
@@ -32,7 +32,7 @@
     "quasar": "^2.6.6",
     "quasar-ui-example-viewer": "^2.0.0-alpha.9",
     "quasar-ui-json-api-viewer": "^2.0.0-alpha.6",
-    "vue": "^3.2.32",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.28.0",
     "raw-loader": "^4.0.2",
     "toml": "^3.0.0"
   },
