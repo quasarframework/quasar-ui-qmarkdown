@@ -19,8 +19,9 @@ function extendConf (conf, api) {
    }
  
    // make sure these plugins are in the build
-   conf.framework.plugins.push('Dialog')
- 
+  conf.framework.plugins.push('Notify')
+  conf.framework.plugins.push('Dark')
+
    let compilerOptions = null
  
    // make sure to have 'compilerOptions.isPreTag' available
