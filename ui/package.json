@@ -82,7 +82,6 @@
     "open": "^8.4.0",
     "postcss": "8.4.12",
     "punycode": "^2.1.1",
-    "quasar": "^2.6.6",
     "quasar-json-api": "2.0.0-alpha.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
