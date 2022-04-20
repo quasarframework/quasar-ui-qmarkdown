@@ -1,4 +1,4 @@
-import { MarkdownIt } from "@types/markdown-it";
+import MarkdownIt from "markdown-it";
 export * from "./vue-prop-types";
 
 export interface TocDefinition {
@@ -9,5 +9,6 @@ export interface TocDefinition {
   };
 export type TocDefinitionArray = TocDefinition[];
 
-export interface MarkdownItPlugin = MarkdownIt.PluginSimple | MarkdownIt.PluginWithOptions | MarkdownIt.PluginWithParams;
+export type MarkdownItPlugin = 
+  MarkdownIt.PluginSimple | MarkdownIt.PluginWithOptions | MarkdownIt.PluginWithParams;
 export type MarkdownItPluginsArray = MarkdownItPlugin[];
