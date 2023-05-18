@@ -106,7 +106,7 @@ module.exports = configure(function (ctx) {
           })
 
         rule.use('md-loader')
-          .loader(require.resolve('./build/md-loader.js'))
+          .loader(path.resolve(__dirname, './build/md-loader.js'))
       }
     },
 
