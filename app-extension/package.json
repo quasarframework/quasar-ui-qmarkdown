@@ -35,7 +35,7 @@
     "front-matter": "^4.0.2",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-deflist": "^2.1.0",
-    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-emoji": "^2.0.2",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-ins": "^3.0.1",
     "markdown-it-mark": "^3.0.1",
@@ -43,9 +43,9 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-task-lists": "^2.1.1",
     "raw-loader": "^4.0.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.9.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0"
+    "@babel/eslint-parser": "^7.22.5"
   }
 }

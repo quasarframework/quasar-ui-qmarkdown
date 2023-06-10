@@ -7,6 +7,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Quasar
+.quasar
+
 # Editor directories and files
 .idea
 .vscode
@@ -14,3 +17,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+

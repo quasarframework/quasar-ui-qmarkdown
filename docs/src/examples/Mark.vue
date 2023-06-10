@@ -17,7 +17,7 @@ import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 import mark from 'markdown-it-mark'
 
 export default defineComponent({
-  name: 'Mark',
+  name: 'MarkView',
   components: {
     QMarkdown
   },

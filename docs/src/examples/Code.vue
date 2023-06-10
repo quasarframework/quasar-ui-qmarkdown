@@ -53,7 +53,7 @@ import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
 import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 export default defineComponent({
-  name: 'Code',
+  name: 'CodeView',
   components: {
     QMarkdown
   },
