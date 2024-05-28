@@ -19,6 +19,7 @@ export default function extendLink (md, { noopener = true, noreferrer = true }) 
       }
     }
     else if (token.attrs[ hrefIndex ][ 1 ][ 0 ] === '/'
+      || token.attrs[ hrefIndex ][ 1 ][ 0 ] === '#'
       || token.attrs[ hrefIndex ][ 1 ].startsWith('..')) {
       token.attrSet('class', 'q-markdown--link q-markdown--link-local')
     }
