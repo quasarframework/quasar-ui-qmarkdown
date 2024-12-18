@@ -1,10 +1,10 @@
 <template>
-  <section class="flex flex-center bg-blue-10 text-white shadow-10">
+  <section class="flex flex-center bg-blue-10 text-white">
     <div class="landing-page__container">
       <div class="landing-page__splash row justify-around items-center">
         <h2
           class="text-weight-bold text-blue-2 q-pa-sm"
-          style="padding-left: 20px;"
+          style="padding-left: 20px"
         >
           Inline markdown,<br>for your<br>Quasar apps
         </h2>
@@ -12,7 +12,7 @@
           <img
             src="/qmarkdown--interactive-editor.png"
             class="shadow-10 rounded-borders"
-            style="max-width: 340px;"
+            style="max-width: 340px"
           >
         </div>
       </div>
@@ -25,7 +25,7 @@
       >
         <div
           class="row justify-around items-center"
-          style="width: 140px;"
+          style="width: 140px"
         >
           <div>Get started</div>
           <q-icon :name="biArrowRightCircle" />
@@ -38,7 +38,7 @@
       >
         <div
           class="row justify-around items-center"
-          style="width: 140px;"
+          style="width: 140px"
         >
           <div>Examples</div>
           <q-icon :name="biArrowRightSquare" />
@@ -51,27 +51,24 @@
 <script>
 import { defineComponent, computed } from 'vue'
 import { useQuasar } from 'quasar'
-import {
-  biArrowRightCircle,
-  biArrowRightSquare
-} from '@quasar/extras/bootstrap-icons'
+import { biArrowRightCircle, biArrowRightSquare } from '@quasar/extras/bootstrap-icons'
 
 export default defineComponent({
   name: 'LandingPageContent',
 
-  setup () {
+  setup() {
     const $q = useQuasar()
 
     const layout = computed(() => {
-      return $q.screen.lt.sm ? 'dense' : ($q.screen.lt.md ? 'comfortable' : 'loose')
+      return $q.screen.lt.sm ? 'dense' : $q.screen.lt.md ? 'comfortable' : 'loose'
     })
 
     return {
       layout,
       biArrowRightCircle,
-      biArrowRightSquare
+      biArrowRightSquare,
     }
-  }
+  },
 })
 </script>
 
@@ -99,5 +96,4 @@ export default defineComponent({
 
 .landing-page__splash--content
   max-width: 500px
-
 </style>

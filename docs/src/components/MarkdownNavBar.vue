@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-nav-bar shadow-10">
+  <div class="markdown-nav-bar">
     <div class="markdown-nav-bar__title ellipsis">
       <span class="ellipsis">{{ title }}</span>
     </div>
@@ -40,12 +40,12 @@ export default defineComponent({
   name: 'MarkdownNavBar',
   props: {
     title: String,
-    nav: Object
+    nav: Object,
   },
-  setup (props) {
+  setup(props) {
     const leftNav = computed(() => {
       let nv = null
-      props.nav.forEach(item => {
+      props.nav.forEach((item) => {
         if (item.dir === 'left') {
           nv = item
         }
@@ -55,7 +55,7 @@ export default defineComponent({
 
     const rightNav = computed(() => {
       let nv = ''
-      props.nav.forEach(item => {
+      props.nav.forEach((item) => {
         if (item.dir === 'right') {
           nv = item
         }
@@ -67,10 +67,10 @@ export default defineComponent({
       if (leftNav.value && rightNav.value) {
         return 'justify-content: space-between;'
       }
-      else if (leftNav.value && !rightNav.value) {
+ else if (leftNav.value && !rightNav.value) {
         return 'justify-content: flex-start;'
       }
-      else if (!leftNav.value && rightNav.value) {
+ else if (!leftNav.value && rightNav.value) {
         return 'justify-content: flex-end;'
       }
       return ''
@@ -81,9 +81,9 @@ export default defineComponent({
       rightNav,
       innerStyle,
       biCaretLeft,
-      biCaretRight
+      biCaretRight,
     }
-  }
+  },
 })
 </script>
 
