@@ -17,8 +17,8 @@ const getTemplate = (html) => {
 
 export default function (html) {
   const canUseDOM = !!(
-    (typeof window !== 'undefined' &&
-    window.document && window.document.createElement)
+    (typeof window !== 'undefined'
+    && window.document && window.document.createElement)
   )
   if (canUseDOM !== true) {
     return {}
@@ -40,11 +40,11 @@ export default function (html) {
   el.innerHTML = html
   tag = el.getElementsByTagName('script')
   if (tag.length > 0) {
-    results.script = tag[0].outerHTML
+    results.script = tag[ 0 ].outerHTML
   }
   tag = el.getElementsByTagName('style')
   if (tag.length > 0) {
-    results.style = tag[0].outerHTML
+    results.style = tag[ 0 ].outerHTML
   }
   return results
 }

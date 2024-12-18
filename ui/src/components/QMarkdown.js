@@ -1,17 +1,16 @@
+import {
+  computed,
+  defineComponent,
+  h,
+  onBeforeMount,
+  ref,
+  reactive,
+  watch
+} from 'vue'
+
 import markdownIt from 'markdown-it'
-import emoji from 'markdown-it-emoji'
-import subscript from 'markdown-it-sub'
-import superscript from 'markdown-it-sup'
-import footnote from 'markdown-it-footnote'
-import deflist from 'markdown-it-deflist'
-import abbreviation from 'markdown-it-abbr'
-import insert from 'markdown-it-ins'
-import mark from 'markdown-it-mark'
-// import container from 'markdown-it-container'
-import taskLists from 'markdown-it-task-lists'
-// import imsize from 'markdown-it-imsize'
+
 import imsize from 'markdown-it-imsize/dist/markdown-it-imsize.js'
-// import tocAndAnchor from 'markdown-it-toc-and-anchor'
 
 import Prism from 'prismjs'
 import prismHighlight from '../util/highlight.js'
@@ -28,13 +27,27 @@ import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 import {
   QBtn,
   QTooltip,
-  copyToClipboard
+  copyToClipboard,
+  useQuasar
 } from 'quasar'
 
-const mdiContentCopy = 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
-const matDone = 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
+// QMarkdown global properties
+const globalProps = reactive({})
 
-export default {
+// Composition function to set global properties
+export function useQMarkdownGlobalProps (props) {
+  // remove existing data
+  for (const key in globalProps) {
+    delete globalProps[ key ]
+  }
+
+  // add the new props
+  for (const key in props) {
+    globalProps[ key ] = props[ key ]
+  }
+}
+
+export default defineComponent({
   name: 'QMarkdown',
 
   props: {
@@ -43,28 +56,18 @@ export default {
       type: String,
       default: ''
     },
-    // no abbreviations
-    noAbbreviation: Boolean,
     // no blockquotes
     noBlockquote: Boolean,
     // no breaks
     noBreaks: Boolean,
     // no containers
     noContainer: Boolean,
-    // no Deflists
-    noDeflist: Boolean,
-    // no emojies
-    noEmoji: Boolean,
-    // no footnotes
-    noFootnote: Boolean,
     // no code highlights
     noHighlight: Boolean,
     // no html entities
     noHtml: Boolean,
     // no images
     noImage: Boolean,
-    // no inserts
-    noInsert: Boolean,
     // no line-numbers
     noLineNumbers: Boolean,
     // no links
@@ -73,14 +76,6 @@ export default {
     noLinkify: Boolean,
     // no heading (h1-h6) anchor (#) links
     noHeadingAnchorLinks: Boolean,
-    // no marks
-    noMark: Boolean,
-    // no subscript
-    noSubscript: Boolean,
-    // no superscript
-    noSuperscript: Boolean,
-    // no tasklists
-    noTasklist: Boolean,
     // no typographer
     noTypographer: Boolean,
     // alternative character to use instead of line numbers
@@ -100,17 +95,9 @@ export default {
       default: 3,
       validator: v => v >= 1 && v <= 6
     },
-    // set to true to enable task lists checkboxes (not read-only)
-    taskListsEnable: Boolean,
-    // to wrap the rendered list items in a <label> element for UX purposes
-    taskListsLabel: Boolean,
-    // to add the label after the checkbox
-    taskListsLabelAfter: Boolean,
-    // extend markdown-it!
-    extend: Function,
-    extendPrism: Function,
-    contentStyle: [String, Object, Array],
-    contentClass: [String, Object, Array],
+
+    contentStyle: [ Object, Array, String ],
+    contentClass: [ Object, Array, String ],
 
     noNoopener: Boolean,
     noNoreferrer: Boolean,
@@ -118,6 +105,7 @@ export default {
     showCopy: Boolean,
     copyIcon: String,
     noCopyTooltip: Boolean,
+    doneIcon: String,
     copyTooltipText: { // tooltip
       type: String,
       default: 'Copy to clipboard'
@@ -125,111 +113,112 @@ export default {
     copyResponseText: {
       type: String,
       default: 'Copied to clipboard'
-    }
-  },
-
-  data () {
-    return {
-      source: '',
-      rendered: void 0
-    }
-  },
-
-  created () {
-    this.copy = mdiContentCopy
-    this.done = matDone
-  },
-
-  beforeMount () {
-    if (this.src && this.src.length > 0) {
-      this.source = this.src.replace(/\\n/gi, '\n')
-    }
-  },
-
-  destroyed () {
-    // this.__deleteCache(this.uid)
-  },
-
-  watch: {
-    src () {
-      this.source = this.src.replace(/\\n/gi, '\n')
-      this.rendered = void 0
     },
-    noAbbreviation () { this.rendered = void 0 },
-    noBlockquote () { this.rendered = void 0 },
-    noBreaks () { this.rendered = void 0 },
-    noContainer () { this.rendered = void 0 },
-    noDeflist () { this.rendered = void 0 },
-    noEmoji () { this.rendered = void 0 },
-    noFootnote () { this.rendered = void 0 },
-    noHighlight () { this.rendered = void 0 },
-    noHtml () { this.rendered = void 0 },
-    noImage () { this.rendered = void 0 },
-    noInsert () { this.rendered = void 0 },
-    noLineNumbers () { this.rendered = void 0 },
-    noLink () { this.rendered = void 0 },
-    noLinkify () { this.rendered = void 0 },
-    noHeadingAnchorLinks () { this.rendered = void 0 },
-    noMark () { this.rendered = void 0 },
-    noSubscript () { this.rendered = void 0 },
-    noSuperscript () { this.rendered = void 0 },
-    noTasklist () { this.rendered = void 0 },
-    noTypographer () { this.rendered = void 0 },
-    lineNumberAlt () { this.rendered = void 0 },
-    toc () { this.rendered = void 0 },
-    tocStart () { this.rendered = void 0 },
-    tocEnd () { this.rendered = void 0 },
-    taskListsEnable () { this.rendered = void 0 },
-    taskListsLabel () { this.rendered = void 0 },
-    taskListsLabelAfter () { this.rendered = void 0 },
-    extend () { this.rendered = void 0 },
+    fixCr: Boolean,
 
-    contentStyle () { this.rendered = void 0 },
-    contentClass () { this.rendered = void 0 },
-
-    noNoopener () { this.rendered = void 0 },
-    noNoreferrer () { this.rendered = void 0 }
+    // markdown-it plugins
+    plugins: {
+      type: Array,
+      default: () => []
+    }
   },
 
-  methods: {
-    __isEnabled (val) {
+  emits: [
+    'data'
+  ],
+
+  setup (props, { slots, emit, expose }) {
+    const $q = useQuasar()
+    const rendered = ref(null),
+      source = ref(null),
+      markdownRef = ref(null)
+
+    onBeforeMount(() => {
+      if (allProps.value.src && allProps.value.src.length > 0) {
+        source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+      }
+    })
+
+    const allProps = computed(() => {
+      return { ...props, ...globalProps }
+    })
+
+    const rawSource = computed(() => {
+      let rawSource = ''
+      if (allProps.value.src && allProps.value.src.length > 0) {
+        rawSource = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+      }
+      if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
+        rawSource = slots.default()[ 0 ].children
+      }
+      return rawSource
+    })
+
+    const parsedCopyIcon = computed(() => {
+      // default mdiContentCopy
+      return allProps.value.copyIcon
+        ? allProps.value.copyIcon
+        : 'M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z'
+    })
+
+    const parsedDoneIcon = computed(() => {
+      // default matDone
+      return allProps.value.doneIcon
+        ? allProps.value.doneIcon
+        : 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
+    })
+
+    watch(() => allProps.value.src, val => {
+      source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+
+      rendered.value = null
+    })
+
+    watch(() => [
+      allProps.value.noBlockquote,
+      allProps.value.noBreaks,
+      allProps.value.noContainer,
+      allProps.value.noHighlight,
+      allProps.value.noHtml,
+      allProps.value.noImage,
+      allProps.value.noLineNumbers,
+      allProps.value.noLink,
+      allProps.value.noLinkify,
+      allProps.value.noHeadingAnchorLinks,
+      allProps.value.noTypographer,
+      allProps.value.lineNumberAlt,
+      allProps.value.toc,
+      allProps.value.tocStart,
+      allProps.value.tocEnd,
+      allProps.value.contentStyle,
+      allProps.value.contentClass,
+      allProps.value.noNoopener,
+      allProps.value.noNoreferrer,
+      allProps.value.plugins
+    ], () => {
+      rendered.value = null
+    })
+
+    function __isEnabled (val) {
       return val === void 0 || val === false
-    },
+    }
 
-    __isFunction (f) {
-      return f && {}.toString.call(f) === '[object Function]'
-    },
-
-    // __setCache (key, value) {
-    //   cache[key] = value
-    // },
-
-    // __getCache (key) {
-    //   return cache[key]
-    // },
-
-    // __deleteCache (key) {
-    //   if (cache[key]) {
-    //     delete cache[key]
-    //   }
-    // },
-
-    makeTree (list) {
+    function makeTree (list) {
       const tree = []
       let root = null
 
       const addToTree = (item) => {
-        if (item.level === this.tocStart) {
+        if (item.level === allProps.value.tocStart) {
           root = item
           tree.push(item)
         }
-        else if (item.level === this.tocStart + 1) {
+        else if (item.level === allProps.value.tocStart + 1) {
           root.children.push(item)
         }
         else {
           let parent = root
-          for (let k = 0; k < item.level - (this.tocStart + 1); ++k) {
-            parent = parent.children[parent.children.length - 1]
+          for (let k = 0; k < item.level - (allProps.value.tocStart + 1); ++k) {
+            parent = parent.children[ parent.children.length - 1 ]
           }
           if (parent) {
             parent.children.push(item)
@@ -238,173 +227,143 @@ export default {
       }
 
       for (let i = 0; i < list.length; ++i) {
-        addToTree(list[i])
+        addToTree(list[ i ])
       }
 
       return tree
-    },
+    }
 
-    __copyMarkdownToClipboard () {
-      // let markdown = this.source
-      // if (this.$slots.default) {
-      //   markdown = this.$slots.default[0].text
-      // }
+    function __copyMarkdownToClipboard () {
+      copyToClipboard(markdownRef.value.innerText)
 
-      copyToClipboard(this.$refs.markdown.innerText)
-
-      if (this.$q.notify) {
-        this.$q.notify({
-          message: this.copyResponseText,
-          color: this.$q.dark.isActive ? 'grey-10' : 'white',
-          textColor: this.$q.dark.isActive ? 'amber' : 'primary',
-          icon: this.done,
+      if ($q.notify) {
+        $q.notify({
+          message: allProps.value.copyResponseText,
+          color: $q.dark.isActive ? 'grey-10' : 'white',
+          textColor: $q.dark.isActive ? 'amber' : 'primary',
+          icon: parsedDoneIcon.value,
           position: 'top',
           timeout: 2000
         })
       }
-    },
+    }
 
-    __renderCopy (h) {
-      if (this.showCopy !== true) return
+    function __renderCopy () {
+      if (allProps.value.showCopy !== true) return
       return h(QBtn, {
-        staticClass: 'q-markdown__copy',
-        props: {
-          color: this.$q.dark.isActive ? 'amber' : 'primary',
-          dense: true,
-          flat: true,
-          round: true,
-          icon: (this.copyIcon ? this.copyIcon : this.copy)
-        },
-        on: {
-          click: v => { this.__copyMarkdownToClipboard() }
+        class: 'q-markdown__copy',
+        color: $q.dark.isActive ? 'amber' : 'primary',
+        dense: true,
+        flat: true,
+        round: true,
+        icon: parsedCopyIcon.value,
+        onClick: v => { __copyMarkdownToClipboard() }
+      }, () => [allProps.value.noCopyTooltip !== true && h(QTooltip, () => allProps.value.copyTooltipText)])
+    }
+
+    function __renderMarkdown () {
+      if (rendered.value === null) {
+        const tocData = []
+
+        // get the markdown - slot overrides 'src'
+        const markdown = rawSource.value || ''
+        const highlight = (str, lang) => {
+          if (__isEnabled(allProps.value.noHighlight)) {
+            return prismHighlight(Prism, str, lang)
+          }
+          return str
+        }
+
+        const opts = {
+          html: __isEnabled(allProps.value.noHtml),
+          linkify: __isEnabled(allProps.value.noLinkify),
+          typographer: __isEnabled(allProps.value.noTypographer),
+          breaks: __isEnabled(allProps.value.noBreaks),
+          highlight: highlight
+        }
+
+        const md = markdownIt(opts)
+
+        if (__isEnabled(allProps.value.noImage)) {
+          md.use(imsize)
+        }
+
+        extendBlockQuote(md)
+        extendHeading(md, tocData, allProps.value.toc, allProps.value.tocStart, allProps.value.tocEnd, allProps.value.noHeadingAnchorLinks)
+        extendImage(md)
+        extendLink(md, { noopener: !allProps.value.noNoopener, noreferrer: !allProps.value.noNoreferrer })
+        extendTable(md)
+        extendToken(md)
+
+        if (__isEnabled(allProps.value.noContainer)) {
+          extendContainers(md)
+        }
+        if (__isEnabled(allProps.value.noLineNumbers)) {
+          extendFenceLineNumbers(md, allProps.value.lineNumberAlt)
+        }
+
+        // handle disabled rules
+        const disabled = []
+        if (!__isEnabled(allProps.value.noImage)) {
+          disabled.push('image')
+        }
+        if (!__isEnabled(allProps.value.noLink)) {
+          disabled.push('link')
+        }
+        if (!__isEnabled(allProps.value.noBlockquote)) {
+          disabled.push('blockquote')
+        }
+        if (disabled.length > 0) {
+          md.disable(disabled)
+        }
+
+        if (allProps.value.plugins.length > 0) {
+          allProps.value.plugins.forEach(plugin => {
+            if (plugin instanceof Function) {
+              md.use(plugin)
+            }
+            else {
+              if (plugin.plugin instanceof Function && plugin.options) {
+                md.use(plugin.plugin, plugin.options)
+              }
+            }
+          })
+        }
+
+        rendered.value = md.render(markdown)
+
+        if (allProps.value.toc && tocData.length > 0) {
+          emit('data', tocData)
+        }
+      }
+
+      const renderedMarkdown = h('div', {
+        ref: markdownRef,
+        class: [
+          'q-markdown',
+          allProps.value.contentClass
+        ],
+        style: allProps.value.contentStyle,
+        innerHTML: rendered.value
+      })
+
+      const renderedCopyWrapper = h('div', {
+        style: {
+          position: 'relative'
         }
       }, [
-        this.noCopyTooltip !== true && h(QTooltip, this.copyTooltipText)
+        renderedMarkdown,
+        __renderCopy()
       ])
-    }
-  },
 
-  render (h) {
-    if (this.rendered === void 0) {
-      const tocData = []
-
-      // get the markdown - slot overrides 'src'
-      let markdown = this.source
-      if (this.$slots.default) {
-        markdown = this.$slots.default[0].text
-      }
-
-      if (this.__isFunction(this.extendPrism)) {
-        this.extendPrism(Prism)
-      }
-
-      const highlight = (str, lang) => {
-        if (this.__isEnabled(this.noHighlight)) {
-          return prismHighlight(Prism, str, lang)
-        }
-        return ''
-      }
-
-      const opts = {
-        html: this.__isEnabled(this.noHtml),
-        linkify: this.__isEnabled(this.noLinkify),
-        typographer: this.__isEnabled(this.noTypographer),
-        breaks: this.__isEnabled(this.noBreaks),
-        highlight: highlight
-      }
-
-      const md = markdownIt(opts)
-
-      if (this.__isEnabled(this.noSubscript)) {
-        md.use(subscript)
-      }
-      if (this.__isEnabled(this.noSuperscript)) {
-        md.use(superscript)
-      }
-      if (this.__isEnabled(this.noFootnote)) {
-        md.use(footnote)
-      }
-      if (this.__isEnabled(this.noDeflist)) {
-        md.use(deflist)
-      }
-      if (this.__isEnabled(this.noAbbreviation)) {
-        md.use(abbreviation)
-      }
-      if (this.__isEnabled(this.noInsert)) {
-        md.use(insert)
-      }
-      if (this.__isEnabled(this.noMark)) {
-        md.use(mark)
-      }
-      if (this.__isEnabled(this.noEmoji)) {
-        md.use(emoji)
-      }
-      if (this.__isEnabled(this.noImage)) {
-        md.use(imsize)
-      }
-      if (this.__isEnabled(this.noTasklist)) {
-        md.use(taskLists, { enabled: this.taskListsEnable, label: this.taskListsLabel, labelAfter: this.taskListsLabelAfter })
-      }
-
-      extendBlockQuote(md)
-      extendHeading(md, tocData, this.toc, this.tocStart, this.tocEnd, this.noHeadingAnchorLinks)
-      extendImage(md)
-      extendLink(md, { noopener: !this.noNoopener, noreferrer: !this.noNoreferrer })
-      extendTable(md)
-      extendToken(md)
-
-      if (this.__isEnabled(this.noContainer)) {
-        extendContainers(md)
-      }
-      if (this.__isEnabled(this.noLineNumbers)) {
-        extendFenceLineNumbers(md, this.lineNumberAlt)
-      }
-
-      // handle disabled rules
-      const disabled = []
-      if (!this.__isEnabled(this.noImage)) {
-        disabled.push('image')
-      }
-      if (!this.__isEnabled(this.noLink)) {
-        disabled.push('link')
-      }
-      if (!this.__isEnabled(this.noBlockquote)) {
-        disabled.push('blockquote')
-      }
-      if (disabled.length > 0) {
-        md.disable(disabled)
-      }
-
-      if (this.__isFunction(this.extend)) {
-        this.extend(md)
-      }
-
-      this.rendered = md.render(markdown)
-
-      if (this.toc && tocData.length > 0) {
-        this.$emit('data', tocData)
-      }
+      return allProps.value.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
     }
 
-    const renderedMarkdown = h('div', {
-      ref: 'markdown',
-      staticClass: 'q-markdown',
-      class: this.contentClass,
-      style: this.contentStyle,
-      domProps: {
-        innerHTML: this.rendered
-      }
+    // expose public methods
+    expose({
+      makeTree
     })
 
-    const renderedCopyWrapper = h('div', {
-      style: {
-        position: 'relative'
-      }
-    }, [
-      renderedMarkdown,
-      this.__renderCopy(h)
-    ])
-
-    return this.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
+    return () => __renderMarkdown()
   }
-}
+})

@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "1.4.4",
+  "version": "2.0.0",
   "description": "Display inline markdown in your Quasar App",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
@@ -8,33 +8,21 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "lint-fix": "eslint --ext .js,.vue src --fix",
-    "test": "echo \"No test specified\" && exit 0"
+    "release": "npm publish --tag next"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
   },
   "publishConfig": {
     "access": "public"
   },
+  "bugs": "https://github.com/quasarframework/quasar-ui-qmarkdown/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quasarframework/quasar-ui-qmarkdown.git"
   },
-  "bugs": "https://github.com/quasarframework/quasar-ui-qmarkdown/issues",
   "homepage": "https://github.com/quasarframework/quasar-ui-qmarkdown",
-  "dependencies": {
-    "@quasar/quasar-ui-qmarkdown": "^1.4.4",
-    "front-matter": "^4.0.2",
-    "raw-loader": "^4.0.2",
-    "ware-loader": "^0.2.4"
-  },
-  "devDependencies": {
-    "@vue/eslint-config-standard": "^6.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.28.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.11.1"
-  },
   "keywords": [
     "quasar",
     "app",
@@ -42,9 +30,22 @@
     "extension",
     "markdown"
   ],
-  "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
+  "dependencies": {
+    "@quasar/quasar-ui-qmarkdown": "^2.0.0",
+    "front-matter": "^4.0.2",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-ins": "^3.0.1",
+    "markdown-it-mark": "^3.0.1",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "raw-loader": "^4.0.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0"
   }
 }

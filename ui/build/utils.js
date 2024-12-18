@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const zlib = require('zlib')
-const { green, blue, red, magenta, yellow, underline } = require('chalk')
+const { green, blue, red, magenta, yellow, underline } = require('kolorist')
 
 const kebabRegex = /[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g
 const tableData = []
@@ -13,9 +13,9 @@ process.on('exit', code => {
     const { table } = require('table')
 
     tableData.sort((a, b) => {
-      return a[0] === b[0]
-        ? a[1] < b[1] ? -1 : 1
-        : a[0] < b[0] ? -1 : 1
+      return a[ 0 ] === b[ 0 ]
+        ? a[ 1 ] < b[ 1 ] ? -1 : 1
+        : a[ 0 ] < b[ 0 ] ? -1 : 1
     })
 
     tableData.unshift([
@@ -35,7 +35,7 @@ process.on('exit', code => {
     })
 
     console.log()
-    console.log(` Summary of ${name} v${version}:`)
+    console.log(` Summary of ${ name } v${ version }:`)
     console.log(output)
   }
 })
@@ -84,7 +84,7 @@ function getDestinationInfo (dest) {
     }
   }
 
-  logError(`Unknown file type using buildUtils.writeFile: ${dest}`)
+  logError(`Unknown file type using buildUtils.writeFile: ${ dest }`)
   process.exit(1)
 }
 
@@ -96,7 +96,7 @@ module.exports.writeFile = function (dest, code, zip) {
 
   return new Promise((resolve, reject) => {
     function report (gzippedString, gzippedSize) {
-      console.log(`${banner} ${filePath.padEnd(49)} ${fileSize.padStart(8)}${gzippedString || ''}`)
+      console.log(`${ banner } ${ filePath.padEnd(49) } ${ fileSize.padStart(8) }${ gzippedString || '' }`)
 
       if (toTable) {
         tableData.push([
@@ -116,7 +116,7 @@ module.exports.writeFile = function (dest, code, zip) {
         zlib.gzip(code, (err, zipped) => {
           if (err) return reject(err)
           const size = getSize(zipped)
-          report(` (gzipped: ${size.padStart(8)})`, size)
+          report(` (gzipped: ${ size.padStart(8) })`, size)
         })
       }
       else {

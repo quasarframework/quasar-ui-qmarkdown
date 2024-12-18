@@ -19,12 +19,12 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
   })
 
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
-    const token = tokens[idx]
+    const token = tokens[ idx ]
 
     // get the token number
-    const tokenNumber = parseInt(token.tag[1])
+    const tokenNumber = parseInt(token.tag[ 1 ])
 
-    const children = tokens[idx + 1]
+    const children = tokens[ idx + 1 ]
       .children
 
     const label = children
@@ -32,7 +32,7 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
 
     const classes = []
     classes.push('q-markdown--heading')
-    classes.push(`q-markdown--heading-${token.tag}`)
+    classes.push(`q-markdown--heading-${ token.tag }`)
 
     if (token.markup === '=') {
       classes.push('q-markdown--title-heavy')

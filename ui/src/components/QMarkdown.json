@@ -9,11 +9,6 @@
       "desc": "[optional] Pass markdown in as a property",
       "examples": [ "src=\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\"" ]
     },
-    "no-abbreviation": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable abbreviation conversion"
-    },
     "no-blockquote": {
       "type": "Boolean",
       "category": "content",
@@ -22,27 +17,12 @@
     "no-breaks": {
       "type": "Boolean",
       "category": "content",
-      "desc": "Disable conversion of '\\n' into <br>"
+      "desc": "Disable conversion of `\\n` into `&lt;br&gt;`"
     },
     "no-container": {
       "type": "Boolean",
       "category": "content",
       "desc": "Disable container conversion"
-    },
-    "no-deflist": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable definition list conversion"
-    },
-    "no-emoji": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable emojie conversion"
-    },
-    "no-footnote": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable footnote conversion"
     },
     "no-highlight": {
       "type": "Boolean",
@@ -58,11 +38,6 @@
       "type": "Boolean",
       "category": "content",
       "desc": "Disable image conversion"
-    },
-    "no-insert": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable insert conversion"
     },
     "no-line-numbers": {
       "type": "Boolean",
@@ -80,30 +55,9 @@
       "desc": "Disable auto-convert URL-like text to links"
     },
     "no-heading-anchor-links": {
-      "addedIn": "v1.4.0",
       "type": "Boolean",
       "category": "content",
       "desc": "Your headings will automatically be turned into anchor links, unless you use this property (default is H1-H3)"
-    },
-    "no-mark": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable mark conversion"
-    },
-    "no-subscript": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable subscript conversion"
-    },
-    "no-superscript": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable superscript conversion"
-    },
-    "no-tasklist": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Disable tasklist conversion"
     },
     "no-typographer": {
       "type": "Boolean",
@@ -136,58 +90,9 @@
       "desc": "The ending Header number for generating a TOC. Must be greater than tocStart",
       "values": [ 2, 3, 4, 5, 6 ]
     },
-    "task-lists-enable": {
-      "type": "Boolean",
-      "category": "content",
-      "desc": "Set to true to enable (not read-only) Task Lists"
-    },
-    "task-lists-label": {
-      "type": "Boolean",
-      "category": "style",
-      "desc": "Set to true to wrap the rendered list items in a <label> element for UX purposes"
-    },
-    "task-lists-label-after": {
-      "type": "Boolean",
-      "category": "style",
-      "desc": "To add the label after the checkbox (requires `task-lists-label` to be set to `true`)"
-    },
-    "extend": {
-      "type": "Function",
-      "category": "extend",
-      "desc": "Used to extend the markdown processor. You can use any 'markdown-it' plugin or write your own",
-      "params": {
-        "md": {
-          "type": "Object",
-          "desc": "The `markdown-it` instance",
-          "__exemption": [ "examples" ]
-        }
-      },
-      "examples": [
-        ":extend=\"extendMarkdownFn\"",
-        ":extend=\"(md) => extendMarkdownFn(md)\""
-      ],
-      "returns": null
-    },
-    "extend-prism": {
-      "type": "Function",
-      "category": "extend",
-      "addedIn": "v1.0.0",
-      "desc": "Used to extend the [Prism](https://prismjs.com/extending.html) code highlighter",
-      "params": {
-        "Prism": {
-          "type": "Object",
-          "desc": "The `Prism` instance",
-          "__exemption": [ "examples" ]
-        }
-      },
-      "examples": [
-        ":extendPrism=\"extendPrismFn\"",
-        ":extendPrism=\"(Prism) => extendPrismFn(Prism)\""
-      ],
-      "returns": null
-    },
     "content-class": {
-      "type": [ "Array", "String", "Object" ],
+      "type": [ "Array", "Object", "String" ],
+      "tsType": "VueClassProp",
       "category": "style",
       "desc": "Class definitions to be attributed to the markdown container",
       "examples": [
@@ -196,7 +101,8 @@
       ]
     },
     "content-style": {
-      "type": [ "Array", "String", "Object" ],
+      "type": [ "Array", "Object", "String" ],
+      "tsType": "VueClassProp",
       "category": "style",
       "desc": "Style definitions to be attributed to the markdown container",
       "examples": [
@@ -205,44 +111,48 @@
       ]
     },
     "no-noopener": {
-      "addedIn": "v1.2.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "All external links will have the `rel=\"noopener\" applied if this is not set"
+      "desc": "All external links will have the `rel=\"noopener\"` applied if this is not set"
     },
     "no-noreferrer": {
-      "addedIn": "v1.2.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "All external links will have the `rel=\"noreferrer\" applied if this is not set"
+      "desc": "All external links will have the `rel=\"noreferrer\"` applied if this is not set"
     },
     "show-copy": {
-      "addedIn": "v1.3.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "Use this property to turn on \"Copy to Clipboard\" functionality"
+      "desc": "Use this property to turn on `Copy to Clipboard` functionality"
     },
     "copy-icon": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the default icon used for Copy to Clipboard",
+      "desc": "Change the default icon used for `Copy to Clipboard`",
+      "examples": [
+        "copy-icon=\"copy\"",
+        ":copy-icon=\"matCopy\""
+      ]
+    },
+    "done-icon": {
+      "addedIn": "v2.0.0-beta.1",
+      "type": "String",
+      "category": "behavior",
+      "desc": "Change the default icon used for notify response after `Copy to Clipboard`",
       "examples": [
         "copy-icon=\"copy\"",
         ":copy-icon=\"matCopy\""
       ]
     },
     "no-copy-tooltip": {
-      "addedIn": "v1.3.0",
       "type": "Boolean",
       "category": "behavior",
-      "desc": "Turns off the tooltip associated with the **Copy to Clipboard** icon"
+      "desc": "Turns off the tooltip associated with the `Copy to Clipboard` icon"
     },
     "copy-tooltip-text": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the tooltip text associated with the **Copy to Clipboard** icon",
+      "desc": "Change the tooltip text associated with the `Copy to Clipboard` icon",
       "default": "Copy to clipboard",
       "examples": [
         "copy-tooltip-text=\"Click here for content to be copied to the clipboard\"",
@@ -250,15 +160,26 @@
       ]
     },
     "copy-response-text": {
-      "addedIn": "v1.3.0",
       "type": "String",
       "category": "behavior",
-      "desc": "Change the response text associated with the **Copy to Clipboard** icon (note: you **must** have the `dialog` plugin added to your quasar.conf.js)",
+      "desc": "Change the response text associated with the `Copy to Clipboard` icon (note: you **must** have the `Notify` plugin added to your quasar.conf.js)",
       "default": "Copied to clipboard",
       "examples": [
         "copy-response-text=\"The content was copied to the clipboard\"",
         ":copy-response-text=\"$t('copy-response-text')\""
       ]
+    },
+    "fix-cr": {
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": "if this is set to `true` then the following regEx is run on the `src` property: `props.src.replace(/\\n/gi, '\\n')`"
+    },
+    "plugins": {
+      "type": "Array",
+      "tsType": "MarkdownItPluginsArray",
+      "category":"extend",
+      "desc": "[optional] An array of `markdown-it!` plugins.",
+      "__exemption": [ "examples" ]
     }
   },
   "events": {
@@ -298,7 +219,7 @@
   },
   "slots": {
     "default": {
-      "desc": "This is the default slot to be used for markdown"
+      "desc": "This is the default slotted content to be used for markdown. Make sure your markdown is left-aligned in your editor. Don't indent with the HTML."
     }
   },
   "methods": {
@@ -334,7 +255,7 @@
           },
           "level": {
             "type": "Number",
-            "desc": "The heading level: h1 == 1, h2 == 2m, etc.",
+            "desc": "The heading level: h1 == 1, h2 == 2, etc.",
             "examples": [
               "1",
               "2"
