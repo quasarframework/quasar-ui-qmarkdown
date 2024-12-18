@@ -64,10 +64,15 @@ module.exports = function (api) {
   api.compatibleWith('quasar', '^2.0.0')
 
   if (api.hasVite === true) {
-    api.compatibleWith('@quasar/app-vite', '^1.0.0|^2.0.0')
-  }
-  else {
-    api.compatibleWith('@quasar/app-webpack', '^3.0.0|^4.0.0')
+    api.compatibleWith(
+      '@quasar/app-vite',
+      '^1.0.0 || ^2.0.0 || ^2.0.0-alpha.1 || ^2.0.0-beta.1 || ^2.0.0-rc.1'
+    )
+  } else {
+    api.compatibleWith(
+      '@quasar/app-webpack',
+      '^3.0.0 || ^4.0.0 || ^4.0.0-alpha.1 || ^4.0.0-beta.1 || ^4.0.0-rc.1'
+    )
   }
 
   // Uncomment the line below if you provide a JSON API for your component
