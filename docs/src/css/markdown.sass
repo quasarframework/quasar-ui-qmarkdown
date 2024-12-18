@@ -1,4 +1,5 @@
-@import './prism-theme.sass'
+@use "sass:color"
+@use 'prism-theme.sass'
 
 .markdown
   position: relative
@@ -164,50 +165,50 @@
       // color: $grey-2
 
     &--
-      border-left: 10px solid lighten($grey-8, 30%)
+      border-left: 10px solid color.adjust($grey-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
       .markdown--link
-        color: lighten($grey-8, 10%)
+        color: color.adjust($grey-8, $lightness: 10%)
 
     &--info
-      border-left: 10px solid lighten($blue-8, 30%)
+      border-left: 10px solid color.adjust($blue-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $blue-2
       .markdown--link
-        color: lighten($blue-8, 10%)
+        color: color.adjust($blue-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($blue-8, 10%)
+        color: color.adjust($blue-8, $lightness: 10%)
 
     &--tip
-      border-left: 10px solid lighten($green-8, 30%)
+      border-left: 10px solid color.adjust($green-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $green-2
       .markdown--link
-        color: lighten($green-8, 10%)
+        color: color.adjust($green-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($green-8, 10%)
+        color: color.adjust($green-8, $lightness: 10%)
 
     &--warning
-      border-left: 10px solid lighten($orange-10, 30%)
+      border-left: 10px solid color.adjust($orange-10, $lightness: 30%)
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $orange-2
       .markdown--link
-        color: lighten($orange-10, 10%)
+        color: color.adjust($orange-10, $lightness: 10%)
       .markdown--note-title
-        color: lighten($orange-10, 10%)
+        color: color.adjust($orange-10, $lightness: 10%)
 
     &--danger
-      border-left: 10px solid lighten($negative, 30%)
+      border-left: 10px solid color.adjust($negative, $lightness: 30%)
       border-radius: 8px 0 0 8px
       color: $grey-9
       background: $red-2
       .markdown--link
-        color: lighten($red-8, 10%)
+        color: color.adjust($red-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($red-8, 10%)
+        color: color.adjust($red-8, $lightness: 10%)
 
     &-title
       font-weight: 800

@@ -1,3 +1,5 @@
+@use "sass:map"
+
 $space-base   : 16px !default
 $space-x-base : $space-base !default
 $space-y-base : $space-base !default
@@ -42,16 +44,16 @@ $sizes: ('xs': 0, 'sm': ($breakpoint-xs + 1), 'md': ($breakpoint-sm + 1), 'lg': 
 $breakpoint-xs-min: 0 !default
 $breakpoint-xs-max: $breakpoint-xs !default
 
-$breakpoint-sm-min: map-get($sizes, "sm") !default
+$breakpoint-sm-min: map.get($sizes, "sm") !default
 $breakpoint-sm-max: $breakpoint-sm !default
 
-$breakpoint-md-min: map-get($sizes, "md") !default
+$breakpoint-md-min: map.get($sizes, "md") !default
 $breakpoint-md-max: $breakpoint-md !default
 
-$breakpoint-lg-min: map-get($sizes, "lg") !default
+$breakpoint-lg-min: map.get($sizes, "lg") !default
 $breakpoint-lg-max: $breakpoint-lg !default
 
-$breakpoint-xl-min: map-get($sizes, "xl") !default
+$breakpoint-xl-min: map.get($sizes, "xl") !default
 $breakpoint-xl-max: 9999px !default
 
 $h1:        (size: 6rem,     line-height: 6rem,     letter-spacing: -.01562em, weight: 300) !default
@@ -71,7 +73,7 @@ $caption:   (size: .75rem,   line-height: 1.25rem,  letter-spacing: .03333em,  w
 $headings: ('h1': $h1, 'h2': $h2, 'h3': $h3, 'h4': $h4, 'h5': $h5, 'h6': $h6, 'subtitle1': $subtitle1, 'subtitle2': $subtitle2, 'body1': $body1, 'body2': $body2, 'overline': $overline, 'caption': $caption) !default
 
 // sorry for long line; we need .sass and it doesn't support multi-line list
-$h-tags: (h1: map-get($headings, "h1"), h2: map-get($headings, "h2"), h3: map-get($headings, "h3"), h4: map-get($headings, "h4"), h5: map-get($headings, "h5"), h6: map-get($headings, "h6")) !default
+$h-tags: (h1: map.get($headings, "h1"), h2: map.get($headings, "h2"), h3: map.get($headings, "h3"), h4: map.get($headings, "h4"), h5: map.get($headings, "h5"), h6: map.get($headings, "h6")) !default
 
 // sorry for long line; we need .sass and it doesn't support multi-line list
 $text-weights: (thin: 100, light: 300, regular: 400, medium: 500, bold: 700, bolder: 900) !default
