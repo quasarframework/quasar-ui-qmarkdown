@@ -63,10 +63,8 @@ For the Vue CLI, you will need to extrapolate this to fit your needs.
 To add as an App Extension to your Quasar application, run the following (in your Quasar app folder):
 
 ```
-$ quasar ext add @quasar/qmarkdown@v2
+$ quasar ext add @quasar/qmarkdown
 ```
-
-Notice the `@v2` for Quasar v2 supported version.
 
 #### Uninstall
 
@@ -83,9 +81,9 @@ When installed as an App Extension, you can use `quasar describe QMarkdown`.
 ### Or Create and register a boot file
 
 ```
-$ yarn add @quasar/quasar-ui-qmarkdown@v2
+$ yarn add @quasar/quasar-ui-qmarkdown
 # or
-$ npm install @quasar/quasar-ui-qmarkdown@v2
+$ npm install @quasar/quasar-ui-qmarkdown
 ```
 
 Then
@@ -196,14 +194,14 @@ Add the following tag(s) after the Quasar ones:
 <head>
   <!-- AFTER the Quasar stylesheet tags: -->
   <link
-    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.min.css"
+    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"
     rel="stylesheet"
     type="text/css"
   />
 </head>
 <body>
   <!-- at end of body, AFTER Quasar script(s): -->
-  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.umd.min.js"></script>
 </body>
 ```
 
@@ -211,7 +209,7 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.rtl.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.rtl.min.css"
   rel="stylesheet"
   type="text/css"
 />
@@ -222,14 +220,14 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 ```html
 <head>
   <link
-    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.min.css"
+    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"
     rel="stylesheet"
     type="text/css"
   />
 </head>
 <body>
   <!-- at end of body: -->
-  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.umd.min.js"></script>
 </body>
 ```
 
@@ -237,7 +235,7 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@v2/dist/QMarkdown.rtl.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.rtl.min.css"
   rel="stylesheet"
   type="text/css"
 />
