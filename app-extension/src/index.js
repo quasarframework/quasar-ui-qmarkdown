@@ -8,7 +8,7 @@
 
 const { merge } = require('webpack-merge')
 
-function extendConf (conf, api) {
+function extendConf(conf, api) {
   // register our boot file
   conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/register.js')
 
@@ -26,32 +26,40 @@ function extendConf (conf, api) {
 
   // make sure to have 'compilerOptions.isPreTag' available
   if (api.hasVite === true) {
-    conf.build = merge({
-      viteVuePluginOptions: {
-        template: {
-          compilerOptions: {
-            isPreTag: (tag) => tag === 'pre'
-          }
-        }
-      }
-    }, conf.build)
+    conf.build = merge(
+      {
+        viteVuePluginOptions: {
+          template: {
+            compilerOptions: {
+              isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown',
+            },
+          },
+        },
+      },
+      conf.build
+    )
     compilerOptions = conf.build.viteVuePluginOptions.template.compilerOptions
-  }
-  else {
-    conf.build = merge({
-      vueLoaderOptions: {
-        compilerOptions: {
-          isPreTag: (tag) => tag === 'pre'
-        }
-      }
-    }, conf.build)
+  } else {
+    conf.build = merge(
+      {
+        vueLoaderOptions: {
+          compilerOptions: {
+            isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown',
+          },
+        },
+      },
+      conf.build
+    )
     compilerOptions = conf.build.vueLoaderOptions.compilerOptions
   }
 
   // This needs to be set for Vue 3
   const oldPreTagFunc = compilerOptions.isPreTag
-  compilerOptions.isPreTag = (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown' || (typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false)
-
+  compilerOptions.isPreTag = (tag) =>
+    tag === 'pre' ||
+    tag === 'q-markdown' ||
+    tag === 'QMarkdown' ||
+    (typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false)
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
   conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')
@@ -85,19 +93,20 @@ module.exports = function (api) {
     if (api.hasWebpack === true) {
       // chain webpack
       api.chainWebpack((chain, { isClient, isServer }, api) => {
-        console.log(' App Extension (qmarkdown) Info: \'Adding markdown loader (*.md) to chainWebpack\'')
-        chain.module.rule('md')
-          .test(/\.md$/i)
-          .use('raw-loader')
-          .loader('raw-loader')
+        console.log(
+          " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to chainWebpack'"
+        )
+        chain.module.rule('md').test(/\.md$/i).use('raw-loader').loader('raw-loader')
       })
     }
     if (api.hasVite === true) {
       api.extendViteConf((viteConf, { isClient, isServer }, api) => {
-        console.log(' App Extension (qmarkdown) Info: \'Adding markdown loader (*.md) to extendViteConf\'')
+        console.log(
+          " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to extendViteConf'"
+        )
         viteConf.plugins.push(
           viteRawImporter({
-            fileRegex: /\.md$/
+            fileRegex: /\.md$/,
           })
         )
       })
@@ -105,19 +114,19 @@ module.exports = function (api) {
   }
 }
 
-function viteRawImporter (options) {
+function viteRawImporter(options) {
   return {
     name: 'vite-raw-importer',
-    transform (code, id) {
+    transform(code, id) {
       if (options.fileRegex && options.fileRegex.test(id)) {
         const json = JSON.stringify(code)
           .replace(/\u2028/g, '\\u2028')
           .replace(/\u2029/g, '\\u2029')
 
         return {
-          code: `export default ${ json }`
+          code: `export default ${json}`,
         }
       }
-    }
+    },
   }
 }
