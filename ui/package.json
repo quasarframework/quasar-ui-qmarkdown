@@ -21,7 +21,7 @@
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
     "build:api": "node build/build.api.js",
-    "release": "npm publish --tag v2"
+    "release": "npm publish --tag next"
   },
   "funding": {
     "type": "github",
