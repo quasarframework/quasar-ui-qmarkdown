@@ -89,11 +89,11 @@ $ npm install @quasar/quasar-ui-qmarkdown
 Then
 
 ```js
-import { boot } from 'quasar/wrappers'
+import { defineBoot } from 'quasar/wrappers'
 import Plugin from '@quasar/quasar-ui-qmarkdown'
 import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
-export default boot(({ app }) => {
+export default defineBoot(({ app }) => {
   app.use(Plugin)
 })
 ```
@@ -101,10 +101,10 @@ export default boot(({ app }) => {
 or from sources
 
 ```js
-import { boot } from 'quasar/wrappers'
+import { defineBoot } from 'quasar/wrappers'
 import Plugin from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
 
-export default boot(({ app }) => {
+export default defineBoot(({ app }) => {
   app.use(Plugin)
 })
 ```
