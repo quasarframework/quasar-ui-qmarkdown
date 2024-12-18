@@ -8,6 +8,10 @@ Display inline markdown in your Quasar App
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
 [![Discord](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
 
+# Notes
+
+It is important to note that you cannot use header or hash links or a TOC with the vue-router mode of `hash`. It must be set tyo `history` in your `quasar.config.(*js|ts)`
+
 # Usage
 
 ## Quasar CLI project
@@ -27,11 +31,11 @@ npm install @quasar/quasar-ui-qmarkdown
 and create and register a boot file:
 
 ```js
-import { boot } from 'quasar/wrappers'
+import { defineBoot } from 'quasar/wrappers'
 import VuePlugin from '@quasar/quasar-ui-qmarkdown'
 import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
-export default boot(({ app }) => {
+export default defineBoot(({ app }) => {
   app.use(VuePlugin)
 })
 ```
