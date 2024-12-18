@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-ui-qmarkdown",
-  "version": "2.0.0-beta.8",
+  "version": "2.0.0",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "contributors": [
     {
@@ -21,7 +21,7 @@
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
     "build:api": "node build/build.api.js",
-    "release": "npm publish --tag next"
+    "release": "npm publish --tag v2"
   },
   "funding": {
     "type": "github",
