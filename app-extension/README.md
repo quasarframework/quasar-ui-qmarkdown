@@ -26,7 +26,7 @@ At which point you will be asked two questions about importing markdown (\*.md) 
 
 # New Install
 ```bash
-quasar ext add @quasar/qmarkdown@next
+quasar ext add @quasar/qmarkdown@v2
 ```
 Quasar CLI will retrieve it from NPM and install the extension.
 
