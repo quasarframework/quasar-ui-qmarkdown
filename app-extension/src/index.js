@@ -14,8 +14,14 @@ function extendConf(conf, api) {
 
   if (api.hasVite !== true) {
     // make sure app extension files & ui packages get transpiled
-    conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
-    conf.build.transpileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
+    if (Array.isArray(conf.build.webpackTranspileDependencies)) {
+      conf.build.webpackTranspileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
+      conf.build.webpackTranspileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
+    } else if (Array.isArray(conf.build.transpileDependencies)) {
+      // fall back (old way)
+      conf.build.transpileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
+      conf.build.transpileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
+    }
   }
 
   // make sure these plugins are in the build
