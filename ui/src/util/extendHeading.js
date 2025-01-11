@@ -1,13 +1,20 @@
 import slugify from './slugify'
 
-function unemoji (TokenConstructor, token) {
+function unemoji(TokenConstructor, token) {
   if (token.type === 'emoji') {
     return Object.assign(new TokenConstructor(), token, { content: token.markup })
   }
   return token
 }
 
-export default function extendHeading (md, tocData = [], toc = false, tocStart = 1, tocEnd = 3, noHeadingAnchorLinks = false) {
+export default function extendHeading(
+  md,
+  tocData = [],
+  toc = false,
+  tocStart = 1,
+  tocEnd = 3,
+  noHeadingAnchorLinks = false,
+) {
   let Token
   md.core.ruler.push('headingLinks', function (state) {
     // save the Token constructor because we'll be building a few instances at render
@@ -19,38 +26,43 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
   })
 
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
-    const token = tokens[ idx ]
+    const token = tokens[idx]
 
     // get the token number
-    const tokenNumber = parseInt(token.tag[ 1 ])
+    const tokenNumber = parseInt(token.tag[1])
 
-    const children = tokens[ idx + 1 ]
-      .children
+    const children = tokens[idx + 1].children
 
-    const label = children
-      .reduce((acc, t) => acc + t.content, '')
+    const label = children.reduce((acc, t) => acc + t.content, '')
 
     const classes = []
     classes.push('q-markdown--heading')
-    classes.push(`q-markdown--heading-${ token.tag }`)
+    classes.push(`q-markdown--heading-${token.tag}`)
 
     if (token.markup === '=') {
       classes.push('q-markdown--title-heavy')
-    }
-    else if (token.markup === '-') {
+    } else if (token.markup === '-') {
       classes.push('q-markdown--title-light')
     }
 
-    if (noHeadingAnchorLinks !== true && tocStart && tocEnd && tocStart <= tocEnd && tokenNumber >= tocStart && tokenNumber <= tocEnd) {
+    if (
+      noHeadingAnchorLinks !== true &&
+      tocStart &&
+      tocEnd &&
+      tocStart <= tocEnd &&
+      tokenNumber >= tocStart &&
+      tokenNumber <= tocEnd
+    ) {
       classes.push('q-markdown--heading--anchor-link')
     }
 
     const unemojiWithToken = unemoji.bind(null, Token)
     const renderedLabel = md.renderer.renderInline(children.map(unemojiWithToken), options, env)
 
-    const id = slugify(renderedLabel
-      .replace(/[<>]/g, '') // In case the heading contains `<stuff>`
-      .toLowerCase() // should be lowercase
+    const id = slugify(
+      renderedLabel
+        .replace(/[<>]/g, '') // In case the heading contains `<stuff>`
+        .toLowerCase(), // should be lowercase
     )
 
     token.attrSet('id', id)
@@ -58,7 +70,13 @@ export default function extendHeading (md, tocData = [], toc = false, tocStart =
     token.attrSet('class', classes.join(' '))
 
     if (toc) {
-      if (tocStart && tocEnd && tocStart <= tocEnd && tokenNumber >= tocStart && tokenNumber <= tocEnd) {
+      if (
+        tocStart &&
+        tocEnd &&
+        tocStart <= tocEnd &&
+        tokenNumber >= tocStart &&
+        tokenNumber <= tocEnd
+      ) {
         tocData.push({ id: id, label: label, level: tokenNumber, children: [] })
       }
     }

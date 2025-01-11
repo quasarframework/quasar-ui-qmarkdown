@@ -68,7 +68,7 @@ function generate(src, dest) {
         postCssRtlCompiler
           .process(code, { from: void 0 })
           .then((code) => generateUMD(dest, code.css, '.rtl')),
-      ])
+      ]),
     )
 }
 

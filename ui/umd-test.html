@@ -1,25 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width" />
 
     <title>UMD test</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/quasar@^1.0.0/dist/quasar.min.css" rel="stylesheet" type="text/css">
-    <link href="dist/index.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/quasar@^1.0.0/dist/quasar.min.css" rel="stylesheet" type="text/css" />
+    <link href="dist/index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="q-app">
       <q-layout view="lHh Lpr fff">
         <q-header class="glossy bg-primary">
           <q-toolbar>
-            <q-toolbar-title>
-              QMarkdown v{{ version }}
-            </q-toolbar-title>
+            <q-toolbar-title> QMarkdown v{{ version }} </q-toolbar-title>
 
             <div>Quasar v{{ $q.version }}</div>
           </q-toolbar>
@@ -29,68 +27,10 @@
           <q-page padding>
             <q-markdown src="This is a `test`."></q-markdown>
             <q-markdown>
-:::
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: info
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: info With Custom Title
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: tip
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: warning
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: danger
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-:::
-
-::: danger Embedable
-here be **dragons**
-with a `token` and a [link](https://quasar.dev)
-  ::: warning
-  here be **dragons**
-  with a `token` and a [link](https://quasar.dev)
-::::::
-
-Indented code
-
-Inline `code`
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
+              ::: here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: info here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: info With Custom Title here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: tip here be **dragons**
+              with a `token` and a [link](https://quasar.dev) ::: ::: warning here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: danger here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: danger Embedable here be **dragons** with a `token` and a
+              [link](https://quasar.dev) ::: warning here be **dragons** with a `token` and a [link](https://quasar.dev) :::::: Indented code Inline `code` // Some comments line 1 of code line 2 of code line 3 of code Block code "fences" ``` Sample text here... ``` Syntax highlighting ```js var foo
+              = function (bar) { return bar++; }; console.log(foo(5)); ```
             </q-markdown>
             <ul class="q-mb-lg">
               <li>In /ui, run: "yarn build"</li>
@@ -114,10 +54,10 @@ console.log(foo(5));
 
         data: function () {
           return {
-            version: QMarkdown.version
-          }
-        }
-      })
+            version: QMarkdown.version,
+          };
+        },
+      });
     </script>
   </body>
 </html>

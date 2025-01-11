@@ -7,7 +7,9 @@
       "type": "String",
       "category": "model",
       "desc": "[optional] Pass markdown in as a property",
-      "examples": [ "src=\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\"" ]
+      "examples": [
+        "src=\"Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:\""
+      ]
     },
     "no-blockquote": {
       "type": "Boolean",
@@ -68,7 +70,7 @@
       "type": "String",
       "category": "content",
       "desc": "Provide an alternative character to be used instead of line numbers - must be 1 char in length",
-      "examples":[
+      "examples": [
         "line-number-alt=\"$\"",
         "line-number-alt=\">\""
       ]
@@ -82,16 +84,32 @@
       "type": "Number",
       "category": "behavior",
       "desc": "The starting Header number for generating a TOC",
-      "values": [ 1, 2, 3, 4, 5 ]
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     "toc-end": {
       "type": "Number",
       "category": "behavior",
       "desc": "The ending Header number for generating a TOC. Must be greater than tocStart",
-      "values": [ 2, 3, 4, 5, 6 ]
+      "values": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
     },
     "content-class": {
-      "type": [ "Array", "Object", "String" ],
+      "type": [
+        "Array",
+        "Object",
+        "String"
+      ],
       "tsType": "VueClassProp",
       "category": "style",
       "desc": "Class definitions to be attributed to the markdown container",
@@ -101,7 +119,11 @@
       ]
     },
     "content-style": {
-      "type": [ "Array", "Object", "String" ],
+      "type": [
+        "Array",
+        "Object",
+        "String"
+      ],
       "tsType": "VueClassProp",
       "category": "style",
       "desc": "Style definitions to be attributed to the markdown container",
@@ -177,9 +199,11 @@
     "plugins": {
       "type": "Array",
       "tsType": "MarkdownItPluginsArray",
-      "category":"extend",
+      "category": "extend",
       "desc": "[optional] An array of `markdown-it!` plugins.",
-      "__exemption": [ "examples" ]
+      "__exemption": [
+        "examples"
+      ]
     }
   },
   "events": {
@@ -194,23 +218,31 @@
             "id": {
               "type": "String",
               "desc": "The id for the TOC header",
-              "__exemption": [ "examples" ]
+              "__exemption": [
+                "examples"
+              ]
             },
             "label": {
               "type": "String",
               "desc": "The TOC header label",
-              "__exemption": [ "examples" ]
+              "__exemption": [
+                "examples"
+              ]
             },
             "level": {
               "type": "Number",
               "desc": "The TOC header type (1=h1, 2=h2, etc)",
-              "__exemption": [ "examples" ]
+              "__exemption": [
+                "examples"
+              ]
             },
             "children": {
               "type": "Array",
               "tsType": "TocDefinitionArray",
               "desc": "This is normally empty, unless you pass this toc array to the `makeTree` method",
-              "__exemption": [ "examples" ]
+              "__exemption": [
+                "examples"
+              ]
             }
           }
         }
@@ -231,7 +263,9 @@
           "type": "Array",
           "tsType": "TocDefinitionArray",
           "desc": "The results from the `@toc` event",
-          "__exemption": [ "examples" ]
+          "__exemption": [
+            "examples"
+          ]
         }
       },
       "returns": {
@@ -265,7 +299,9 @@
             "type": "Array",
             "tsType": "TocDefinitionArray",
             "desc": "If this object is level 1, then any level 2 objects will be in the `children` key and so on",
-            "__exemption": [ "examples" ]
+            "__exemption": [
+              "examples"
+            ]
           }
         }
       }

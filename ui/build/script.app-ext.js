@@ -1,8 +1,7 @@
-const
-  fs = require('fs'),
+const fs = require('fs'),
   path = require('path'),
   root = path.resolve(__dirname, '../..'),
-  resolvePath = file => path.resolve(root, file),
+  resolvePath = (file) => path.resolve(root, file),
   { blue } = require('chalk')
 
 const writeJson = function (file, json) {
@@ -37,22 +36,22 @@ module.exports.syncAppExt = function (both = true) {
 
   // check dependencies
   if (appExtJson.dependencies !== void 0) {
-    if (appExtJson.dependencies[ name ] !== void 0) {
-      appExtJson.dependencies[ name ] = '^' + version
+    if (appExtJson.dependencies[name] !== void 0) {
+      appExtJson.dependencies[name] = '^' + version
       finished = true
     }
   }
   // check devDependencies, if not finished
   if (finished === false && appExtJson.devDependencies !== void 0) {
-    if (appExtJson.devDependencies[ name ] !== void 0) {
-      appExtJson.devDependencies[ name ] = '^' + version
+    if (appExtJson.devDependencies[name] !== void 0) {
+      appExtJson.devDependencies[name] = '^' + version
       finished = true
     }
   }
 
   if (finished === true) {
     writeJson(appExtFile, appExtJson)
-    console.log(` ⭐️ App Extension version ${ blue(appExtJson.name) } synced with UI version.\n`)
+    console.log(` ⭐️ App Extension version ${blue(appExtJson.name)} synced with UI version.\n`)
     return
   }
 

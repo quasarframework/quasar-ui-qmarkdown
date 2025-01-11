@@ -8,21 +8,19 @@ const tableData = []
 
 const { version, name } = require('../package.json')
 
-process.on('exit', code => {
+process.on('exit', (code) => {
   if (code === 0 && tableData.length > 0) {
     const { table } = require('table')
 
     tableData.sort((a, b) => {
-      return a[ 0 ] === b[ 0 ]
-        ? a[ 1 ] < b[ 1 ] ? -1 : 1
-        : a[ 0 ] < b[ 0 ] ? -1 : 1
+      return a[0] === b[0] ? (a[1] < b[1] ? -1 : 1) : a[0] < b[0] ? -1 : 1
     })
 
     tableData.unshift([
       underline('Ext'),
       underline('Filename'),
       underline('Size'),
-      underline('Gzipped')
+      underline('Gzipped'),
     ])
 
     const output = table(tableData, {
@@ -30,17 +28,17 @@ process.on('exit', code => {
         0: { alignment: 'right' },
         1: { alignment: 'left' },
         2: { alignment: 'right' },
-        3: { alignment: 'right' }
-      }
+        3: { alignment: 'right' },
+      },
     })
 
     console.log()
-    console.log(` Summary of ${ name } v${ version }:`)
+    console.log(` Summary of ${name} v${version}:`)
     console.log(output)
   }
 })
 
-function getSize (code) {
+function getSize(code) {
   return (code.length / 1024).toFixed(2) + 'kb'
 }
 
@@ -51,12 +49,12 @@ module.exports.createFolder = function (folder) {
   }
 }
 
-function getDestinationInfo (dest) {
+function getDestinationInfo(dest) {
   if (dest.endsWith('.json')) {
     return {
       banner: yellow('[json]'),
       tableEntryType: yellow('json'),
-      toTable: true
+      toTable: true,
     }
   }
 
@@ -64,7 +62,7 @@ function getDestinationInfo (dest) {
     return {
       banner: green('[js]  '),
       tableEntryType: green('js'),
-      toTable: dest.indexOf('dist/') > -1
+      toTable: dest.indexOf('dist/') > -1,
     }
   }
 
@@ -72,7 +70,7 @@ function getDestinationInfo (dest) {
     return {
       banner: blue('[css] '),
       tableEntryType: blue('css'),
-      toTable: true
+      toTable: true,
     }
   }
 
@@ -80,11 +78,11 @@ function getDestinationInfo (dest) {
     return {
       banner: magenta('[ts]  '),
       tableEntryType: magenta('ts'),
-      toTable: true
+      toTable: true,
     }
   }
 
-  logError(`Unknown file type using buildUtils.writeFile: ${ dest }`)
+  logError(`Unknown file type using buildUtils.writeFile: ${dest}`)
   process.exit(1)
 }
 
@@ -95,31 +93,25 @@ module.exports.writeFile = function (dest, code, zip) {
   const filePath = path.relative(process.cwd(), dest)
 
   return new Promise((resolve, reject) => {
-    function report (gzippedString, gzippedSize) {
-      console.log(`${ banner } ${ filePath.padEnd(49) } ${ fileSize.padStart(8) }${ gzippedString || '' }`)
+    function report(gzippedString, gzippedSize) {
+      console.log(`${banner} ${filePath.padEnd(49)} ${fileSize.padStart(8)}${gzippedString || ''}`)
 
       if (toTable) {
-        tableData.push([
-          tableEntryType,
-          filePath,
-          fileSize,
-          gzippedSize || '-'
-        ])
+        tableData.push([tableEntryType, filePath, fileSize, gzippedSize || '-'])
       }
 
       resolve(code)
     }
 
-    fs.writeFile(dest, code, err => {
+    fs.writeFile(dest, code, (err) => {
       if (err) return reject(err)
       if (zip) {
         zlib.gzip(code, (err, zipped) => {
           if (err) return reject(err)
           const size = getSize(zipped)
-          report(` (gzipped: ${ size.padStart(8) })`, size)
+          report(` (gzipped: ${size.padStart(8)})`, size)
         })
-      }
-      else {
+      } else {
         report()
       }
     })
@@ -130,7 +122,7 @@ module.exports.readFile = function (file) {
   return fs.readFileSync(file, 'utf-8')
 }
 
-function logError (err) {
+function logError(err) {
   console.error('\n' + red('[Error]'), err)
   console.log()
 }
@@ -138,8 +130,5 @@ function logError (err) {
 module.exports.logError = logError
 
 module.exports.kebabCase = function (str) {
-  return str.replace(
-    kebabRegex,
-    match => '-' + match.toLowerCase()
-  ).substring(1)
+  return str.replace(kebabRegex, (match) => '-' + match.toLowerCase()).substring(1)
 }

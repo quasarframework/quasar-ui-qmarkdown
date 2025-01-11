@@ -1,12 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  h,
-  onBeforeMount,
-  ref,
-  reactive,
-  watch
-} from 'vue'
+import { computed, defineComponent, h, onBeforeMount, ref, reactive, watch } from 'vue'
 
 import markdownIt from 'markdown-it'
 
@@ -24,26 +16,21 @@ import extendTable from '../util/extendTable.js'
 import extendToken from '../util/extendToken.js'
 import extendFenceLineNumbers from '../util/extendFenceLineNumbers.js'
 
-import {
-  QBtn,
-  QTooltip,
-  copyToClipboard,
-  useQuasar
-} from 'quasar'
+import { QBtn, QTooltip, copyToClipboard, useQuasar } from 'quasar'
 
 // QMarkdown global properties
 const globalProps = reactive({})
 
 // Composition function to set global properties
-export function useQMarkdownGlobalProps (props) {
+export function useQMarkdownGlobalProps(props) {
   // remove existing data
   for (const key in globalProps) {
-    delete globalProps[ key ]
+    delete globalProps[key]
   }
 
   // add the new props
   for (const key in props) {
-    globalProps[ key ] = props[ key ]
+    globalProps[key] = props[key]
   }
 }
 
@@ -54,7 +41,7 @@ export default defineComponent({
     // the markdown source, or use slot - slot overrides this property
     src: {
       type: String,
-      default: ''
+      default: '',
     },
     // no blockquotes
     noBlockquote: Boolean,
@@ -81,23 +68,23 @@ export default defineComponent({
     // alternative character to use instead of line numbers
     lineNumberAlt: {
       type: String,
-      validator: v => v.length === 1
+      validator: (v) => v.length === 1,
     },
     // set to true to enable Table of Contents (sent via emit)
     toc: Boolean,
     tocStart: {
       type: Number,
       default: 1,
-      validator: v => v >= 1 && v <= 6
+      validator: (v) => v >= 1 && v <= 6,
     },
     tocEnd: {
       type: Number,
       default: 3,
-      validator: v => v >= 1 && v <= 6
+      validator: (v) => v >= 1 && v <= 6,
     },
 
-    contentStyle: [ Object, Array, String ],
-    contentClass: [ Object, Array, String ],
+    contentStyle: [Object, Array, String],
+    contentClass: [Object, Array, String],
 
     noNoopener: Boolean,
     noNoreferrer: Boolean,
@@ -106,28 +93,27 @@ export default defineComponent({
     copyIcon: String,
     noCopyTooltip: Boolean,
     doneIcon: String,
-    copyTooltipText: { // tooltip
+    copyTooltipText: {
+      // tooltip
       type: String,
-      default: 'Copy to clipboard'
+      default: 'Copy to clipboard',
     },
     copyResponseText: {
       type: String,
-      default: 'Copied to clipboard'
+      default: 'Copied to clipboard',
     },
     fixCr: Boolean,
 
     // markdown-it plugins
     plugins: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
-  emits: [
-    'data'
-  ],
+  emits: ['data'],
 
-  setup (props, { slots, emit, expose }) {
+  setup(props, { slots, emit, expose }) {
     const $q = useQuasar()
     const rendered = ref(null),
       source = ref(null),
@@ -135,7 +121,9 @@ export default defineComponent({
 
     onBeforeMount(() => {
       if (allProps.value.src && allProps.value.src.length > 0) {
-        source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+        source.value = allProps.value.fixCr
+          ? allProps.value.src.replace(/\\n/gi, '\n')
+          : allProps.value.src
       }
     })
 
@@ -146,10 +134,12 @@ export default defineComponent({
     const rawSource = computed(() => {
       let rawSource = ''
       if (allProps.value.src && allProps.value.src.length > 0) {
-        rawSource = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+        rawSource = allProps.value.fixCr
+          ? allProps.value.src.replace(/\\n/gi, '\n')
+          : allProps.value.src
       }
-      if (slots.default !== undefined && slots.default()[ 0 ].children.trim().length > 0) {
-        rawSource = slots.default()[ 0 ].children
+      if (slots.default !== undefined && slots.default()[0].children.trim().length > 0) {
+        rawSource = slots.default()[0].children
       }
       return rawSource
     })
@@ -168,42 +158,50 @@ export default defineComponent({
         : 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
     })
 
-    watch(() => allProps.value.src, val => {
-      source.value = allProps.value.fixCr ? allProps.value.src.replace(/\\n/gi, '\n') : allProps.value.src
+    watch(
+      () => allProps.value.src,
+      (val) => {
+        source.value = allProps.value.fixCr
+          ? allProps.value.src.replace(/\\n/gi, '\n')
+          : allProps.value.src
 
-      rendered.value = null
-    })
+        rendered.value = null
+      },
+    )
 
-    watch(() => [
-      allProps.value.noBlockquote,
-      allProps.value.noBreaks,
-      allProps.value.noContainer,
-      allProps.value.noHighlight,
-      allProps.value.noHtml,
-      allProps.value.noImage,
-      allProps.value.noLineNumbers,
-      allProps.value.noLink,
-      allProps.value.noLinkify,
-      allProps.value.noHeadingAnchorLinks,
-      allProps.value.noTypographer,
-      allProps.value.lineNumberAlt,
-      allProps.value.toc,
-      allProps.value.tocStart,
-      allProps.value.tocEnd,
-      allProps.value.contentStyle,
-      allProps.value.contentClass,
-      allProps.value.noNoopener,
-      allProps.value.noNoreferrer,
-      allProps.value.plugins
-    ], () => {
-      rendered.value = null
-    })
+    watch(
+      () => [
+        allProps.value.noBlockquote,
+        allProps.value.noBreaks,
+        allProps.value.noContainer,
+        allProps.value.noHighlight,
+        allProps.value.noHtml,
+        allProps.value.noImage,
+        allProps.value.noLineNumbers,
+        allProps.value.noLink,
+        allProps.value.noLinkify,
+        allProps.value.noHeadingAnchorLinks,
+        allProps.value.noTypographer,
+        allProps.value.lineNumberAlt,
+        allProps.value.toc,
+        allProps.value.tocStart,
+        allProps.value.tocEnd,
+        allProps.value.contentStyle,
+        allProps.value.contentClass,
+        allProps.value.noNoopener,
+        allProps.value.noNoreferrer,
+        allProps.value.plugins,
+      ],
+      () => {
+        rendered.value = null
+      },
+    )
 
-    function __isEnabled (val) {
+    function __isEnabled(val) {
       return val === void 0 || val === false
     }
 
-    function makeTree (list) {
+    function makeTree(list) {
       const tree = []
       let root = null
 
@@ -211,14 +209,12 @@ export default defineComponent({
         if (item.level === allProps.value.tocStart) {
           root = item
           tree.push(item)
-        }
-        else if (item.level === allProps.value.tocStart + 1) {
+        } else if (item.level === allProps.value.tocStart + 1) {
           root.children.push(item)
-        }
-        else {
+        } else {
           let parent = root
           for (let k = 0; k < item.level - (allProps.value.tocStart + 1); ++k) {
-            parent = parent.children[ parent.children.length - 1 ]
+            parent = parent.children[parent.children.length - 1]
           }
           if (parent) {
             parent.children.push(item)
@@ -227,13 +223,13 @@ export default defineComponent({
       }
 
       for (let i = 0; i < list.length; ++i) {
-        addToTree(list[ i ])
+        addToTree(list[i])
       }
 
       return tree
     }
 
-    function __copyMarkdownToClipboard () {
+    function __copyMarkdownToClipboard() {
       copyToClipboard(markdownRef.value.innerText)
 
       if ($q.notify) {
@@ -243,25 +239,34 @@ export default defineComponent({
           textColor: $q.dark.isActive ? 'amber' : 'primary',
           icon: parsedDoneIcon.value,
           position: 'top',
-          timeout: 2000
+          timeout: 2000,
         })
       }
     }
 
-    function __renderCopy () {
+    function __renderCopy() {
       if (allProps.value.showCopy !== true) return
-      return h(QBtn, {
-        class: 'q-markdown__copy',
-        color: $q.dark.isActive ? 'amber' : 'primary',
-        dense: true,
-        flat: true,
-        round: true,
-        icon: parsedCopyIcon.value,
-        onClick: v => { __copyMarkdownToClipboard() }
-      }, () => [allProps.value.noCopyTooltip !== true && h(QTooltip, () => allProps.value.copyTooltipText)])
+      return h(
+        QBtn,
+        {
+          class: 'q-markdown__copy',
+          color: $q.dark.isActive ? 'amber' : 'primary',
+          dense: true,
+          flat: true,
+          round: true,
+          icon: parsedCopyIcon.value,
+          onClick: (v) => {
+            __copyMarkdownToClipboard()
+          },
+        },
+        () => [
+          allProps.value.noCopyTooltip !== true &&
+            h(QTooltip, () => allProps.value.copyTooltipText),
+        ],
+      )
     }
 
-    function __renderMarkdown () {
+    function __renderMarkdown() {
       if (rendered.value === null) {
         const tocData = []
 
@@ -279,7 +284,7 @@ export default defineComponent({
           linkify: __isEnabled(allProps.value.noLinkify),
           typographer: __isEnabled(allProps.value.noTypographer),
           breaks: __isEnabled(allProps.value.noBreaks),
-          highlight: highlight
+          highlight: highlight,
         }
 
         const md = markdownIt(opts)
@@ -289,9 +294,19 @@ export default defineComponent({
         }
 
         extendBlockQuote(md)
-        extendHeading(md, tocData, allProps.value.toc, allProps.value.tocStart, allProps.value.tocEnd, allProps.value.noHeadingAnchorLinks)
+        extendHeading(
+          md,
+          tocData,
+          allProps.value.toc,
+          allProps.value.tocStart,
+          allProps.value.tocEnd,
+          allProps.value.noHeadingAnchorLinks,
+        )
         extendImage(md)
-        extendLink(md, { noopener: !allProps.value.noNoopener, noreferrer: !allProps.value.noNoreferrer })
+        extendLink(md, {
+          noopener: !allProps.value.noNoopener,
+          noreferrer: !allProps.value.noNoreferrer,
+        })
         extendTable(md)
         extendToken(md)
 
@@ -318,11 +333,10 @@ export default defineComponent({
         }
 
         if (allProps.value.plugins.length > 0) {
-          allProps.value.plugins.forEach(plugin => {
+          allProps.value.plugins.forEach((plugin) => {
             if (plugin instanceof Function) {
               md.use(plugin)
-            }
-            else {
+            } else {
               if (plugin.plugin instanceof Function && plugin.options) {
                 md.use(plugin.plugin, plugin.options)
               }
@@ -339,31 +353,29 @@ export default defineComponent({
 
       const renderedMarkdown = h('div', {
         ref: markdownRef,
-        class: [
-          'q-markdown',
-          allProps.value.contentClass
-        ],
+        class: ['q-markdown', allProps.value.contentClass],
         style: allProps.value.contentStyle,
-        innerHTML: rendered.value
+        innerHTML: rendered.value,
       })
 
-      const renderedCopyWrapper = h('div', {
-        style: {
-          position: 'relative'
-        }
-      }, [
-        renderedMarkdown,
-        __renderCopy()
-      ])
+      const renderedCopyWrapper = h(
+        'div',
+        {
+          style: {
+            position: 'relative',
+          },
+        },
+        [renderedMarkdown, __renderCopy()],
+      )
 
       return allProps.value.showCopy !== true ? renderedMarkdown : renderedCopyWrapper
     }
 
     // expose public methods
     expose({
-      makeTree
+      makeTree,
     })
 
     return () => __renderMarkdown()
-  }
+  },
 })

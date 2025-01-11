@@ -1,5 +1,5 @@
-const { name, author, version } = require('../package.json');
-const year = new Date().getFullYear();
+const { name, author, version } = require('../package.json')
+const year = new Date().getFullYear()
 
 module.exports = {
   name,
@@ -11,4 +11,4 @@ module.exports = {
     ' * (c) ' + year + ' ' + author + '\n' +
     ' * Released under the MIT License.\n' +
     ' */\n',
-};
+}

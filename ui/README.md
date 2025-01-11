@@ -46,29 +46,29 @@ export default defineBoot(({ app }) => {
 <style src="@quasar/quasar-ui-qmarkdown/dist/index.css"></style>
 
 <script>
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+  import { QMarkdown } from '@quasar/quasar-ui-qmarkdown';
 
-export default {
-  components: {
-    QMarkdown
-  }
-}
+  export default {
+    components: {
+      QMarkdown,
+    },
+  };
 </script>
 ```
 
 ## Vue CLI project
 
 ```js
-import VuePlugin from '@quasar/quasar-ui-qmarkdown'
-import '@quasar/quasar-ui-qmarkdown/dist/index.css'
-import { createApp } from "vue";
+import VuePlugin from '@quasar/quasar-ui-qmarkdown';
+import '@quasar/quasar-ui-qmarkdown/dist/index.css';
+import { createApp } from 'vue';
 
 const app = createApp({
   // root instance definition
 });
 
-app.use(VuePlugin)
-app.mount("#q-app");
+app.use(VuePlugin);
+app.mount('#q-app');
 ```
 
 **OR**:
@@ -77,13 +77,13 @@ app.mount("#q-app");
 <style src="@quasar/quasar-ui-qmarkdown/dist/index.css"></style>
 
 <script>
-import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+  import { QMarkdown } from '@quasar/quasar-ui-qmarkdown';
 
-export default {
-  components: {
-    QMarkdown
-  }
-}
+  export default {
+    components: {
+      QMarkdown,
+    },
+  };
 </script>
 ```
 
@@ -96,21 +96,24 @@ Add the following tag(s) after the Quasar ones:
 ```html
 <head>
   <!-- AFTER the Quasar stylesheet tags: -->
-  <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <!-- at end of body, AFTER Quasar script(s): -->
   <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.umd.min.js"></script>
 </body>
 ```
+
 If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
+
 ```html
-<link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css" rel="stylesheet" type="text/css" />
 ```
 
 Test UMD version on [CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV).
 
 # Setup
+
 This project is a yarn workspace mono-repo.
 
 ```bash
@@ -121,7 +124,9 @@ $ quasar dev
 ```
 
 # Donate
+
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
 
 # License
+
 MIT (c) Jeff Galbraith <jeff@quasar.dev>

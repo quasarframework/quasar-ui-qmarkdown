@@ -3,12 +3,7 @@ import getTagParts from './util/getTagParts'
 
 import { version } from './version'
 
-export {
-  version,
-  QMarkdown,
-  useQMarkdownGlobalProps,
-  getTagParts
-}
+export { version, QMarkdown, useQMarkdownGlobalProps, getTagParts }
 
 export default {
   version,
@@ -16,7 +11,7 @@ export default {
   useQMarkdownGlobalProps,
   getTagParts,
 
-  install (app) {
+  install(app) {
     app.component(QMarkdown.name, QMarkdown)
-  }
+  },
 }

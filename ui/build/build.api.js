@@ -4,5 +4,5 @@ global.distDir = path.resolve(__dirname, '../dist')
 
 require('quasar-json-api')({
   buildVetur: true,
-  buildTypes: true
+  buildTypes: true,
 })
