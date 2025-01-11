@@ -35,13 +35,13 @@
 
  */
 
-module.exports = function () {
+export default function () {
   return [
     {
       type: 'confirm',
       name: 'import_md',
       message: 'Do you want to be able to import markdown (*.md) files?',
-      default: true
-    }
-  ]
+      default: true,
+    },
+  ];
 }
