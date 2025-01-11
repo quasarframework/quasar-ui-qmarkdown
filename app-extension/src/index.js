@@ -6,20 +6,20 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-const { merge } = require('webpack-merge')
+import { extend } from 'quasar'
 
 function extendConf(conf, api) {
   if (api.hasVite) {
     // register our boot file
-    conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js');
+    conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js')
   } else {
     // register our boot file
-    conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/webpack-register.js');
+    conf.boot.push('~@quasar/quasar-app-extension-qmarkdown/src/boot/webpack-register.js')
 
     // make sure app extension files & ui packages get transpiled
-    conf.build.webpackTranspileDependencies = conf.build.webpackTranspileDependencies || [];
-    conf.build.webpackTranspileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/);
-    conf.build.webpackTranspileDependencies.push(/quasar-ui-qmarkdown[\\/]src/);
+    conf.build.webpackTranspileDependencies = conf.build.webpackTranspileDependencies || []
+    conf.build.webpackTranspileDependencies.push(/quasar-app-extension-qmarkdown[\\/]src/)
+    conf.build.webpackTranspileDependencies.push(/quasar-ui-qmarkdown[\\/]src/)
   }
 
   // make sure these plugins are in the build
@@ -30,7 +30,8 @@ function extendConf(conf, api) {
 
   // make sure to have 'compilerOptions.isPreTag' available
   if (api.hasVite === true) {
-    conf.build = merge(
+    conf.build = extend(
+      true,
       {
         viteVuePluginOptions: {
           template: {
@@ -40,11 +41,12 @@ function extendConf(conf, api) {
           },
         },
       },
-      conf.build
+      conf.build,
     )
     compilerOptions = conf.build.viteVuePluginOptions.template.compilerOptions
   } else {
-    conf.build = merge(
+    conf.build = extend(
+      true,
       {
         vueLoaderOptions: {
           compilerOptions: {
@@ -52,17 +54,21 @@ function extendConf(conf, api) {
           },
         },
       },
-      conf.build
+      conf.build,
     )
     compilerOptions = conf.build.vueLoaderOptions.compilerOptions
   }
 
   // This needs to be set for Vue 3
-  const oldPreTagFunc = compilerOptions.isPreTag;
-  compilerOptions.isPreTag = (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown' || (typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false);
+  const oldPreTagFunc = compilerOptions.isPreTag
+  compilerOptions.isPreTag = (tag) =>
+    tag === 'pre' ||
+    tag === 'q-markdown' ||
+    tag === 'QMarkdown' ||
+    (typeof oldPreTagFunc === 'function' ? oldPreTagFunc(tag) : false)
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
-  conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass');
+  conf.css.push('~@quasar/quasar-ui-qmarkdown/src/index.sass')
 }
 
 export default function (api) {
@@ -72,13 +78,13 @@ export default function (api) {
   api.compatibleWith('quasar', '^2.0.0')
 
   if (api.hasVite === true) {
-    api.compatibleWith('@quasar/app-vite', '^2.0.0');
+    api.compatibleWith('@quasar/app-vite', '^2.0.0')
   } else {
-    api.compatibleWith('@quasar/app-webpack', '^4.0.0');
+    api.compatibleWith('@quasar/app-webpack', '^4.0.0')
   }
 
   // Uncomment the line below if you provide a JSON API for your component
-  api.registerDescribeApi('QMarkdown', '~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json');
+  api.registerDescribeApi('QMarkdown', '~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json')
 
   // We extend /quasar.conf.js
   api.extendQuasarConf(extendConf)
@@ -87,17 +93,21 @@ export default function (api) {
     if (api.hasWebpack === true) {
       // chain webpack
       api.chainWebpack((chain, { isClient, isServer }, api) => {
-        console.log(" App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to chainWebpack'");
-        chain.module.rule('md').test(/\.md$/i).use('raw-loader').loader('raw-loader');
-      });
+        console.log(
+          " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to chainWebpack'",
+        )
+        chain.module.rule('md').test(/\.md$/i).use('raw-loader').loader('raw-loader')
+      })
     }
     if (api.hasVite === true) {
       api.extendViteConf((viteConf, { isClient, isServer }, api) => {
-        console.log(" App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to extendViteConf'");
+        console.log(
+          " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to extendViteConf'",
+        )
         viteConf.plugins.push(
           viteRawImporter({
             fileRegex: /\.md$/,
-          })
+          }),
         )
       })
     }
