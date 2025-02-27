@@ -10,7 +10,7 @@ Have a question about QMarkdown? We're here to help. Before you start, be sure t
 
 ### QMarkdown GitHub issues
 
-As a first step, it's always good to search open and closed issues on the QMarkdown [GitHub repo](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next).
+As a first step, it's always good to search open and closed issues on the QMarkdown [GitHub repo](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev).
 
 ### QMarkdown GitHub discussions
 
@@ -28,7 +28,7 @@ File on the [GitHub Issues](https://github.com/quasarframework/quasar-ui-qmarkdo
 
 ### GitHub pull requests (PR)
 
-If you have a specific fix or contribution, you can generate a pull request on the [QMarkdown repo](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next). Make sure to use the `next` branch for QMarkdown v2.x+
+If you have a specific fix or contribution, you can generate a pull request on the [QMarkdown repo](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev).
 
 ## Start a discussion
 

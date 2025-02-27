@@ -260,4 +260,4 @@ app.mount('#app')
 
 # Project source
 
-Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next).
+Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev).

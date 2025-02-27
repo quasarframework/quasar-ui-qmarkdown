@@ -9,25 +9,12 @@
     @click="leftDrawerButtonFunc"
   />
 
-  <q-btn
-    flat
-    no-caps
-    to="/"
-  >
-    <div
-      v-if="$q.screen.width > 500"
-      class="text-weight-bold"
-    >
-      <span style="font-size: 20px;">
-        QMarkdown &nbsp;
-      </span>
-      <span style="font-size: 12px;">
-        v{{ version }}
-      </span>
+  <q-btn flat no-caps to="/">
+    <div v-if="$q.screen.width > 500" class="text-weight-bold">
+      <span style="font-size: 20px"> QMarkdown &nbsp; </span>
+      <span style="font-size: 12px"> v{{ version }} </span>
     </div>
-    <div v-else>
-      Home
-    </div>
+    <div v-else>Home</div>
   </q-btn>
 
   <q-space />
@@ -40,11 +27,8 @@
     @click="$q.dark.toggle()"
   />
 
-  <div
-    v-if="$q.screen.width > 500"
-    class="text-weight-bold"
-  >
-    Quasar <span style="font-size: 12px;">v{{ $q.version }}</span>
+  <div v-if="$q.screen.width > 500" class="text-weight-bold">
+    Quasar <span style="font-size: 12px">v{{ $q.version }}</span>
   </div>
 
   <q-btn
@@ -60,24 +44,24 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { version } from '@quasar/quasar-ui-qmarkdown/src/version.js'
+import { version } from '@quasar/quasar-ui-qmarkdown'
 
 export default defineComponent({
   name: 'ToolbarContents',
   props: {
     title: {
       type: String,
-      default: 'Inline markdown for your Quasar apps'
+      default: 'Inline markdown for your Quasar apps',
     },
     leftDrawerButton: Boolean,
     rightDrawerButton: Boolean,
     leftDrawerButtonFunc: Function,
-    rightDrawerButtonFunc: Function
+    rightDrawerButtonFunc: Function,
   },
-  setup () {
+  setup() {
     return {
-      version
+      version,
     }
-  }
+  },
 })
 </script>

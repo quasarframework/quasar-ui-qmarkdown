@@ -2,7 +2,7 @@
 
 Display inline markdown in your Quasar App
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/next?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
@@ -10,7 +10,7 @@ Display inline markdown in your Quasar App
 
 # Notes
 
-It is important to note that you cannot use header or hash links or a TOC with the vue-router mode of `hash`. It must be set tyo `history` in your `quasar.config.(*js|ts)`
+It is important to note that you cannot use header or hash links or a TOC with the vue-router mode of `hash`. It must be set to `history` in your `quasar.config.(*js|ts)`
 
 # Usage
 
@@ -23,6 +23,8 @@ Install the [App Extension](../app-extension).
 Install
 
 ```
+pnpm add @quasar/quasar-ui-qmarkdown
+# or
 yarn add @quasar/quasar-ui-qmarkdown
 # or
 npm install @quasar/quasar-ui-qmarkdown

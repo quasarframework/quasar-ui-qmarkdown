@@ -1,18 +1,11 @@
 <template>
   <div :class="'markdown ' + (path !== '/' ? ($q.platform.is.mobile ? '' : 'q-mx-xl') : '')">
-    <markdown-nav-bar
-      v-if="path !== '/' && nav && nav.length > 0"
-      :title="title"
-      :nav="nav"
-    />
+    <markdown-nav-bar v-if="path !== '/' && nav && nav.length > 0" :title="title" :nav="nav" />
 
     <div :class="$route.path !== '/' ? 'q-ma-xs' : ''">
       <slot />
 
-      <div
-        v-if="related !== undefined"
-        class="full-width"
-      >
+      <div v-if="related !== undefined" class="full-width">
         <h5 class="q-ma-none q-mt-lg">Related</h5>
         <q-separator />
         <div class="q-gutter-md flex flex-center q-mt-md markdown-page__related">
@@ -27,15 +20,11 @@
                 <div class="markdown-page__nav--cat">{{ link.category || 'Docs' }}</div>
                 <div class="markdown-page__nav--name text-weight-bold">{{ link.name }}</div>
               </div>
-              <q-icon
-                :name="biBoxArrowUpRight"
-                class="q-ml-lg"
-              />
+              <q-icon :name="biBoxArrowUpRight" class="q-ml-lg" />
             </div>
           </router-link>
         </div>
       </div>
-
 
       <div class="markdown-page__footer">
         <q-separator class="q-mb-lg" />
@@ -43,7 +32,11 @@
           <div class="full-width row justify-center items-center">
             Found an error on this page or feel it could be improved?
             <markdown-link
-              :to="'https://github.com/quasarframework/quasar-ui-qmarkdown/edit/next/docs/src/pages' + path + '.md'"
+              :to="
+                'https://github.com/quasarframework/quasar-ui-qmarkdown/edit/dev/docs/src/pages' +
+                path +
+                '.md'
+              "
             >
               &nbsp; Edit this page on GitHub
             </markdown-link>
@@ -63,7 +56,7 @@
             <img
               src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"
               alt="Deploys by Netlify"
-            >
+            />
           </a>
         </div>
       </div>
@@ -89,7 +82,7 @@ export default {
 
   components: {
     MarkdownFooter,
-    MarkdownNavBar
+    MarkdownNavBar,
   },
 
   props: {
@@ -100,10 +93,10 @@ export default {
     badge: String,
     metaTitle: String,
     metaDesc: String,
-    toc: Array
+    toc: Array,
   },
 
-  setup (props) {
+  setup(props) {
     // TODO: remove
     console.log('props', props)
 
@@ -112,11 +105,14 @@ export default {
 
     useMeta(
       props.metaDesc !== void 0
-        ? { title: props.metaTitle, meta: getMeta(props.metaTitle + ' » QMarkdown', props.metaDesc) }
+        ? {
+            title: props.metaTitle,
+            meta: getMeta(props.metaTitle + ' » QMarkdown', props.metaDesc),
+          }
         : { title: props.metaTitle }
     )
 
-    function getTitle () {
+    function getTitle() {
       return props.metaTitle
     }
 
@@ -126,9 +122,9 @@ export default {
 
     return {
       path,
-      biBoxArrowUpRight
+      biBoxArrowUpRight,
     }
-  }
+  },
 }
 </script>
 

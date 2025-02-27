@@ -1,12 +1,7 @@
+/* eslint-disable */
 <template>
-  <q-layout
-    view="HHh LpR fFf"
-    @scroll="onScroll"
-  >
-    <q-header
-      elevated
-      class="glass"
-    >
+  <q-layout view="HHh LpR fFf" @scroll="onScroll">
+    <q-header elevated class="glass">
       <q-toolbar>
         <toolbar-contents
           :title="title"
@@ -18,18 +13,17 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer
-      elevated
-      class="glass"
-    >
+    <q-footer elevated class="glass">
       <q-toolbar>
         <div class="full-width text-center">
-          This documentation site for QMarkdown is a work in progress. If you see something missing or inaccurate, please create a PR on the <markdown-link
-            to="https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next"
-            style="color: white;"
+          This documentation site for QMarkdown is a work in progress. If you see something missing
+          or inaccurate, please create a PR on the
+          <markdown-link
+            to="https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev"
+            style="color: white"
           >
-            GitHub repo
-          </markdown-link>.
+            GitHub repo </markdown-link
+          >.
         </div>
       </q-toolbar>
     </q-footer>
@@ -63,12 +57,7 @@
             class="toc"
             @click="scrollTo(item.id)"
           >
-            <q-item-section
-              v-if="item.level > 2"
-              side
-            >
-              »
-            </q-item-section>
+            <q-item-section v-if="item.level > 2" side> » </q-item-section>
             <q-item-section>{{ item.label }}</q-item-section>
           </q-item>
         </q-list>
@@ -77,14 +66,11 @@
 
     <q-page-container>
       <div class="fit full-width">
-        <div
-          v-if="isExample === true"
-          class="full-width"
-        >
-          <div style="width: 100%; display: flex; justify-content: center;">
-            <div style="font-size: 24px; font-weight: 500;">{{ name }}</div>
+        <div v-if="isExample === true" class="full-width">
+          <div style="width: 100%; display: flex; justify-content: center">
+            <div style="font-size: 24px; font-weight: 500">{{ name }}</div>
           </div>
-          <div style="width: 100%; display: flex; justify-content: center;">
+          <div style="width: 100%; display: flex; justify-content: center">
             <q-btn
               v-if="path !== null"
               no-caps
@@ -101,29 +87,30 @@
         </div>
 
         <div class="flex flex-center">
-          <div :style="'max-width: ' + ($route.path === '/' ? '100%' : '1000px') + '; width: 100%;'">
+          <div
+            :style="'max-width: ' + ($route.path === '/' ? '100%' : '1000px') + '; width: 100%;'"
+          >
             <router-view />
           </div>
         </div>
       </div>
     </q-page-container>
 
-    <q-page-scroller
-      position="bottom-right"
-      :scroll-offset="150"
-      :offset="[18, 18]"
-    >
+    <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
       <q-fab
         padding="sm"
         icon="keyboard_arrow_up"
-        :class="{ 'text-black bg-grey-4': $q.dark.isActive, 'text-white bg-primary': !$q.dark.isActive }"
+        :class="{
+          'text-black bg-grey-4': $q.dark.isActive,
+          'text-white bg-primary': !$q.dark.isActive,
+        }"
       />
     </q-page-scroller>
   </q-layout>
 </template>
 
 <script>
-
+/* eslint-disable */
 import { defineComponent, ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -132,9 +119,7 @@ const { setVerticalScrollPosition } = scroll
 
 import { useMarkdownStore } from 'assets/markdown-store.js'
 
-import {
-  biGithub
-} from '@quasar/extras/bootstrap-icons'
+import { biGithub } from '@quasar/extras/bootstrap-icons'
 import LeftMenu from '../components/LeftMenu.vue'
 import ToolbarContents from '../components/ToolbarContents.vue'
 
@@ -143,12 +128,13 @@ export default defineComponent({
 
   components: {
     LeftMenu,
-    ToolbarContents
+    ToolbarContents,
   },
 
-  setup () {
+  setup() {
     const path = ref(null),
-      basePath = 'https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next/docs/src/examples/',
+      basePath =
+        'https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev/docs/src/examples/',
       name = ref(null),
       store = useMarkdownStore(),
       $route = useRoute(),
@@ -163,20 +149,25 @@ export default defineComponent({
       handleRouteChange()
     })
 
-    watch(() => $route.fullPath, () => {
-      handleRouteChange()
-    })
+    watch(
+      () => $route.fullPath,
+      () => {
+        handleRouteChange()
+      }
+    )
 
-    watch(() => store.title, val => {
-      title.value = val
-    })
+    watch(
+      () => store.title,
+      (val) => {
+        title.value = val
+      }
+    )
 
-    function handleRouteChange () {
+    function handleRouteChange() {
       if ($route.fullPath === '/' || $route.name === undefined) {
         path.value = null
         name.value = null
-      }
-      else {
+      } else {
         path.value = basePath + $route.name + '.vue'
         name.value = $route.name
         // auto-open left menu
@@ -184,15 +175,15 @@ export default defineComponent({
       }
     }
 
-    function klasses (item) {
+    function klasses(item) {
       return {
         menu: true,
         active: item.name !== undefined && item.name === $route.name,
-        ellipsis: true
+        ellipsis: true,
       }
     }
 
-    function scrollTo (id) {
+    function scrollTo(id) {
       activeToc.value = id
       const el = document.getElementById(id)
 
@@ -201,7 +192,7 @@ export default defineComponent({
       }
     }
 
-    function scrollPage (el) {
+    function scrollPage(el) {
       const rect = el.getBoundingClientRect(),
         scrollTop = window.pageYOffset || document.documentElement.scrollTop,
         offset = rect.top + scrollTop - 50
@@ -209,19 +200,19 @@ export default defineComponent({
       setVerticalScrollPosition(window, offset, 500)
     }
 
-    function onScroll ({ position }) {
+    function onScroll({ position }) {
       updateActiveToc(position)
       // if (scrollingPage !== true) {
       //   updateActiveToc(position)
       // }
     }
 
-    function updateActiveToc (position) {
+    function updateActiveToc(position) {
       const toc = store.toc
       let last
 
       for (const i in toc) {
-        const section = toc[ i ]
+        const section = toc[i]
         const item = document.getElementById(section.id)
 
         if (item === null) {
@@ -250,18 +241,18 @@ export default defineComponent({
       activeToc,
       leftDrawerOpen,
       rightDrawerOpen,
-      toggleLeftDrawer () {
+      toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
-      toggleRightDrawer () {
+      toggleRightDrawer() {
         rightDrawerOpen.value = !rightDrawerOpen.value
       },
       onScroll,
       scrollTo,
       biGithub,
-      title
+      title,
     }
-  }
+  },
 })
 </script>
 
