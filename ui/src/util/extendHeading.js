@@ -1,5 +1,6 @@
 import slugify from './slugify'
 
+// Helper function to transform emoji tokens
 function unemoji(TokenConstructor, token) {
   if (token.type === 'emoji') {
     return Object.assign(new TokenConstructor(), token, { content: token.markup })
@@ -13,13 +14,11 @@ export default function extendHeading(
   toc = false,
   tocStart = 1,
   tocEnd = 3,
-  noHeadingAnchorLinks = false,
+  noHeadingAnchorLinks = false
 ) {
   let Token
   md.core.ruler.push('headingLinks', function (state) {
-    // save the Token constructor because we'll be building a few instances at render
-    // time; that's sort of outside the intended markdown-it parsing sequence, but
-    // since we have tight control over what we're creating (a link), we're safe
+    // Save the Token constructor for later use when building new token instances.
     if (!Token) {
       Token = state.Token
     }
@@ -28,13 +27,16 @@ export default function extendHeading(
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
 
-    // get the token number
+    // Get the numeric heading level (e.g., 1 for h1, 2 for h2, etc.)
     const tokenNumber = parseInt(token.tag[1])
 
+    // Get the children tokens (which represent the inline content)
     const children = tokens[idx + 1].children
 
+    // Build a plain text label by concatenating all child token content.
     const label = children.reduce((acc, t) => acc + t.content, '')
 
+    // Build the CSS classes for the heading
     const classes = []
     classes.push('q-markdown--heading')
     classes.push(`q-markdown--heading-${token.tag}`)
@@ -45,6 +47,7 @@ export default function extendHeading(
       classes.push('q-markdown--title-light')
     }
 
+    // If heading anchor links are enabled, add the specific class.
     if (
       noHeadingAnchorLinks !== true &&
       tocStart &&
@@ -56,19 +59,23 @@ export default function extendHeading(
       classes.push('q-markdown--heading--anchor-link')
     }
 
+    // Transform emoji tokens and render the inline content.
     const unemojiWithToken = unemoji.bind(null, Token)
     const renderedLabel = md.renderer.renderInline(children.map(unemojiWithToken), options, env)
 
+    // Create a slug from the rendered label for the heading id.
     const id = slugify(
       renderedLabel
-        .replace(/[<>]/g, '') // In case the heading contains `<stuff>`
-        .toLowerCase(), // should be lowercase
+        .replace(/[<>]/g, '') // Remove any '<' or '>' characters.
+        .toLowerCase() // Convert to lowercase.
     )
 
+    // Set attributes for the heading token.
     token.attrSet('id', id)
     token.attrSet('name', id)
     token.attrSet('class', classes.join(' '))
 
+    // If a table of contents is enabled, add this heading to the TOC data.
     if (toc) {
       if (
         tocStart &&
@@ -81,34 +88,28 @@ export default function extendHeading(
       }
     }
 
+    // If anchor links are enabled and the heading level is within the TOC range,
+    // wrap the inline children with anchor link tokens to preserve formatting.
     if (noHeadingAnchorLinks !== true && tokenNumber <= tocEnd) {
-      // add 3 new token objects link_open, text, link_close
+      // Create the opening link token with the necessary attributes.
       const linkOpen = new Token('link_open', 'a', 1)
-      const text = new Token('html_inline', '', 0)
-      if (options.enableHeadingLinkIcons) {
-        text.content = options.linkIcon
-      }
-      text.content = label
-
-      const linkClose = new Token('link_close', 'a', -1)
-
-      // add some link attributes
-      // linkOpen.attrSet('id', id)
-      // linkOpen.attrSet('class', '')
       linkOpen.attrSet('href', '#' + id)
       linkOpen.attrSet('aria-hidden', 'true')
 
-      // remove previous children
-      while (children.length > 0) children.pop()
+      // Create the closing link token.
+      const linkClose = new Token('link_close', 'a', -1)
 
-      // add new token objects as children of heading
-      children.unshift(linkClose)
-      children.unshift(text)
-      children.unshift(linkOpen)
+      // Preserve the original inline tokens (to keep formatting like **bold**).
+      const originalChildren = children.slice()
 
+      // Replace children with the new tokens wrapping the original content.
+      tokens[idx + 1].children = [linkOpen, ...originalChildren, linkClose]
+
+      // Render the modified token.
       return md.renderer.renderToken(tokens, idx, options, env, self)
     }
 
+    // Render the token as usual if no modifications were made.
     return self.renderToken(tokens, idx, options)
   }
 }
