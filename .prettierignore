@@ -1,2 +1,20 @@
-# Ignore all Markdown files:
+node_modules
+packages/*/node_modules
+packages/*/.quasar
+packages/*/dist
+
+# Legacy generated docs assets
+packages/docs/css
+packages/docs/fonts
+packages/docs/js
+packages/docs/public
+
+# Static assets
+packages/dev/public
+
+# Lockfiles
+yarn.lock
+packages/dev/yarn.lock
+
+# Keep markdown prose out of repo-level formatting sweeps
 **/*.md

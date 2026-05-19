@@ -1,16 +1,33 @@
 {
   "name": "qmarkdown",
-  "version": "1.0.0",
-  "description": "QMarkdown mono-repo",
-  "workspaces": [
-    "ui",
-    "docs"
-  ],
-  "author": "Jeff Galbraith <jeff@quasar.dev>",
-  "license": "MIT",
+  "version": "3.0.0-beta.0",
   "private": true,
-  "packageManager": "yarn@1.22.22",
+  "description": "QMarkdown mono-repo",
+  "license": "MIT",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
   "scripts": {
-    "build:all": "yarn && cd ./ui && yarn build && cd ../docs && quasar build"
-  }
+    "clean": "rm -rf node_modules pnpm-lock.yaml packages/ui/node_modules packages/docs/node_modules packages/app-extension/node_modules packages/dev/node_modules packages/dev/.quasar",
+    "build": "pnpm run build:ui && pnpm run build:docs",
+    "build:ui": "cd packages/ui && pnpm build",
+    "build:docs": "cd packages/docs && pnpm build",
+    "build:dev": "cd packages/dev && pnpm build",
+    "ci:publish": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev",
+    "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev --tag beta && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev --tag beta",
+    "test": "vitest run --passWithNoTests",
+    "deep": "ncu --deep",
+    "lint": "oxlint --ignore-path .oxlintignore",
+    "lint:fix": "oxlint --ignore-path .oxlintignore --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.66.0",
+    "vitest": "^3.0.5"
+  },
+  "engines": {
+    "node": ">=22.13",
+    "pnpm": ">=11.1.0"
+  },
+  "packageManager": "pnpm@11.1.0"
 }

@@ -1,0 +1,37 @@
+{
+  "name": "dev",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A Quasar Project",
+  "author": "Jeff <galbraith64@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "lint": "oxlint src quasar.config.ts",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "postinstall": "quasar prepare"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "@quasar/quasar-ui-qmarkdown": "workspace:^",
+    "quasar": "^2.19.3",
+    "vue": "^3.5.34",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "3.0.0-beta.16",
+    "@types/node": "^25.8.0",
+    "autoprefixer": "^10.4.2",
+    "prettier": "^3.3.3",
+    "typescript": "~5.9.3",
+    "vite-plugin-checker": "^0.8.0",
+    "vue-tsc": "^2.0.29"
+  },
+  "engines": {
+    "node": ">=22.13",
+    "pnpm": ">=11.1.0"
+  },
+  "productName": "Quasar App"
+}
