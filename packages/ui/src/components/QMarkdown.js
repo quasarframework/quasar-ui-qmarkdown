@@ -15,6 +15,7 @@ import extendLink from "../util/extendLink.js";
 import extendTable from "../util/extendTable.js";
 import extendToken from "../util/extendToken.js";
 import extendFenceLineNumbers from "../util/extendFenceLineNumbers.js";
+import makeTreeUtil from "../util/makeTree.js";
 import normalizeSlotSource from "../util/normalizeSlotSource.js";
 
 import { QBtn, QTooltip, copyToClipboard, useQuasar } from "quasar";
@@ -204,31 +205,7 @@ export default defineComponent({
     }
 
     function makeTree(list) {
-      const tree = [];
-      let root = null;
-
-      const addToTree = (item) => {
-        if (item.level === allProps.value.tocStart) {
-          root = item;
-          tree.push(item);
-        } else if (item.level === allProps.value.tocStart + 1) {
-          root.children.push(item);
-        } else {
-          let parent = root;
-          for (let k = 0; k < item.level - (allProps.value.tocStart + 1); ++k) {
-            parent = parent.children[parent.children.length - 1];
-          }
-          if (parent) {
-            parent.children.push(item);
-          }
-        }
-      };
-
-      for (let i = 0; i < list.length; ++i) {
-        addToTree(list[i]);
-      }
-
-      return tree;
+      return makeTreeUtil(list, allProps.value.tocStart);
     }
 
     function __copyMarkdownToClipboard() {

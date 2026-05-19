@@ -14,6 +14,7 @@
     "ci:publish": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev",
     "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev --tag beta && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev --tag beta",
     "test": "vitest run",
+    "coverage": "vitest run --coverage",
     "test:types": "pnpm --filter @quasar/quasar-ui-qmarkdown test:types",
     "typecheck": "pnpm --filter @quasar/quasar-ui-qmarkdown typecheck",
     "deep": "ncu --deep",
@@ -23,6 +24,7 @@
     "format:check": "oxfmt --check"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^3.0.5",
     "oxfmt": "^0.51.0",
     "oxlint": "^1.66.0",
     "vitest": "^3.0.5"

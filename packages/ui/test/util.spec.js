@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import MarkdownIt from "markdown-it";
 
+import QMarkdownComponent from "../src/components/QMarkdown";
 import extendBlockQuote from "../src/util/extendBlockQuote";
 import extendContainers from "../src/util/extendContainers";
 import extendFenceLineNumbers from "../src/util/extendFenceLineNumbers";
@@ -12,6 +13,7 @@ import extendLink from "../src/util/extendLink";
 import extendTable from "../src/util/extendTable";
 import extendToken from "../src/util/extendToken";
 import prismHighlight from "../src/util/highlight";
+import makeTree from "../src/util/makeTree";
 import normalizeSlotSource from "../src/util/normalizeSlotSource";
 import slugify from "../src/util/slugify";
 
@@ -99,6 +101,50 @@ describe("normalizeSlotSource", () => {
   });
 });
 
+describe("makeTree", () => {
+  it("nests toc entries by heading level", () => {
+    const toc = [
+      { id: "intro", label: "Intro", level: 1, children: [] },
+      { id: "install", label: "Install", level: 2, children: [] },
+      { id: "vite", label: "Vite", level: 3, children: [] },
+      { id: "usage", label: "Usage", level: 2, children: [] },
+    ];
+
+    expect(makeTree(toc, 1)).toEqual([
+      {
+        id: "intro",
+        label: "Intro",
+        level: 1,
+        children: [
+          {
+            id: "install",
+            label: "Install",
+            level: 2,
+            children: [{ id: "vite", label: "Vite", level: 3, children: [] }],
+          },
+          { id: "usage", label: "Usage", level: 2, children: [] },
+        ],
+      },
+    ]);
+  });
+
+  it("does not throw when toc data starts deeper than toc-start", () => {
+    const toc = [
+      { id: "first-h2", label: "First H2", level: 2, children: [] },
+      { id: "child-h3", label: "Child H3", level: 3, children: [] },
+    ];
+
+    expect(makeTree(toc, 1)).toEqual([
+      {
+        id: "first-h2",
+        label: "First H2",
+        level: 2,
+        children: [{ id: "child-h3", label: "Child H3", level: 3, children: [] }],
+      },
+    ]);
+  });
+});
+
 describe("QMarkdown API JSON", () => {
   it("documents the runtime props, events, slots and exposed methods", () => {
     const source = readPackageFile("src/components/QMarkdown.js");
@@ -135,6 +181,19 @@ describe("QMarkdown API JSON", () => {
 
     expect(api.props["toc-start"].values).toEqual(getValidatorValues(source, "tocStart"));
     expect(api.props["toc-end"].values).toEqual(getValidatorValues(source, "tocEnd"));
+  });
+});
+
+describe("QMarkdown component contract", () => {
+  it("exposes the documented component name, event and toc validators", () => {
+    expect(QMarkdownComponent.name).toBe("QMarkdown");
+    expect(QMarkdownComponent.emits).toEqual(["data"]);
+    expect(QMarkdownComponent.props.tocStart.validator(1)).toBe(true);
+    expect(QMarkdownComponent.props.tocStart.validator(6)).toBe(true);
+    expect(QMarkdownComponent.props.tocStart.validator(0)).toBe(false);
+    expect(QMarkdownComponent.props.tocEnd.validator(1)).toBe(true);
+    expect(QMarkdownComponent.props.tocEnd.validator(6)).toBe(true);
+    expect(QMarkdownComponent.props.tocEnd.validator(7)).toBe(false);
   });
 });
 
