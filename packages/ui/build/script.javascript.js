@@ -1,45 +1,9 @@
 const path = require("path");
-const fs = require("fs");
-const fse = require("fs-extra");
-const rollup = require("rollup");
+const { rolldown } = require("rolldown");
 const uglify = require("uglify-js");
-const buble = require("@rollup/plugin-buble");
-const json = require("@rollup/plugin-json");
-const cjs = require("@rollup/plugin-commonjs");
-const { nodeResolve } = require("@rollup/plugin-node-resolve");
-// const multiEntry = require('@rollup/plugin-multi-entry')
-// const inject = require('@rollup/plugin-inject')
-// const { babel } = require('@rollup/plugin-babel')
-// const legacy = require('@rollup/plugin-legacy')
 
 const buildConf = require("./config");
 const buildUtils = require("./utils");
-
-const bubleConfig = {
-  objectAssign: "Object.assign",
-};
-
-const nodeResolveConfig = {
-  extensions: [".js"],
-  preferBuiltins: false,
-  // preferBuiltins: true
-  // jsnext: true,
-  // browser: true
-};
-
-const cjsConfig = {
-  include: [/node_modules/],
-};
-
-const rollupPlugins = [
-  // inject(injectConfig),
-  // multiEntry(),
-  nodeResolve(nodeResolveConfig),
-  json(),
-  // babel(babelConfig),
-  cjs(cjsConfig),
-  // buble(bubleConfig),
-];
 
 const uglifyJsOptions = {
   compress: {
@@ -76,13 +40,13 @@ const uglifyJsOptions = {
 
 const builds = [
   {
-    rollup: {
+    rolldown: {
       input: {
         input: pathResolve("entry/index.esm.js"),
       },
       output: {
         file: pathResolve("../dist/index.esm.js"),
-        format: "es",
+        format: "esm",
       },
     },
     build: {
@@ -91,7 +55,7 @@ const builds = [
     },
   },
   {
-    rollup: {
+    rolldown: {
       input: {
         input: pathResolve("entry/index.common.js"),
       },
@@ -107,7 +71,7 @@ const builds = [
     },
   },
   {
-    rollup: {
+    rolldown: {
       input: {
         input: pathResolve("entry/index.umd.js"),
       },
@@ -125,10 +89,6 @@ const builds = [
   },
 ];
 
-// Add your asset folders here, if needed
-// addAssets(builds, 'icon-set', 'iconSet')
-// addAssets(builds, 'lang', 'lang')
-
 build(builds);
 
 /**
@@ -139,50 +99,26 @@ function pathResolve(_path) {
   return path.resolve(__dirname, _path);
 }
 
-// eslint-disable-next-line no-unused-vars
-function addAssets(builds, type, injectName) {
-  const files = fs.readdirSync(pathResolve("../../ui/src/components/" + type)),
-    plugins = [buble(bubleConfig)],
-    outputDir = pathResolve(`../dist/${type}`);
-
-  fse.mkdirp(outputDir);
-
-  files
-    .filter((file) => file.endsWith(".js"))
-    .forEach((file) => {
-      const name = file.substr(0, file.length - 3).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
-      builds.push({
-        rollup: {
-          input: {
-            input: pathResolve(`../src/components/${type}/${file}`),
-            plugins,
-          },
-          output: {
-            file: addExtension(pathResolve(`../dist/${type}/${file}`), "umd"),
-            format: "umd",
-            name: `QMarkdown.${injectName}.${name}`,
-          },
-        },
-        build: {
-          minified: true,
-        },
-      });
-    });
-}
-
-function build(builds) {
-  return Promise.all(builds.map(genConfig).map(buildEntry)).catch(buildUtils.logError);
+async function build(builds) {
+  try {
+    for (const config of builds.map(genConfig)) {
+      await buildEntry(config);
+    }
+  } catch (err) {
+    buildUtils.logError(err);
+    process.exit(1);
+  }
 }
 
 function genConfig(opts) {
-  Object.assign(opts.rollup.input, {
-    plugins: rollupPlugins,
+  Object.assign(opts.rolldown.input, {
     external: ["vue", "quasar"],
   });
 
-  Object.assign(opts.rollup.output, {
+  Object.assign(opts.rolldown.output, {
     banner: buildConf.banner,
     globals: { vue: "Vue", quasar: "Quasar" },
+    exports: "auto",
   });
 
   return opts;
@@ -193,46 +129,33 @@ function addExtension(filename, ext = "min") {
   return `${filename.slice(0, insertionPoint)}.${ext}${filename.slice(insertionPoint)}`;
 }
 
-function buildEntry(config) {
-  return rollup
-    .rollup(config.rollup.input)
-    .then((bundle) => bundle.generate(config.rollup.output))
-    .then(({ output }) => {
-      const code =
-        config.rollup.output.format === "umd"
-          ? injectVueRequirement(output[0].code)
-          : output[0].code;
+async function buildEntry(config) {
+  const bundle = await rolldown(config.rolldown.input);
+  const { output } = await bundle.generate(config.rolldown.output);
+  const code =
+    config.rolldown.output.format === "umd" ? injectVueRequirement(output[0].code) : output[0].code;
 
-      return config.build.unminified ? buildUtils.writeFile(config.rollup.output.file, code) : code;
-    })
-    .then((code) => {
-      if (!config.build.minified) {
-        return code;
-      }
+  if (config.build.unminified) {
+    await buildUtils.writeFile(config.rolldown.output.file, code);
+  }
 
-      // const minified = uglify.minify(code, {
-      //   compress: {
-      //     pure_funcs: ['makeMap']
-      //   }
-      // })
-      const minified = uglify.minify(code, uglifyJsOptions);
+  if (config.build.minified) {
+    const minified = uglify.minify(code, uglifyJsOptions);
 
-      if (minified.error) {
-        return Promise.reject(minified.error);
-      }
+    if (minified.error) {
+      throw minified.error;
+    }
 
-      return buildUtils.writeFile(
-        config.build.minExt === true
-          ? addExtension(config.rollup.output.file)
-          : config.rollup.output.file,
-        buildConf.banner + minified.code,
-        true,
-      );
-    })
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    });
+    await buildUtils.writeFile(
+      config.build.minExt === true
+        ? addExtension(config.rolldown.output.file)
+        : config.rolldown.output.file,
+      buildConf.banner + minified.code,
+      true,
+    );
+  }
+
+  await bundle.close();
 }
 
 function injectVueRequirement(code) {
