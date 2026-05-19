@@ -137,7 +137,7 @@ const docsMenus: SiteMenuItem[] = [
     name: "Getting Started",
     mq: 470,
     children: [
-      { name: "What is QMarkdown", path: "/getting-started/what-is-qmarkdown" },
+      { name: "Introduction", path: "/getting-started/introduction" },
       { name: "Installation Types", path: "/getting-started/installation-types" },
     ],
   },

@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="full-width row justify-center q-pb-xl q-gutter-sm">
-      <q-btn to="/getting-started/what-is-qmarkdown" no-caps class="bg-red-8">
+      <q-btn to="/getting-started/introduction" no-caps class="bg-red-8">
         <div class="row justify-around items-center" style="width: 140px">
           <div>Get started</div>
           <q-icon :name="biArrowRightCircle" />
