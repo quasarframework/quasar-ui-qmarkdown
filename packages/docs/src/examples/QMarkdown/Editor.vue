@@ -19,12 +19,7 @@
     <q-toggle v-model="noContainer" label="Disable Container" />
     <q-toggle v-model="noMermaid" label="Disable Mermaid" />
     <div class="q-pa-md q-gutter-sm fit">
-      <!-- eslint-disable vue/html-indent -->
-      <q-markdown>
-        ## Interactive Editor Add Markdown to the window on the left and the output will appear on
-        the right.
-      </q-markdown>
-      <!-- eslint-enable vue/html-indent -->
+      <q-markdown :src="introMarkdown" />
       <q-splitter v-model="splitterModel" style="height: 500px">
         <template #separator>
           <q-avatar color="primary" text-color="white" size="28px" icon="fas fa-arrows-alt-h" />
@@ -60,9 +55,13 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, onMounted, getCurrentInstance } from "vue";
+import { defineComponent, ref, watch, onMounted } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+
+const introMarkdown = `## Interactive Editor
+
+Add Markdown to the window on the left and the output will appear on the right.`;
 
 import abbreviation from "markdown-it-abbr";
 import deflist from "markdown-it-deflist";
@@ -82,7 +81,6 @@ export default defineComponent({
   },
 
   setup() {
-    console.log(QMarkdown);
     const splitterModel = ref(50),
       markdown = ref("Testing"),
       noHtml = ref(false),
@@ -148,6 +146,7 @@ export default defineComponent({
     });
 
     return {
+      introMarkdown,
       splitterModel,
       markdown,
       noHtml,

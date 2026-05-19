@@ -15,6 +15,7 @@ import extendLink from "../util/extendLink.js";
 import extendTable from "../util/extendTable.js";
 import extendToken from "../util/extendToken.js";
 import extendFenceLineNumbers from "../util/extendFenceLineNumbers.js";
+import normalizeSlotSource from "../util/normalizeSlotSource.js";
 
 import { QBtn, QTooltip, copyToClipboard, useQuasar } from "quasar";
 
@@ -138,8 +139,9 @@ export default defineComponent({
           ? allProps.value.src.replace(/\\n/gi, "\n")
           : allProps.value.src;
       }
-      if (slots.default !== undefined && slots.default()[0].children.trim().length > 0) {
-        rawSource = slots.default()[0].children;
+      const slotSource = slots.default?.()[0]?.children;
+      if (typeof slotSource === "string" && slotSource.trim().length > 0) {
+        rawSource = normalizeSlotSource(slotSource);
       }
       return rawSource;
     });

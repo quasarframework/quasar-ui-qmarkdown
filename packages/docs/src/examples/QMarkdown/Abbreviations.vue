@@ -1,11 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <!-- eslint-disable vue/html-indent -->
-    <q-markdown :plugins="plugins">
-      Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum: Shortcuts
-      (emoticons): :-) :-( 8-) ;)
-    </q-markdown>
-    <!-- eslint-enable vue/html-indent -->
+    <q-markdown :plugins="plugins" :src="markdown" />
   </div>
 </template>
 
@@ -13,18 +8,25 @@
 import { defineComponent, ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import emoji from "markdown-it-emoji";
+import abbreviation from "markdown-it-abbr";
+
+const markdown = `This is an HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language`;
 
 export default defineComponent({
-  name: "Emojies",
+  name: "Abbreviations",
   components: {
     QMarkdown,
   },
 
   setup() {
-    const plugins = [emoji];
+    const plugins = [abbreviation];
 
     return {
+      markdown,
       plugins,
     };
   },

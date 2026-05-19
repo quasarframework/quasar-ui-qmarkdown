@@ -57,6 +57,15 @@ export default defineConfig(async (ctx) => {
         }
       },
 
+      viteVuePluginOptions: {
+        include: [/\.(vue|md)$/],
+        template: {
+          compilerOptions: {
+            isPreTag: (tag) => tag === "pre" || tag === "q-markdown" || tag === "QMarkdown",
+          },
+        },
+      },
+
       vitePlugins: [
         [
           viteMdPlugin,

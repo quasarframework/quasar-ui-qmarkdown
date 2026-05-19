@@ -9,6 +9,7 @@ import extendLink from "../src/util/extendLink";
 import extendTable from "../src/util/extendTable";
 import extendToken from "../src/util/extendToken";
 import prismHighlight from "../src/util/highlight";
+import normalizeSlotSource from "../src/util/normalizeSlotSource";
 import slugify from "../src/util/slugify";
 
 function createMarkdown() {
@@ -46,6 +47,29 @@ describe("prismHighlight", () => {
 
   it("returns an empty string for unknown languages", () => {
     expect(prismHighlight({ languages: {} }, "code", "unknown")).toBe("");
+  });
+});
+
+describe("normalizeSlotSource", () => {
+  it("removes common template indentation from slotted markdown", () => {
+    expect(
+      normalizeSlotSource(`
+        # Title
+
+        Some **bold** text.
+
+            const answer = 42
+      `),
+    ).toBe("# Title\n\nSome **bold** text.\n\n    const answer = 42");
+  });
+
+  it("preserves relative indentation inside the markdown", () => {
+    expect(
+      normalizeSlotSource(`
+        - parent
+          - child
+      `),
+    ).toBe("- parent\n  - child");
   });
 });
 

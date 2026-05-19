@@ -2,13 +2,7 @@
   <div class="q-pa-md q-gutter-sm">
     <q-toggle v-model="model" label="Disable links" />
     <q-toggle v-model="model1" label="Disable linkify" />
-    <!-- eslint-disable vue/html-indent -->
-    <q-markdown :no-link="model" :no-linkify="model1">
-      [External Link](https://github.com/quasarframework/quasar) [local link](/demo) [anchor
-      link](#example-Containers) [link with title](https://github.com/quasarframework/quasar/ "title
-      text!") Auto-converted link: https://github.com/quasarframework/quasar
-    </q-markdown>
-    <!-- eslint-enable vue/html-indent -->
+    <q-markdown :no-link="model" :no-linkify="model1" :src="markdown" />
   </div>
 </template>
 
@@ -16,6 +10,16 @@
 import { defineComponent, ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+
+const markdown = `[External Link](https://github.com/quasarframework/quasar)
+
+[local link](/demo)
+
+[anchor link](#example-Containers)
+
+[link with title](https://github.com/quasarframework/quasar/ "title text!")
+
+Auto-converted link: https://github.com/quasarframework/quasar`;
 
 export default defineComponent({
   name: "Links",
@@ -28,6 +32,7 @@ export default defineComponent({
       model1 = ref(false);
 
     return {
+      markdown,
       model,
       model1,
     };

@@ -206,7 +206,7 @@
   },
   "slots": {
     "default": {
-      "desc": "This is the default slotted content to be used for markdown. Make sure your markdown is left-aligned in your editor. Don't indent with the HTML."
+      "desc": "Default markdown content. QMarkdown removes common template indentation before rendering so slotted markdown can be formatted naturally inside Vue templates."
     }
   },
   "methods": {

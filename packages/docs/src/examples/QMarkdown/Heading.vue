@@ -9,17 +9,14 @@
       <div>TOC End: {{ range.max }}</div>
     </div>
     <q-range v-model="range" :min="1" :max="6" label-always />
-    <!-- eslint-disable vue/html-indent -->
     <q-markdown
       :no-heading-anchor-links="model"
       :toc-start="range.min"
       :toc-end="range.max"
       toc
       @data="onToc"
-    >
-      # h1 Heading ## h2 Heading ### h3 Heading #### h4 Heading ##### h5 Heading ###### h6 Heading
-    </q-markdown>
-    <!-- eslint-enable vue/html-indent -->
+      :src="markdown"
+    />
     <q-separator />
     <p>Output:</p>
     <pre>{{ JSON.stringify(results, null, 2) }}</pre>
@@ -30,6 +27,13 @@
 import { defineComponent, ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+
+const markdown = `# h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading`;
 
 export default defineComponent({
   name: "Heading",
@@ -50,6 +54,7 @@ export default defineComponent({
     }
 
     return {
+      markdown,
       model,
       range,
       onToc,

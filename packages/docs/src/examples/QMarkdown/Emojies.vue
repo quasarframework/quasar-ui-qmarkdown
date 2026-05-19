@@ -1,10 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <!-- eslint-disable vue/html-indent -->
-    <q-markdown :plugins="plugins">
-      ==This sentence is marked.== This is ==marked== in the middle of a sentence.
-    </q-markdown>
-    <!-- eslint-enable vue/html-indent -->
+    <q-markdown :plugins="plugins" :src="markdown" />
   </div>
 </template>
 
@@ -12,18 +8,23 @@
 import { defineComponent, ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import mark from "markdown-it-mark";
+import emoji from "markdown-it-emoji";
+
+const markdown = `Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
+
+Shortcuts (emoticons): :-) :-( 8-) ;)`;
 
 export default defineComponent({
-  name: "Mark",
+  name: "Emojies",
   components: {
     QMarkdown,
   },
 
   setup() {
-    const plugins = [mark];
+    const plugins = [emoji];
 
     return {
+      markdown,
       plugins,
     };
   },
