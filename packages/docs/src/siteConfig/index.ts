@@ -210,8 +210,8 @@ const config: SiteConfig = {
   },
   logoConfig: {
     showLogo: true,
-    logoLight: "/icons/favicon-128x128.png",
-    logoDark: "/icons/favicon-128x128.png",
+    logoLight: "/qmarkdown-logo.png",
+    logoDark: "/qmarkdown-logo.png",
     logoAlt: "QMarkdown Logo",
   },
   versionConfig: {
