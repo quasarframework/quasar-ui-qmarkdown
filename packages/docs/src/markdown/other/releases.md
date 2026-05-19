@@ -1,7 +1,7 @@
 ---
 title: Releases
 desc: The latest QMarkdown releases
-keys: latest-news
+keys: Other
 ---
 
 <script import>
