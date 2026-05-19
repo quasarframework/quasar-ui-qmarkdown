@@ -3,8 +3,8 @@ title: Call to action
 desc: Things that need help from the community
 keys: Contributing
 related:
-  - /contributing/overview
-  - /contributing/sponsor
+  - /other/contributing/overview
+  - /other/contributing/sponsor
 ---
 
 ## Helping out

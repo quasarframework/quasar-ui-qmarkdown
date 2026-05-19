@@ -4,8 +4,8 @@ desc: How to install QMarkdown
 keys: All about QMarkdown
 related:
   - /all-about-qmarkdown/what-is-qmarkdown
-  - /contributing/bugs-and-feature-requests
-  - /contributing/sponsor
+  - /other/contributing/bugs-and-feature-requests
+  - /other/contributing/sponsor
 ---
 
 QMarkdown can be installed as a Quasar App Extension, as a Vue plugin, as a direct component import, or through the UMD bundle.

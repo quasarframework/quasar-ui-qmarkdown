@@ -147,43 +147,27 @@ const docsMenus: SiteMenuItem[] = [
     children: [{ name: "Using QMarkdown", path: "/developing/using-qmarkdown" }],
   },
   {
-    name: "Contributing",
+    name: "Other",
     mq: 760,
     children: [
-      { name: "Overview", path: "/contributing/overview" },
-      { name: "Call to Action", path: "/contributing/call-to-action" },
-      { name: "Bugs and Feature Requests", path: "/contributing/bugs-and-feature-requests" },
-      { name: "Documentation", path: "/contributing/documentation" },
-      { name: "Components", path: "/contributing/components" },
-      { name: "Sponsor", path: "/contributing/sponsor" },
-    ],
-  },
-  {
-    name: "Latest News",
-    mq: 900,
-    children: [
-      { name: "Changelog", path: "/latest-news/changelog" },
-      { name: "Roadmap", path: "/latest-news/roadmap" },
-    ],
-  },
-  {
-    name: "Help",
-    mq: 1020,
-    children: [
+      { name: "Releases", path: "/other/releases" },
+      { name: "Roadmap", path: "/other/roadmap" },
+      { name: "FAQ", path: "/other/faq" },
+      { name: "Contact", path: "/other/contact" },
       {
-        name: "GitHub",
-        icon: fabGithub,
-        path: "https://github.com/quasarframework/quasar-ui-qmarkdown",
-        external: true,
+        name: "Contributing",
+        children: [
+          { name: "Overview", path: "/other/contributing/overview" },
+          {
+            name: "Bugs and Feature Requests",
+            path: "/other/contributing/bugs-and-feature-requests",
+          },
+          { name: "Components", path: "/other/contributing/components" },
+          { name: "Documentation", path: "/other/contributing/documentation" },
+          { name: "Call to Action", path: "/other/contributing/call-to-action" },
+          { name: "Sponsor", path: "/other/contributing/sponsor" },
+        ],
       },
-      {
-        name: "X (Twitter)",
-        icon: fabXTwitter,
-        path: "https://twitter.com/jgalbraith64",
-        external: true,
-      },
-      { name: "FAQ", path: "/help/faq" },
-      { name: "Contact Us", path: "/help/contact-us" },
     ],
   },
 ];
@@ -221,7 +205,7 @@ const config: SiteConfig = {
   },
   privacy: {
     label: "Contact",
-    link: "/help/contact-us",
+    link: "/other/contact",
   },
   logoConfig: {
     showLogo: true,

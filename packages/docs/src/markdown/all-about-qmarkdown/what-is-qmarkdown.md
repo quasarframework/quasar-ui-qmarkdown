@@ -3,10 +3,10 @@ title: What is QMarkdown
 desc: Inline markdown on the go!
 keys: All about QMarkdown
 related:
-  - /contributing/bugs-and-feature-requests
-  - /contributing/components
-  - /contributing/documentation
-  - /contributing/sponsor
+  - /other/contributing/bugs-and-feature-requests
+  - /other/contributing/components
+  - /other/contributing/documentation
+  - /other/contributing/sponsor
 ---
 ::: warning
 There are some issues with initial alpha version of QMarkdown. We promise, we will get them resolved as soon as possible. Once this message goes away, feel free to add an issue if you see one that remains.
@@ -15,7 +15,7 @@ There are some issues with initial alpha version of QMarkdown. We promise, we wi
 ::: warning
 Please note that the codepen links, in the documentation examples, do not work at this time.
 
-And, if you're looking to help out, check out our [Call to action](/contributing/call-to-action) in the **Contributing** section.
+And, if you're looking to help out, check out our [Call to action](/other/contributing/call-to-action) in the **Contributing** section.
 :::
 
 ## Everything you need for a complete solution

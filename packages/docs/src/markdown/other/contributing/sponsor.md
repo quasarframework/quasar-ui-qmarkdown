@@ -3,7 +3,7 @@ title: Sponsor
 desc: About sponsoring QMarkdown
 keys: Contributing
 related:
-  - /contributing/overview
+  - /other/contributing/overview
 ---
 
 ## Introduction

@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Releases
 desc: The latest QMarkdown releases
 keys: latest-news
 ---

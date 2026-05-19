@@ -4,7 +4,7 @@ desc: Innovation through collaboration
 keys: Contributing
 related:
   - /all-about-qmarkdown/installation-types
-  - /contributing/sponsor
+  - /other/contributing/sponsor
 ---
 
 Interested in contributing to QMarkdown? Here's how you can contribute:
@@ -13,7 +13,7 @@ Interested in contributing to QMarkdown? Here's how you can contribute:
 
 QMarkdown is free to use (MIT License) for anybody building a web-based product or website. The QMarkdown community is working to make it better. Contributors like ++you++ help make QMarkdown great! We are happy to see you here.
 
-Contributions are not limited to code. We also encourage feedback, documentation, new design, and tools. And, we also encourage [sponsorship](/contributing/sponsor), especially if you are using QMarkdown in a business endeavor. 
+Contributions are not limited to code. We also encourage feedback, documentation, new design, and tools. And, we also encourage [sponsorship](/other/contributing/sponsor), especially if you are using QMarkdown in a business endeavor.
 
 All you need is a [GitHub account](https://github.com/join) to get started.
 
