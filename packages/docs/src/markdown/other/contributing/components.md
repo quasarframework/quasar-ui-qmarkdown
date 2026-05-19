@@ -10,18 +10,19 @@ related:
 ## Design
 
 You do not have to be a developer to contribute to a new QMarkdown component. You can also design one and either core developers will work on it or the community will get involved.
+
 ## Parts of a component contribution
 
 Component contributions ideally include all of the following parts.
 
 1. **A rationale**
-Explain how your component will add value to the system. QMarkdown serves the widest possible range of markdown products, and contributions that increase the scope of the system are more likely to be accepted. Be sure to include any user experience and interaction descriptions.
+   Explain how your component will add value to the system. QMarkdown serves the widest possible range of markdown products, and contributions that increase the scope of the system are more likely to be accepted. Be sure to include any user experience and interaction descriptions.
 
 2. **A design spec**
-Create sizing and styling annotations for all aspects of the component. This spec should provide a developer with everything they need to create the design in code.
+   Create sizing and styling annotations for all aspects of the component. This spec should provide a developer with everything they need to create the design in code.
 
 3. **Code documentation**
-We recommend reading through existing code documentation on this site for inspiration.
+   We recommend reading through existing code documentation on this site for inspiration.
 
 ## First steps to contributing
 

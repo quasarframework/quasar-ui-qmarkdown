@@ -18,7 +18,7 @@ Don't forget to look into the [GitHub Discussions](https://github.com/quasarfram
 
 ### Frequently asked questions
 
-Answers to the most common questions regarding QMarkdown can be found in the [QMarkdown FAQ](/other/faq).
+Answers to the most common questions regarding QMarkdown can be found in the [QMarkdown FAQ](/developing/faq).
 
 ## Provide a suggestion/contribution
 

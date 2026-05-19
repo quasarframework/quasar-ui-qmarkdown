@@ -17,4 +17,12 @@ The Docs site has several empty pages that need to be filled in. If you think yo
 
 ### Testing
 
-It'd be very welcomed if someone could write up tests for the UI component.
+It would be very welcome if someone could expand test coverage for the UI component, App Extension behavior, and docs examples.
+
+### JSON API
+
+QMarkdown has an associated JSON API file. Keeping that file aligned with the component props, slots, events, and methods helps the docs site and `quasar describe QMarkdown` stay accurate.
+
+### Examples
+
+QMarkdown examples should continue moving toward Vue Composition API and `<script setup>` where practical. Small, focused examples are especially helpful because they become both documentation and regression checks for common usage patterns.

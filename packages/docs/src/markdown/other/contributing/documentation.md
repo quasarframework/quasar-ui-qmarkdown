@@ -11,7 +11,7 @@ You can contribute to the content on the QMarkdown site in a few different ways.
 
 ## Editing pages
 
-The easiest was to edit a page is with the ++Edit this page on GitHub++ link that appears on the bottom of almost all pages on this site. The link opens a specific GitHub page where you can edit the content and then propose the change with a Pull Request.
+The easiest way to edit a page is with the ++Edit this page on GitHub++ link that appears on the bottom of almost all pages on this site. The link opens a specific GitHub page where you can edit the content and then propose the change with a Pull Request.
 
 Alternatively, you can fork the QMarkdown repo, make your changes and generate a Pull Request.
 
