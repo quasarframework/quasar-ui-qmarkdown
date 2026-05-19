@@ -1,5 +1,9 @@
 packages:
   - "packages/*"
+packageExtensions:
+  recast@0.23.11:
+    dependencies:
+      "@babel/parser": "7.29.3"
 allowBuilds:
   "@parcel/watcher": true
   esbuild: true
