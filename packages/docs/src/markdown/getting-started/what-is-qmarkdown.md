@@ -1,7 +1,7 @@
 ---
 title: What is QMarkdown
 desc: Inline markdown on the go!
-keys: All about QMarkdown
+keys: Getting Started
 related:
   - /other/contributing/bugs-and-feature-requests
   - /other/contributing/components

@@ -134,11 +134,11 @@ const socialLinks = {
 
 const docsMenus: SiteMenuItem[] = [
   {
-    name: "All About QMarkdown",
+    name: "Getting Started",
     mq: 470,
     children: [
-      { name: "What is QMarkdown", path: "/all-about-qmarkdown/what-is-qmarkdown" },
-      { name: "Installation Types", path: "/all-about-qmarkdown/installation-types" },
+      { name: "What is QMarkdown", path: "/getting-started/what-is-qmarkdown" },
+      { name: "Installation Types", path: "/getting-started/installation-types" },
     ],
   },
   {

@@ -1,9 +1,9 @@
 ---
 title: Installation Types
 desc: How to install QMarkdown
-keys: All about QMarkdown
+keys: Getting Started
 related:
-  - /all-about-qmarkdown/what-is-qmarkdown
+  - /getting-started/what-is-qmarkdown
   - /other/contributing/bugs-and-feature-requests
   - /other/contributing/sponsor
 ---

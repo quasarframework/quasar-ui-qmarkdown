@@ -3,7 +3,7 @@ title: Overview
 desc: Innovation through collaboration
 keys: Contributing
 related:
-  - /all-about-qmarkdown/installation-types
+  - /getting-started/installation-types
   - /other/contributing/sponsor
 ---
 
