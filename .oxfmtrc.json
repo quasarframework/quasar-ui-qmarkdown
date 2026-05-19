@@ -1,1 +1,16 @@
-{}
+{
+  "ignorePatterns": [
+    "node_modules",
+    "packages/*/node_modules",
+    "packages/*/.quasar",
+    "packages/*/dist",
+    "packages/docs/css",
+    "packages/docs/fonts",
+    "packages/docs/js",
+    "packages/docs/public",
+    "packages/dev/public",
+    "yarn.lock",
+    "packages/dev/yarn.lock",
+    "**/*.md"
+  ]
+}

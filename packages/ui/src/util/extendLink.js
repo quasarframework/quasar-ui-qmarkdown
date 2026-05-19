@@ -28,8 +28,12 @@ export default function extendLink(md, { noopener = true, noreferrer = true }) {
       token.attrSet("target", "_blank");
       if (noopener === true || noreferrer === true) {
         const rel = [];
-        noopener === true && rel.push("noopener");
-        noreferrer === true && rel.push("noreferrer");
+        if (noopener === true) {
+          rel.push("noopener");
+        }
+        if (noreferrer === true) {
+          rel.push("noreferrer");
+        }
         token.attrSet("rel", rel.join(" "));
       }
     }

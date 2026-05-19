@@ -46,7 +46,7 @@ function extendConf(conf) {
     tag === "QMarkdown" ||
     (typeof oldPreTagFunc === "function" ? oldPreTagFunc(tag) : false);
 
-  // make sure the stylesheet goes through webpack to avoid SSR issues
+  // make sure the stylesheet is processed through the Quasar app pipeline
   conf.css.push("~@quasar/quasar-ui-qmarkdown/src/index.sass");
 }
 

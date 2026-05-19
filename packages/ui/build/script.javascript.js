@@ -31,11 +31,6 @@ const cjsConfig = {
   include: [/node_modules/],
 };
 
-const babelConfig = {
-  exclude: "node_modules/**",
-  babelHelpers: "bundled",
-};
-
 const rollupPlugins = [
   // inject(injectConfig),
   // multiEntry(),

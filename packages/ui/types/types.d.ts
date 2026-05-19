@@ -2,7 +2,7 @@ import MarkdownIt from "markdown-it";
 export * from "./vue-prop-types";
 
 export interface TocDefinition {
-  id: String;
+  id: string;
   label: string;
   level?: number;
   children?: TocDefinitionArray;

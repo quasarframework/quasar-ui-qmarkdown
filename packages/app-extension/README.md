@@ -1,83 +1,73 @@
 # Quasar App Extension QMarkdown
 
-The QMarkdown app extension can do the following:
-1. Automatically inject the `@quasar/quasar-ui-qmarkdown` component using the Quasar CLI.
-2. Modify webpack to allow importing of markdown (\*.md) files.
-3. Modify webpack to allow importing of vue+markdown (\*.vmd) files.
+The **QMarkdown App Extension** adds the [QMarkdown](../ui) component to a Quasar CLI Vite application. It registers the boot file, adds the QMarkdown stylesheet, configures Vue template handling for markdown content, and can optionally allow importing raw markdown (`*.md`) files.
 
-Remember, app extensions can _only_ be used with the Quasar CLI.
-
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/quasar-app-extension-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown.svg?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
-[![Discord](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=twitter&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
-# Updating
+[![X](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=x&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
 
-If you already have the app extension installed, you can use the Quasar CLI to automatically update it via:
-```bash
-quasar upgrade -i
-```
-If you are updating from a beta version, to v1.0.0, you will also need to do the following:
-```bash
-quasar ext invoke @quasar/qmarkdown
-```
-At which point you will be asked two questions about importing markdown (\*.md) and vue+markdown (\*.vmd) files.
+## QMarkdown v3.0.0 Beta
 
-# New Install
+QMarkdown v3 prepares the app extension for Quasar CLI Vite 3. The app extension requires `@quasar/app-vite` v3 beta and no longer supports webpack-based Quasar apps. If your application is still using `@quasar/app-webpack`, migrate the application to Quasar CLI Vite before installing QMarkdown v3.
+
+## Install
+
 ```bash
 quasar ext add @quasar/qmarkdown
 ```
-Quasar CLI will retrieve it from NPM and install the extension.
 
-## Prompts
+While QMarkdown v3 is in beta, install with:
 
-When installing the QMarkdown app extension, you will be prompted with two questions:
-
-1) "Do you want to be able to import markdown (*.md) files?"
-
-The default is `true` for the above question. It allows you to do this in your Quasar apps:
-
-```js
-import markdown from '../examples/myMarkdownFile.md'
+```bash
+quasar ext add @quasar/qmarkdown@beta
 ```
 
-You can now use the QMarkdown component to process the markdown file to be displayed on your page.
+Quasar CLI will retrieve it from npm and install the extension.
 
-2) "Do you want to be able to import vue+markdown (*.vmd) files?"
+## Prompt
 
-The default is `true` for the above question. It allows you to do this in your Quasar apps:
+During install, QMarkdown asks one setup question:
 
-```js
-import vmd from '../examples/myVuePlusMarkdownFile.vmd'
-
-components: {
-  myComponent: vmd
-}
+```text
+Do you want to be able to import markdown (*.md) files?
 ```
 
-**vmd** files also allow you to provide front-matter as part of the processing. Be sure to read the documentation to understand how this works.
+The default answer is `true`. When enabled, QMarkdown adds a Vite raw importer so your Quasar app can import markdown files as strings:
 
-# Uninstall
+```js
+import markdown from "../examples/myMarkdownFile.md";
+```
+
+You can then pass that string to the QMarkdown component.
+
+## Uninstall
+
 ```bash
 quasar ext remove @quasar/qmarkdown
 ```
 
-# Describe
-You can use `quasar describe QMarkdown` for the QMarkdown component
+## Describe
 
-# Demo Project (source)
-Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/master/demo).
+When installed as an App Extension, you can use:
 
+```bash
+quasar describe QMarkdown
+```
 
-# Documentation
-Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/).
+## Documentation
 
-# Live Demo
-Can be found [here](https://quasarframework.github.io/quasar-ui-qmarkdown/demo).
+Docs, demos, and examples are hosted at https://qmarkdown.netlify.app/.
 
-# Donate
+## Source
+
+The project source is available at https://github.com/quasarframework/quasar-ui-qmarkdown.
+
+## Donate
+
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).
 
-# License
+## License
+
 MIT (c) Jeff Galbraith <jeff@quasar.dev>

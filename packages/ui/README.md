@@ -10,7 +10,7 @@ Display inline markdown in your Quasar App
 
 # Notes
 
-It is important to note that you cannot use header or hash links or a TOC with the vue-router mode of `hash`. It must be set tyo `history` in your `quasar.config.(*js|ts)`
+It is important to note that you cannot use header or hash links or a TOC with the vue-router mode of `hash`. It must be set to `history` in your `quasar.config.(*js|ts)`.
 
 # Usage
 
@@ -57,7 +57,7 @@ export default defineBoot(({ app }) => {
 </script>
 ```
 
-## Vue CLI project
+## Vue 3 project
 
 ```js
 import VuePlugin from '@quasar/quasar-ui-qmarkdown';

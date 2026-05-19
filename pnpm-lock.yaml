@@ -88,9 +88,6 @@ importers:
       autoprefixer:
         specifier: ^10.4.2
         version: 10.4.20(postcss@8.5.14)
-      prettier:
-        specifier: ^3.3.3
-        version: 3.8.3
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -197,9 +194,6 @@ importers:
       markdown-it-task-lists:
         specifier: ^2.1.1
         version: 2.1.1
-      prettier:
-        specifier: ^3.4.2
-        version: 3.8.3
       prismjs:
         specifier: ^1.29.0
         version: 1.30.0
@@ -3560,11 +3554,6 @@ packages:
   powershell-utils@0.1.0:
     resolution: {integrity: sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A==}
     engines: {node: '>=20'}
-
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   prismjs@1.30.0:
     resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
@@ -7832,8 +7821,6 @@ snapshots:
       source-map-js: 1.2.1
 
   powershell-utils@0.1.0: {}
-
-  prettier@3.8.3: {}
 
   prismjs@1.30.0: {}
 

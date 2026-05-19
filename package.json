@@ -13,7 +13,7 @@
     "build:dev": "cd packages/dev && pnpm build",
     "ci:publish": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev",
     "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev --tag beta && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev --tag beta",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "deep": "ncu --deep",
     "lint": "oxlint --ignore-path .oxlintignore",
     "lint:fix": "oxlint --ignore-path .oxlintignore --fix",

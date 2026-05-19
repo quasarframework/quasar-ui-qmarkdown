@@ -160,7 +160,7 @@ export default defineComponent({
 
     watch(
       () => allProps.value.src,
-      (val) => {
+      () => {
         source.value = allProps.value.fixCr
           ? allProps.value.src.replace(/\\n/gi, "\n")
           : allProps.value.src;
@@ -255,7 +255,7 @@ export default defineComponent({
           flat: true,
           round: true,
           icon: parsedCopyIcon.value,
-          onClick: (v) => {
+          onClick: () => {
             __copyMarkdownToClipboard();
           },
         },

@@ -8,234 +8,166 @@ related:
   - /contributing/sponsor
 ---
 
-Vue 3 introduced some breaking changes for QMarkdown. The way that Vue parses text and components now uses a whitespace handling method called `condensed`. When QMarkdown gets this data from slotted content via Vue all the carriage returns have been stripped away. In Vue 3.1.0, a whitespace handling strategy was introduced. Currently, it is buggy. However, another way was found to force Vue to serve the slotted content directly.
+QMarkdown can be installed as a Quasar App Extension, as a Vue plugin, as a direct component import, or through the UMD bundle.
 
-If you installed QMarkdown via the Quasar CLI, then the QMarkdown app-extension will modify the `quasar.conf.js` and you won't need to do anything.
+For Quasar CLI projects, the App Extension is the recommended path because it registers the boot file, adds the stylesheet, and configures Vue template handling for markdown content.
 
-However, if you install in any other way, you need give Vue some directives so the whitespace handling works properly.
+## Quasar CLI
 
-According to the Vue docs, you need to pass to the `compilerOptions` object a key of `whitespace` with the value `preserve`.
+### App Extension
 
-```js
-compilerOptions: {
-  whitespace: 'preserve'
-}
+To add QMarkdown to your Quasar application, run the following in your Quasar app folder:
+
+```bash
+quasar ext add @quasar/qmarkdown
 ```
 
-As mentioned, this is buggy at the time of this writing. However, there is another way.
+While QMarkdown v3 is in beta, install with:
 
-If using Quasar, and you did not install via the QMarkdown app-extension, then you need to modify your quasar.conf.js in the following ways, depending on using webpack (app-webpack) or vite (app-vite):
-
-**app-webpack:**
-
-```js
-build: {
-  vueLoaderOptions: {
-    compilerOptions: {
-      isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown'
-    }
-  }
-}
+```bash
+quasar ext add @quasar/qmarkdown@beta
 ```
 
-**app-vite:**
+The QMarkdown v3 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` v3 beta. It does not support webpack-based Quasar applications.
+
+During install, the App Extension asks whether you want to import markdown (`*.md`) files. The default answer is `true`. When enabled, QMarkdown adds a Vite raw importer so this works:
+
+```js
+import markdown from "../examples/myMarkdownFile.md";
+```
+
+### Uninstall
+
+```bash
+quasar ext remove @quasar/qmarkdown
+```
+
+### Describe
+
+When installed as an App Extension, you can use:
+
+```bash
+quasar describe QMarkdown
+```
+
+### Manual Boot File
+
+If you do not install through the App Extension, install the UI package directly:
+
+```bash
+pnpm add @quasar/quasar-ui-qmarkdown
+# yarn add @quasar/quasar-ui-qmarkdown
+# npm install @quasar/quasar-ui-qmarkdown
+# bun add @quasar/quasar-ui-qmarkdown
+```
+
+Then create and register a boot file:
+
+```js
+import { defineBoot } from "#q-app";
+import Plugin from "@quasar/quasar-ui-qmarkdown";
+import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+
+export default defineBoot(({ app }) => {
+  app.use(Plugin);
+});
+```
+
+QMarkdown relies on Vue preserving the rendered markdown content. If you are not using the App Extension, add the following to `quasar.config.*`:
 
 ```js
 build: {
   viteVuePluginOptions: {
     template: {
       compilerOptions: {
-        isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown'
-      }
-    }
-  }
+        isPreTag: (tag) => tag === "pre" || tag === "q-markdown" || tag === "QMarkdown",
+      },
+    },
+  },
 }
 ```
 
-For the Vue CLI, you will need to extrapolate this to fit your needs.
+### Manual Source Import
 
-## Quasar CLI
-
-### App Extension
-
-#### Install
-
-To add as an App Extension to your Quasar application, run the following (in your Quasar app folder):
-
-```
-$ quasar ext add @quasar/qmarkdown
-```
-
-#### Uninstall
-
-To remove as an App Extension from your Quasar application, run the following (in your Quasar app folder):
-
-```
-$ quasar ext remove @quasar/qmarkdown
-```
-
-#### Describe
-
-When installed as an App Extension, you can use `quasar describe QMarkdown`.
-
-### Or Create and register a boot file
-
-```
-$ yarn add @quasar/quasar-ui-qmarkdown
-# or
-$ npm install @quasar/quasar-ui-qmarkdown
-```
-
-Then
+You can import from source when you need to transpile/customize the package in your app:
 
 ```js
-import { defineBoot } from '#q-app'
-import Plugin from '@quasar/quasar-ui-qmarkdown'
-import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import { defineBoot } from "#q-app";
+import Plugin from "@quasar/quasar-ui-qmarkdown/src/index.js";
 
 export default defineBoot(({ app }) => {
-  app.use(Plugin)
-})
+  app.use(Plugin);
+});
 ```
 
-or from sources
-
-```js
-import { defineBoot } from '#q-app'
-import Plugin from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-
-export default defineBoot(({ app }) => {
-  app.use(Plugin)
-})
-```
-
-Additionally, because you are accessing the sources this way, you will need to make sure your project will transpile the code.
-
-In `quasar.conf.js` update the following:
+Then add the source stylesheet to `quasar.config.*`:
 
 ```js
 // Note: using ~ tells Quasar the file resides in node_modules
-css: [
-  'app.sass',
-  '~quasar-ui-qmarkdown/src/QMarkdown.sass'
-],
+css: ["app.scss", "~@quasar/quasar-ui-qmarkdown/src/index.sass"],
 
 build: {
-  transpile = true,
-  transpileDependencies: [
-    /quasar-ui-qmarkdown[\\/]src/
-  ]
+  transpile: true,
+  transpileDependencies: [/quasar-ui-qmarkdown[\\/]src/],
 }
 ```
 
-### Or target as a component import
+## Vue 3 Or Vite
+
+### Vue Plugin
+
+```js
+import { createApp } from "vue";
+import Plugin from "@quasar/quasar-ui-qmarkdown";
+import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import App from "./App.vue";
+
+const app = createApp(App);
+
+app.use(Plugin);
+app.mount("#app");
+```
+
+### Component Import
 
 ```html
-<style src="@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"></style>
+<style src="@quasar/quasar-ui-qmarkdown/dist/index.css"></style>
 
 <script>
-  import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.esm.js'
+  import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 
   export default {
     components: {
       QMarkdown,
     },
-  }
+  };
 </script>
 ```
 
-## Vue CLI or Vite
+## UMD Variant
 
-### Vue project from src
+The UMD bundle exports `window.QMarkdown`.
 
-```js
-import Plugin from '@quasar/quasar-ui-qmarkdown/src/QMarkdown.js'
-import '@quasar/quasar-ui-qmarkdown/src/QMarkdown.sass'
-import App from './App.vue'
-
-const app = createApp(App).use(Plugin)
-```
-
-### Vue project from dist
-
-```js
-import Plugin from '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.esm.js'
-import '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css'
-import App from './App.vue'
-
-const app = createApp(App).use(Plugin)
-```
-
-### Or component import
-
-```html
-<style src="@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"></style>
-
-<script>
-  import { QMarkdown } from '@quasar/quasar-ui-qmarkdown/dist/QMarkdown.esm.js'
-
-  export default {
-    components: {
-      QMarkdown,
-    },
-  }
-</script>
-```
-
-## UMD variant
-
-Exports `window.QMarkdown`.
-
-### Quasar install
-
-Add the following tag(s) after the Quasar ones:
+Add the following tags after the Quasar stylesheet and script tags:
 
 ```html
 <head>
-  <!-- AFTER the Quasar stylesheet tags: -->
   <link
-    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"
+    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.min.css"
     rel="stylesheet"
     type="text/css"
   />
 </head>
 <body>
-  <!-- at end of body, AFTER Quasar script(s): -->
-  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.umd.min.js"></script>
 </body>
 ```
 
-If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
+If you need the RTL variant of the CSS, use this stylesheet instead:
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.rtl.min.css"
-  rel="stylesheet"
-  type="text/css"
-/>
-```
-
-### Vue install
-
-```html
-<head>
-  <link
-    href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.min.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-</head>
-<body>
-  <!-- at end of body: -->
-  <script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.umd.min.js"></script>
-</body>
-```
-
-If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
-
-```html
-<link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/QMarkdown.rtl.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css"
   rel="stylesheet"
   type="text/css"
 />
@@ -246,18 +178,18 @@ Your Vue source:
 ```js
 const app = Vue.createApp({
   setup() {
-    // ...your set up methods
+    // ...your setup methods
   },
-})
+});
 
-app.component('QMarkdown', QMarkdown.QMarkdown)
-app.mount('#app')
+app.component("QMarkdown", QMarkdown.QMarkdown);
+app.mount("#app");
 ```
 
-## Testing on Codepen
+## Testing On CodePen
 
-[QMarkdown UMD Example on Codepen](https://codepen.io/Hawkeye64/pen/PojXVmV)
+[QMarkdown UMD Example on CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV)
 
-# Project source
+## Project Source
 
-Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/next).
+Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev).

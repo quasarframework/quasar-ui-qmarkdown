@@ -12,7 +12,7 @@ components:
 
 ## Importing Markdown
 
-The app extension needs to be installed in order to import markdown (*.md) files. This works for both @quasar/app-webpack and @quasar/app-vite. To import markdown files, **DO NOT** place them into your `public` folder. Put them into your `assets` folder.
+The app extension needs to be installed in order to import markdown (`*.md`) files. In QMarkdown v3, this is supported through Quasar CLI Vite. To import markdown files, **DO NOT** place them into your `public` folder. Put them into your `assets` folder.
 
 ```js
 <template>
@@ -36,7 +36,7 @@ export default defineComponent({
 
 ## Extending Prism
 
-The `prismjs` package is used for language highlighting. When Prism is installed by QMarkdown, it loads itself globally. You can acces it via `window.Prism`. Visit their [documentation](https://prismjs.com/) on modifying the run-time, like adding additional language support.
+The `prismjs` package is used for language highlighting. When Prism is installed by QMarkdown, it loads itself globally. You can access it via `window.Prism`. Visit their [documentation](https://prismjs.com/) on modifying the run-time, like adding additional language support.
 
 ## Global Properties
 
@@ -175,7 +175,7 @@ QMarkdown has a number of built-in processors to handle inline markdown. These a
 
 ## Extending with Plugins
 
-In order to reduce the payload size of QMarkdown and to increase performance, a lot of the "default" markdown-it plugins have been removed for v2.0.0+. If you have the need, you can add them back either via the `plugins` property or the global props, as descibed above.
+In order to reduce the payload size of QMarkdown and to increase performance, a lot of the "default" markdown-it plugins have been removed for v2.0.0+. If you have the need, you can add them back either via the `plugins` property or the global props, as described above.
 
 Here is a list of plugins that used to be in QMarkdown v1.x:
 

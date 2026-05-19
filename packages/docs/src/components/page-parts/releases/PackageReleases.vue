@@ -111,7 +111,7 @@ export default {
           '<code class="markdown--code__inner markdown--code__inner--prerendered release__code">',
         )
         .replace(/```\n/g, "</code>")
-        .replace(/\`(.*?)\`/g, '<code class="markdown--token">$1</code>')
+        .replace(/`(.*?)`/g, '<code class="markdown--token">$1</code>')
         .replace(
           /#([\d]+)/g,
           '<a class="markdown-link" href="https://github.com/quasarframework/quasar-ui-qmarkdown/issues/$1" target="_blank">#$1</a>',

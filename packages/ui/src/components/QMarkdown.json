@@ -149,7 +149,7 @@
     "copy-response-text": {
       "type": "String",
       "category": "behavior",
-      "desc": "Change the response text associated with the `Copy to Clipboard` icon (note: you **must** have the `Notify` plugin added to your quasar.conf.js)",
+      "desc": "Change the response text associated with the `Copy to Clipboard` icon (note: you **must** have the `Notify` plugin added to your quasar.config.*)",
       "default": "Copied to clipboard",
       "examples": [
         "copy-response-text=\"The content was copied to the clipboard\"",

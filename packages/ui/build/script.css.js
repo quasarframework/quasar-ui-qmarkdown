@@ -26,7 +26,7 @@ const nano = postcss([
   }),
 ]);
 
-Promise.all([generate("src/index.sass", "dist/index")]).catch((e) => {
+generate("src/index.sass", "dist/index").catch((e) => {
   console.error(e);
   process.exit(1);
 });
