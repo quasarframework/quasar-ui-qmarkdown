@@ -6,13 +6,14 @@ related:
   - /other/contributing/overview
 ---
 
-## Introduction
+## About me
 
 My name is Jeff Galbraith (also known as @Hawkeye64). I have been programming since 1988, mostly in C++ and then web development. I have worked for companies such as Honeywell, Microsoft, and Vulcan.
 
 At my current position, I write software that detects pipeline leaks using a combination of proprietary software with AI and ML.
 
 In my spare time, I am a core member of the [Quasar Framework](https://quasar.dev) team, and I am heavily involved in making UI Components and App Extensions. You may have heard of some of them:
+
 - [QCalendar](https://github.com/quasarframework/quasar-ui-qcalendar)
 - [QMediaPlayer](https://github.com/quasarframework/quasar-ui-qmediaplayer)
 - [QMarkdown](https://github.com/quasarframework/quasar-ui-qmarkdown)
@@ -29,13 +30,14 @@ FOSS is always fraught with sustainability concerns. Socially, allowing so few p
 Proprietary software is incredibly expensive, less flexible, leads to vendor lock-in, and is at least as likely to disappear without notice. [90% of software startups fail](https://s3.amazonaws.com/startupcompass-public/StartupGenomeReport2_Why_Startups_Fail_v2.pdf), taking their products and their code with them. The high cost, low innovation, and equal risk of mortality for proprietary software make it a less appealing solution when considering the longevity and sustainability of your own company. Free and open-source solutions are simply the better option.
 
 There are several ways to sustain FOSS:
+
 1. Financial backing
 2. Contributing
-    a. Reporting bugs
-    b. Requesting features
-    c. Fixing bugs
-    d. Adding features
-    e. Community involvement
+   a. Reporting bugs
+   b. Requesting features
+   c. Fixing bugs
+   d. Adding features
+   e. Community involvement
 
 Pick one that works well with you.
 
