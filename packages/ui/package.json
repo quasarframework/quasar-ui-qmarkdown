@@ -34,7 +34,6 @@
   },
   "scripts": {
     "lint": "oxlint src build types",
-    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "build": "node build/index.js",
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
