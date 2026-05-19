@@ -147,19 +147,28 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.release__splitter .q-scrollarea
-  height: 600px
-.release__body
-  white-space: pre-line
-  .q-markup-table
-    white-space: normal
-.release__blockquote
-  background: rgba($primary, .05)
-  border: 1px solid $primary
-  padding: 4px 8px
-  border-radius: $generic-border-radius
-.release__code
-  padding: 4px
-  margin: 8px
+<style lang="scss">
+.release__splitter .q-scrollarea {
+  height: 600px;
+}
+
+.release__body {
+  white-space: pre-line;
+
+  .q-markup-table {
+    white-space: normal;
+  }
+}
+
+.release__blockquote {
+  background: rgba($primary, 0.05);
+  border: 1px solid $primary;
+  padding: 4px 8px;
+  border-radius: $generic-border-radius;
+}
+
+.release__code {
+  padding: 4px;
+  margin: 8px;
+}
 </style>

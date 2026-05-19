@@ -55,28 +55,42 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped>
-.landing-page-container
-  position: relative
-  margin: 0 auto
-  @media (max-width: $breakpoint-xs-max)
-    max-width: 340px
-    width: 340px
-  @media (min-width: $breakpoint-sm-min) and (max-width: $breakpoint-md-max)
-    max-width: 480px
-    width: 480px
-  @media (min-width: $breakpoint-lg-min)
-    max-width: 960px
-    width: 960px
+<style lang="scss" scoped>
+.landing-page__container {
+  position: relative;
+  margin: 0 auto;
 
-.landing-page__splash
-  @media (max-width: $breakpoint-xs-max)
-    padding: 0
-  @media (min-width: $breakpoint-sm-min) and (max-width: $breakpoint-md-max)
-    padding: 30px 0 60px
-  @media (min-width: $breakpoint-lg-min)
-    padding: 50px 0 100px
+  @media (max-width: $breakpoint-xs-max) {
+    max-width: 340px;
+    width: 340px;
+  }
 
-.landing-page__splash--content
-  max-width: 500px
+  @media (min-width: $breakpoint-sm-min) and (max-width: $breakpoint-md-max) {
+    max-width: 480px;
+    width: 480px;
+  }
+
+  @media (min-width: $breakpoint-lg-min) {
+    max-width: 960px;
+    width: 960px;
+  }
+}
+
+.landing-page__splash {
+  @media (max-width: $breakpoint-xs-max) {
+    padding: 0;
+  }
+
+  @media (min-width: $breakpoint-sm-min) and (max-width: $breakpoint-md-max) {
+    padding: 30px 0 60px;
+  }
+
+  @media (min-width: $breakpoint-lg-min) {
+    padding: 50px 0 100px;
+  }
+}
+
+.landing-page__splash--content {
+  max-width: 500px;
+}
 </style>

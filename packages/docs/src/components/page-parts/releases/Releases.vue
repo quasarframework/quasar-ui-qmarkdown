@@ -35,7 +35,7 @@
 import { ref, onMounted } from "vue";
 import { date } from "quasar";
 
-import PackageReleases from "./PackageReleases";
+import PackageReleases from "./PackageReleases.vue";
 
 const { extractDate, formatDate } = date;
 
@@ -142,8 +142,9 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.packages-container .q-tab-panel
-  padding-right: 0
-  padding-top: 0
+<style lang="scss">
+.packages-container .q-tab-panel {
+  padding-right: 0;
+  padding-top: 0;
+}
 </style>

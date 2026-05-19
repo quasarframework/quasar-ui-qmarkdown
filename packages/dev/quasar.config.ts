@@ -3,7 +3,7 @@
 
 import { defineConfig } from "@quasar/app-vite";
 
-export default defineConfig((/* ctx */) => {
+export default defineConfig((ctx) => {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -59,7 +59,26 @@ export default defineConfig((/* ctx */) => {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        const alias = viteConf.resolve?.alias;
+        viteConf.resolve = viteConf.resolve || {};
+        viteConf.resolve.alias = [
+          ...(Array.isArray(alias)
+            ? alias
+            : Object.entries(alias ?? {}).map(([find, replacement]) => ({ find, replacement }))),
+          // Consume workspace source in dev so local UI edits are exercised directly.
+          {
+            find: /^@quasar\/quasar-ui-qmarkdown$/,
+            replacement: ctx.appPaths.appDir + "/../ui/src/index.js",
+          },
+          // Rolldown is stricter than Rollup for generated Quasar source deep imports.
+          {
+            find: /^quasar\/src\/(.*)$/,
+            replacement: ctx.appPaths.appDir + "/node_modules/quasar/src/$1",
+          },
+        ];
+      },
+
       // viteVuePluginOptions: {},
 
       viteVuePluginOptions: {

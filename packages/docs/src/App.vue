@@ -2,28 +2,22 @@
   <router-view />
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { useMeta } from "quasar";
+import { useDark } from "src/.q-press/composables/dark";
 
-import { provideMarkdownStore } from "assets/markdown-store.js";
-import getMeta from "assets/get-meta.js";
+import getMeta from "src/.q-press/assets/get-meta";
 
-export default defineComponent({
-  name: "App",
+const { initDark } = useDark();
+initDark();
 
-  setup() {
-    useMeta({
-      title: "QMarkdown » inline markdown in your Quasar apps",
-      titleTemplate: (title) => `${title} » QMarkdown`,
+useMeta({
+  title: "QMarkdown for Vue and Quasar",
+  titleTemplate: (title) => `${title} | QMarkdown`,
 
-      meta: getMeta(
-        "QMarkdown - inline markdown in your Quasar apps",
-        "QMarkdown is a powerful transformer that allows inline markdown in your Quasar apps.",
-      ),
-    });
-
-    provideMarkdownStore();
-  },
+  meta: getMeta(
+    "QMarkdown - Inline Markdown for Vue and Quasar",
+    "QMarkdown is a Vue and Quasar component for rendering inline markdown with markdown-it, Prism highlighting, and Quasar-friendly styling.",
+  ),
 });
 </script>
