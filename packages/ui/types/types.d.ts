@@ -1,4 +1,6 @@
-import MarkdownIt from "markdown-it";
+import type MarkdownIt from "markdown-it";
+import type { VueClassProp, VueStyleProp } from "./vue-prop-types";
+
 export * from "./vue-prop-types";
 
 export interface TocDefinition {
@@ -14,10 +16,22 @@ export type MarkdownItPlugin =
   | MarkdownIt.PluginSimple
   | MarkdownIt.PluginWithOptions
   | MarkdownIt.PluginWithParams;
-export type MarkdownItPluginsArray = MarkdownItPlugin[];
 
-interface QMarkdownGlobalProps {
+export interface MarkdownItPluginWithOptions {
+  plugin: MarkdownItPlugin;
+  options: unknown;
+}
+
+export type MarkdownItPluginsArray = Array<MarkdownItPlugin | MarkdownItPluginWithOptions>;
+
+export interface QMarkdownGlobalProps {
+  src?: string;
   lineNumberAlt?: string;
+  toc?: boolean;
+  tocStart?: number;
+  tocEnd?: number;
+  contentClass?: VueClassProp;
+  contentStyle?: VueStyleProp;
   noBlockquote?: boolean;
   noBreaks?: boolean;
   noContainer?: boolean;
@@ -28,9 +42,17 @@ interface QMarkdownGlobalProps {
   noLineNumbers?: boolean;
   noLink?: boolean;
   noLinkify?: boolean;
+  noNoopener?: boolean;
+  noNoreferrer?: boolean;
   noTypographer?: boolean;
+  showCopy?: boolean;
+  copyIcon?: string;
+  doneIcon?: string;
+  noCopyTooltip?: boolean;
+  copyTooltipText?: string;
+  copyResponseText?: string;
+  fixCr?: boolean;
+  plugins?: MarkdownItPluginsArray;
 }
 
-declare function useQMarkdownGlobalProps(props: QMarkdownGlobalProps): void;
-
-export { useQMarkdownGlobalProps, QMarkdownGlobalProps };
+export declare function useQMarkdownGlobalProps(props: QMarkdownGlobalProps): void;

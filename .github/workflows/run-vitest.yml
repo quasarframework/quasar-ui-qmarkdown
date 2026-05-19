@@ -40,5 +40,8 @@ jobs:
       - name: Build UI package
         run: pnpm build:ui
 
+      - name: Run type smoke tests
+        run: pnpm typecheck
+
       - name: Run Vitest tests
         run: pnpm test

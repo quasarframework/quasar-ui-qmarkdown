@@ -297,6 +297,9 @@ importers:
       table:
         specifier: ^6.9.0
         version: 6.9.0
+      typescript:
+        specifier: ~5.9.3
+        version: 5.9.3
       uglify-js:
         specifier: ^3.19.3
         version: 3.19.3

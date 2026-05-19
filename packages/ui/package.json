@@ -34,10 +34,12 @@
   },
   "scripts": {
     "lint": "oxlint src build types",
-    "build": "node build/index.js",
+    "build": "node build/index.js && node build/script.types.js",
     "build:js": "node build/script.javascript.js",
     "build:css": "node build/script.css.js",
-    "build:api": "node build/build.api.js",
+    "build:api": "node build/build.api.js && node build/script.types.js",
+    "typecheck": "tsc -p test-d/tsconfig.json --noEmit --pretty false",
+    "test:types": "pnpm build && pnpm typecheck",
     "release": "pnpm publish --tag beta"
   },
   "dependencies": {
@@ -74,6 +76,7 @@
     "rtlcss": "^3.5.0",
     "sass-embedded": "^1.83.0",
     "table": "^6.9.0",
+    "typescript": "~5.9.3",
     "uglify-js": "^3.19.3",
     "zlib": "^1.0.5"
   },

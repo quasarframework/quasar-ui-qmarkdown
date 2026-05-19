@@ -98,7 +98,7 @@
     },
     "content-style": {
       "type": ["Array", "Object", "String"],
-      "tsType": "VueClassProp",
+      "tsType": "VueStyleProp",
       "category": "style",
       "desc": "Style definitions to be attributed to the markdown container",
       "examples": ["background-color: #ff0000", ":content-style=\"{ backgroundColor: '#ff0000' }\""]

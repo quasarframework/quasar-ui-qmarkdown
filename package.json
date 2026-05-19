@@ -14,6 +14,8 @@
     "ci:publish": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev",
     "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev --tag beta && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev --tag beta",
     "test": "vitest run",
+    "test:types": "pnpm --filter @quasar/quasar-ui-qmarkdown test:types",
+    "typecheck": "pnpm --filter @quasar/quasar-ui-qmarkdown typecheck",
     "deep": "ncu --deep",
     "lint": "oxlint --ignore-path .oxlintignore",
     "lint:fix": "oxlint --ignore-path .oxlintignore --fix",
