@@ -26,9 +26,39 @@
     "type": "github",
     "url": "https://github.com/sponsors/hawkeye64"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.common.js"
+    },
+    "./index.min.css": {
+      "default": "./dist/index.min.css"
+    },
+    "./index.css": {
+      "default": "./dist/index.css"
+    },
+    "./index.rtl.min.css": {
+      "default": "./dist/index.rtl.min.css"
+    },
+    "./index.rtl.css": {
+      "default": "./dist/index.rtl.css"
+    },
+    "./dist/api/QMarkdown.json": {
+      "default": "./dist/api/QMarkdown.json"
+    },
+    "./*": "./*"
+  },
   "publishConfig": {
     "access": "public"
   },
