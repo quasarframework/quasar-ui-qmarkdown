@@ -81,13 +81,13 @@
       "type": "Number",
       "category": "behavior",
       "desc": "The starting Header number for generating a TOC",
-      "values": [1, 2, 3, 4, 5]
+      "values": [1, 2, 3, 4, 5, 6]
     },
     "toc-end": {
       "type": "Number",
       "category": "behavior",
-      "desc": "The ending Header number for generating a TOC. Must be greater than tocStart",
-      "values": [2, 3, 4, 5, 6]
+      "desc": "The ending Header number for generating a TOC",
+      "values": [1, 2, 3, 4, 5, 6]
     },
     "content-class": {
       "type": ["Array", "Object", "String"],
@@ -170,7 +170,7 @@
     }
   },
   "events": {
-    "toc": {
+    "data": {
       "desc": "If `toc` property is `true` then if a TOC is generated it is emitted via this event",
       "params": {
         "tocData": {
@@ -212,12 +212,12 @@
   "methods": {
     "makeTree": {
       "type": "Function",
-      "desc": "Pass into this function the results from the `@toc` event to have the data array transformed into a hierarchical tree",
+      "desc": "Pass into this function the results from the `@data` event to have the data array transformed into a hierarchical tree",
       "params": {
         "data": {
           "type": "Array",
           "tsType": "TocDefinitionArray",
-          "desc": "The results from the `@toc` event",
+          "desc": "The results from the `@data` event",
           "__exemption": ["examples"]
         }
       },
