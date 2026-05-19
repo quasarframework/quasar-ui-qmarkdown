@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, onBeforeMount, ref, reactive, watch } from "vue";
+import { computed, defineComponent, h, ref, reactive, watch } from "vue";
 
 import markdownIt from "markdown-it";
 
@@ -118,16 +118,7 @@ export default defineComponent({
   setup(props, { slots, emit, expose }) {
     const $q = useQuasar();
     const rendered = ref(null),
-      source = ref(null),
       markdownRef = ref(null);
-
-    onBeforeMount(() => {
-      if (allProps.value.src && allProps.value.src.length > 0) {
-        source.value = allProps.value.fixCr
-          ? allProps.value.src.replace(/\\n/gi, "\n")
-          : allProps.value.src;
-      }
-    });
 
     const allProps = computed(() => {
       return { ...props, ...globalProps };
@@ -147,6 +138,10 @@ export default defineComponent({
       return rawSource;
     });
 
+    watch(rawSource, () => {
+      rendered.value = null;
+    });
+
     const parsedCopyIcon = computed(() => {
       // default mdiContentCopy
       return allProps.value.copyIcon
@@ -160,17 +155,6 @@ export default defineComponent({
         ? allProps.value.doneIcon
         : "M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
     });
-
-    watch(
-      () => allProps.value.src,
-      () => {
-        source.value = allProps.value.fixCr
-          ? allProps.value.src.replace(/\\n/gi, "\n")
-          : allProps.value.src;
-
-        rendered.value = null;
-      },
-    );
 
     watch(
       () => [

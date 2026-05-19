@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import MarkdownIt from "markdown-it";
+import { nextTick, reactive } from "vue";
 
 import QMarkdownComponent from "../src/components/QMarkdown";
 import extendBlockQuote from "../src/util/extendBlockQuote";
@@ -42,6 +43,17 @@ function getValidatorValues(source, propName) {
   return validator === undefined || validator === null
     ? []
     : getRange(Number(validator[1]), Number(validator[2]));
+}
+
+function createQMarkdownProps(overrides = {}) {
+  return {
+    src: "",
+    toc: false,
+    tocStart: 1,
+    tocEnd: 3,
+    plugins: [],
+    ...overrides,
+  };
 }
 
 describe("slugify", () => {
@@ -194,6 +206,22 @@ describe("QMarkdown component contract", () => {
     expect(QMarkdownComponent.props.tocEnd.validator(1)).toBe(true);
     expect(QMarkdownComponent.props.tocEnd.validator(6)).toBe(true);
     expect(QMarkdownComponent.props.tocEnd.validator(7)).toBe(false);
+  });
+
+  it("invalidates rendered markdown when fix-cr changes the effective source", async () => {
+    const props = reactive(createQMarkdownProps({ src: "Hello\\nWorld", fixCr: false }));
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    });
+
+    expect(render().props.innerHTML).toContain("Hello\\nWorld");
+
+    props.fixCr = true;
+    await nextTick();
+
+    expect(render().props.innerHTML).toContain("Hello<br>");
   });
 });
 
