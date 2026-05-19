@@ -47,7 +47,7 @@ function extendConf(conf) {
     (typeof oldPreTagFunc === "function" ? oldPreTagFunc(tag) : false);
 
   // make sure the stylesheet is processed through the Quasar app pipeline
-  conf.css.push("~@quasar/quasar-ui-qmarkdown/src/index.sass");
+  conf.css.push("~@quasar/quasar-ui-qmarkdown/src/index.scss");
 }
 
 export default defineIndexScript((api) => {

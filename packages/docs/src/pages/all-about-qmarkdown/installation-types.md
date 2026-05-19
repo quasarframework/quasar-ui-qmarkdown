@@ -104,7 +104,7 @@ Then add the source stylesheet to `quasar.config.*`:
 
 ```js
 // Note: using ~ tells Quasar the file resides in node_modules
-css: ["app.scss", "~@quasar/quasar-ui-qmarkdown/src/index.sass"],
+css: ["app.scss", "~@quasar/quasar-ui-qmarkdown/src/index.scss"],
 
 build: {
   transpile: true,
