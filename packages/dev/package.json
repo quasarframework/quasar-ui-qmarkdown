@@ -20,7 +20,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-beta.17",
+    "@quasar/app-vite": "3.0.0-beta.18",
     "@types/node": "^25.8.0",
     "autoprefixer": "^10.4.2",
     "sass-embedded": "1.98.0",
