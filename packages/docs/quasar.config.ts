@@ -25,6 +25,13 @@ export default defineConfig(async (ctx) => {
       typescript: {
         strict: true,
         vueShim: true,
+        extendTsConfig(tsConfig) {
+          tsConfig.compilerOptions ??= {};
+          tsConfig.compilerOptions.paths ??= {};
+          tsConfig.compilerOptions.paths["@quasar/quasar-ui-qmarkdown"] = [
+            "./../../ui/src/index.js",
+          ];
+        },
       },
 
       vueRouterMode: "history",

@@ -40,7 +40,13 @@ export default defineConfig((ctx) => {
       typescript: {
         strict: true,
         vueShim: true,
-        // extendTsConfig (tsConfig) {}
+        extendTsConfig(tsConfig) {
+          tsConfig.compilerOptions ??= {};
+          tsConfig.compilerOptions.paths ??= {};
+          tsConfig.compilerOptions.paths["@quasar/quasar-ui-qmarkdown"] = [
+            "./../../ui/src/index.js",
+          ];
+        },
       },
 
       vueRouterMode: "hash",
