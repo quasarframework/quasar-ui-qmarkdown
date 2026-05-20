@@ -1,9 +1,17 @@
+/// <reference types="@quasar/app-vite/client" />
+
 declare module "*.md";
 
-declare namespace NodeJS {
-  interface ProcessEnv {
-    NODE_ENV: string;
-    VUE_ROUTER_MODE: "hash" | "history" | "abstract" | undefined;
-    VUE_ROUTER_BASE: string | undefined;
-  }
-}
+/**
+ * Uncomment and add types for your custom environment
+ * variables to avoid TypeScript errors
+ * when using them via import.meta.env.VARIABLE_NAME
+ *
+ * Example:
+ *
+ * interface ImportMetaEnv {
+ *   readonly MY_VAR: string
+ *   readonly MY_OTHER_VAR: boolean
+ * }
+ */
+// interface ImportMetaEnv {}

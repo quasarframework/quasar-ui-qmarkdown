@@ -13,7 +13,7 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "postinstall": "quasar prepare"
+    "postinstall": "quasar prepare --silent"
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",

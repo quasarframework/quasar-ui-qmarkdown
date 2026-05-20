@@ -43,21 +43,7 @@ export default defineConfig((ctx) => {
         // extendTsConfig (tsConfig) {}
       },
 
-      vueRouterMode: "hash", // available values: 'hash', 'history'
-      // vueRouterBase,
-      // vueDevtools,
-      // vueOptionsAPI: false,
-
-      // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
-
-      // publicPath: '/',
-      // analyze: true,
-      // env: {},
-      // rawDefine: {}
-      // ignorePublicFolder: true,
-      // minify: false,
-      // polyfillModulePreload: true,
-      // distDir
+      vueRouterMode: "hash",
 
       extendViteConf(viteConf) {
         const alias = viteConf.resolve?.alias;
@@ -166,8 +152,8 @@ export default defineConfig((ctx) => {
         "render", // keep this as last one
       ],
 
-      // extendPackageJson (json) {},
-      // extendSSRWebserverConf (esbuildConf) {},
+      // extendSSRPackageJson (json) {},
+      // extendSSRWebserverConf (rolldownConf) {},
 
       // manualStoreSerialization: true,
       // manualStoreSsrContextInjection: true,
@@ -188,16 +174,14 @@ export default defineConfig((ctx) => {
       // manifestFilename: 'manifest.json'
       // extendManifestJson (json) {},
       // useCredentialsForManifestTag: true,
-      // injectPwaMetaTags: false,
-      // extendPWACustomSWConf (esbuildConf) {},
-      // extendGenerateSWOptions (cfg) {},
-      // extendInjectManifestOptions (cfg) {}
+      // injectPWAMetaTags: false,
+      // extendPWACustomSWConf (rolldownConf) {},
+      // extendPWAGenerateSWOptions (cfg) {},
+      // extendPWAInjectManifestOptions (cfg) {}
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova
-    cordova: {
-      // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-    },
+    cordova: {},
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-capacitor-apps/configuring-capacitor
     capacitor: {
@@ -206,10 +190,10 @@ export default defineConfig((ctx) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-electron-apps/configuring-electron
     electron: {
-      // extendElectronMainConf (esbuildConf) {},
-      // extendElectronPreloadConf (esbuildConf) {},
+      // extendElectronMainConf (rolldownConf) {},
+      // extendElectronPreloadConf (rolldownConf) {},
 
-      // extendPackageJson (json) {},
+      // extendElectronPackageJson (json) {},
 
       // Electron preload scripts (if any) from /src-electron, WITHOUT file extension
       preloadScripts: ["electron-preload"],
@@ -239,7 +223,7 @@ export default defineConfig((ctx) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-browser-extensions/configuring-bex
     bex: {
-      // extendBexScriptsConf (esbuildConf) {},
+      // extendBexScriptsConf (rolldownConf) {},
       // extendBexManifestJson (json) {},
 
       /**

@@ -7,47 +7,38 @@
  */
 
 import { defineIndexScript } from "@quasar/app-vite";
-import { extend } from "quasar";
 
 function extendConf(conf) {
-  conf.boot = conf.boot || [];
-  conf.css = conf.css || [];
-  conf.build = conf.build || {};
-  conf.framework = conf.framework || {};
-  conf.framework.plugins = conf.framework.plugins || [];
+  const originalIsPreTag = conf.build?.viteVuePluginOptions?.template?.compilerOptions?.isPreTag;
 
-  // register our boot file
-  conf.boot.push("~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js");
+  return {
+    boot: [
+      "~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js",
+    ],
 
-  // make sure these plugins are in the build
-  conf.framework.plugins.push("Notify");
-  conf.framework.plugins.push("Dark");
+    css: [
+      "~@quasar/quasar-ui-qmarkdown/src/index.scss",
+    ],
 
-  conf.build = extend(
-    true,
-    {
+    framework: {
+      plugins: ["Notify", "Dark"],
+    },
+
+    build: {
       viteVuePluginOptions: {
         template: {
           compilerOptions: {
-            isPreTag: (tag) => tag === "pre" || tag === "q-markdown" || tag === "QMarkdown",
+            isPreTag: (tag) => (
+              tag === "pre" ||
+              tag === "q-markdown" ||
+              tag === "QMarkdown" ||
+              (typeof originalIsPreTag === "function" ? originalIsPreTag(tag) : false)
+            ),
           },
         },
       },
     },
-    conf.build,
-  );
-
-  // This needs to be set for Vue 3
-  const compilerOptions = conf.build.viteVuePluginOptions.template.compilerOptions;
-  const oldPreTagFunc = compilerOptions.isPreTag;
-  compilerOptions.isPreTag = (tag) =>
-    tag === "pre" ||
-    tag === "q-markdown" ||
-    tag === "QMarkdown" ||
-    (typeof oldPreTagFunc === "function" ? oldPreTagFunc(tag) : false);
-
-  // make sure the stylesheet is processed through the Quasar app pipeline
-  conf.css.push("~@quasar/quasar-ui-qmarkdown/src/index.scss");
+  };
 }
 
 export default defineIndexScript((api) => {
@@ -65,19 +56,20 @@ export default defineIndexScript((api) => {
   api.extendQuasarConf(extendConf);
 
   if (api.prompts.import_md !== undefined && api.prompts.import_md === true) {
-    api.extendViteConf((viteConf) => {
+    api.extendViteConf(() => {
       console.log(
         " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to extendViteConf'",
       );
 
-      viteConf.plugins ||= [];
-      viteConf.plugins.push(
-        viteRawImporter({
-          fileRegex: /\.md$/,
-        }),
-      );
+      return {
+        plugins: [
+          viteRawImporter({
+            fileRegex: /\.md$/,
+          }),
+        ]
+      };
     });
-  }
+  };
 });
 
 function viteRawImporter(options) {
