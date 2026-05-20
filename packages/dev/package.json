@@ -17,7 +17,7 @@
     "@quasar/quasar-ui-qmarkdown": "workspace:^",
     "quasar": "^2.19.3",
     "vue": "^3.5.34",
-    "vue-router": "^4.0.12"
+    "vue-router": "^5.0.7"
   },
   "devDependencies": {
     "@quasar/app-vite": "3.0.0-beta.18",
@@ -25,8 +25,8 @@
     "autoprefixer": "^10.4.2",
     "sass-embedded": "1.98.0",
     "typescript": "~5.9.3",
-    "vite-plugin-checker": "^0.8.0",
-    "vue-tsc": "^2.0.29"
+    "vite-plugin-checker": "^0.13.0",
+    "vue-tsc": "^3.3.0"
   },
   "engines": {
     "node": ">=22.13",

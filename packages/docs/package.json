@@ -19,7 +19,7 @@
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "^1.18.0",
     "markdown-it-abbr": "^1.0.4",
-    "markdown-it-container": "^3.0.0",
+    "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-emoji": "^2.0.0",
     "markdown-it-footnote": "^3.0.3",
