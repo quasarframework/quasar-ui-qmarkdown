@@ -308,6 +308,15 @@ describe("markdown-it render extensions", () => {
     );
   });
 
+  it("classifies hash links as local when rendering without browser location", () => {
+    const md = createMarkdown();
+    extendLink(md, {});
+
+    expect(md.render("[Section](#section)")).toContain(
+      '<a href="#section" class="q-markdown--link q-markdown--link-local">',
+    );
+  });
+
   it("adds heading ids, classes and toc entries", () => {
     const md = createMarkdown();
     const toc = [];
