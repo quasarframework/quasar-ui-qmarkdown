@@ -12,7 +12,7 @@
     "build:docs": "cd packages/docs && pnpm build",
     "build:dev": "cd packages/dev && pnpm build",
     "ci:publish": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev",
-    "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch dev --tag beta && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch dev --tag beta",
+    "ci:publish:beta": "pnpm --filter @quasar/quasar-ui-qmarkdown publish --access public --publish-branch v3-beta --tag beta --no-git-checks && pnpm --filter @quasar/quasar-app-extension-qmarkdown publish --access public --publish-branch v3-beta --tag beta --no-git-checks",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "test:types": "pnpm --filter @quasar/quasar-ui-qmarkdown test:types",
