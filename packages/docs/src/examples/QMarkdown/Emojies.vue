@@ -4,29 +4,17 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import emoji from "markdown-it-emoji";
+import emoji = require("markdown-it-emoji");
 
 const markdown = `Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
 
 Shortcuts (emoticons): :-) :-( 8-) ;)`;
 
-export default defineComponent({
-  name: "Emojies",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Emojies" });
 
-  setup() {
-    const plugins = [emoji];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [emoji];
 </script>

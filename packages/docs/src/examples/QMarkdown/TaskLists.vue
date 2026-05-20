@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref, watch } from "vue";
+<script setup lang="ts">
+import { ref, watch } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import taskLists from "markdown-it-task-lists";
@@ -22,19 +22,7 @@ const markdown = `### Solar System Exploration, 1950s – 1960s
 - [ ] Neptune
 - [ ] Comet Haley`;
 
-export default defineComponent({
-  name: "TaskLists",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "TaskLists" });
 
-  setup() {
-    const plugins = [taskLists];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [taskLists];
 </script>

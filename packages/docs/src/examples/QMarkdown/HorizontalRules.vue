@@ -4,8 +4,7 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -32,16 +31,5 @@ ___
 3rd way (with text)
 ***`;
 
-export default defineComponent({
-  name: "HorizontalRules",
-  components: {
-    QMarkdown,
-  },
-
-  setup() {
-    return {
-      markdown,
-    };
-  },
-});
+defineOptions({ name: "HorizontalRules" });
 </script>

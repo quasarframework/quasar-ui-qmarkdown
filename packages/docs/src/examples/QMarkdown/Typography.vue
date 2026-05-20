@@ -5,8 +5,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -18,19 +18,7 @@ test.. test... test..... test?..... test!...
 
 Smartypants: "double quotes" and 'single quotes'`;
 
-export default defineComponent({
-  name: "Typography",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Typography" });
 
-  setup() {
-    const model = ref(false);
-
-    return {
-      markdown,
-      model,
-    };
-  },
-});
+const model = ref(false);
 </script>

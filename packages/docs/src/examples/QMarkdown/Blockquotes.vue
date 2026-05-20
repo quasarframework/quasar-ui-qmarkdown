@@ -5,8 +5,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -17,19 +17,7 @@ const markdown = `> This is a Blockquote
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.`;
 
-export default defineComponent({
-  name: "Blockquotes",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Blockquotes" });
 
-  setup() {
-    const model = ref(false);
-
-    return {
-      markdown,
-      model,
-    };
-  },
-});
+const model = ref(false);
 </script>

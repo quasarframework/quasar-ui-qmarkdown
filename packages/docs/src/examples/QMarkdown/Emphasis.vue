@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -23,16 +23,5 @@ ___This is bold italic text, second way___
 
 ~~This is Strikethrough~~`;
 
-export default defineComponent({
-  name: "Emphasis",
-  components: {
-    QMarkdown,
-  },
-
-  setup() {
-    return {
-      markdown,
-    };
-  },
-});
+defineOptions({ name: "Emphasis" });
 </script>

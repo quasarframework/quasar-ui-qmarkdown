@@ -4,8 +4,7 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -17,16 +16,5 @@ Top-Level Title
 Second-Level Title
 ---`;
 
-export default defineComponent({
-  name: "Titles",
-  components: {
-    QMarkdown,
-  },
-
-  setup() {
-    return {
-      markdown,
-    };
-  },
-});
+defineOptions({ name: "Titles" });
 </script>

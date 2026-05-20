@@ -31,115 +31,89 @@
   </q-card>
 </template>
 
-<script>
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { date } from "quasar";
 
 import PackageReleases from "./PackageReleases.vue";
+import type { ReleaseInfo } from "./PackageReleases.vue";
 
 const { extractDate, formatDate } = date;
+const packageName = "QMarkdown";
 
-export default {
-  name: "Releases",
+interface GitHubRelease {
+  name?: string;
+  tag_name?: string;
+  published_at: string;
+  body?: string;
+}
 
-  components: {
-    PackageReleases,
-  },
+type ReleasePackageMap = Record<string, ReleaseInfo[]>;
 
-  setup() {
-    const packagesDefinitions = {
-      QMarkdown: [],
-    };
-    const loading = ref(false);
-    const error = ref(false);
-    const packages = ref(packagesDefinitions);
-    const currentPackage = ref("QMarkdown");
-    const versions = ref({});
-    const latestVersions = ref({});
+const loading = ref(false);
+const error = ref(false);
+const packages = ref<ReleasePackageMap>({ [packageName]: [] });
+const currentPackage = ref(packageName);
+const latestVersions = ref<Record<string, string>>({});
 
-    function queryReleases(page = 1) {
-      loading.value = true;
-      error.value = false;
+function getReleaseVersion(release: GitHubRelease): string | undefined {
+  const name = release.name || release.tag_name || "";
+  const match = name.match(/(?:^|\s)v?(\d+\.\d+\.\d+(?:[-\w.]+)?)/);
 
-      const xhrQuasar = new XMLHttpRequest();
+  return match?.[1] ?? release.tag_name?.replace(/^v/, "");
+}
 
-      xhrQuasar.addEventListener("load", function () {
-        const releases = JSON.parse(this.responseText);
+async function queryReleases(): Promise<void> {
+  loading.value = true;
+  error.value = false;
 
-        if (!releases || releases.length === 0) {
-          error.value = true;
-          return;
-        }
+  try {
+    const response = await fetch(
+      "https://api.github.com/repos/quasarframework/quasar-ui-qmarkdown/releases?per_page=100",
+    );
 
-        // 100 rows of data is sufficient
-        let stopQuery = true;
-
-        for (const release of releases) {
-          const [name, version] = release.name.split("v");
-          if (name !== "" && name.startsWith("@quasar") === true) {
-            continue;
-          }
-
-          const packageName = currentPackage.value;
-
-          if (!version) {
-            stopQuery = true;
-            continue;
-          }
-
-          if (packages.value[packageName] === void 0) {
-            packages.value[packageName] = [];
-          }
-
-          const releaseInfo = {
-            version,
-            date: formatDate(extractDate(release.published_at, "YYYY-MM-DD"), "YYYY-MM-DD"),
-            body: release.body,
-            label: version,
-          };
-          packages.value[packageName].push(releaseInfo);
-
-          if (latestVersions.value[packageName] === void 0) {
-            latestVersions.value[packageName] = releaseInfo.label;
-          }
-        }
-
-        if (!stopQuery) {
-          queryReleases(page + 1);
-        }
-
-        // sort by date
-        packages.value.QMarkdown.sort((a, b) => {
-          return parseInt(b.date.replace(/-/g, ""), 10) - parseInt(a.date.replace(/-/g, ""), 10);
-        });
-      });
-
-      xhrQuasar.addEventListener("error", () => {
-        error.value = true;
-      });
-
-      xhrQuasar.open(
-        "GET",
-        `https://api.github.com/repos/quasarframework/quasar-ui-qmarkdown/releases?page=${page}&per_page=100`,
-      );
-      xhrQuasar.send();
+    if (response.ok === false) {
+      throw new Error(`GitHub request failed with ${response.status}`);
     }
 
-    onMounted(() => {
-      queryReleases();
-      loading.value = false;
-    });
+    const releases = (await response.json()) as GitHubRelease[];
+    const parsedReleases = releases
+      .map((release) => {
+        const version = getReleaseVersion(release);
 
-    return {
-      loading,
-      error,
-      packages,
-      currentPackage,
-      versions,
-      latestVersions,
-    };
-  },
-};
+        if (version === undefined) {
+          return null;
+        }
+
+        return {
+          version,
+          date: formatDate(extractDate(release.published_at, "YYYY-MM-DD"), "YYYY-MM-DD"),
+          body: release.body || "",
+          label: version,
+        };
+      })
+      .filter((release): release is ReleaseInfo => release !== null)
+      .sort((a, b) => {
+        return (
+          Number.parseInt(b.date.replace(/-/g, ""), 10) -
+          Number.parseInt(a.date.replace(/-/g, ""), 10)
+        );
+      });
+
+    if (parsedReleases.length === 0) {
+      throw new Error("No releases returned from GitHub");
+    }
+
+    packages.value = { [packageName]: parsedReleases };
+    latestVersions.value = { [packageName]: parsedReleases[0]?.label ?? "" };
+  } catch {
+    error.value = true;
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(queryReleases);
 </script>
 
 <style lang="scss">

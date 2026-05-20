@@ -23,8 +23,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -35,31 +35,16 @@ const markdown = `# h1 Heading
 ##### h5 Heading
 ###### h6 Heading`;
 
-export default defineComponent({
-  name: "Heading",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Heading" });
 
-  setup() {
-    const model = ref(false);
-    const range = ref({
-      min: 1,
-      max: 3,
-    });
-    const results = ref({});
-
-    function onToc(data) {
-      results.value = data;
-    }
-
-    return {
-      markdown,
-      model,
-      range,
-      onToc,
-      results,
-    };
-  },
+const model = ref(false);
+const range = ref({
+  min: 1,
+  max: 3,
 });
+const results = ref<unknown>({});
+
+function onToc(data: unknown) {
+  results.value = data;
+}
 </script>

@@ -4,8 +4,7 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -41,16 +40,5 @@ Left aligned columns
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |`;
 
-export default defineComponent({
-  name: "Tables",
-  components: {
-    QMarkdown,
-  },
-
-  setup() {
-    return {
-      markdown,
-    };
-  },
-});
+defineOptions({ name: "Tables" });
 </script>

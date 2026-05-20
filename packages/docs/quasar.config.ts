@@ -41,11 +41,6 @@ export default defineConfig(async (ctx) => {
             find: /^@quasar\/quasar-ui-qmarkdown$/,
             replacement: ctx.appPaths.appDir + "/../ui/src/index.js",
           },
-          // Rolldown is stricter than Rollup for generated Quasar source deep imports.
-          {
-            find: /^quasar\/src\/(.*)$/,
-            replacement: ctx.appPaths.appDir + "/node_modules/quasar/src/$1",
-          },
         ];
 
         if (ctx.prod && isClient) {

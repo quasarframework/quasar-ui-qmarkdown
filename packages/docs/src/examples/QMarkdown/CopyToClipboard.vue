@@ -5,8 +5,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -35,19 +35,7 @@ return bar++;
 console.log(foo(5));
 \`\`\``;
 
-export default defineComponent({
-  name: "CopyToClipboard",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "CopyToClipboard" });
 
-  setup() {
-    const model = ref(false);
-
-    return {
-      markdown,
-      model,
-    };
-  },
-});
+const model = ref(false);
 </script>

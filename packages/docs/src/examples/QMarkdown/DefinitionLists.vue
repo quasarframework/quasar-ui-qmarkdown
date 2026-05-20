@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import deflist from "markdown-it-deflist";
@@ -32,19 +32,7 @@ Term 2
   ~ Definition 2a
   ~ Definition 2b`;
 
-export default defineComponent({
-  name: "DefinitionLists",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "DefinitionLists" });
 
-  setup() {
-    const plugins = [deflist];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [deflist];
 </script>

@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import markdownItMermaid from "@datatraccorporation/markdown-it-mermaid";
@@ -19,19 +19,7 @@ C -->|Two| E[iPhone]
 C -->|Three| F[Car]
 \`\`\``;
 
-export default defineComponent({
-  name: "Mermaid",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Mermaid" });
 
-  setup() {
-    const plugins = [markdownItMermaid];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [markdownItMermaid];
 </script>

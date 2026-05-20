@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import footnote from "markdown-it-footnote";
@@ -23,19 +23,7 @@ Duplicated footnote reference[^second].
 
 [^second]: Footnote text.`;
 
-export default defineComponent({
-  name: "Footnotes",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Footnotes" });
 
-  setup() {
-    const plugins = [footnote];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [footnote];
 </script>

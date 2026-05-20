@@ -12,8 +12,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -42,23 +42,9 @@ var foo = function (bar) {
 console.log(foo(5));
 \`\`\``;
 
-export default defineComponent({
-  name: "Code",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Code" });
 
-  setup() {
-    const model = ref(false),
-      model2 = ref(false),
-      model3 = ref(false);
-
-    return {
-      markdown,
-      model,
-      model2,
-      model3,
-    };
-  },
-});
+const model = ref(false),
+  model2 = ref(false),
+  model3 = ref(false);
 </script>

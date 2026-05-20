@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import abbreviation from "markdown-it-abbr";
@@ -16,19 +16,7 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 *[HTML]: Hyper Text Markup Language`;
 
-export default defineComponent({
-  name: "Abbreviations",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Abbreviations" });
 
-  setup() {
-    const plugins = [abbreviation];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [abbreviation];
 </script>

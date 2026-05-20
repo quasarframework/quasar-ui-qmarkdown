@@ -54,8 +54,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref, watch, onMounted } from "vue";
+<script setup lang="ts">
+import { ref, watch, onMounted } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -65,7 +65,7 @@ Add Markdown to the window on the left and the output will appear on the right.`
 
 import abbreviation from "markdown-it-abbr";
 import deflist from "markdown-it-deflist";
-import emoji from "markdown-it-emoji";
+import emoji = require("markdown-it-emoji");
 import footnote from "markdown-it-footnote";
 import insert from "markdown-it-ins";
 import mark from "markdown-it-mark";
@@ -74,102 +74,69 @@ import superscript from "markdown-it-sup";
 import taskLists from "markdown-it-task-lists";
 import mermaid from "@datatraccorporation/markdown-it-mermaid";
 
-export default defineComponent({
-  name: "Editor",
-  components: {
-    QMarkdown,
+defineOptions({ name: "Editor" });
+
+const splitterModel = ref(50),
+  markdown = ref("Testing"),
+  noHtml = ref(false),
+  noLink = ref(false),
+  noLinkify = ref(false),
+  noTypographer = ref(false),
+  noBreaks = ref(false),
+  noHighlight = ref(false),
+  noEmoji = ref(false),
+  noSubscript = ref(false),
+  noSuperscript = ref(false),
+  noFootnote = ref(false),
+  noDeflist = ref(false),
+  noAbbreviation = ref(false),
+  noInsert = ref(false),
+  noMark = ref(false),
+  noImage = ref(false),
+  noTasklist = ref(false),
+  noContainer = ref(false),
+  noMermaid = ref(false),
+  plugins = ref<unknown[]>([]),
+  count = ref(0);
+
+watch(
+  [
+    noAbbreviation,
+    noDeflist,
+    noEmoji,
+    noFootnote,
+    noInsert,
+    noMark,
+    noSubscript,
+    noSuperscript,
+    noTasklist,
+    noMermaid,
+  ],
+  () => {
+    rebuildPlugins();
   },
+);
 
-  setup() {
-    const splitterModel = ref(50),
-      markdown = ref("Testing"),
-      noHtml = ref(false),
-      noLink = ref(false),
-      noLinkify = ref(false),
-      noTypographer = ref(false),
-      noBreaks = ref(false),
-      noHighlight = ref(false),
-      noEmoji = ref(false),
-      noSubscript = ref(false),
-      noSuperscript = ref(false),
-      noFootnote = ref(false),
-      noDeflist = ref(false),
-      noAbbreviation = ref(false),
-      noInsert = ref(false),
-      noMark = ref(false),
-      noImage = ref(false),
-      noTasklist = ref(false),
-      noContainer = ref(false),
-      noMermaid = ref(false),
-      plugins = ref([]),
-      count = ref(0);
+function rebuildPlugins() {
+  plugins.value.splice(0, plugins.value.length);
 
-    watch(
-      [
-        noAbbreviation,
-        noDeflist,
-        noEmoji,
-        noFootnote,
-        noInsert,
-        noMark,
-        noSubscript,
-        noSuperscript,
-        noTasklist,
-        noMermaid,
-      ],
-      () => {
-        rebuildPlugins();
-      },
-    );
+  if (noAbbreviation.value !== true) plugins.value.push(abbreviation);
+  if (noDeflist.value !== true) plugins.value.push(deflist);
+  if (noEmoji.value !== true) plugins.value.push(emoji);
+  if (noFootnote.value !== true) plugins.value.push(footnote);
+  if (noInsert.value !== true) plugins.value.push(insert);
+  if (noMark.value !== true) plugins.value.push(mark);
+  if (noSubscript.value !== true) plugins.value.push(subscript);
+  if (noSuperscript.value !== true) plugins.value.push(superscript);
+  if (noTasklist.value !== true) plugins.value.push(taskLists);
+  if (noMermaid.value !== true) plugins.value.push(mermaid);
 
-    function rebuildPlugins() {
-      plugins.value.splice(0, plugins.value.length);
+  // by having `:key="count"` on the q-markdown component,
+  // we can force Vue to do a refresh when the plugins change
+  count.value += 1;
+}
 
-      if (noAbbreviation.value !== true) plugins.value.push(abbreviation);
-      if (noDeflist.value !== true) plugins.value.push(deflist);
-      if (noEmoji.value !== true) plugins.value.push(emoji);
-      if (noFootnote.value !== true) plugins.value.push(footnote);
-      if (noInsert.value !== true) plugins.value.push(insert);
-      if (noMark.value !== true) plugins.value.push(mark);
-      if (noSubscript.value !== true) plugins.value.push(subscript);
-      if (noSuperscript.value !== true) plugins.value.push(superscript);
-      if (noTasklist.value !== true) plugins.value.push(taskLists);
-      if (noMermaid.value !== true) plugins.value.push(mermaid);
-
-      // by having `:key="count"` on the q-markdown component,
-      // we can force Vue to do a refresh when the plugins change
-      count.value += 1;
-    }
-
-    onMounted(() => {
-      rebuildPlugins();
-    });
-
-    return {
-      introMarkdown,
-      splitterModel,
-      markdown,
-      noHtml,
-      noLink,
-      noLinkify,
-      noTypographer,
-      noBreaks,
-      noHighlight,
-      noEmoji,
-      noSubscript,
-      noSuperscript,
-      noFootnote,
-      noDeflist,
-      noAbbreviation,
-      noInsert,
-      noMark,
-      noImage,
-      noTasklist,
-      noContainer,
-      noMermaid,
-      plugins,
-      count,
-    };
-  },
+onMounted(() => {
+  rebuildPlugins();
 });
 </script>

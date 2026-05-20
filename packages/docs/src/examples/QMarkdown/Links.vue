@@ -6,8 +6,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 
@@ -21,21 +21,8 @@ const markdown = `[External Link](https://github.com/quasarframework/quasar)
 
 Auto-converted link: https://github.com/quasarframework/quasar`;
 
-export default defineComponent({
-  name: "Links",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Links" });
 
-  setup() {
-    const model = ref(false),
-      model1 = ref(false);
-
-    return {
-      markdown,
-      model,
-      model1,
-    };
-  },
-});
+const model = ref(false),
+  model1 = ref(false);
 </script>

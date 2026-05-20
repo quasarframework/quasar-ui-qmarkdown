@@ -57,7 +57,8 @@ export default defineConfig((ctx) => {
             find: /^@quasar\/quasar-ui-qmarkdown$/,
             replacement: ctx.appPaths.appDir + "/../ui/src/index.js",
           },
-          // Rolldown is stricter than Rollup for generated Quasar source deep imports.
+          // The dev sandbox consumes local UI source without qPress, so it still
+          // needs this until app-vite resolves generated Quasar deep imports.
           {
             find: /^quasar\/src\/(.*)$/,
             replacement: ctx.appPaths.appDir + "/node_modules/quasar/src/$1",

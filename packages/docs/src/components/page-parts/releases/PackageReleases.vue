@@ -60,91 +60,98 @@
   </div>
 </template>
 
-<script>
-import { ref, computed, watch } from "vue";
+<script setup lang="ts">
+import { computed, ref, watch } from "vue";
 import { mdiMagnify } from "@quasar/extras/mdi-v6";
 
 import sanitize from "./sanitize";
 import parseMdTable from "./md-table-parser";
 
-export default {
-  props: ["latestVersion", "releases"],
+export interface ReleaseInfo {
+  version: string;
+  date: string;
+  body: string;
+  label: string;
+}
 
-  setup(props) {
-    const search = ref("");
-    const selectedVersion = ref(props.latestVersion);
-
-    watch(
-      () => props.latestVersion,
-      (val) => {
-        selectedVersion.value = val;
-      },
-    );
-
-    const filteredReleases = computed(() => {
-      if (search.value) {
-        const val = search.value.toLowerCase();
-        return props.releases.filter((release) => release.body.toLowerCase().indexOf(val) > -1);
-      }
-
-      return props.releases;
-    });
-
-    function parse(body) {
-      let content = sanitize(body) + "\n";
-
-      if (search.value) {
-        content = content.replace(
-          new RegExp(`(${search.value})`, "ig"),
-          '<span class="bg-accent text-white">$1</span>',
-        );
-      }
-
-      content = content
-        .replace(/### ([\S ]+)/g, '<div class="text-h6">$1</div>')
-        .replace(/## ([\S ]+)/g, '<div class="text-h5">$1</div>')
-        .replace(/# ([\S ]+)/g, '<div class="text-h4">$1</div>')
-        .replace(/\*\*([\S ]*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/\*([\S ]*?)\*/g, "<em>$1</em>")
-        .replace(
-          /```([\S]+)/g,
-          '<code class="markdown--code__inner markdown--code__inner--prerendered release__code">',
-        )
-        .replace(/```\n/g, "</code>")
-        .replace(/`(.*?)`/g, '<code class="markdown--token">$1</code>')
-        .replace(
-          /#([\d]+)/g,
-          '<a class="markdown-link" href="https://github.com/quasarframework/quasar-ui-qmarkdown/issues/$1" target="_blank">#$1</a>',
-        )
-        .replace(/^&gt; ([\S ]+)$/gm, '<div class="release__blockquote">$1</div>')
-        .replace(
-          /\[([\S ]*?)\]\((\S*?)\)/g,
-          '<a class="markdown-link" href="$2" target="_blank">$1</a>',
-        )
-        .replace(/^ {2}[-*] ([\S .]+)$/gm, '<li class="q-pl-md">$1</li>')
-        .replace(/^[-*] ([\S .]+)$/gm, "<li>$1</li>")
-        .replace(/<\/li>[\s\n\r]*<li/g, "</li><li")
-        .replace(/\n/g, "<br>");
-
-      return content.indexOf("| -") > -1 ? parseMdTable(content) : content;
-    }
-
-    const currentReleaseBody = computed(() => {
-      const release = props.releases.find((r) => r.label === selectedVersion.value);
-      return release ? parse(release.body) : "";
-    });
-
-    return {
-      search,
-      selectedVersion,
-
-      filteredReleases,
-      currentReleaseBody,
-
-      mdiMagnify,
-    };
+const props = withDefaults(
+  defineProps<{
+    latestVersion?: string;
+    releases?: ReleaseInfo[];
+  }>(),
+  {
+    releases: () => [],
   },
-};
+);
+
+const search = ref("");
+const selectedVersion = ref<string | undefined>(props.latestVersion);
+
+watch(
+  () => props.latestVersion,
+  (val) => {
+    selectedVersion.value = val;
+  },
+);
+
+const filteredReleases = computed(() => {
+  if (search.value !== "") {
+    const val = search.value.toLowerCase();
+
+    return props.releases.filter((release) => release.body.toLowerCase().includes(val));
+  }
+
+  return props.releases;
+});
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function parse(body: string): string {
+  let content = sanitize(body) + "\n";
+
+  if (search.value !== "") {
+    content = content.replace(
+      new RegExp(`(${escapeRegExp(search.value)})`, "gi"),
+      '<span class="bg-accent text-white">$1</span>',
+    );
+  }
+
+  content = content
+    .replace(/### ([\S ]+)/g, '<div class="text-h6">$1</div>')
+    .replace(/## ([\S ]+)/g, '<div class="text-h5">$1</div>')
+    .replace(/# ([\S ]+)/g, '<div class="text-h4">$1</div>')
+    .replace(/\*\*([\S ]*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([\S ]*?)\*/g, "<em>$1</em>")
+    .replace(
+      /```([\S]+)/g,
+      '<code class="markdown--code__inner markdown--code__inner--prerendered release__code">',
+    )
+    .replace(/```\n/g, "</code>")
+    .replace(/`(.*?)`/g, '<code class="markdown--token">$1</code>')
+    .replace(
+      /#([\d]+)/g,
+      '<a class="markdown-link" href="https://github.com/quasarframework/quasar-ui-qmarkdown/issues/$1" target="_blank">#$1</a>',
+    )
+    .replace(/^&gt; ([\S ]+)$/gm, '<div class="release__blockquote">$1</div>')
+    .replace(
+      /\[([\S ]*?)\]\((\S*?)\)/g,
+      '<a class="markdown-link" href="$2" target="_blank">$1</a>',
+    )
+    .replace(/^ {2}[-*] ([\S .]+)$/gm, '<li class="q-pl-md">$1</li>')
+    .replace(/^[-*] ([\S .]+)$/gm, "<li>$1</li>")
+    .replace(/<\/li>[\s\n\r]*<li/g, "</li><li")
+    .replace(/\n/g, "<br>");
+
+  return content.includes("| -") ? parseMdTable(content) : content;
+}
+
+const currentReleaseBody = computed(() => {
+  const release = props.releases.find((entry) => entry.label === selectedVersion.value);
+
+  return release ? parse(release.body) : "";
+});
 </script>
 
 <style lang="scss">

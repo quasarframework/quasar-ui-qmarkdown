@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 import insert from "markdown-it-ins";
@@ -14,19 +14,7 @@ const markdown = `++This sentence is inserted.++
 
 This is ++inserted++ in the middle of a sentence.`;
 
-export default defineComponent({
-  name: "Insert",
-  components: {
-    QMarkdown,
-  },
+defineOptions({ name: "Insert" });
 
-  setup() {
-    const plugins = [insert];
-
-    return {
-      markdown,
-      plugins,
-    };
-  },
-});
+const plugins = [insert];
 </script>
