@@ -23,6 +23,25 @@ import { QBtn, QTooltip, copyToClipboard, useQuasar } from "quasar";
 // QMarkdown global properties
 const globalProps = reactive({});
 
+export function getMarkdownCopyText(element) {
+  if (!element) return "";
+
+  const lineNumberElements = [...element.querySelectorAll(".q-markdown--line-numbers")];
+  const previousDisplayValues = lineNumberElements.map((lineNumbers) => lineNumbers.style.display);
+
+  lineNumberElements.forEach((lineNumbers) => {
+    lineNumbers.style.display = "none";
+  });
+
+  try {
+    return element.innerText ?? element.textContent ?? "";
+  } finally {
+    lineNumberElements.forEach((lineNumbers, index) => {
+      lineNumbers.style.display = previousDisplayValues[index];
+    });
+  }
+}
+
 // Composition function to set global properties
 export function useQMarkdownGlobalProps(props) {
   // remove existing data
@@ -193,7 +212,7 @@ export default defineComponent({
     }
 
     function __copyMarkdownToClipboard() {
-      copyToClipboard(markdownRef.value.innerText);
+      copyToClipboard(getMarkdownCopyText(markdownRef.value));
 
       if ($q.notify) {
         $q.notify({

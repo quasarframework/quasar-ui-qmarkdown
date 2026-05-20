@@ -6,7 +6,7 @@ import MarkdownIt from "markdown-it";
 import { createSSRApp, h, nextTick, reactive } from "vue";
 import { renderToString } from "@vue/server-renderer";
 
-import QMarkdownComponent from "../src/components/QMarkdown";
+import QMarkdownComponent, { getMarkdownCopyText } from "../src/components/QMarkdown";
 import extendBlockQuote from "../src/util/extendBlockQuote";
 import extendContainers from "../src/util/extendContainers";
 import extendFenceLineNumbers from "../src/util/extendFenceLineNumbers";
@@ -198,6 +198,21 @@ describe("QMarkdown API JSON", () => {
 });
 
 describe("QMarkdown component contract", () => {
+  it("excludes generated line numbers from copied rendered text", () => {
+    const lineNumbers = { style: { display: "" } };
+    const element = {
+      querySelectorAll: vi.fn(() => [lineNumbers]),
+      get innerText() {
+        return lineNumbers.style.display === "none"
+          ? "console.log(1)\nconsole.log(2)"
+          : "1\n2\nconsole.log(1)\nconsole.log(2)";
+      },
+    };
+
+    expect(getMarkdownCopyText(element)).toBe("console.log(1)\nconsole.log(2)");
+    expect(lineNumbers.style.display).toBe("");
+  });
+
   it("exposes the documented component name, event and toc validators", () => {
     expect(QMarkdownComponent.name).toBe("QMarkdown");
     expect(QMarkdownComponent.emits).toEqual(["data"]);
