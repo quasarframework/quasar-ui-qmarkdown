@@ -27,6 +27,7 @@
     "@vitest/coverage-v8": "^4.1.7",
     "oxfmt": "^0.51.0",
     "oxlint": "^1.66.0",
+    "sass-embedded": "1.98.0",
     "vitest": "^4.1.7"
   },
   "engines": {

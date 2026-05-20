@@ -54,6 +54,42 @@
         fit="contain"
       />
     </div>
+
+    <q-separator />
+
+    <div class="byline">
+      <p>
+        Don't forget to check out the
+        <a href="https://github.com/quasarframework/quasar-ui-qmarkdown" target="_blank">
+          QMarkdown GitHub repo
+        </a>
+        and the
+        <a href="https://github.com/hawkeye64/md-plugins" target="_blank">
+          @md-plugins GitHub repo
+        </a>
+        for the shared documentation tooling behind this site.
+      </p>
+      <p>
+        This site is built with
+        <a
+          href="https://www.npmjs.com/package/@md-plugins/quasar-app-extension-q-press"
+          target="_blank"
+        >
+          Q-Press
+        </a>
+        , the <code>@md-plugins</code> app extension for Quasar documentation sites. Install it, set
+        it up, choose a theme, and start your own site!
+      </p>
+    </div>
+
+    <q-separator />
+
+    <div class="byline">
+      <p>
+        We hope you find this documentation helpful. If you have any questions or need further
+        assistance, please reach out through the QMarkdown repository or GitHub Discussions.
+      </p>
+    </div>
   </section>
 </template>
 
@@ -140,6 +176,15 @@ import siteConfig from "../../siteConfig";
 
 body.body--dark .byline {
   color: #f0f0f0;
+}
+
+.byline a {
+  color: $brand-primary;
+  font-weight: 700;
+}
+
+body.body--dark .byline a {
+  color: #8ee8ff;
 }
 
 .landing-page__preview {
