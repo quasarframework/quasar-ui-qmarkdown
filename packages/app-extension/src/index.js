@@ -12,13 +12,9 @@ function extendConf(conf) {
   const originalIsPreTag = conf.build?.viteVuePluginOptions?.template?.compilerOptions?.isPreTag;
 
   return {
-    boot: [
-      "~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js",
-    ],
+    boot: ["~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js"],
 
-    css: [
-      "~@quasar/quasar-ui-qmarkdown/src/index.scss",
-    ],
+    css: ["~@quasar/quasar-ui-qmarkdown/src/index.scss"],
 
     framework: {
       plugins: ["Notify", "Dark"],
@@ -28,12 +24,11 @@ function extendConf(conf) {
       viteVuePluginOptions: {
         template: {
           compilerOptions: {
-            isPreTag: (tag) => (
+            isPreTag: (tag) =>
               tag === "pre" ||
               tag === "q-markdown" ||
               tag === "QMarkdown" ||
-              (typeof originalIsPreTag === "function" ? originalIsPreTag(tag) : false)
-            ),
+              (typeof originalIsPreTag === "function" ? originalIsPreTag(tag) : false),
           },
         },
       },
@@ -66,10 +61,10 @@ export default defineIndexScript((api) => {
           viteRawImporter({
             fileRegex: /\.md$/,
           }),
-        ]
+        ],
       };
     });
-  };
+  }
 });
 
 function viteRawImporter(options) {
