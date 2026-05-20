@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import MarkdownIt from "markdown-it";
-import { nextTick, reactive } from "vue";
+import { createSSRApp, h, nextTick, reactive } from "vue";
+import { renderToString } from "@vue/server-renderer";
 
 import QMarkdownComponent from "../src/components/QMarkdown";
 import extendBlockQuote from "../src/util/extendBlockQuote";
@@ -222,6 +223,18 @@ describe("QMarkdown component contract", () => {
     await nextTick();
 
     expect(render().props.innerHTML).toContain("Hello<br>");
+  });
+
+  it("renders markdown during SSR", async () => {
+    const app = createSSRApp({
+      render: () => h(QMarkdownComponent, { src: "# hello world" }),
+    });
+
+    const html = await renderToString(app);
+
+    expect(html).toContain('class="q-markdown');
+    expect(html).toContain("<h1");
+    expect(html).toContain("hello world");
   });
 });
 
