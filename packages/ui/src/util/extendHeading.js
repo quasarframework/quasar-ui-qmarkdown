@@ -1,5 +1,7 @@
 import slugify from "./slugify";
 
+const headingIdsKey = "__qMarkdownHeadingIds";
+
 function unemoji(TokenConstructor, token) {
   if (token.type === "emoji") {
     return Object.assign(new TokenConstructor(), token, { content: token.markup });
@@ -23,6 +25,7 @@ export default function extendHeading(
     if (!Token) {
       Token = state.Token;
     }
+    state.env[headingIdsKey] = Object.create(null);
   });
 
   md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
@@ -59,11 +62,19 @@ export default function extendHeading(
     const unemojiWithToken = unemoji.bind(null, Token);
     const renderedLabel = md.renderer.renderInline(children.map(unemojiWithToken), options, env);
 
-    const id = slugify(
+    let id = slugify(
       renderedLabel
         .replace(/[<>]/g, "") // In case the heading contains `<stuff>`
         .toLowerCase(), // should be lowercase
     );
+
+    const seenIds = env[headingIdsKey] || (env[headingIdsKey] = Object.create(null));
+    if (seenIds[id] === undefined) {
+      seenIds[id] = 0;
+    } else {
+      seenIds[id]++;
+      id = `${id}-${seenIds[id]}`;
+    }
 
     token.attrSet("id", id);
     token.attrSet("name", id);

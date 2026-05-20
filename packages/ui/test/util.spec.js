@@ -293,4 +293,33 @@ describe("markdown-it render extensions", () => {
       { id: "hello-qmarkdown", label: "Hello QMarkdown", level: 1, children: [] },
     ]);
   });
+
+  it("generates unique ids and toc entries for repeated headings", () => {
+    const md = createMarkdown();
+    const toc = [];
+    extendHeading(md, toc, true, 1, 6);
+
+    const html = md.render("## Training\n\n## Training\n\n## Training");
+
+    expect(html).toContain('id="training"');
+    expect(html).toContain('id="training-1"');
+    expect(html).toContain('id="training-2"');
+    expect(html).toContain('href="#training-1"');
+    expect(toc).toEqual([
+      { id: "training", label: "Training", level: 2, children: [] },
+      { id: "training-1", label: "Training", level: 2, children: [] },
+      { id: "training-2", label: "Training", level: 2, children: [] },
+    ]);
+  });
+
+  it("resets duplicate heading counters for each render", () => {
+    const md = createMarkdown();
+    extendHeading(md, [], false, 1, 6);
+
+    md.render("## Training\n\n## Training");
+    const html = md.render("## Training");
+
+    expect(html).toContain('id="training"');
+    expect(html).not.toContain('id="training-2"');
+  });
 });
