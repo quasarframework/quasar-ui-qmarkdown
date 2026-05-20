@@ -15,8 +15,7 @@ export default function (ctx) { // can be async too
     prod: false
   }
 
-  const { FOO } = process.env // ❌ It doesn't allow destructuring or similar
-  process.env.FOO             // ✅ It can only replace direct usage like this
+  const foo = import.meta.env.QCLI_FOO // ✅ App envs are exposed through import.meta.env
 
   // context gets generated based on the parameters
   // with which you run "quasar dev" or "quasar build"
