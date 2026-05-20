@@ -43,16 +43,9 @@ function generate(src, dest) {
   src = resolve(src);
   dest = resolve(dest);
 
-  return new Promise((resolve, reject) => {
-    sass.render({ file: src, includePaths: ["node_modules"] }, (err, result) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      resolve(result.css);
-    });
-  })
+  return sass
+    .compileAsync(src, { loadPaths: ["node_modules"] })
+    .then((result) => result.css)
     .then((code) => buildConf.banner + code)
     .then((code) => postCssCompiler.process(code, { from: void 0 }))
     .then((code) => {
