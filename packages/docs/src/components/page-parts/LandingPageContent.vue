@@ -16,10 +16,9 @@
           class="hero-button q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase q-btn--rounded q-btn--dense"
         >
           <div
-            class="row justify-around items-center q-btn__content text-center col items-center q-anchor--skip"
-            style="width: 120px"
+            class="hero-button__content row justify-around items-center q-btn__content text-center col items-center q-anchor--skip"
           >
-            <div>Get Started</div>
+            <span class="hero-button__label">Get Started</span>
             <q-icon :name="biArrowRightCircle" />
           </div>
         </router-link>
@@ -31,11 +30,10 @@
           class="hero-button q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase q-btn--rounded q-btn--dense"
         >
           <div
-            class="row justify-around items-center q-btn__content text-center col items-center q-anchor--skip"
-            style="width: 120px"
+            class="hero-button__content row justify-around items-center q-btn__content text-center col items-center q-anchor--skip"
           >
             <q-icon :name="fabGithub" class="q-mr-sm" />
-            GitHub Repo
+            <span class="hero-button__label">GitHub Repo</span>
           </div>
         </a>
       </div>
@@ -120,6 +118,15 @@ import siteConfig from "../../siteConfig";
 
 .hero-button:hover {
   background: #f0f0f0;
+}
+
+.hero-button__content {
+  flex-wrap: nowrap;
+  width: 120px;
+}
+
+.hero-button__label {
+  white-space: nowrap;
 }
 
 .byline {
