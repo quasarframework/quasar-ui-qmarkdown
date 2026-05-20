@@ -88,6 +88,7 @@
     "open": "^8.4.0",
     "postcss": "8.4.49",
     "punycode": "^2.3.1",
+    "quasar": "^2.19.3",
     "quasar-json-api": "2.0.0-alpha.5",
     "rimraf": "^3.0.2",
     "rolldown": "^1.0.0",
@@ -96,6 +97,7 @@
     "table": "^6.9.0",
     "typescript": "~5.9.3",
     "uglify-js": "^3.19.3",
+    "vue": "^3.5.34",
     "zlib": "^1.0.5"
   },
   "browserslist": [

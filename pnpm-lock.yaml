@@ -248,6 +248,9 @@ importers:
       punycode:
         specifier: ^2.3.1
         version: 2.3.1
+      quasar:
+        specifier: ^2.19.3
+        version: 2.19.3
       quasar-json-api:
         specifier: 2.0.0-alpha.5
         version: 2.0.0-alpha.5
@@ -272,6 +275,9 @@ importers:
       uglify-js:
         specifier: ^3.19.3
         version: 3.19.3
+      vue:
+        specifier: ^3.5.34
+        version: 3.5.34(typescript@5.9.3)
       zlib:
         specifier: ^1.0.5
         version: 1.0.5
