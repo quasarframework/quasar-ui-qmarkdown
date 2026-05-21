@@ -233,6 +233,9 @@ importers:
       '@types/node':
         specifier: ^25.9.1
         version: 25.9.1
+      '@types/prismjs':
+        specifier: ^1.26.6
+        version: 1.26.6
       '@types/rtlcss':
         specifier: ^3.5.4
         version: 3.5.4
@@ -1292,6 +1295,9 @@ packages:
 
   '@types/node@25.9.1':
     resolution: {integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==}
+
+  '@types/prismjs@1.26.6':
+    resolution: {integrity: sha512-vqlvI7qlMvcCBbVe0AKAb4f97//Hy0EBTaiW8AalRnG/xAN5zOiWWyrNqNXeq8+KAuvRewjCVY1+IPxk4RdNYw==}
 
   '@types/rtlcss@3.5.4':
     resolution: {integrity: sha512-MgGlOoTwu0SjpqBqVr9vwwezysD+ZoM0q6eS3ULAYuoKDYBlJMVz73Du/paSER9AOxv/UepGfcAzeO5otP72aQ==}
@@ -4255,6 +4261,8 @@ snapshots:
   '@types/node@25.9.1':
     dependencies:
       undici-types: 7.24.6
+
+  '@types/prismjs@1.26.6': {}
 
   '@types/rtlcss@3.5.4':
     dependencies:

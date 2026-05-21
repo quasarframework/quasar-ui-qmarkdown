@@ -43,7 +43,7 @@ export function getMarkdownCopyText(element: HTMLElement | null | undefined): st
     return element.innerText ?? element.textContent ?? "";
   } finally {
     lineNumberElements.forEach((lineNumbers, index) => {
-      lineNumbers.style.display = previousDisplayValues[index];
+      lineNumbers.style.display = previousDisplayValues[index] ?? "";
     });
   }
 }

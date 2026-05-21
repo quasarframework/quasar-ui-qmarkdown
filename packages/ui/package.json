@@ -85,6 +85,7 @@
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.9.1",
+    "@types/prismjs": "^1.26.6",
     "@types/rtlcss": "^3.5.4",
     "@types/uglify-js": "^3.17.5",
     "autoprefixer": "^10.5.0",
