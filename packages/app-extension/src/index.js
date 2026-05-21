@@ -50,7 +50,7 @@ export default defineIndexScript((api) => {
   // We extend /quasar.config file
   api.extendQuasarConf(extendConf);
 
-  if (api.prompts.import_md !== undefined && api.prompts.import_md === true) {
+  if (api.prompts.import_md === true) {
     api.extendViteConf(() => {
       console.log(
         " App Extension (qmarkdown) Info: 'Adding markdown loader (*.md) to extendViteConf'",
@@ -67,14 +67,16 @@ export default defineIndexScript((api) => {
   }
 });
 
-function viteRawImporter(options) {
+const u2028re = /\u2028/g
+const u2029re = /\u2029/g
+function viteRawImporter({ fileRegex }) {
   return {
     name: "vite-raw-importer",
     transform(code, id) {
-      if (options.fileRegex && options.fileRegex.test(id)) {
+      if (fileRegex.test(id)) {
         const json = JSON.stringify(code)
-          .replace(/\u2028/g, "\\u2028")
-          .replace(/\u2029/g, "\\u2029");
+          .replace(u2028re, "\\u2028")
+          .replace(u2029re, "\\u2029");
 
         return {
           code: `export default ${json}`,
