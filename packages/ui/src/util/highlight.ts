@@ -1,4 +1,11 @@
-export default function prismHighlight(Prism, str, lang) {
+export default function prismHighlight(
+  Prism: {
+    languages: Record<string, any>;
+    highlight: (code: string, grammar: any, lang: string) => string;
+  },
+  str: string,
+  lang: string,
+): string {
   if (lang === "") {
     lang = "js"; // default language
   } else if (lang === "vue") {

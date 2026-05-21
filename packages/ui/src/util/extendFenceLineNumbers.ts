@@ -1,6 +1,6 @@
-export default function extendFenceLineNumbers(md, alt) {
+export default function extendFenceLineNumbers(md: any, alt?: string): void {
   const fence = md.renderer.rules.fence;
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args: any[]) => {
     const rawCode = fence(...args);
     const code = rawCode.slice(rawCode.indexOf("<code>") + 6, rawCode.indexOf("</code>"));
 

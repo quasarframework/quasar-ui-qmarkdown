@@ -1,11 +1,11 @@
-export default function normalizeSlotSource(source) {
+export default function normalizeSlotSource(source: string): string {
   const lines = source.replace(/\r\n?/g, "\n").split("\n");
 
-  while (lines.length > 0 && lines[0].trim().length === 0) {
+  while (lines.length > 0 && lines[0]?.trim().length === 0) {
     lines.shift();
   }
 
-  while (lines.length > 0 && lines[lines.length - 1].trim().length === 0) {
+  while (lines.length > 0 && lines[lines.length - 1]?.trim().length === 0) {
     lines.pop();
   }
 
@@ -13,11 +13,11 @@ export default function normalizeSlotSource(source) {
     return "";
   }
 
-  const indentedLines = lines.filter((line) => line.trim().length > 0);
-  let commonIndent = indentedLines[0].match(/^[\t ]*/)[0];
+  const indentedLines = lines.filter((line: string) => line.trim().length > 0);
+  let commonIndent = indentedLines[0]?.match(/^[\t ]*/)?.[0] || "";
 
   for (const line of indentedLines.slice(1)) {
-    const indent = line.match(/^[\t ]*/)[0];
+    const indent = line.match(/^[\t ]*/)?.[0] || "";
 
     while (commonIndent.length > 0 && indent.startsWith(commonIndent) === false) {
       commonIndent = commonIndent.slice(0, -1);

@@ -1,17 +1,19 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const typesFile = path.resolve(__dirname, "../dist/types/index.d.ts");
+const buildDir = path.dirname(fileURLToPath(import.meta.url));
+const typesFile = path.resolve(buildDir, "../dist/types/index.d.ts");
 const waitTimeout = 30000;
 const waitInterval = 100;
 
-function sleep(ms) {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
 
-async function waitForTypesFile() {
+async function waitForTypesFile(): Promise<void> {
   const start = Date.now();
 
   while (fs.existsSync(typesFile) !== true) {
@@ -23,8 +25,8 @@ async function waitForTypesFile() {
   }
 }
 
-function mergeTypeImports(code) {
-  return code.replace(/import \{ ([^}]+) \} from '\.\/types'/, (_match, imports) => {
+function mergeTypeImports(code: string): string {
+  return code.replace(/import \{ ([^}]+) \} from '\.\/types'/, (_match, imports: string) => {
     const names = new Set(imports.split(",").map((name) => name.trim()));
     names.add("TocDefinitionArray");
     names.add("VueStyleProp");
@@ -34,7 +36,7 @@ function mergeTypeImports(code) {
   });
 }
 
-async function patchTypes() {
+export async function patchTypes(): Promise<void> {
   await waitForTypesFile();
 
   let code = fs.readFileSync(typesFile, "utf8");
@@ -45,7 +47,6 @@ async function patchTypes() {
   );
 
   code = code.replace(/export interface TocDefinitionArray \{[\s\S]*?\n\}\n\n(?=import \{)/, "");
-
   code = mergeTypeImports(code);
 
   code = code.replace(
@@ -91,10 +92,8 @@ export default plugin
   fs.writeFileSync(typesFile, code);
 }
 
-module.exports = { patchTypes };
-
-if (require.main === module) {
-  patchTypes().catch((err) => {
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
+  patchTypes().catch((err: unknown) => {
     console.error(err);
     process.exit(1);
   });

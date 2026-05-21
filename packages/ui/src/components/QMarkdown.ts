@@ -1,7 +1,10 @@
 import { computed, defineComponent, h, ref, reactive, watch } from "vue";
+import type { PluginSimple, PluginWithOptions } from "markdown-it";
 
 import markdownIt from "markdown-it";
 
+// markdown-it-imsize does not publish declarations for its built file.
+// @ts-ignore
 import imsize from "markdown-it-imsize/dist/markdown-it-imsize.js";
 
 import Prism from "prismjs";
@@ -16,17 +19,20 @@ import extendTable from "../util/extendTable.js";
 import extendToken from "../util/extendToken.js";
 import extendFenceLineNumbers from "../util/extendFenceLineNumbers.js";
 import makeTreeUtil from "../util/makeTree.js";
+import type { TocNode } from "../util/makeTree.js";
 import normalizeSlotSource from "../util/normalizeSlotSource.js";
 
 import { QBtn, QTooltip, copyToClipboard, useQuasar } from "quasar";
 
 // QMarkdown global properties
-const globalProps = reactive({});
+const globalProps = reactive<Record<string, any>>({});
 
-export function getMarkdownCopyText(element) {
+export function getMarkdownCopyText(element: HTMLElement | null | undefined): string {
   if (!element) return "";
 
-  const lineNumberElements = [...element.querySelectorAll(".q-markdown--line-numbers")];
+  const lineNumberElements = Array.from(
+    element.querySelectorAll<HTMLElement>(".q-markdown--line-numbers"),
+  );
   const previousDisplayValues = lineNumberElements.map((lineNumbers) => lineNumbers.style.display);
 
   lineNumberElements.forEach((lineNumbers) => {
@@ -43,7 +49,7 @@ export function getMarkdownCopyText(element) {
 }
 
 // Composition function to set global properties
-export function useQMarkdownGlobalProps(props) {
+export function useQMarkdownGlobalProps(props: Record<string, any>): void {
   // remove existing data
   for (const key in globalProps) {
     delete globalProps[key];
@@ -89,19 +95,19 @@ export default defineComponent({
     // alternative character to use instead of line numbers
     lineNumberAlt: {
       type: String,
-      validator: (v) => v.length === 1,
+      validator: (v: string) => v.length === 1,
     },
     // set to true to enable Table of Contents (sent via emit)
     toc: Boolean,
     tocStart: {
       type: Number,
       default: 1,
-      validator: (v) => v >= 1 && v <= 6,
+      validator: (v: number) => v >= 1 && v <= 6,
     },
     tocEnd: {
       type: Number,
       default: 3,
-      validator: (v) => v >= 1 && v <= 6,
+      validator: (v: number) => v >= 1 && v <= 6,
     },
 
     contentStyle: [Object, Array, String],
@@ -136,10 +142,10 @@ export default defineComponent({
 
   setup(props, { slots, emit, expose }) {
     const $q = useQuasar();
-    const rendered = ref(null),
-      markdownRef = ref(null);
+    const rendered = ref<string | null>(null),
+      markdownRef = ref<HTMLElement | null>(null);
 
-    const allProps = computed(() => {
+    const allProps = computed<Record<string, any>>(() => {
       return { ...props, ...globalProps };
     });
 
@@ -203,16 +209,16 @@ export default defineComponent({
       },
     );
 
-    function __isEnabled(val) {
+    function __isEnabled(val: unknown): boolean {
       return val === void 0 || val === false;
     }
 
-    function makeTree(list) {
+    function makeTree(list: TocNode[]): TocNode[] {
       return makeTreeUtil(list, allProps.value.tocStart);
     }
 
     function __copyMarkdownToClipboard() {
-      copyToClipboard(getMarkdownCopyText(markdownRef.value));
+      copyToClipboard(getMarkdownCopyText(markdownRef.value as HTMLElement | null));
 
       if ($q.notify) {
         $q.notify({
@@ -250,11 +256,11 @@ export default defineComponent({
 
     function __renderMarkdown() {
       if (rendered.value === null) {
-        const tocData = [];
+        const tocData: TocNode[] = [];
 
         // get the markdown - slot overrides 'src'
         const markdown = rawSource.value || "";
-        const highlight = (str, lang) => {
+        const highlight = (str: string, lang: string): string => {
           if (__isEnabled(allProps.value.noHighlight)) {
             return prismHighlight(Prism, str, lang);
           }
@@ -315,12 +321,16 @@ export default defineComponent({
         }
 
         if (allProps.value.plugins.length > 0) {
-          allProps.value.plugins.forEach((plugin) => {
-            if (plugin instanceof Function) {
-              md.use(plugin);
+          allProps.value.plugins.forEach((plugin: unknown) => {
+            if (typeof plugin === "function") {
+              md.use(plugin as PluginSimple);
             } else {
-              if (plugin.plugin instanceof Function && plugin.options) {
-                md.use(plugin.plugin, plugin.options);
+              const pluginConfig = plugin as {
+                plugin?: PluginWithOptions;
+                options?: unknown;
+              };
+              if (typeof pluginConfig.plugin === "function" && pluginConfig.options) {
+                md.use(pluginConfig.plugin, pluginConfig.options);
               }
             }
           });

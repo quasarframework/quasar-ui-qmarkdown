@@ -1,5 +1,5 @@
-export default function extendImage(md) {
-  md.renderer.rules.image = (tokens, idx, options, env, self) => {
+export default function extendImage(md: any): void {
+  md.renderer.rules.image = (tokens: any[], idx: number, options: any, env: any, self: any) => {
     const token = tokens[idx];
 
     token.attrSet("class", "q-markdown--image");

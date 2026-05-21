@@ -8,11 +8,11 @@
 
 import { defineIndexScript } from "@quasar/app-vite";
 
-function extendConf(conf) {
+function extendConf(conf: any): any {
   const originalIsPreTag = conf.build?.viteVuePluginOptions?.template?.compilerOptions?.isPreTag;
 
   return {
-    boot: ["~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.js"],
+    boot: ["~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.ts"],
 
     css: ["~@quasar/quasar-ui-qmarkdown/src/index.scss"],
 
@@ -24,7 +24,7 @@ function extendConf(conf) {
       viteVuePluginOptions: {
         template: {
           compilerOptions: {
-            isPreTag: (tag) =>
+            isPreTag: (tag: string) =>
               tag === "pre" ||
               tag === "q-markdown" ||
               tag === "QMarkdown" ||
@@ -42,7 +42,7 @@ export default defineIndexScript((api) => {
   // package or a minimum version of "@quasar/app" CLI
   api.compatibleWith("quasar", "^2.0.0");
 
-  api.compatibleWith("@quasar/app-vite", ">=3.0.0-beta.18");
+  api.compatibleWith("@quasar/app-vite", ">=3.0.0-beta.19");
 
   // Uncomment the line below if you provide a JSON API for your component
   api.registerDescribeApi("QMarkdown", "~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json");
@@ -67,16 +67,14 @@ export default defineIndexScript((api) => {
   }
 });
 
-const u2028re = /\u2028/g
-const u2029re = /\u2029/g
-function viteRawImporter({ fileRegex }) {
+const u2028re = /\u2028/g;
+const u2029re = /\u2029/g;
+function viteRawImporter({ fileRegex }: { fileRegex: RegExp }) {
   return {
     name: "vite-raw-importer",
-    transform(code, id) {
+    transform(code: string, id: string) {
       if (fileRegex.test(id)) {
-        const json = JSON.stringify(code)
-          .replace(u2028re, "\\u2028")
-          .replace(u2029re, "\\u2029");
+        const json = JSON.stringify(code).replace(u2028re, "\\u2028").replace(u2029re, "\\u2029");
 
         return {
           code: `export default ${json}`,

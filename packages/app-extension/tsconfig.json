@@ -1,8 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": false,
     "esModuleInterop": true,
     "lib": ["es2022", "dom"],
     "module": "preserve",

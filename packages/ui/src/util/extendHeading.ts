@@ -2,7 +2,14 @@ import slugify from "./slugify";
 
 const headingIdsKey = "__qMarkdownHeadingIds";
 
-function unemoji(TokenConstructor, token) {
+interface TocEntry {
+  children: TocEntry[];
+  id: string;
+  label: string;
+  level: number;
+}
+
+function unemoji(TokenConstructor: any, token: any): any {
   if (token.type === "emoji") {
     return Object.assign(new TokenConstructor(), token, { content: token.markup });
   }
@@ -10,15 +17,15 @@ function unemoji(TokenConstructor, token) {
 }
 
 export default function extendHeading(
-  md,
-  tocData = [],
+  md: any,
+  tocData: TocEntry[] = [],
   toc = false,
   tocStart = 1,
   tocEnd = 3,
   noHeadingAnchorLinks = false,
-) {
-  let Token;
-  md.core.ruler.push("headingLinks", function (state) {
+): void {
+  let Token: any;
+  md.core.ruler.push("headingLinks", function (state: any) {
     // save the Token constructor because we'll be building a few instances at render
     // time; that's sort of outside the intended markdown-it parsing sequence, but
     // since we have tight control over what we're creating (a link), we're safe
@@ -28,7 +35,13 @@ export default function extendHeading(
     state.env[headingIdsKey] = Object.create(null);
   });
 
-  md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
+  md.renderer.rules.heading_open = (
+    tokens: any[],
+    idx: number,
+    options: any,
+    env: Record<string, any>,
+    self: any,
+  ) => {
     const token = tokens[idx];
 
     // get the token number
@@ -36,7 +49,7 @@ export default function extendHeading(
 
     const children = tokens[idx + 1].children;
 
-    const label = children.reduce((acc, t) => acc + t.content, "");
+    const label = children.reduce((acc: string, t: any) => acc + t.content, "");
 
     const classes = [];
     classes.push("q-markdown--heading");

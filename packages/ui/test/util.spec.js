@@ -39,7 +39,7 @@ function getRange(from, to) {
 
 function getValidatorValues(source, propName) {
   const propBlock = source.match(new RegExp(`^ {4}${propName}: \\{([\\s\\S]*?)^ {4}\\},`, "m"));
-  const validator = propBlock?.[1].match(/validator: \(v\) => v >= (\d+) && v <= (\d+)/);
+  const validator = propBlock?.[1].match(/validator: \(v(?:: \w+)?\) => v >= (\d+) && v <= (\d+)/);
 
   return validator === undefined || validator === null
     ? []
@@ -160,7 +160,7 @@ describe("makeTree", () => {
 
 describe("QMarkdown API JSON", () => {
   it("documents the runtime props, events, slots and exposed methods", () => {
-    const source = readPackageFile("src/components/QMarkdown.js");
+    const source = readPackageFile("src/components/QMarkdown.ts");
     const api = JSON.parse(readPackageFile("src/components/QMarkdown.json"));
 
     const propsBlock = source.match(/props:\s*\{([\s\S]*?)\n\s{2}\},\n\n\s{2}emits:/);
@@ -189,7 +189,7 @@ describe("QMarkdown API JSON", () => {
   });
 
   it("documents runtime validator ranges for numeric props", () => {
-    const source = readPackageFile("src/components/QMarkdown.js");
+    const source = readPackageFile("src/components/QMarkdown.ts");
     const api = JSON.parse(readPackageFile("src/components/QMarkdown.json"));
 
     expect(api.props["toc-start"].values).toEqual(getValidatorValues(source, "tocStart"));

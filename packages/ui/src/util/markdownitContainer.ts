@@ -1,12 +1,12 @@
 // Process block-level custom containers
 //
 
-export default function containerPlugin(md, name, options) {
-  function validateDefault(params) {
+export default function containerPlugin(md: any, name: string, options?: any): void {
+  function validateDefault(params: string): boolean {
     return params.trim().split(" ", 2)[0] === name;
   }
 
-  function renderDefault(tokens, idx, _options, env, self) {
+  function renderDefault(tokens: any[], idx: number, _options: any, env: any, self: any): string {
     // add a class to the opening tag
     if (tokens[idx].nesting === 1) {
       tokens[idx].attrPush(["class", name]);
@@ -24,7 +24,7 @@ export default function containerPlugin(md, name, options) {
     validate = options.validate || validateDefault,
     render = options.render || renderDefault;
 
-  function container(state, startLine, endLine, silent) {
+  function container(state: any, startLine: number, endLine: number, silent: boolean): boolean {
     let pos,
       nextLine,
       token,

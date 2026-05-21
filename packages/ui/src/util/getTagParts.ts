@@ -1,4 +1,10 @@
-const getTemplate = (html) => {
+export interface QMarkdownTagParts {
+  script?: string;
+  style?: string;
+  template?: string;
+}
+
+const getTemplate = (html?: string): string => {
   let content = "";
   if (html && html.length > 0) {
     const start = "<template",
@@ -15,7 +21,7 @@ const getTemplate = (html) => {
   return content;
 };
 
-export default function (html) {
+export default function getTagParts(html = ""): QMarkdownTagParts {
   const canUseDOM = !!(
     typeof window !== "undefined" &&
     window.document &&
@@ -25,7 +31,7 @@ export default function (html) {
     return {};
   }
 
-  const results = {};
+  const results: QMarkdownTagParts = {};
   let tag;
 
   // we'll use document to separate out of the sections,
@@ -40,12 +46,14 @@ export default function (html) {
   const el = document.createElement("html");
   el.innerHTML = html;
   tag = el.getElementsByTagName("script");
-  if (tag.length > 0) {
-    results.script = tag[0].outerHTML;
+  const script = tag[0];
+  if (script !== undefined) {
+    results.script = script.outerHTML;
   }
   tag = el.getElementsByTagName("style");
-  if (tag.length > 0) {
-    results.style = tag[0].outerHTML;
+  const style = tag[0];
+  if (style !== undefined) {
+    results.style = style.outerHTML;
   }
   return results;
 }

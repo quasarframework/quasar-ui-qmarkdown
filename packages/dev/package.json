@@ -20,13 +20,13 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-beta.18",
+    "@quasar/app-vite": "3.0.0-beta.19",
     "@types/node": "^25.8.0",
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "^10.5.0",
     "sass-embedded": "^1.99.0",
     "typescript": "~5.9.3",
     "vite-plugin-checker": "^0.13.0",
-    "vue-tsc": "^3.3.0"
+    "vue-tsc": "^3.3.1"
   },
   "engines": {
     "node": ">=22.13",

@@ -40,7 +40,7 @@
     "@md-plugins/shared": "0.1.0-beta.4",
     "@md-plugins/vite-examples-plugin": "0.1.0-beta.4",
     "@md-plugins/vite-md-plugin": "0.1.0-beta.4",
-    "@quasar/app-vite": "3.0.0-beta.18",
+    "@quasar/app-vite": "3.0.0-beta.19",
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.9.0",
@@ -49,7 +49,7 @@
     "sass-embedded": "^1.99.0",
     "typescript": "~5.9.3",
     "vite-plugin-checker": "^0.13.0",
-    "vue-tsc": "^3.3.0"
+    "vue-tsc": "^3.3.1"
   },
   "engines": {
     "node": ">=22.13",
