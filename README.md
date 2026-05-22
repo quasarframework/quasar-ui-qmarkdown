@@ -3,6 +3,7 @@ QMarkdown (Vue Plugin, UMD and Quasar App Extension)
 
 ![@quasar/quasar-ui-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/beta?label=@quasar/quasar-ui-qmarkdown)
 ![@quasar/quasar-app-extension-qmarkdown](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown/beta?label=@quasar/quasar-app-extension-qmarkdown)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9266ee97-9f86-44ef-b471-79d4c289ce66/deploy-status)](https://app.netlify.com/projects/qmarkdown/deploys)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/quasarframework/quasar-ui-qmarkdown.svg)]()
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/quasar-ui-qmarkdown)]()
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
