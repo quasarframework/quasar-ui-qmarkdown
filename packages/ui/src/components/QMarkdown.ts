@@ -3,8 +3,6 @@ import type { PluginSimple, PluginWithOptions } from "markdown-it";
 
 import markdownIt from "markdown-it";
 
-// markdown-it-imsize does not publish declarations for its built file.
-// @ts-ignore
 import imsize from "markdown-it-imsize/dist/markdown-it-imsize.js";
 
 import Prism from "prismjs";

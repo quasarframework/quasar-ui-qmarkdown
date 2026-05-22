@@ -1,6 +1,5 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <!-- prettier-ignore -->
     <q-markdown>
 # Hello world!
 This is a markdown file.

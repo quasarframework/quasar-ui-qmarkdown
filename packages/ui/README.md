@@ -2,7 +2,7 @@
 
 Display inline markdown in your Quasar App
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/next?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/beta?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)

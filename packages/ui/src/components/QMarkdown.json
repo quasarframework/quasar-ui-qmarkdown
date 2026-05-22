@@ -1,6 +1,6 @@
 {
   "meta": {
-    "docsUrl": "https://quasarframework.github.io/quasar-ui-qmarkdown/docs"
+    "docsUrl": "https://qmarkdown.netlify.app/developing/using-qmarkdown"
   },
   "props": {
     "src": {
