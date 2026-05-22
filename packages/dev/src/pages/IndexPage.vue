@@ -1,10 +1,14 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-markdown>
-# Hello world!
+    <q-markdown :src="markdown" />
+  </q-page>
+</template>
+
+<script setup lang="ts">
+const markdown = String.raw`# Hello world!
 This is a markdown file.
 
-```ts [numbered rem=2 add=4,6-7 highlight=11] Title
+\`\`\`ts [numbered rem=2 add=4,6-7 highlight=11] Title
 export default function (ctx) { // can be async too
   console.log(ctx)
 
@@ -14,23 +18,23 @@ export default function (ctx) { // can be async too
     prod: false
   }
 
-  const foo = import.meta.env.QCLI_FOO // ✅ App envs are exposed through import.meta.env
+  const foo = import.meta.env.QCLI_FOO // App envs are exposed through import.meta.env
 
   // context gets generated based on the parameters
   // with which you run "quasar dev" or "quasar build"
 }
-```
+\`\`\`
 
-```json [rem=1] Title 2
+\`\`\`json [rem=1] Title 2
 {
   "min": 0,
   "super": false, [[! rem]]
   "super": true, [[! add]]
   "max": 100
 }
-```
+\`\`\`
 
-```diff
+\`\`\`diff
 @@ -13,6 +13,8 @@ const langList = [
    { name: 'xml' },
    { name: 'nginx' },
@@ -50,9 +54,5 @@ export default function (ctx) { // can be async too
 + *    * numbered - lines are numbered
 + * title -> optional card title
 + */
-```
-    </q-markdown>
-  </q-page>
-</template>
-
-<script setup lang="ts"></script>
+\`\`\``;
+</script>
