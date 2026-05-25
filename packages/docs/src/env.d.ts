@@ -5,6 +5,7 @@ declare module "markdown-it-abbr";
 declare module "markdown-it-deflist";
 declare module "markdown-it-emoji";
 declare module "markdown-it-footnote";
+declare module "markdown-it-imsize/dist/markdown-it-imsize.js";
 declare module "markdown-it-ins";
 declare module "markdown-it-mark";
 declare module "markdown-it-sub";

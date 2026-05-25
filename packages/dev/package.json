@@ -20,8 +20,8 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-beta.20",
-    "@types/node": "^25.8.0",
+    "@quasar/app-vite": "3.0.0-beta.27",
+    "@types/node": "^25.9.1",
     "autoprefixer": "^10.5.0",
     "sass-embedded": "^1.99.0",
     "typescript": "~5.9.3",
@@ -30,7 +30,7 @@
   },
   "engines": {
     "node": ">=22.13",
-    "pnpm": ">=11.1.0"
+    "pnpm": ">=11.3.0"
   },
   "productName": "Quasar App"
 }
