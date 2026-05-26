@@ -65,7 +65,7 @@ Add Markdown to the window on the left and the output will appear on the right.`
 
 import abbreviation from "markdown-it-abbr";
 import deflist from "markdown-it-deflist";
-import emoji from "markdown-it-emoji";
+import { full as emoji } from "markdown-it-emoji";
 import footnote from "markdown-it-footnote";
 import insert from "markdown-it-ins";
 import mark from "markdown-it-mark";

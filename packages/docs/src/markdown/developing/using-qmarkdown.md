@@ -134,7 +134,7 @@ Here is a list of plugins that used to be in QMarkdown v1.x:
 ```
 import abbreviation from 'markdown-it-abbr'
 import deflist from 'markdown-it-deflist'
-import emoji from 'markdown-it-emoji'
+import { full as emoji } from 'markdown-it-emoji'
 import footnote from 'markdown-it-footnote'
 import insert from 'markdown-it-ins'
 import mark from 'markdown-it-mark'

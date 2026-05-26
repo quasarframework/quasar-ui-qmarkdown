@@ -26,9 +26,9 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.7",
     "@vue/server-renderer": "^3.5.34",
-    "oxfmt": "^0.51.0",
-    "oxlint": "^1.66.0",
-    "sass-embedded": "^1.99.0",
+    "oxfmt": "^0.52.0",
+    "oxlint": "^1.67.0",
+    "sass-embedded": "^1.100.0",
     "vitest": "^4.1.7"
   },
   "engines": {
