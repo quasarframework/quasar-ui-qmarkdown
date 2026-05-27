@@ -57,6 +57,7 @@ Last Updated: 2026-05-19
 - [ ] Remove remaining Prettier configs/dependencies in favor of `oxfmt`
 - [ ] Convert remaining legacy `.sass` files to `.scss`
 - [ ] Review the UI build system for parity with newer shared practices
+- [x] Remove CJS output from the v3 UI package and publish an ESM-only package surface
 - [ ] Review build-step ordering and failure propagation for determinism
 - [ ] Review package entrypoint semantics at the root package surface
 - [ ] Decide CI policy for API drift warnings vs failures
