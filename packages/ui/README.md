@@ -23,10 +23,15 @@ Install the [App Extension](../app-extension).
 Install
 
 ```bash
-pnpm add @quasar/quasar-ui-qmarkdown
-# yarn add @quasar/quasar-ui-qmarkdown
-# npm install @quasar/quasar-ui-qmarkdown
-# bun add @quasar/quasar-ui-qmarkdown
+pnpm add @quasar/quasar-ui-qmarkdown@beta
+# or
+bun add @quasar/quasar-ui-qmarkdown@beta
+# or
+yarn add @quasar/quasar-ui-qmarkdown@beta
+# or
+npm install @quasar/quasar-ui-qmarkdown@beta
+# or, in a Quasar CLI app
+quasar ext add @quasar/qmarkdown@beta
 ```
 
 and create and register a boot file:
