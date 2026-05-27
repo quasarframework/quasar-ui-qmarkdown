@@ -26,11 +26,11 @@
     "type": "github",
     "url": "https://github.com/sponsors/hawkeye64"
   },
-  "type": "module",
   "files": [
     "dist",
     "src"
   ],
+  "type": "module",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "types": "dist/types/index.d.ts",
@@ -72,7 +72,7 @@
     "build:api": "tsx build/build.api.ts && tsx build/script.types.ts",
     "build:app-ext": "tsx build/script.app-ext.ts",
     "build:types": "pnpm exec tsc --project tsconfig.json",
-    "typecheck": "pnpm build:api && tsc -p test-d/tsconfig.json --noEmit --pretty false",
+    "typecheck": "pnpm build:api && tsc -p tsconfig.json --noEmit --pretty false && tsc -p test-d/tsconfig.json --noEmit --pretty false",
     "test:types": "pnpm build && pnpm build:types && pnpm typecheck",
     "release": "pnpm publish --tag beta"
   },
