@@ -14,7 +14,7 @@ export default defineConfig(async (ctx) => {
 
     css: ["app.scss"],
 
-    extras: ["fontawesome-v6", "roboto-font", "material-icons"],
+    extras: ["fontawesome-v7", "roboto-font", "material-icons"],
 
     build: {
       target: {

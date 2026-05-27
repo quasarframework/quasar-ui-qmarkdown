@@ -10,8 +10,6 @@ related:
 ---
 
 ::: warning
-Please note that the codepen links, in the documentation examples, do not work at this time.
-
 And, if you're looking to help out, check out our [Call to action](/other/contributing/call-to-action) in the **Contributing** section.
 :::
 

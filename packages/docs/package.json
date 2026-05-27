@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@quasar/extras": "^1.18.0",
+    "@quasar/extras": "2.0.0-beta.1",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.1",
@@ -36,11 +36,11 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@md-plugins/quasar-app-extension-q-press": "0.1.0-beta.9",
-    "@md-plugins/shared": "0.1.0-beta.9",
-    "@md-plugins/vite-examples-plugin": "0.1.0-beta.9",
-    "@md-plugins/vite-md-plugin": "0.1.0-beta.9",
-    "@quasar/app-vite": "3.0.0-beta.29",
+    "@md-plugins/quasar-app-extension-q-press": "0.1.0-beta.12",
+    "@md-plugins/shared": "0.1.0-beta.12",
+    "@md-plugins/vite-examples-plugin": "0.1.0-beta.12",
+    "@md-plugins/vite-md-plugin": "0.1.0-beta.12",
+    "@quasar/app-vite": "3.0.0-beta.30",
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.9.1",

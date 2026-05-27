@@ -87,43 +87,43 @@ In this case, the `markdown-it-mermaid` will be made available to all QMarkdown 
 QMarkdown has a number of built-in processors to handle inline markdown. These are listed below:
 
 ### Blockquotes
-<MarkdownExample title="Blockquotes" file="Blockquotes" no-github no-edit/>
+<MarkdownExample title="Blockquotes" file="Blockquotes"/>
 
 ### Code
-<MarkdownExample title="Code" file="Code" no-github no-edit/>
+<MarkdownExample title="Code" file="Code"/>
 
 ### Copy to clipboard
-<MarkdownExample title="CopyToClipboard" file="CopyToClipboard" no-github no-edit/>
+<MarkdownExample title="CopyToClipboard" file="CopyToClipboard"/>
 
 ### Containers
-<MarkdownExample title="Containers" file="Containers" no-github no-edit/>
+<MarkdownExample title="Containers" file="Containers"/>
 
 ### Emphasis
-<MarkdownExample title="Emphasis" file="Emphasis" no-github no-edit/>
+<MarkdownExample title="Emphasis" file="Emphasis"/>
 
 ### Heading
-<MarkdownExample title="Heading" file="Heading" no-github no-edit/>
+<MarkdownExample title="Heading" file="Heading"/>
 
 ### Horizontal rules
-<MarkdownExample title="HorizontalRules" file="HorizontalRules" no-github no-edit/>
+<MarkdownExample title="HorizontalRules" file="HorizontalRules"/>
 
 ### Images
-<MarkdownExample title="Images" file="Images" no-github no-edit/>
+<MarkdownExample title="Images" file="Images"/>
 
 ### Links
-<MarkdownExample title="Links" file="Links" no-github no-edit/>
+<MarkdownExample title="Links" file="Links"/>
 
 ### Lists
-<MarkdownExample title="Lists" file="Lists" no-github no-edit/>
+<MarkdownExample title="Lists" file="Lists"/>
 
 ### Tables
-<MarkdownExample title="Tables" file="Tables" no-github no-edit/>
+<MarkdownExample title="Tables" file="Tables"/>
 
 ### Titles
-<MarkdownExample title="Titles" file="Titles" no-github no-edit/>
+<MarkdownExample title="Titles" file="Titles"/>
 
 ### Typography
-<MarkdownExample title="Typography" file="Typography" no-github no-edit/>
+<MarkdownExample title="Typography" file="Typography"/>
 
 ## Extending with Plugins
 
@@ -146,33 +146,33 @@ import taskLists from 'markdown-it-task-lists'
 The rest of the plugins are custom with QMarkdown or deemed necessary (like the one to handle images).
 
 ### Abbreviations
-<MarkdownExample title="Abbreviations" file="Abbreviations" no-github no-edit/>
+<MarkdownExample title="Abbreviations" file="Abbreviations" no-edit/>
 
 ### Definition lists
-<MarkdownExample title="DefinitionLists" file="DefinitionLists" no-github no-edit/>
+<MarkdownExample title="DefinitionLists" file="DefinitionLists" no-edit/>
 
 ### Emojies
-<MarkdownExample title="Emojies" file="Emojies" no-github no-edit/>
+<MarkdownExample title="Emojies" file="Emojies" no-edit/>
 
 ### Footnotes
-<MarkdownExample title="Footnotes" file="Footnotes" no-github no-edit/>
+<MarkdownExample title="Footnotes" file="Footnotes" no-edit/>
 
 ### Insert
-<MarkdownExample title="Insert" file="Insert" no-github no-edit/>
+<MarkdownExample title="Insert" file="Insert" no-edit/>
 
 ### Mark
-<MarkdownExample title="Mark" file="Mark" no-github no-edit/>
+<MarkdownExample title="Mark" file="Mark" no-edit/>
 
 ### Subscript/superscript
-<MarkdownExample title="SubscriptSuperscript" file="SubscriptSuperscript" no-github no-edit/>
+<MarkdownExample title="SubscriptSuperscript" file="SubscriptSuperscript" no-edit/>
 
 ### Task lists
-<MarkdownExample title="TaskLists" file="TaskLists" no-github no-edit/>
+<MarkdownExample title="TaskLists" file="TaskLists" no-edit/>
 
 ### Mermaid
-<MarkdownExample title="Mermaid" file="Mermaid" no-github no-edit/>
+<MarkdownExample title="Mermaid" file="Mermaid" no-edit/>
 
 ## Advanced
 
 ### Editor
-<MarkdownExample title="Editor" file="Editor" no-github no-edit/>
+<MarkdownExample title="Editor" file="Editor" no-edit/>

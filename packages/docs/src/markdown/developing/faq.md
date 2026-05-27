@@ -139,10 +139,6 @@ quasar describe QMarkdown
 
 ## Troubleshooting
 
-### Why does the docs page mention CodePen links not working?
-
-Some older documentation examples still reference CodePen links that have not been restored for the current docs site. The inline examples on the QMarkdown docs site are the source of truth while those links are being cleaned up.
-
 ### Where should I report bugs or ask questions?
 
 Use [GitHub Issues](https://github.com/quasarframework/quasar-ui-qmarkdown/issues) for bugs and feature requests. Use [GitHub Discussions](https://github.com/quasarframework/quasar-ui-qmarkdown/discussions) for broader questions, RFCs, or implementation discussion.

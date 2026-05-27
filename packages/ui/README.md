@@ -111,7 +111,7 @@ If you need the RTL variant of the CSS, then go for the following (instead of th
 <link href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown/dist/index.rtl.min.css" rel="stylesheet" type="text/css" />
 ```
 
-Test UMD version on [CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV).
+The docs examples include CodePen buttons for quick UMD playground testing.
 
 # Setup
 

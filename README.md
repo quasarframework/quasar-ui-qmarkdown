@@ -26,7 +26,7 @@ The repo is now organized as a pnpm workspace under `packages/`.
 * [live docs](https://qmarkdown.netlify.app/) - live docs, demo and examples
 
 # Testing
-* [CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV)
+* Use the CodePen buttons in the [live docs](https://qmarkdown.netlify.app/) examples.
 
 # Donate
 If you appreciate the work that went into this project, please consider donating to [Quasar](https://donate.quasar.dev) or [Jeff](https://github.com/sponsors/hawkeye64).

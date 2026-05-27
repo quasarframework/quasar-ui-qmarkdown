@@ -1,4 +1,4 @@
-import { fabGithub, fabXTwitter } from "@quasar/extras/fontawesome-v6";
+import { fabGithub, fabXTwitter } from "@quasar/extras/fontawesome-v7";
 import { slugify } from "@md-plugins/shared";
 import type { MenuItem } from "@md-plugins/vite-md-plugin";
 import { version } from "../../../ui/package.json";
@@ -73,6 +73,21 @@ export interface PrivacyConfig {
   link: string;
 }
 
+export interface CodepenGlobalPackage {
+  packageName: string;
+  globalName: string;
+}
+
+export interface CodepenConfig {
+  head?: string;
+  cssExternal?: string[];
+  jsExternal?: string[];
+  jsPreProcessor?: string;
+  titleSuffix?: string;
+  jsSetup?: string;
+  globalPackages?: CodepenGlobalPackage[];
+}
+
 export interface SiteConfig {
   lang: string;
   title: string;
@@ -81,6 +96,8 @@ export interface SiteConfig {
   version: string;
   copyright: CopyrightConfig;
   githubEditRootSrc: string;
+  githubSourceRootSrc?: string;
+  codepen?: CodepenConfig;
   license: LicenseConfig;
   privacy: PrivacyConfig;
   logoConfig: LogoConfig;
@@ -200,6 +217,24 @@ const config: SiteConfig = {
     line2: "",
   },
   githubEditRootSrc: `https://github.com/quasarframework/quasar-ui-qmarkdown/edit/${repoBranch}/packages/docs/src`,
+  githubSourceRootSrc: `https://github.com/quasarframework/quasar-ui-qmarkdown/tree/${repoBranch}/packages/docs/src`,
+  codepen: {
+    cssExternal: [
+      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.min.css`,
+    ],
+    jsExternal: [
+      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.umd.min.js`,
+    ],
+    jsPreProcessor: "typescript",
+    titleSuffix: `QMarkdown v${version}`,
+    globalPackages: [
+      {
+        packageName: "@quasar/quasar-ui-qmarkdown",
+        globalName: "(globalThis as any).QMarkdown",
+      },
+    ],
+    jsSetup: 'app.component("QMarkdown", (globalThis as any).QMarkdown.QMarkdown)',
+  },
   license: {
     label: "MIT License",
     link: `https://github.com/quasarframework/quasar-ui-qmarkdown/blob/${repoBranch}/LICENSE.md`,

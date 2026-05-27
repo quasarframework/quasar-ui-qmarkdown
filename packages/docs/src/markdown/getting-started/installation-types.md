@@ -186,10 +186,10 @@ app.component("QMarkdown", QMarkdown.QMarkdown);
 app.mount("#app");
 ```
 
-## Testing On CodePen
+## Testing on CodePen
 
-[QMarkdown UMD Example on CodePen](https://codepen.io/Hawkeye64/pen/PojXVmV)
+Most examples in these docs include a CodePen button so you can open a live playground with the same component code.
 
 ## Project Source
 
-Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev).
+Can be found [here](https://github.com/quasarframework/quasar-ui-qmarkdown/tree/v3-beta).
