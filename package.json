@@ -17,7 +17,7 @@
     "coverage": "vitest run --coverage",
     "test:types": "pnpm --filter @quasar/quasar-ui-qmarkdown test:types",
     "typecheck": "pnpm --filter @quasar/quasar-ui-qmarkdown typecheck",
-    "deep": "ncu --deep",
+    "deep": "ncu --configFilePath . --packageFile '{package.json,packages/*/package.json}'",
     "lint": "oxlint --ignore-path .oxlintignore",
     "lint:fix": "oxlint --ignore-path .oxlintignore --fix",
     "format": "oxfmt",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.7",
     "@vue/server-renderer": "^3.5.34",
+    "npm-check-updates": "^22.2.1",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
     "sass-embedded": "^1.100.0",
