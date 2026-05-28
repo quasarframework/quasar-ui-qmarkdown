@@ -4,6 +4,7 @@ desc: How to install QMarkdown
 keys: Getting Started
 related:
   - /getting-started/introduction
+  - /other/upgrade-guide
   - /other/contributing/bugs-and-feature-requests
   - /other/contributing/sponsor
 ---
@@ -29,6 +30,8 @@ quasar ext add @quasar/qmarkdown@beta
 ```
 
 The QMarkdown v3 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` v3 beta. It does not support webpack-based Quasar applications.
+
+If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) before changing packages.
 
 During install, the App Extension asks whether you want to import markdown (`*.md`) files. The default answer is `true`. When enabled, QMarkdown adds a Vite raw importer so this works:
 
@@ -96,23 +99,18 @@ You can import from source when you need to transpile/customize the package in y
 
 ```js
 import { defineBoot } from "#q-app";
-import Plugin from "@quasar/quasar-ui-qmarkdown/src/index.js";
+import Plugin from "@quasar/quasar-ui-qmarkdown/src/index";
 
 export default defineBoot(({ app }) => {
   app.use(Plugin);
 });
 ```
 
-Then add the source stylesheet to `quasar.config.*`:
+Then add the source stylesheet to `quasar.config.*`. Quasar CLI Vite 3 transpiles dependency source automatically, so no `transpileDependencies` entry is needed.
 
 ```js
 // Note: using ~ tells Quasar the file resides in node_modules
-css: ["app.scss", "~@quasar/quasar-ui-qmarkdown/src/index.scss"],
-
-build: {
-  transpile: true,
-  transpileDependencies: [/quasar-ui-qmarkdown[\\/]src/],
-}
+css: ["app.scss", "~@quasar/quasar-ui-qmarkdown/src/index.scss"];
 ```
 
 ## Vue 3 Or Vite

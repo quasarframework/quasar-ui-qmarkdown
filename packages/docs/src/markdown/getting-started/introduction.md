@@ -13,6 +13,8 @@ related:
 And, if you're looking to help out, check out our [Call to action](/other/contributing/call-to-action) in the **Contributing** section.
 :::
 
+> If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) for QMarkdown v3.
+
 ## Everything you need for a complete solution
 
 QMarkdown allows you to write markdown via slotted content (or a `src` property). QMarkdown wraps the [markdown-it](https://github.com/markdown-it/markdown-it) package, which for the most part, follows the [commonmark](https://spec.commonmark.org/) specifications. It also has a lot of [plugins](https://www.npmjs.com/search?q=keywords%3Amarkdown-it%20plugin), or you can write your own, for extending QMarkdown.
