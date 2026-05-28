@@ -62,9 +62,35 @@ function rewriteRootRelativeUrls(content: string) {
 
 function indent(code: string, spaces = 2) {
   const padding = " ".repeat(spaces);
+  let isInsideTemplateLiteral = false;
+
   return code
     .split("\n")
-    .map((line) => (line.trim().length > 0 ? padding + line : line))
+    .map((line) => {
+      const shouldIndent = line.trim().length > 0 && isInsideTemplateLiteral === false;
+
+      for (let index = 0; index < line.length; index++) {
+        if (line[index] !== "`") {
+          continue;
+        }
+
+        let escapeCount = 0;
+
+        for (
+          let escapeIndex = index - 1;
+          escapeIndex >= 0 && line[escapeIndex] === "\\";
+          escapeIndex--
+        ) {
+          escapeCount++;
+        }
+
+        if (escapeCount % 2 === 0) {
+          isInsideTemplateLiteral = !isInsideTemplateLiteral;
+        }
+      }
+
+      return shouldIndent ? padding + line : line;
+    })
     .join("\n");
 }
 
