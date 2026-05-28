@@ -31,7 +31,7 @@ export default ssrMiddleware(({ app, resolve, render, serve }) => {
           // Should reach here only if no "catch-all" route
           // is defined in /src/routes
           res.status(404).send("404 | Page Not Found");
-        } else if (process.env.DEV) {
+        } else if (import.meta.env.QUASAR_DEV) {
           // well, we treat any other code as error;
           // if we're in dev mode, then we can use Quasar CLI
           // to display a nice error page that contains the stack

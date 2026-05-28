@@ -97,3 +97,5 @@ minimumReleaseAgeExclude:
   - rolldown@1.0.3
   - vite-plugin-checker@0.14.1
   - vue@3.5.35
+  - "@quasar/render-ssr-error@2.2.3"
+  - "@quasar/vite-plugin@1.12.0"

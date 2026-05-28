@@ -25,7 +25,7 @@ The app extension needs to be installed in order to import markdown (`*.md`) fil
 
 <script>
 import { defineComponent } from 'vue'
-import ContactUs from 'assets/contact-us.md'
+import ContactUs from '@/assets/contact-us.md'
 
 export default defineComponent({
   setup () {

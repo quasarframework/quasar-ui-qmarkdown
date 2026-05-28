@@ -89,7 +89,7 @@ Install the App Extension and answer `true` when prompted to enable importing ma
 Then keep markdown files in your source tree, such as `src/assets`, not in `public`:
 
 ```js
-import content from "assets/my-page.md";
+import content from "@/assets/my-page.md";
 ```
 
 ```html
