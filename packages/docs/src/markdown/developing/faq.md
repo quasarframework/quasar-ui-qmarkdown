@@ -11,7 +11,7 @@ This page collects common QMarkdown development questions. It is intended to gro
 
 ## Installation and setup
 
-### Should I install the App Extension or the UI package directly?
+:::details Q. Should I install the App Extension or the UI package directly?
 
 For Quasar CLI Vite apps, use the App Extension when possible:
 
@@ -29,11 +29,15 @@ The App Extension registers the boot file, adds the stylesheet, configures Vue t
 
 Install the UI package directly only when you want to register QMarkdown manually or use it outside the App Extension flow.
 
-### Does QMarkdown v3 support webpack-based Quasar apps?
+:::
+
+:::details Q. Does QMarkdown v3 support webpack-based Quasar apps?
 
 No. QMarkdown v3 targets Quasar CLI Vite 3 and requires `@quasar/app-vite` v3 beta. If your app still uses `@quasar/app-webpack`, migrate the app to Quasar CLI Vite before installing QMarkdown v3.
 
-### Do I need to import QMarkdown CSS myself?
+:::
+
+:::details Q. Do I need to import QMarkdown CSS myself?
 
 The App Extension adds the stylesheet for you.
 
@@ -43,9 +47,11 @@ If you install the UI package directly, import the stylesheet in your boot file 
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 ```
 
+:::
+
 ## Markdown content
 
-### Should I use `src` or slotted content?
+:::details Q. Should I use `src` or slotted content?
 
 Use `src` when the markdown is already available as a string, such as markdown imported from a file or fetched from an API.
 
@@ -61,7 +67,9 @@ Use the default slot when the markdown lives inline in the Vue template:
 
 If both are supplied, the slot content takes precedence.
 
-### Why does my slotted markdown render incorrectly?
+:::
+
+:::details Q. Why does my slotted markdown render incorrectly?
 
 Markdown is whitespace-sensitive. The App Extension configures Vue template handling so `q-markdown` content is preserved correctly.
 
@@ -82,7 +90,9 @@ build: {
 
 QMarkdown also removes common template indentation from slotted markdown so the content can be formatted naturally inside Vue files.
 
-### How do I import markdown files?
+:::
+
+:::details Q. How do I import markdown files?
 
 Install the App Extension and answer `true` when prompted to enable importing markdown files.
 
@@ -98,9 +108,11 @@ import content from "@/assets/my-page.md";
 
 The App Extension adds a Vite raw importer for `*.md` files when that prompt is enabled.
 
+:::
+
 ## Markdown features
 
-### How do I add markdown-it plugins?
+:::details Q. How do I add markdown-it plugins?
 
 Pass plugins directly to a QMarkdown instance or register them globally with `useQMarkdownGlobalProps`.
 
@@ -115,19 +127,25 @@ useQMarkdownGlobalProps({
 
 Global props belong in a boot file when you want every QMarkdown instance to share the same defaults.
 
-### Why are some markdown-it plugins not enabled by default?
+:::
+
+:::details Q. Why are some markdown-it plugins not enabled by default?
 
 QMarkdown v2+ removed several optional markdown-it plugins from the default runtime to reduce payload size and improve performance.
 
 If you need features such as abbreviations, definition lists, emoji, footnotes, insert, mark, subscript, superscript, or task lists, install and register the matching markdown-it plugin.
 
-### How do I customize syntax highlighting?
+:::
+
+:::details Q. How do I customize syntax highlighting?
 
 QMarkdown uses Prism for language highlighting. When Prism is available, you can access it through `window.Prism` and load additional Prism languages or plugins as needed.
 
 For examples, see [Using QMarkdown](/developing/using-qmarkdown).
 
-### How do I inspect the QMarkdown API?
+:::
+
+:::details Q. How do I inspect the QMarkdown API?
 
 The docs API table is generated from `QMarkdown.json` and shown on the [Using QMarkdown](/developing/using-qmarkdown) page.
 
@@ -137,8 +155,11 @@ If the App Extension is installed, you can also run:
 quasar describe QMarkdown
 ```
 
+:::
+
 ## Troubleshooting
 
-### Where should I report bugs or ask questions?
+:::details Q. Where should I report bugs or ask questions?
 
 Use [GitHub Issues](https://github.com/quasarframework/quasar-ui-qmarkdown/issues) for bugs and feature requests. Use [GitHub Discussions](https://github.com/quasarframework/quasar-ui-qmarkdown/discussions) for broader questions, RFCs, or implementation discussion.
+:::
