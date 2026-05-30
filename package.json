@@ -21,6 +21,7 @@
     "lint:fix": "oxlint --ignore-path .oxlintignore --fix",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
+    "check:all": "pnpm verify",
     "verify": "pnpm verify:fast && pnpm verify:build",
     "verify:fast": "pnpm format:check && pnpm lint && pnpm test",
     "verify:build": "pnpm build && pnpm typecheck"
