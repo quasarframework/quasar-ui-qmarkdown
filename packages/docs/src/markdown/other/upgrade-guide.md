@@ -83,8 +83,16 @@ export default defineBoot(({ app }) => {
 
 Compiled package imports are the recommended path:
 
-```ts
+```ts [twoslash]
 import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
+
+QMarkdown
+// ^?
+```
+
+Import the component stylesheet alongside the component:
+
+```ts
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 ```
 
