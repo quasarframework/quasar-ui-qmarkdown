@@ -77,6 +77,11 @@
       "category": "behavior",
       "desc": "Set to true if you want a TOC automatically generated"
     },
+    "inline": {
+      "type": "Boolean",
+      "category": "content",
+      "desc": "Render markdown as inline content with `markdown-it.renderInline()` and a `span` root. Useful when QMarkdown is used inside existing paragraph or text structure."
+    },
     "toc-start": {
       "type": "Number",
       "category": "behavior",

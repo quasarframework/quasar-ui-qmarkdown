@@ -97,6 +97,8 @@ export default defineComponent({
     },
     // set to true to enable Table of Contents (sent via emit)
     toc: Boolean,
+    // render markdown as inline content without generated paragraph wrappers
+    inline: Boolean,
     tocStart: {
       type: Number,
       default: 1,
@@ -194,6 +196,7 @@ export default defineComponent({
         allProps.value.noTypographer,
         allProps.value.lineNumberAlt,
         allProps.value.toc,
+        allProps.value.inline,
         allProps.value.tocStart,
         allProps.value.tocEnd,
         allProps.value.contentStyle,
@@ -334,22 +337,27 @@ export default defineComponent({
           });
         }
 
-        rendered.value = md.render(markdown);
+        rendered.value =
+          allProps.value.inline === true ? md.renderInline(markdown) : md.render(markdown);
 
         if (allProps.value.toc && tocData.length > 0) {
           emit("data", tocData);
         }
       }
 
-      const renderedMarkdown = h("div", {
+      const renderedMarkdown = h(allProps.value.inline === true ? "span" : "div", {
         ref: markdownRef,
-        class: ["q-markdown", allProps.value.contentClass],
+        class: [
+          "q-markdown",
+          allProps.value.inline === true ? "q-markdown--inline" : void 0,
+          allProps.value.contentClass,
+        ],
         style: allProps.value.contentStyle,
         innerHTML: rendered.value,
       });
 
       const renderedCopyWrapper = h(
-        "div",
+        allProps.value.inline === true ? "span" : "div",
         {
           style: {
             position: "relative",

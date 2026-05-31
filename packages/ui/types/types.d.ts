@@ -28,6 +28,7 @@ export interface QMarkdownGlobalProps {
   src?: string;
   lineNumberAlt?: string;
   toc?: boolean;
+  inline?: boolean;
   tocStart?: number;
   tocEnd?: number;
   contentClass?: VueClassProp;

@@ -102,6 +102,20 @@ QMarkdown also removes common template indentation from slotted markdown so the 
 
 :::
 
+:::details Q. How do I render markdown inside an existing paragraph?
+
+Use the `inline` prop when the markdown should participate in existing text flow:
+
+```html
+<p>
+  <q-markdown inline src="Render **inline markdown** without paragraph wrappers." />
+</p>
+```
+
+Inline mode uses `markdown-it.renderInline()` and a `span` root, so it avoids generated block-level paragraph wrappers. Keep normal block mode for headings, lists, tables, blockquotes, and full markdown documents.
+
+:::
+
 :::details Q. How do I import markdown files?
 
 Install the App Extension and answer `true` when prompted to enable importing markdown files.

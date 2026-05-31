@@ -6,6 +6,10 @@
 .q-markdown {
   position: relative;
 
+  &--inline {
+    display: inline;
+  }
+
   details > summary {
     display: list-item;
   }

@@ -27,6 +27,7 @@ useQMarkdownGlobalProps({
   tocEnd: 6,
   contentClass: ["docs-markdown"],
   contentStyle: [{ color: "var(--q-primary)" }],
+  inline: true,
   showCopy: true,
   plugins: [],
 });

@@ -110,6 +110,11 @@ QMarkdown has a number of built-in processors to handle inline markdown. These a
 ### Images
 <MarkdownExample title="Images" file="Images"/>
 
+### Inline rendering
+Use the `inline` prop when markdown needs to live inside existing paragraph or text structure. Inline mode uses `markdown-it.renderInline()` and a `span` root, so emphasis, links, and tokens render without generated paragraph wrappers.
+
+<MarkdownExample title="Inline" file="Inline"/>
+
 ### Links
 <MarkdownExample title="Links" file="Links"/>
 

@@ -240,6 +240,22 @@ describe("QMarkdown component contract", () => {
     expect(render().props.innerHTML).toContain("Hello<br>");
   });
 
+  it("renders inline markdown without generated paragraph wrappers", () => {
+    const props = reactive(createQMarkdownProps({ src: "**Support Hotline**", inline: true }));
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    });
+
+    const vnode = render();
+
+    expect(vnode.type).toBe("span");
+    expect(vnode.props.class).toContain("q-markdown--inline");
+    expect(vnode.props.innerHTML).toBe("<strong>Support Hotline</strong>");
+    expect(vnode.props.innerHTML).not.toContain("<p>");
+  });
+
   it("renders markdown during SSR", async () => {
     const app = createSSRApp({
       render: () => h(QMarkdownComponent, { src: "# hello world" }),
@@ -250,6 +266,19 @@ describe("QMarkdown component contract", () => {
     expect(html).toContain('class="q-markdown');
     expect(html).toContain("<h1");
     expect(html).toContain("hello world");
+  });
+
+  it("renders inline markdown during SSR", async () => {
+    const app = createSSRApp({
+      render: () => h(QMarkdownComponent, { inline: true, src: "**Support Hotline**" }),
+    });
+
+    const html = await renderToString(app);
+
+    expect(html).toContain("<span");
+    expect(html).toContain("q-markdown--inline");
+    expect(html).toContain("<strong>Support Hotline</strong>");
+    expect(html).not.toContain("<p>");
   });
 });
 
