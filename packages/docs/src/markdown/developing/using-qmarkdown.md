@@ -150,6 +150,45 @@ import taskLists from 'markdown-it-task-lists'
 
 The rest of the plugins are custom with QMarkdown or deemed necessary (like the one to handle images).
 
+Install only the plugins your project actually uses. To run every example in this section, your app needs these runtime packages:
+
+```json
+{
+  "dependencies": {
+    "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
+    "katex": "^0.17.0",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-deflist": "^3.0.1",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-texmath": "^1.0.0"
+  }
+}
+```
+
+Some markdown-it plugins do not ship TypeScript declarations. If your project reports a missing module type, add an ambient declaration in a local file such as `src/env.d.ts`:
+
+```ts
+declare module "@datatraccorporation/markdown-it-mermaid";
+declare module "markdown-it-abbr";
+declare module "markdown-it-deflist";
+declare module "markdown-it-emoji";
+declare module "markdown-it-footnote";
+declare module "markdown-it-ins";
+declare module "markdown-it-mark";
+declare module "markdown-it-sub";
+declare module "markdown-it-sup";
+declare module "markdown-it-task-lists";
+declare module "markdown-it-texmath";
+```
+
+Style-based plugins may also need CSS imports. For example, the math example imports both `katex/dist/katex.min.css` and `markdown-it-texmath/css/texmath.css`.
+
 ### Abbreviations
 <MarkdownExample title="Abbreviations" file="Abbreviations" no-edit/>
 
@@ -167,6 +206,11 @@ The rest of the plugins are custom with QMarkdown or deemed necessary (like the 
 
 ### Mark
 <MarkdownExample title="Mark" file="Mark" no-edit/>
+
+### Math
+QMarkdown does not bundle a math renderer, but math plugins can be wired in through the `plugins` prop. This example uses `markdown-it-texmath` with KaTeX.
+
+<MarkdownExample title="Math" file="Math" no-edit/>
 
 ### Subscript/superscript
 <MarkdownExample title="SubscriptSuperscript" file="SubscriptSuperscript" no-edit/>

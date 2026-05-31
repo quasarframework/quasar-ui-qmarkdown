@@ -256,6 +256,36 @@ describe("QMarkdown component contract", () => {
     expect(vnode.props.innerHTML).not.toContain("<p>");
   });
 
+  it("applies markdown-it plugins supplied with options", () => {
+    const optionPlugin = (md, options) => {
+      md.core.ruler.push("replace_text", (state) => {
+        for (const token of state.tokens) {
+          if (token.type !== "inline" || !Array.isArray(token.children)) continue;
+
+          for (const child of token.children) {
+            if (child.type === "text") {
+              child.content = child.content.replace(options.from, options.to);
+            }
+          }
+        }
+      });
+    };
+
+    const props = reactive(
+      createQMarkdownProps({
+        src: "Inline math plugin path",
+        plugins: [{ plugin: optionPlugin, options: { from: "math", to: "plugin-options" } }],
+      }),
+    );
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    });
+
+    expect(render().props.innerHTML).toContain("Inline plugin-options plugin path");
+  });
+
   it("renders markdown during SSR", async () => {
     const app = createSSRApp({
       render: () => h(QMarkdownComponent, { src: "# hello world" }),

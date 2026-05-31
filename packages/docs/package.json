@@ -18,6 +18,7 @@
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "2.0.0",
+    "katex": "^0.17.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.1",
@@ -29,6 +30,7 @@
     "markdown-it-sub": "^2.0.0",
     "markdown-it-sup": "^2.0.0",
     "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-texmath": "^1.0.0",
     "pinia": "^3.0.4",
     "quasar": "^2.19.3",
     "shiki": "^4.1.0",
