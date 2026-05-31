@@ -5,6 +5,7 @@ import { slugify } from "../.q-press/components/markdown-utils";
 
 const repoBranch = "v3-beta";
 const productName = "QMarkdown";
+const codepenPackageVersion = version.includes("-beta.") ? "beta" : version;
 
 export interface SocialLink {
   name: string;
@@ -221,10 +222,10 @@ const config: SiteConfig = {
   githubSourceRootSrc: `https://github.com/quasarframework/quasar-ui-qmarkdown/tree/${repoBranch}/packages/docs/src`,
   codepen: {
     cssExternal: [
-      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.min.css`,
+      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${codepenPackageVersion}/dist/index.min.css`,
     ],
     jsExternal: [
-      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${version}/dist/index.umd.min.js`,
+      `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${codepenPackageVersion}/dist/index.umd.min.js`,
     ],
     jsPreProcessor: "typescript",
     titleSuffix: `QMarkdown v${version}`,
