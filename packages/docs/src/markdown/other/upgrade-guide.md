@@ -37,7 +37,7 @@ Important changes:
 | Quasar CLI                    | `@quasar/app-vite` v3 beta |
 | App extension                 | Vite only                 |
 | Node.js for this repo and CI  | `>=22.13`                 |
-| Package manager for this repo | `pnpm >=11.3.0`           |
+| Package manager for this repo | `pnpm >=11.5.0`           |
 
 ## Installing the beta
 
@@ -127,10 +127,10 @@ If you maintain custom CodePen or script-tag examples, load the QMarkdown CSS an
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.1/dist/index.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.2/dist/index.min.css"
   rel="stylesheet"
 />
-<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.1/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.2/dist/index.umd.min.js"></script>
 ```
 
 Then register the component from the browser global:
