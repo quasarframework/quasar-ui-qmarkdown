@@ -57,13 +57,14 @@ quasar describe QMarkdown
 
 If you do not install through the App Extension, install the UI package directly:
 
-```bash
+```tabs
+<<| bash pnpm |>>
 pnpm add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash bun |>>
 bun add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash yarn |>>
 yarn add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash npm |>>
 npm install @quasar/quasar-ui-qmarkdown@beta
 ```
 

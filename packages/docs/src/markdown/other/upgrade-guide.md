@@ -46,13 +46,13 @@ While QMarkdown v3 is in beta, install packages from the `beta` dist tag.
 ```tabs
 <<| bash App Extension |>>
 quasar ext add @quasar/qmarkdown@beta
-<<| bash UI Package |>>
+<<| bash pnpm |>>
 pnpm add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash bun |>>
 bun add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash yarn |>>
 yarn add @quasar/quasar-ui-qmarkdown@beta
-# or
+<<| bash npm |>>
 npm install @quasar/quasar-ui-qmarkdown@beta
 ```
 
