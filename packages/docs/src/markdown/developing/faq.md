@@ -155,15 +155,15 @@ For examples, see [Using QMarkdown](/developing/using-qmarkdown).
 
 :::
 
-:::details Q. How do I inspect the QMarkdown API?
+:::details Q. Can I inspect the component API from the CLI?
 
-The docs API table is generated from `QMarkdown.json` and shown on the [Using QMarkdown](/developing/using-qmarkdown) page.
-
-If the App Extension is installed, you can also run:
+Yes. After the App Extension is installed, run:
 
 ```bash
 quasar describe QMarkdown
 ```
+
+The same generated API is shown on the [Using QMarkdown](/developing/using-qmarkdown) page.
 
 :::
 
