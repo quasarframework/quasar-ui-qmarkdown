@@ -47,6 +47,16 @@ If you install the UI package directly, import the stylesheet in your boot file 
 import "@quasar/quasar-ui-qmarkdown/dist/index.css";
 ```
 
+Quasar CLI projects can also centralize the stylesheet in `quasar.config.ts`:
+
+```js
+// Note: using ~ tells Quasar the file resides in node_modules
+css: [
+  "app.scss",
+  "~@quasar/quasar-ui-qmarkdown/dist/index.css",
+],
+```
+
 :::
 
 ## Markdown content
