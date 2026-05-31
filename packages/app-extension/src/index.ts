@@ -12,7 +12,7 @@ function extendConf(conf: any): any {
   const originalIsPreTag = conf.build?.viteVuePluginOptions?.template?.compilerOptions?.isPreTag;
 
   return {
-    boot: ["~@quasar/quasar-app-extension-qmarkdown/src/boot/vite-register.ts"],
+    boot: ["~@quasar/quasar-app-extension-qmarkdown/dist/boot/vite-register.js"],
 
     css: ["~@quasar/quasar-ui-qmarkdown/src/index.scss"],
 

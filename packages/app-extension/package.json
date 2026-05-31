@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "description": "A Quasar App Extension for @quasar/quasar-ui-qmarkdown",
   "keywords": [
     "app",
@@ -22,13 +22,15 @@
     "url": "https://github.com/sponsors/hawkeye64"
   },
   "type": "module",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
     "lint": "oxlint src",
     "lint-fix": "oxlint src --fix",
+    "prepack": "pnpm build",
     "release": "pnpm publish --tag beta"
   },
   "dependencies": {
@@ -46,7 +48,8 @@
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-beta.33"
+    "@quasar/app-vite": "3.0.0-beta.33",
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "@quasar/app-vite": ">=3.0.0-beta.33"

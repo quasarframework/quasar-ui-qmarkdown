@@ -8,6 +8,7 @@ coverage
 # Quasar core related directories
 .quasar
 /dist
+packages/app-extension/dist
 
 # Cordova related directories and files
 /src-cordova/node_modules
