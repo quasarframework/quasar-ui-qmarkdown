@@ -169,7 +169,7 @@ For examples, see [Using QMarkdown](/developing/using-qmarkdown).
 
 :::
 
-:::details Q. Can I inspect the component API from the CLI?
+:::details Q. Can I inspect the component API from the Quasar CLI?
 
 Yes. After the App Extension is installed, run:
 
