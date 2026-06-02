@@ -16,7 +16,10 @@
           <div class="hero-buttons">
             <q-btn
               to="/getting-started/introduction"
-              no-caps rounded unelevated class="hero-button hero-button--solid"
+              no-caps
+              rounded
+              unelevated
+              class="hero-button hero-button--solid"
             >
               <div class="hero-button__content q-anchor--skip">
                 <span class="hero-button__slot hero-button__slot--empty" aria-hidden="true" />
@@ -29,7 +32,10 @@
 
             <q-btn
               to="/other/upgrade-guide"
-              no-caps rounded unelevated class="hero-button hero-button--ghost"
+              no-caps
+              rounded
+              unelevated
+              class="hero-button hero-button--ghost"
             >
               <div class="hero-button__content q-anchor--skip">
                 <span class="hero-button__slot hero-button__slot--empty" aria-hidden="true" />
@@ -44,7 +50,10 @@
               :href="githubTreeUrl"
               target="_blank"
               rel="noopener noreferrer"
-              no-caps rounded unelevated class="hero-button hero-button--ghost"
+              no-caps
+              rounded
+              unelevated
+              class="hero-button hero-button--ghost"
             >
               <div class="hero-button__content q-anchor--skip">
                 <span class="hero-button__slot">
@@ -57,11 +66,7 @@
           </div>
 
           <div class="hero-pills">
-            <span
-              v-for="pill in heroPills"
-              :key="pill"
-              class="hero-pill"
-            >
+            <span v-for="pill in heroPills" :key="pill" class="hero-pill">
               {{ pill }}
             </span>
           </div>
@@ -90,11 +95,7 @@
                   class="preview-card"
                   :class="index === 0 ? 'preview-card--primary' : 'preview-card--secondary'"
                 >
-                  <q-img
-                    :src="image.src"
-                    :alt="image.alt"
-                    fit="contain"
-                  />
+                  <q-img :src="image.src" :alt="image.alt" fit="contain" />
                 </div>
               </div>
             </div>
@@ -111,11 +112,7 @@
       </div>
 
       <div class="feature-grid">
-        <article
-          v-for="feature in featureCards"
-          :key="feature.title"
-          class="feature-card"
-        >
+        <article v-for="feature in featureCards" :key="feature.title" class="feature-card">
           <div class="feature-card__icon">
             <q-icon :name="feature.icon" />
           </div>
@@ -128,19 +125,16 @@
     <section class="resource-section">
       <article class="resource-card resource-card--primary">
         <div class="resource-card__eyebrow">Ecosystem</div>
-        <h2 class="resource-card__title">Built in the same docs workflow as the other md-plugins sites</h2>
+        <h2 class="resource-card__title">
+          Built in the same docs workflow as the other md-plugins sites
+        </h2>
         <p class="resource-card__body">
           This site runs on Q-Press and the shared md-plugins tooling, so {{ productName }}'s docs,
           examples, and navigation fit into the same family as the sibling Quasar UI projects.
         </p>
 
         <div class="resource-card__actions">
-          <a
-            :href="githubRepoUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="resource-link"
-          >
+          <a :href="githubRepoUrl" target="_blank" rel="noopener noreferrer" class="resource-link">
             <q-icon :name="fabGithub" />
             <span>{{ productName }} Repo</span>
           </a>
@@ -169,19 +163,17 @@
 
       <article class="resource-card resource-card--secondary">
         <div class="resource-card__eyebrow">Need Help?</div>
-        <h2 class="resource-card__title">Start with the intro, then use the examples as live reference</h2>
+        <h2 class="resource-card__title">
+          Start with the intro, then use the examples as live reference
+        </h2>
         <p class="resource-card__body">
-          The docs are structured to move quickly from installation into working usage patterns.
-          If something feels off, GitHub Discussions and the repo issue tracker are still the best
+          The docs are structured to move quickly from installation into working usage patterns. If
+          something feels off, GitHub Discussions and the repo issue tracker are still the best
           places to surface it.
         </p>
 
         <div class="resource-list">
-          <div
-            v-for="item in supportItems"
-            :key="item.title"
-            class="resource-list__item"
-          >
+          <div v-for="item in supportItems" :key="item.title" class="resource-list__item">
             <div class="resource-list__title">{{ item.title }}</div>
             <div class="resource-list__body">{{ item.body }}</div>
           </div>
@@ -212,7 +204,13 @@ const sectionTitle = "A focused Markdown surface for docs, guidance, and applica
 const sectionText =
   "QMarkdown stays deliberately narrow: render Markdown cleanly, keep examples readable, and drop formatted content into interfaces without creating another content pipeline.";
 
-const heroPills = ["Inline Markdown", "Code Blocks", "Syntax Highlighting", "Help Panels", "Content Blocks"];
+const heroPills = [
+  "Inline Markdown",
+  "Code Blocks",
+  "Syntax Highlighting",
+  "Help Panels",
+  "Content Blocks",
+];
 
 const previewImages = [
   {
@@ -278,14 +276,15 @@ const supportItems = [
   --landing-surface-strong: rgba(34, 55, 40, 0.88);
   --landing-text-soft: rgba(233, 245, 226, 0.8);
   --landing-shadow: 0 28px 60px rgba(14, 24, 18, 0.24);
+  padding: 28px clamp(16px, 2.4vw, 34px) 42px;
   color: #203226;
 }
 
 .hero {
   position: relative;
   overflow: hidden;
-  margin-bottom: 40px;
-  padding: clamp(28px, 5vw, 52px);
+  margin-bottom: 32px;
+  padding: clamp(24px, 4vw, 44px);
   border: 1px solid var(--landing-border);
   border-radius: 34px;
   background:
@@ -319,7 +318,7 @@ const supportItems = [
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 30px;
+  gap: 24px;
   align-items: center;
   grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
 }
@@ -328,7 +327,7 @@ const supportItems = [
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 14px;
 }
 
 .hero__eyebrow,
@@ -348,6 +347,10 @@ const supportItems = [
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.resource-card__eyebrow {
+  margin-bottom: 14px;
 }
 
 .hero-logo {
@@ -384,22 +387,24 @@ const supportItems = [
   color: var(--landing-text-soft);
 }
 
-.hero-buttons,
-.hero-pills,
-.resource-card__actions {
+.hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px 12px;
+  padding-top: 6px;
+  margin-bottom: 6px;
 }
 
-.hero-buttons {
-  padding-top: 8px;
-  margin-bottom: 10px;
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 6px;
 }
 
 .hero-button {
-  min-height: 48px;
-  padding: 0 20px;
+  min-height: 50px;
+  padding: 0 18px;
   border: 1px solid transparent;
   text-decoration: none;
   transition:
@@ -434,9 +439,9 @@ const supportItems = [
 
 .hero-button__content {
   display: grid;
-  grid-template-columns: 1.25rem minmax(0, 1fr) 1.25rem;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 1.5rem;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 12px;
   min-width: 0;
   width: 100%;
   font-family: "Space Grotesk", "Montserrat", "Segoe UI", sans-serif;
@@ -448,12 +453,16 @@ const supportItems = [
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .hero-button__slot--empty {
   visibility: hidden;
+}
+
+.hero-button__slot :deep(.q-icon) {
+  font-size: 1.3rem;
 }
 
 .hero-button__label {
@@ -478,12 +487,12 @@ const supportItems = [
   border: 1px solid var(--landing-border);
   border-radius: 24px;
   background: var(--landing-surface);
-  box-shadow: 0 16px 34px rgba(14, 24, 18, 0.14);
+  box-shadow: var(--landing-card-shadow);
 }
 
 .preview-panel {
   width: 100%;
-  padding: 22px;
+  padding: 20px;
   background:
     linear-gradient(180deg, rgba(251, 255, 247, 0.08), rgba(251, 255, 247, 0.02)),
     rgba(18, 28, 22, 0.52);
@@ -508,6 +517,7 @@ const supportItems = [
 }
 
 .preview-panel__note {
+  color: var(--landing-note-text);
   font-size: 0.84rem;
   font-weight: 600;
 }
@@ -542,7 +552,8 @@ const supportItems = [
 
 .preview-stack {
   position: relative;
-  min-height: 350px;
+  min-height: clamp(250px, 30vw, 310px);
+  padding: 10px 14px 6px;
 }
 
 .preview-stack--single {
@@ -564,16 +575,16 @@ const supportItems = [
 }
 
 .preview-card--primary {
-  top: 0;
-  left: 0;
-  width: min(100%, 360px);
+  top: 10px;
+  left: 10px;
+  width: min(82%, 300px);
   transform: rotate(-2deg);
 }
 
 .preview-card--secondary {
-  right: 0;
-  bottom: 0;
-  width: min(78%, 290px);
+  right: 6px;
+  bottom: 4px;
+  width: min(56%, 220px);
   transform: rotate(4deg);
 }
 
@@ -585,12 +596,12 @@ const supportItems = [
 
 .feature-section,
 .resource-section {
-  margin-top: 36px;
+  margin-top: 28px;
 }
 
 .section-heading {
   max-width: 760px;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   text-align: center;
 }
 
@@ -598,6 +609,7 @@ const supportItems = [
   margin: 14px 0 10px;
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.12;
+  text-wrap: balance;
 }
 
 .feature-grid,
@@ -617,7 +629,7 @@ const supportItems = [
 .feature-card,
 .resource-card {
   position: relative;
-  padding: 22px;
+  padding: 20px;
 }
 
 .feature-card::before {
@@ -655,6 +667,13 @@ const supportItems = [
     var(--landing-surface-strong);
 }
 
+.resource-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
 .resource-link {
   display: inline-flex;
   align-items: center;
@@ -674,15 +693,18 @@ const supportItems = [
 
 .resource-list {
   display: grid;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 0;
+  margin-top: 16px;
 }
 
 .resource-list__item {
-  padding: 16px 18px;
-  border: 1px solid rgba(251, 255, 247, 0.08);
-  border-radius: 18px;
-  background: rgba(251, 255, 247, 0.04);
+  padding: 12px 0;
+  border-top: 1px solid var(--landing-resource-item-border);
+}
+
+.resource-list__item:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .resource-list__title {
@@ -691,6 +713,18 @@ const supportItems = [
   font-size: 0.96rem;
   font-weight: 700;
   color: #def4ce;
+}
+
+.feature-card__body,
+.resource-card__body {
+  color: var(--landing-body-text);
+  font-size: 0.97rem;
+}
+
+.resource-list__body {
+  color: var(--landing-body-text);
+  font-size: 0.93rem;
+  line-height: 1.55;
 }
 
 @media (max-width: 1100px) {
@@ -706,6 +740,10 @@ const supportItems = [
 }
 
 @media (max-width: 700px) {
+  .landing-page {
+    padding: 18px 12px 30px;
+  }
+
   .hero {
     padding: 24px 18px;
     border-radius: 24px;
@@ -727,6 +765,7 @@ const supportItems = [
 
   .preview-stack {
     min-height: 260px;
+    padding: 6px 0 0;
   }
 
   .preview-card--primary {
@@ -750,11 +789,12 @@ const supportItems = [
   }
 }
 
-
 /* codex-theme-override:start */
 .landing-page {
   --landing-page-text: #{$brand-light-text};
   --landing-heading: #{$brand-light-text};
+  --landing-body-text: #{rgba($brand-light-text, 0.84)};
+  --landing-note-text: #{rgba($brand-light-text, 0.66)};
   --landing-border: #{rgba($brand-secondary, 0.16)};
   --landing-border-strong: #{rgba($brand-secondary, 0.24)};
   --landing-surface: #{rgba($brand-light, 0.78)};
@@ -798,6 +838,8 @@ const supportItems = [
 body.body--dark .landing-page {
   --landing-page-text: #{$brand-dark-text};
   --landing-heading: #{$brand-dark-text};
+  --landing-body-text: #{rgba($brand-dark-text, 0.8)};
+  --landing-note-text: #{rgba($brand-dark-text, 0.64)};
   --landing-border: #{rgba($brand-light, 0.12)};
   --landing-border-strong: #{rgba($brand-light, 0.2)};
   --landing-surface: #{rgba($dark-pill, 0.74)};
@@ -894,7 +936,11 @@ body.body--dark .landing-page {
 
 .preview-panel {
   background:
-    linear-gradient(180deg, var(--landing-panel-gradient-top), var(--landing-panel-gradient-bottom)),
+    linear-gradient(
+      180deg,
+      var(--landing-panel-gradient-top),
+      var(--landing-panel-gradient-bottom)
+    ),
     var(--landing-panel-bg);
 }
 

@@ -2,6 +2,8 @@
 .thumbs.db
 node_modules
 coverage
+.playwright
+.playwright-cli
 
 .vscode
 

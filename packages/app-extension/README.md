@@ -10,7 +10,7 @@ The **QMarkdown App Extension** adds the [QMarkdown](../ui) component to a Quasa
 
 ## QMarkdown v3.0.0 Beta
 
-QMarkdown v3 prepares the app extension for Quasar CLI Vite 3. The app extension requires `@quasar/app-vite` v3 beta and no longer supports webpack-based Quasar apps. If your application is still using `@quasar/app-webpack`, migrate the application to Quasar CLI Vite before installing QMarkdown v3.
+QMarkdown v3 prepares the app extension for Quasar CLI Vite 3. The app extension requires `@quasar/app-vite` >=3.0.0-beta.36 and no longer supports webpack-based Quasar apps. If your application is still using `@quasar/app-webpack`, migrate the application to Quasar CLI Vite before installing QMarkdown v3.
 
 ## Install
 
@@ -23,6 +23,11 @@ While QMarkdown v3 is in beta, install with:
 ```bash
 quasar ext add @quasar/qmarkdown@beta
 ```
+
+## Requirements
+
+- Quasar v2.
+- `@quasar/app-vite` >=3.0.0-beta.36.
 
 Quasar CLI will retrieve it from npm and install the extension.
 

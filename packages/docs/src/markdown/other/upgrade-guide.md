@@ -20,7 +20,7 @@ QMarkdown v3 prepares the package for Quasar CLI Vite 3 and the shared app-exten
 
 Important changes:
 
-- The app extension is Vite-only and requires `@quasar/app-vite` v3 beta.
+- The app extension is Vite-only and requires `@quasar/app-vite` >=3.0.0-beta.36.
 - The webpack app-extension path is no longer supported.
 - The package now uses ESM-first exports for Quasar/Vite consumers.
 - UMD bundles remain available for CDN and CodePen examples.
@@ -34,7 +34,7 @@ Important changes:
 | ----------------------------- | ------------------------- |
 | Vue                           | Vue 3                     |
 | Quasar                        | Quasar 2                  |
-| Quasar CLI                    | `@quasar/app-vite` v3 beta |
+| Quasar CLI                    | `@quasar/app-vite` >=3.0.0-beta.36 |
 | App extension                 | Vite only                 |
 | Node.js for this repo and CI  | `>=22.13`                 |
 | Package manager for this repo | `pnpm >=11.5.0`           |
@@ -62,7 +62,7 @@ When QMarkdown v3 is released as stable, remove the `@beta` tag from those comma
 
 The QMarkdown app extension now targets Quasar CLI Vite only.
 
-- Install it only in apps using `@quasar/app-vite`.
+- Install it only in apps using `@quasar/app-vite` >=3.0.0-beta.36.
 - The extension registers the Vite boot file only.
 - The extension remains the recommended install path for Quasar apps because it also configures Vue template handling for markdown content.
 - The optional markdown raw importer still lets you import `*.md` files as strings when enabled during install.
