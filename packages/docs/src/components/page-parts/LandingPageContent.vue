@@ -199,7 +199,7 @@ const heroLede =
 const previewKicker = "Markdown Rendering";
 const previewTitle = "Readable formatted content inside your app shell";
 const previewBody =
-  "QMarkdown turns raw text into polished in-app content with code fences, inline formatting, and documentation-friendly presentation that still feels native to a Quasar interface.";
+  "QMarkdown turns raw text into app-ready content with code fences, inline formatting, and documentation-friendly presentation that still feels native to a Quasar interface.";
 const sectionTitle = "A focused Markdown surface for docs, guidance, and application content";
 const sectionText =
   "QMarkdown stays deliberately narrow: render Markdown cleanly, keep examples readable, and drop formatted content into interfaces without creating another content pipeline.";
