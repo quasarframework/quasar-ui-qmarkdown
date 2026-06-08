@@ -6,7 +6,7 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-import { defineIndexScript } from "@quasar/app-vite";
+import { defineIndexScript } from "#q-app";
 
 function extendConf(conf: any): any {
   const originalIsPreTag = conf.build?.viteVuePluginOptions?.template?.compilerOptions?.isPreTag;
@@ -42,7 +42,7 @@ export default defineIndexScript((api) => {
   // package or a minimum version of "@quasar/app" CLI
   api.compatibleWith("quasar", "^2.0.0");
 
-  api.compatibleWith("@quasar/app-vite", ">=3.0.0-beta.40");
+  api.compatibleWith("@quasar/app-vite", ">=3.0.0-beta.41");
 
   // Uncomment the line below if you provide a JSON API for your component
   api.registerDescribeApi("QMarkdown", "~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json");
