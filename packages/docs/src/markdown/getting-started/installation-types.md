@@ -29,7 +29,7 @@ While QMarkdown v3 is in beta, install with:
 quasar ext add @quasar/qmarkdown@beta
 ```
 
-The QMarkdown v3 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0-beta.41. It does not support webpack-based Quasar applications.
+The QMarkdown v3 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0-beta.42. It does not support webpack-based Quasar applications.
 
 If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) before changing packages.
 
