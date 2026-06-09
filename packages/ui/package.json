@@ -74,7 +74,8 @@
     "build:types": "pnpm exec tsc --project tsconfig.json",
     "typecheck": "pnpm build:api && tsc -p tsconfig.json --noEmit --pretty false && tsc -p test-d/tsconfig.json --noEmit --pretty false",
     "test:types": "pnpm build && pnpm build:types && pnpm typecheck",
-    "release": "pnpm publish --tag beta"
+    "release": "pnpm publish --tag beta",
+    "prepack": "pnpm build"
   },
   "dependencies": {
     "markdown-it": "^14.2.0",
