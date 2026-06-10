@@ -14,7 +14,7 @@ const markdown = `==This sentence is marked.==
 
 This is ==marked== in the middle of a sentence.`;
 
-defineOptions({ name: "Mark" });
+defineOptions({ name: "QMarkdownMarkExample" });
 
 const plugins = [mark];
 </script>

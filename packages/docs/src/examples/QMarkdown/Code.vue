@@ -42,7 +42,7 @@ var foo = function (bar) {
 console.log(foo(5));
 \`\`\``;
 
-defineOptions({ name: "Code" });
+defineOptions({ name: "QMarkdownCodeExample" });
 
 const model = ref(false),
   model2 = ref(false),
