@@ -16,14 +16,14 @@ QMarkdown (Vue Plugin, UMD and Quasar App Extension)
 
 QMarkdown is a [Quasar](https://quasar.dev) component. It is a powerful markdown processor that plugs right into your Quasar application.
 
-The repo is now organized as a pnpm workspace under `packages/`.
-
 # Structure
-* [/packages/ui](packages/ui) - standalone npm package
-* [/packages/app-extension](packages/app-extension) - Quasar app extension
-* [/packages/docs](packages/docs) - Q-Press documentation site with docs, demos, and examples
-* [/packages/dev](packages/dev) - Quasar CLI Vite demo app used for migration/testing
-* [live docs](https://qmarkdown.netlify.app/) - live Q-Press docs, demos, and examples
+
+This is a pnpm workspace mono-repo. You cannot use npm for building.
+
+- [/ui](packages/ui) - standalone npm package (go here for more information)
+- [/app-extension](packages/app-extension) - Quasar app extension
+- [/docs](packages/docs) - Q-Press documentation site with docs, demos, and examples
+- [live demo](https://qmarkdown.netlify.app/) - **live Q-Press docs, demos, and examples**
 
 # Testing
 * Use the CodePen buttons in the [live docs](https://qmarkdown.netlify.app/) examples.
