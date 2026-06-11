@@ -8,13 +8,13 @@ related:
   - /other/releases
 ---
 
-Use this guide to migrate from QMarkdown v2.x to QMarkdown v3.0.0 beta.
+Use this guide to migrate from QMarkdown v2.x to QMarkdown v3.0.0 RC.
 
 > QMarkdown v3 targets Vue 3, Quasar 2, and Quasar CLI Vite 3. If your app still uses Vue 2 or `@quasar/app-webpack`, migrate the app before installing QMarkdown v3.
 
-> The information below is not exhaustive. Check the [Releases](/other/releases) page for the latest beta notes, and please open an issue or PR if something is missing.
+> The information below is not exhaustive. Check the [Releases](/other/releases) page for the latest RC notes, and please open an issue or PR if something is missing.
 
-## QMarkdown v3.0.0 Beta
+## QMarkdown v3.0.0 RC
 
 QMarkdown v3 prepares the package for Quasar CLI Vite 3 and the shared app-extension workspace standard.
 
@@ -30,7 +30,7 @@ Important changes:
 
 ## Requirements
 
-| Area                          | QMarkdown v3 beta         |
+| Area                          | QMarkdown v3 RC           |
 | ----------------------------- | ------------------------- |
 | Vue                           | Vue 3                     |
 | Quasar                        | Quasar 2                  |
@@ -39,24 +39,22 @@ Important changes:
 | Node.js for this repo and CI  | `>=22.13`                 |
 | Package manager for this repo | `pnpm >=11.5.0`           |
 
-## Installing the beta
+## Installing the RC
 
-While QMarkdown v3 is in beta, install packages from the `beta` dist tag.
+QMarkdown v3 RC is published on the `latest` dist tag.
 
 ```tabs
 <<| bash App Extension |>>
-quasar ext add @quasar/qmarkdown@beta
+quasar ext add @quasar/qmarkdown
 <<| bash pnpm |>>
-pnpm add @quasar/quasar-ui-qmarkdown@beta
+pnpm add @quasar/quasar-ui-qmarkdown
 <<| bash bun |>>
-bun add @quasar/quasar-ui-qmarkdown@beta
+bun add @quasar/quasar-ui-qmarkdown
 <<| bash yarn |>>
-yarn add @quasar/quasar-ui-qmarkdown@beta
+yarn add @quasar/quasar-ui-qmarkdown
 <<| bash npm |>>
-npm install @quasar/quasar-ui-qmarkdown@beta
+npm install @quasar/quasar-ui-qmarkdown
 ```
-
-When QMarkdown v3 is released as stable, remove the `@beta` tag from those commands.
 
 ## App Extension Changes
 
@@ -127,10 +125,10 @@ If you maintain custom CodePen or script-tag examples, load the QMarkdown CSS an
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.4/dist/index.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-rc.0/dist/index.min.css"
   rel="stylesheet"
 />
-<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-beta.4/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-rc.0/dist/index.umd.min.js"></script>
 ```
 
 Then register the component from the browser global:

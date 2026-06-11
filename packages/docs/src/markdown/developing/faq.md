@@ -19,12 +19,6 @@ For Quasar CLI Vite apps, use the App Extension when possible:
 quasar ext add @quasar/qmarkdown
 ```
 
-While QMarkdown v3 is in beta, use:
-
-```bash
-quasar ext add @quasar/qmarkdown@beta
-```
-
 The App Extension registers the boot file, adds the stylesheet, configures Vue template handling for markdown content, and can optionally enable importing raw markdown files.
 
 Install the UI package directly only when you want to register QMarkdown manually or use it outside the App Extension flow.

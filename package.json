@@ -1,6 +1,6 @@
 {
   "name": "qmarkdown",
-  "version": "3.0.0-beta.4",
+  "version": "3.0.0-rc.0",
   "private": true,
   "description": "QMarkdown mono-repo",
   "license": "MIT",

@@ -2,13 +2,13 @@
 
 The **QMarkdown App Extension** adds the [QMarkdown](../ui) component to a Quasar CLI Vite application. It registers the boot file, adds the QMarkdown stylesheet, configures Vue template handling for markdown content, and can optionally allow importing raw markdown (`*.md`) files.
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown/beta?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
 [![X](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=x&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
 
-## QMarkdown v3.0.0 Beta
+## QMarkdown v3.0.0 RC
 
 QMarkdown v3 prepares the app extension for Quasar CLI Vite 3. The app extension requires `@quasar/app-vite` >=3.0.0-rc.1 and no longer supports webpack-based Quasar apps. If your application is still using `@quasar/app-webpack`, migrate the application to Quasar CLI Vite before installing QMarkdown v3.
 
@@ -16,12 +16,6 @@ QMarkdown v3 prepares the app extension for Quasar CLI Vite 3. The app extension
 
 ```bash
 quasar ext add @quasar/qmarkdown
-```
-
-While QMarkdown v3 is in beta, install with:
-
-```bash
-quasar ext add @quasar/qmarkdown@beta
 ```
 
 ## Requirements

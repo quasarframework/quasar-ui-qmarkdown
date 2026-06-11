@@ -2,7 +2,7 @@
 
 Display inline markdown in your Quasar App
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown/beta?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
+[![npm](https://img.shields.io/npm/v/@quasar/quasar-ui-qmarkdown?label=@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-ui-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-ui-qmarkdown)
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
@@ -23,15 +23,15 @@ Install the [App Extension](../app-extension).
 Install
 
 ```bash
-pnpm add @quasar/quasar-ui-qmarkdown@beta
+pnpm add @quasar/quasar-ui-qmarkdown
 # or
-bun add @quasar/quasar-ui-qmarkdown@beta
+bun add @quasar/quasar-ui-qmarkdown
 # or
-yarn add @quasar/quasar-ui-qmarkdown@beta
+yarn add @quasar/quasar-ui-qmarkdown
 # or
-npm install @quasar/quasar-ui-qmarkdown@beta
+npm install @quasar/quasar-ui-qmarkdown
 # or, in a Quasar CLI app
-quasar ext add @quasar/qmarkdown@beta
+quasar ext add @quasar/qmarkdown
 ```
 
 and create and register a boot file:
