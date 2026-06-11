@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.0",
     "@quasar/extras": "2.0.0",
     "@vue/server-renderer": "^3.5.38",
     "katex": "^0.17.0",
