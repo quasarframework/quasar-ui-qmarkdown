@@ -1,7 +1,7 @@
 # QMarkdown Audit
 
-Initial Audit Date: 2026-05-19  
-Last Updated: 2026-05-19
+Initial Audit Date: 2026-05-19
+Last Updated: 2026-06-11
 
 Task tracking companion: `QMARKDOWN_TASKS.md`
 
@@ -25,7 +25,7 @@ Completed this pass:
 - Bumped the next release line to `3.0.0-beta.0`
 - Rewired the UI build’s app-extension sync script for the new `packages/` layout
 - Preserved `workspace:^` links for the app-extension dependency so local builds stop resolving unpublished versions from npm
-- Migrated the app-extension metadata to `@quasar/app-vite@3.0.0-beta.15`
+- Migrated the app-extension metadata to the current Quasar CLI Vite 3 line
 - Removed the webpack boot path from the app-extension and made the extension Vite-only
 - Rewired the dev app to consume the workspace package instead of the old `ui2/qmarkdown2` placeholder
 
@@ -40,7 +40,7 @@ Verified this pass:
 
 ## High Priority Remaining Work
 
-### 1. `packages/dev` still fails to build on `@quasar/app-vite@3.0.0-beta.15`
+### 1. `packages/dev` build status needs to be rechecked on the current Quasar CLI Vite 3 line
 
 Current blocker:
 

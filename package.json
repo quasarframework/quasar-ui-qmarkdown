@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.8",
-    "@vue/server-renderer": "^3.5.35",
+    "@vue/server-renderer": "^3.5.38",
     "npm-check-updates": "^22.2.3",
     "oxfmt": "^0.54.0",
     "oxlint": "^1.69.0",
@@ -41,5 +41,5 @@
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
   },
-  "packageManager": "pnpm@11.5.2"
+  "packageManager": "pnpm@11.5.3"
 }
