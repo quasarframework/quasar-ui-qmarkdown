@@ -23,7 +23,6 @@
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
     "@quasar/extras": "2.0.0",
-    "@vue/server-renderer": "^3.5.38",
     "katex": "^0.17.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",
@@ -37,10 +36,8 @@
     "markdown-it-sup": "^2.0.0",
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-texmath": "^1.0.0",
-    "mermaid": "^11.15.0",
     "pinia": "^3.0.4",
     "quasar": "^2.20.0",
-    "shiki": "^4.2.0",
     "vue": "^3.5.38",
     "vue-router": "^5.1.0"
   },
@@ -53,9 +50,12 @@
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.9.3",
+    "@vue/server-renderer": "^3.5.38",
     "autoprefixer": "^10.5.0",
     "markdown-it": "^14.2.0",
+    "mermaid": "^11.15.0",
     "sass-embedded": "^1.100.0",
+    "shiki": "^4.2.0",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.1",
     "vue-tsc": "^3.3.4"
