@@ -28,12 +28,12 @@ This is a pnpm workspace mono-repo. You cannot use npm for building.
 # Testing
 * Use the CodePen buttons in the [live docs](https://qmarkdown.netlify.app/) examples.
 
-# Support
+## Support
 
 If QMarkdown is useful in your workflow and you want to support ongoing maintenance:
 
 - GitHub Sponsors: https://github.com/sponsors/hawkeye64
 - PayPal: https://paypal.me/hawkeye64
 
-# License
+## License
 MIT (c) Jeff Galbraith <jeff@quasar.dev>
