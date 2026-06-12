@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
-    "@quasar/extras": "2.0.0",
+    "@quasar/extras": "2.0.1",
     "katex": "^0.17.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",
@@ -46,7 +46,7 @@
     "@md-plugins/vite-examples-plugin": "0.1.0-rc.2",
     "@md-plugins/vite-md-plugin": "0.1.0-rc.2",
     "@md-plugins/vite-ssg-plugin": "0.1.0-rc.2",
-    "@quasar/app-vite": "3.0.0-rc.1",
+    "@quasar/app-vite": "3.0.0-rc.2",
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.9.3",
