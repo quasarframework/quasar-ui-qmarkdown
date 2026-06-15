@@ -66,16 +66,23 @@
     <script src="dist/index.umd.js"></script>
 
     <script>
+      const markdownPlugin = globalThis.QMarkdown
+      const bundleReady =
+        markdownPlugin !== void 0 &&
+        markdownPlugin.QMarkdown !== void 0
+
       const app = Vue.createApp({
         setup() {
           return {
-            version: QMarkdown.version,
+            version: bundleReady === true ? markdownPlugin.version : 'bundle missing',
           }
         },
       })
 
       app.use(Quasar)
-      app.component("QMarkdown", QMarkdown.QMarkdown)
+      if (bundleReady === true) {
+        app.component("QMarkdown", markdownPlugin.QMarkdown)
+      }
       app.mount("#q-app")
     </script>
   </body>
