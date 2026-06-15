@@ -79,6 +79,11 @@ export interface CodepenGlobalPackage {
   globalName: string;
 }
 
+export interface CodepenModulePackage {
+  packageName: string;
+  importUrl: string;
+}
+
 export interface CodepenConfig {
   head?: string;
   cssExternal?: string[];
@@ -87,6 +92,7 @@ export interface CodepenConfig {
   titleSuffix?: string;
   jsSetup?: string;
   globalPackages?: CodepenGlobalPackage[];
+  modulePackages?: CodepenModulePackage[];
 }
 
 export interface SiteConfig {
@@ -269,6 +275,8 @@ const config: SiteConfig = {
   codepen: {
     cssExternal: [
       `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${codepenPackageVersion}/dist/index.min.css`,
+      "https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css",
+      "https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/css/texmath.css",
     ],
     jsExternal: [
       `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@${codepenPackageVersion}/dist/index.umd.min.js`,
@@ -279,6 +287,56 @@ const config: SiteConfig = {
       {
         packageName: "@quasar/quasar-ui-qmarkdown",
         globalName: "(globalThis as any).QMarkdown",
+      },
+    ],
+    modulePackages: [
+      {
+        packageName: "markdown-it-abbr",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-abbr@2.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-deflist",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-deflist@3.0.1/+esm",
+      },
+      {
+        packageName: "markdown-it-emoji",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-emoji@3.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-footnote",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-footnote@4.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-ins",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-ins@4.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-mark",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-mark@4.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-sub",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-sub@2.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-sup",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-sup@2.0.0/+esm",
+      },
+      {
+        packageName: "markdown-it-task-lists",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-task-lists@2.1.1/+esm",
+      },
+      {
+        packageName: "@datatraccorporation/markdown-it-mermaid",
+        importUrl: "https://cdn.jsdelivr.net/npm/@datatraccorporation/markdown-it-mermaid@0.5.0/+esm",
+      },
+      {
+        packageName: "katex",
+        importUrl: "https://cdn.jsdelivr.net/npm/katex@0.17.0/+esm",
+      },
+      {
+        packageName: "markdown-it-texmath",
+        importUrl: "https://cdn.jsdelivr.net/npm/markdown-it-texmath@1.0.0/+esm",
       },
     ],
     jsSetup: 'app.component("QMarkdown", (globalThis as any).QMarkdown.QMarkdown)',
