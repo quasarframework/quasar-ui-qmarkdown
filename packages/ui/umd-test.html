@@ -10,6 +10,7 @@
       content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"
     />
 
+    <link rel="icon" href="data:," />
     <title>UMD test</title>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
@@ -36,22 +37,11 @@
 
         <q-page-container>
           <q-page padding>
-            <q-markdown src="This is a `test`."></q-markdown>
-            <q-markdown>
-              ::: here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: info
-              here be **dragons** with a `token` and a [link](https://quasar.dev) ::: ::: info With
-              Custom Title here be **dragons** with a `token` and a [link](https://quasar.dev) :::
-              ::: tip here be **dragons** with a `token` and a [link](https://quasar.dev) ::: :::
-              warning here be **dragons** with a `token` and a [link](https://quasar.dev) ::: :::
-              danger here be **dragons** with a `token` and a [link](https://quasar.dev) ::: :::
-              danger Embedable here be **dragons** with a `token` and a [link](https://quasar.dev)
-              ::: warning here be **dragons** with a `token` and a [link](https://quasar.dev) ::::::
-              Indented code Inline `code` // Some comments line 1 of code line 2 of code line 3 of
-              code Block code "fences" ``` Sample text here... ``` Syntax highlighting ```js var foo
-              = function (bar) { return bar++; }; console.log(foo(5)); ```
-            </q-markdown>
+            <q-markdown :src="introMarkdown"></q-markdown>
+            <q-markdown :src="sampleMarkdown"></q-markdown>
             <ul class="q-mb-lg">
               <li>In /packages/ui, run: "pnpm build"</li>
+              <li>Start the test page with: "./start-umd.sh"</li>
               <li class="text-red">You need to build & refresh page on each change manually.</li>
               <li>Use self-closing tags only!</li>
               <li>Example: &lt;my-component&gt;&lt;/my-component&gt;</li>
@@ -73,7 +63,29 @@
 
       const app = Vue.createApp({
         setup() {
+          const introMarkdown = 'This is a **test** with a `token` and a [link](https://quasar.dev).'
+          const sampleMarkdown = `
+# UMD markdown smoke test
+
+This sample checks that the UMD bundle handles normal markdown blocks.
+
+- headings
+- emphasis
+- links
+- lists
+- fenced code
+
+> Rendered through the Vue 3 Composition API test page.
+
+\`\`\`js
+const greet = (name) => \`Hello \${name}\`
+console.log(greet('QMarkdown'))
+\`\`\`
+          `.trim()
+
           return {
+            introMarkdown,
+            sampleMarkdown,
             version: bundleReady === true ? markdownPlugin.version : 'bundle missing',
           }
         },
@@ -81,7 +93,7 @@
 
       app.use(Quasar)
       if (bundleReady === true) {
-        app.component("QMarkdown", markdownPlugin.QMarkdown)
+        app.component(String(markdownPlugin.QMarkdown.name), markdownPlugin.QMarkdown)
       }
       app.mount("#q-app")
     </script>
