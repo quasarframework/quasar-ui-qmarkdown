@@ -52,7 +52,6 @@
                 <code>{{ bundleDiagnostics.availableGlobals }}</code>
               </div>
             </q-banner>
-            <q-markdown :src="introMarkdown"></q-markdown>
             <q-markdown :src="sampleMarkdown"></q-markdown>
           </q-page>
         </q-page-container>
@@ -107,19 +106,26 @@
 
       const app = Vue.createApp({
         setup() {
-          const introMarkdown = 'This is a **test** with a `token` and a [link](https://quasar.dev).'
           const sampleMarkdown = `
 # UMD markdown smoke test
 
-This sample checks that the UMD bundle handles normal markdown blocks.
+This sample checks that the UMD bundle handles common markdown blocks in order.
 
-- headings
-- emphasis
-- links
-- lists
-- fenced code
+## Inline formatting
+
+This is a **test** with a \`token\` and a [link](https://quasar.dev).
+
+## List rendering
+
+- headings render above their content
+- emphasis, inline code, and links render inside paragraphs
+- list items render in sequence
+
+## Blockquote rendering
 
 > Rendered through the Vue 3 Composition API test page.
+
+## Fenced code rendering
 
 \`\`\`js
 const greet = (name) => \`Hello \${name}\`
@@ -130,7 +136,6 @@ console.log(greet('QMarkdown'))
           return {
             bundleDiagnostics,
             bundleReady,
-            introMarkdown,
             sampleMarkdown,
             version: bundleReady === true ? markdownPlugin.version : 'bundle missing',
           }
