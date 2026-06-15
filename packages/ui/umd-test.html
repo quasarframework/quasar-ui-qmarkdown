@@ -17,7 +17,7 @@
       type="text/css"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/quasar@^1.0.0/dist/quasar.min.css"
+      href="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.prod.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -51,7 +51,7 @@
               = function (bar) { return bar++; }; console.log(foo(5)); ```
             </q-markdown>
             <ul class="q-mb-lg">
-              <li>In `/packages/ui`, run: `pnpm build`</li>
+              <li>In /packages/ui, run: "pnpm build"</li>
               <li class="text-red">You need to build & refresh page on each change manually.</li>
               <li>Use self-closing tags only!</li>
               <li>Example: &lt;my-component&gt;&lt;/my-component&gt;</li>
@@ -61,21 +61,22 @@
       </q-layout>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/quasar@^1.0.0/dist/quasar.ie.polyfills.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/quasar@^1.0.0/dist/quasar.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.umd.prod.js"></script>
     <script src="dist/index.umd.js"></script>
 
     <script>
-      new Vue({
-        el: "#q-app",
-
-        data: function () {
+      const app = Vue.createApp({
+        data() {
           return {
             version: QMarkdown.version,
-          };
+          }
         },
-      });
+      })
+
+      app.use(Quasar)
+      app.component("QMarkdown", QMarkdown.QMarkdown)
+      app.mount("#q-app")
     </script>
   </body>
 </html>
