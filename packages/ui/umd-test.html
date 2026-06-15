@@ -22,7 +22,7 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link href="dist/index.css" rel="stylesheet" type="text/css" />
+    <link href="dist/index.css?v=20260615" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="q-app">
@@ -37,6 +37,21 @@
 
         <q-page-container>
           <q-page padding>
+            <q-banner
+              v-if="bundleReady === false"
+              class="bg-red-1 text-negative q-mb-md"
+              rounded
+            >
+              <div class="text-weight-medium">UMD bundle not detected.</div>
+              <div>
+                Checked globals:
+                <code>{{ bundleDiagnostics.checkedGlobals.join(', ') }}</code>
+              </div>
+              <div>
+                Available matches:
+                <code>{{ bundleDiagnostics.availableGlobals }}</code>
+              </div>
+            </q-banner>
             <q-markdown :src="introMarkdown"></q-markdown>
             <q-markdown :src="sampleMarkdown"></q-markdown>
             <ul class="q-mb-lg">
@@ -53,13 +68,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.umd.prod.js"></script>
-    <script src="dist/index.umd.js"></script>
+    <script src="dist/index.umd.js?v=20260615"></script>
 
     <script>
-      const markdownPlugin = globalThis.QMarkdown
-      const bundleReady =
-        markdownPlugin !== void 0 &&
-        markdownPlugin.QMarkdown !== void 0
+      function looksLikeMarkdownBundle(candidate) {
+        return (
+          candidate !== null &&
+          typeof candidate === 'object' &&
+          candidate.QMarkdown !== void 0 &&
+          typeof candidate.version === 'string'
+        )
+      }
+
+      function resolveMarkdownBundle() {
+        const checkedGlobals = ['QMarkdown', 'QMarkdownPlugin', 'index']
+        const namedCandidates = checkedGlobals
+          .map((name) => [name, globalThis[name]])
+          .find(([, candidate]) => looksLikeMarkdownBundle(candidate))
+
+        if (namedCandidates !== void 0) {
+          return {
+            bundle: namedCandidates[1],
+            diagnostics: {
+              checkedGlobals,
+              availableGlobals: namedCandidates[0],
+            },
+          }
+        }
+
+        const scannedCandidate = Object.entries(globalThis).find(([, candidate]) =>
+          looksLikeMarkdownBundle(candidate)
+        )
+
+        return {
+          bundle: scannedCandidate?.[1] ?? null,
+          diagnostics: {
+            checkedGlobals,
+            availableGlobals: scannedCandidate?.[0] ?? 'none',
+          },
+        }
+      }
+
+      const { bundle: markdownPlugin, diagnostics: bundleDiagnostics } = resolveMarkdownBundle()
+      const bundleReady = markdownPlugin !== null
 
       const app = Vue.createApp({
         setup() {
@@ -84,6 +135,8 @@ console.log(greet('QMarkdown'))
           `.trim()
 
           return {
+            bundleDiagnostics,
+            bundleReady,
             introMarkdown,
             sampleMarkdown,
             version: bundleReady === true ? markdownPlugin.version : 'bundle missing',
@@ -93,7 +146,7 @@ console.log(greet('QMarkdown'))
 
       app.use(Quasar)
       if (bundleReady === true) {
-        app.component(String(markdownPlugin.QMarkdown.name), markdownPlugin.QMarkdown)
+        app.component('QMarkdown', markdownPlugin.QMarkdown)
       }
       app.mount("#q-app")
     </script>
