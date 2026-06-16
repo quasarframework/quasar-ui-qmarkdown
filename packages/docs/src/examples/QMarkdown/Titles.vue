@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `Titles become anchor links
 
@@ -14,7 +14,7 @@ Top-Level Title
 ===
 
 Second-Level Title
----`;
+---`
 
-defineOptions({ name: "Titles" });
+defineOptions({ name: 'Titles' })
 </script>

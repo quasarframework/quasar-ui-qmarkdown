@@ -1,8 +1,8 @@
-export const QBtn = { name: "QBtn" };
-export const QTooltip = { name: "QTooltip" };
+export const QBtn = { name: 'QBtn' }
+export const QTooltip = { name: 'QTooltip' }
 
 export function copyToClipboard() {
-  return Promise.resolve();
+  return Promise.resolve()
 }
 
 export function useQuasar() {
@@ -10,5 +10,5 @@ export function useQuasar() {
     dark: {
       isActive: false,
     },
-  };
+  }
 }

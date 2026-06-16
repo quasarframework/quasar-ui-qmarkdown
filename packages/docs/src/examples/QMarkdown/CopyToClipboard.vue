@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `    Indented code
 
@@ -33,9 +33,9 @@ return bar++;
 };
 
 console.log(foo(5));
-\`\`\``;
+\`\`\``
 
-defineOptions({ name: "CopyToClipboard" });
+defineOptions({ name: 'CopyToClipboard' })
 
-const model = ref(false);
+const model = ref(false)
 </script>

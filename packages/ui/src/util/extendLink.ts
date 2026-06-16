@@ -1,46 +1,46 @@
-import slugify from "./slugify";
+import slugify from './slugify'
 
 export default function extendLink(
   md: any,
   { noopener = true, noreferrer = true }: { noopener?: boolean; noreferrer?: boolean },
 ): void {
   md.renderer.rules.link_open = (tokens: any[], idx: number, options: any, env: any, self: any) => {
-    const token = tokens[idx];
+    const token = tokens[idx]
 
-    const hrefIndex = token.attrIndex("href");
+    const hrefIndex = token.attrIndex('href')
 
-    if (token.attrs[hrefIndex][1][0] === "#") {
-      if (typeof location !== "undefined") {
-        token.attrs[hrefIndex][1] = location.pathname + token.attrs[hrefIndex][1];
+    if (token.attrs[hrefIndex][1][0] === '#') {
+      if (typeof location !== 'undefined') {
+        token.attrs[hrefIndex][1] = location.pathname + token.attrs[hrefIndex][1]
       }
     }
 
-    if (token.attrs[hrefIndex][1] === "") {
-      token.attrSet("class", "q-markdown--link q-markdown--link-local");
-      if (tokens[idx + 1] && tokens[idx + 1].type === "text" && tokens[idx + 1].content) {
-        token.attrSet("id", slugify(tokens[idx + 1].content));
+    if (token.attrs[hrefIndex][1] === '') {
+      token.attrSet('class', 'q-markdown--link q-markdown--link-local')
+      if (tokens[idx + 1] && tokens[idx + 1].type === 'text' && tokens[idx + 1].content) {
+        token.attrSet('id', slugify(tokens[idx + 1].content))
       }
     } else if (
-      token.attrs[hrefIndex][1][0] === "/" ||
-      token.attrs[hrefIndex][1][0] === "#" ||
-      token.attrs[hrefIndex][1].startsWith("..")
+      token.attrs[hrefIndex][1][0] === '/' ||
+      token.attrs[hrefIndex][1][0] === '#' ||
+      token.attrs[hrefIndex][1].startsWith('..')
     ) {
-      token.attrSet("class", "q-markdown--link q-markdown--link-local");
+      token.attrSet('class', 'q-markdown--link q-markdown--link-local')
     } else {
-      token.attrSet("class", "q-markdown--link q-markdown--link-external");
-      token.attrSet("target", "_blank");
+      token.attrSet('class', 'q-markdown--link q-markdown--link-external')
+      token.attrSet('target', '_blank')
       if (noopener === true || noreferrer === true) {
-        const rel = [];
+        const rel = []
         if (noopener === true) {
-          rel.push("noopener");
+          rel.push('noopener')
         }
         if (noreferrer === true) {
-          rel.push("noreferrer");
+          rel.push('noreferrer')
         }
-        token.attrSet("rel", rel.join(" "));
+        token.attrSet('rel', rel.join(' '))
       }
     }
 
-    return self.renderToken(tokens, idx, options);
-  };
+    return self.renderToken(tokens, idx, options)
+  }
 }

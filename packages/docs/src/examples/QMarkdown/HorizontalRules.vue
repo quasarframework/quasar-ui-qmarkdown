@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `1st way
 
@@ -29,7 +29,7 @@ ___
 ---
 
 3rd way (with text)
-***`;
+***`
 
-defineOptions({ name: "HorizontalRules" });
+defineOptions({ name: 'HorizontalRules' })
 </script>

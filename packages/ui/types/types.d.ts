@@ -1,59 +1,59 @@
-import type MarkdownIt from "markdown-it";
-import type { VueClassProp, VueStyleProp } from "./vue-prop-types";
+import type MarkdownIt from 'markdown-it'
+import type { VueClassProp, VueStyleProp } from './vue-prop-types'
 
-export * from "./vue-prop-types";
+export * from './vue-prop-types'
 
 export interface TocDefinition {
-  id: string;
-  label: string;
-  level?: number;
-  children?: TocDefinitionArray;
+  id: string
+  label: string
+  level?: number
+  children?: TocDefinitionArray
 }
 
-export type TocDefinitionArray = TocDefinition[];
+export type TocDefinitionArray = TocDefinition[]
 
 export type MarkdownItPlugin =
   | MarkdownIt.PluginSimple
   | MarkdownIt.PluginWithOptions
-  | MarkdownIt.PluginWithParams;
+  | MarkdownIt.PluginWithParams
 
 export interface MarkdownItPluginWithOptions {
-  plugin: MarkdownItPlugin;
-  options: unknown;
+  plugin: MarkdownItPlugin
+  options: unknown
 }
 
-export type MarkdownItPluginsArray = Array<MarkdownItPlugin | MarkdownItPluginWithOptions>;
+export type MarkdownItPluginsArray = Array<MarkdownItPlugin | MarkdownItPluginWithOptions>
 
 export interface QMarkdownGlobalProps {
-  src?: string;
-  lineNumberAlt?: string;
-  toc?: boolean;
-  inline?: boolean;
-  tocStart?: number;
-  tocEnd?: number;
-  contentClass?: VueClassProp;
-  contentStyle?: VueStyleProp;
-  noBlockquote?: boolean;
-  noBreaks?: boolean;
-  noContainer?: boolean;
-  noHeadingAnchorLinks?: boolean;
-  noHighlight?: boolean;
-  noHtml?: boolean;
-  noImage?: boolean;
-  noLineNumbers?: boolean;
-  noLink?: boolean;
-  noLinkify?: boolean;
-  noNoopener?: boolean;
-  noNoreferrer?: boolean;
-  noTypographer?: boolean;
-  showCopy?: boolean;
-  copyIcon?: string;
-  doneIcon?: string;
-  noCopyTooltip?: boolean;
-  copyTooltipText?: string;
-  copyResponseText?: string;
-  fixCr?: boolean;
-  plugins?: MarkdownItPluginsArray;
+  src?: string
+  lineNumberAlt?: string
+  toc?: boolean
+  inline?: boolean
+  tocStart?: number
+  tocEnd?: number
+  contentClass?: VueClassProp
+  contentStyle?: VueStyleProp
+  noBlockquote?: boolean
+  noBreaks?: boolean
+  noContainer?: boolean
+  noHeadingAnchorLinks?: boolean
+  noHighlight?: boolean
+  noHtml?: boolean
+  noImage?: boolean
+  noLineNumbers?: boolean
+  noLink?: boolean
+  noLinkify?: boolean
+  noNoopener?: boolean
+  noNoreferrer?: boolean
+  noTypographer?: boolean
+  showCopy?: boolean
+  copyIcon?: string
+  doneIcon?: string
+  noCopyTooltip?: boolean
+  copyTooltipText?: string
+  copyResponseText?: string
+  fixCr?: boolean
+  plugins?: MarkdownItPluginsArray
 }
 
-export declare function useQMarkdownGlobalProps(props: QMarkdownGlobalProps): void;
+export declare function useQMarkdownGlobalProps(props: QMarkdownGlobalProps): void

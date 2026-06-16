@@ -6,10 +6,10 @@ export default function extendTable(md: any): void {
     env: any,
     self: any,
   ) => {
-    const token = tokens[idx];
+    const token = tokens[idx]
 
-    token.attrSet("class", "q-markdown--table");
+    token.attrSet('class', 'q-markdown--table')
 
-    return self.renderToken(tokens, idx, options);
-  };
+    return self.renderToken(tokens, idx, options)
+  }
 }

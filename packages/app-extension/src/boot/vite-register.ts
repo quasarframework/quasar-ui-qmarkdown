@@ -1,6 +1,6 @@
-import { defineBoot } from "#q-app";
-import VuePlugin from "@quasar/quasar-ui-qmarkdown";
+import { defineBoot } from '#q-app'
+import VuePlugin from '@quasar/quasar-ui-qmarkdown'
 
 export default defineBoot(({ app }) => {
-  app.use(VuePlugin);
-});
+  app.use(VuePlugin)
+})

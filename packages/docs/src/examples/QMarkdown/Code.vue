@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `    Indented code (4 spaces)
 
@@ -40,11 +40,11 @@ var foo = function (bar) {
 };
 
 console.log(foo(5));
-\`\`\``;
+\`\`\``
 
-defineOptions({ name: "QMarkdownCodeExample" });
+defineOptions({ name: 'QMarkdownCodeExample' })
 
 const model = ref(false),
   model2 = ref(false),
-  model3 = ref(false);
+  model3 = ref(false)
 </script>

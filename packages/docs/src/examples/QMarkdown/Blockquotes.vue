@@ -6,18 +6,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `> This is a Blockquote
 > with a \`token\` and a [link](https://quasar.dev)
 
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.`;
+> > > ...or with spaces between arrows.`
 
-defineOptions({ name: "Blockquotes" });
+defineOptions({ name: 'Blockquotes' })
 
-const model = ref(false);
+const model = ref(false)
 </script>

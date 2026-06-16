@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `Max fixed size image: 200x200; responsive
 ![Minion](https://octodex.github.com/images/minion.png =200x200)
@@ -27,11 +27,11 @@ Like links, Images also have a footnote style syntax
 
 With a reference later in the document defining the URL location (see code for markdown):
 
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"`;
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"`
 
-defineOptions({ name: "Images" });
+defineOptions({ name: 'Images' })
 
 const model = ref(false),
   model2 = ref(false),
-  model3 = ref(false);
+  model3 = ref(false)
 </script>

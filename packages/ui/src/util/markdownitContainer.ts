@@ -3,26 +3,26 @@
 
 export default function containerPlugin(md: any, name: string, options?: any): void {
   function validateDefault(params: string): boolean {
-    return params.trim().split(" ", 2)[0] === name;
+    return params.trim().split(' ', 2)[0] === name
   }
 
   function renderDefault(tokens: any[], idx: number, _options: any, env: any, self: any): string {
     // add a class to the opening tag
     if (tokens[idx].nesting === 1) {
-      tokens[idx].attrPush(["class", name]);
+      tokens[idx].attrPush(['class', name])
     }
 
-    return self.renderToken(tokens, idx, _options, env, self);
+    return self.renderToken(tokens, idx, _options, env, self)
   }
 
-  options = options || {};
+  options = options || {}
 
   const minMarkers = 3,
-    markerStr = options.marker || ":",
+    markerStr = options.marker || ':',
     markerChar = markerStr.charCodeAt(0),
     markerLen = markerStr.length,
     validate = options.validate || validateDefault,
-    render = options.render || renderDefault;
+    render = options.render || renderDefault
 
   function container(state: any, startLine: number, endLine: number, silent: boolean): boolean {
     let pos,
@@ -30,125 +30,125 @@ export default function containerPlugin(md: any, name: string, options?: any): v
       token,
       autoClosed = false,
       start = state.bMarks[startLine] + state.tShift[startLine],
-      max = state.eMarks[startLine];
+      max = state.eMarks[startLine]
 
     // Check out the first character quickly,
     // this should filter out most of non-containers
     //
     if (markerChar !== state.src.charCodeAt(start)) {
-      return false;
+      return false
     }
 
     // Check out the rest of the marker string
     //
     for (pos = start + 1; pos <= max; pos++) {
       if (markerStr[(pos - start) % markerLen] !== state.src[pos]) {
-        break;
+        break
       }
     }
 
-    const markerCount = Math.floor((pos - start) / markerLen);
+    const markerCount = Math.floor((pos - start) / markerLen)
     if (markerCount < minMarkers) {
-      return false;
+      return false
     }
-    pos -= (pos - start) % markerLen;
+    pos -= (pos - start) % markerLen
 
-    const markup = state.src.slice(start, pos);
-    const params = state.src.slice(pos, max);
+    const markup = state.src.slice(start, pos)
+    const params = state.src.slice(pos, max)
     if (!validate(params)) {
-      return false;
+      return false
     }
 
     // Since start is found, we can report success here in validation mode
     //
     if (silent) {
-      return true;
+      return true
     }
 
     // Search for the end of the block
     //
-    nextLine = startLine;
+    nextLine = startLine
 
     for (;;) {
-      nextLine++;
+      nextLine++
       if (nextLine >= endLine) {
         // unclosed block should be autoclosed by end of document.
         // also block seems to be autoclosed by end of parent
-        break;
+        break
       }
 
-      start = state.bMarks[nextLine] + state.tShift[nextLine];
-      max = state.eMarks[nextLine];
+      start = state.bMarks[nextLine] + state.tShift[nextLine]
+      max = state.eMarks[nextLine]
 
       if (start < max && state.sCount[nextLine] < state.blkIndent) {
         // non-empty line with negative indent should stop the list:
         // - ```
         //  test
-        break;
+        break
       }
 
       if (markerChar !== state.src.charCodeAt(start)) {
-        continue;
+        continue
       }
 
       if (state.sCount[nextLine] - state.blkIndent >= 4) {
         // closing fence should be indented less than 4 spaces
-        continue;
+        continue
       }
 
       for (pos = start + 1; pos <= max; pos++) {
         if (markerStr[(pos - start) % markerLen] !== state.src[pos]) {
-          break;
+          break
         }
       }
 
       // closing code fence must be at least as long as the opening one
       if (Math.floor((pos - start) / markerLen) < markerCount) {
-        continue;
+        continue
       }
 
       // make sure tail has spaces only
-      pos -= (pos - start) % markerLen;
-      pos = state.skipSpaces(pos);
+      pos -= (pos - start) % markerLen
+      pos = state.skipSpaces(pos)
 
       if (pos < max) {
-        continue;
+        continue
       }
 
       // found!
-      autoClosed = true;
-      break;
+      autoClosed = true
+      break
     }
 
-    const oldParent = state.parentType;
-    const oldLineMax = state.lineMax;
-    state.parentType = "container";
+    const oldParent = state.parentType
+    const oldLineMax = state.lineMax
+    state.parentType = 'container'
 
     // this will prevent lazy continuations from ever going past our end marker
-    state.lineMax = nextLine;
+    state.lineMax = nextLine
 
-    token = state.push("container_" + name + "_open", "div", 1);
-    token.markup = markup;
-    token.block = true;
-    token.info = params;
-    token.map = [startLine, nextLine];
+    token = state.push('container_' + name + '_open', 'div', 1)
+    token.markup = markup
+    token.block = true
+    token.info = params
+    token.map = [startLine, nextLine]
 
-    state.md.block.tokenize(state, startLine + 1, nextLine);
+    state.md.block.tokenize(state, startLine + 1, nextLine)
 
-    token = state.push("container_" + name + "_close", "div", -1);
-    token.markup = state.src.slice(start, pos);
-    token.block = true;
+    token = state.push('container_' + name + '_close', 'div', -1)
+    token.markup = state.src.slice(start, pos)
+    token.block = true
 
-    state.parentType = oldParent;
-    state.lineMax = oldLineMax;
-    state.line = nextLine + (autoClosed ? 1 : 0);
+    state.parentType = oldParent
+    state.lineMax = oldLineMax
+    state.line = nextLine + (autoClosed ? 1 : 0)
 
-    return true;
+    return true
   }
 
-  md.block.ruler.before("fence", "container_" + name, container, {
-    alt: ["paragraph", "reference", "blockquote", "list"],
-  });
-  md.renderer.rules["container_" + name + "_open"] = render;
-  md.renderer.rules["container_" + name + "_close"] = render;
+  md.block.ruler.before('fence', 'container_' + name, container, {
+    alt: ['paragraph', 'reference', 'blockquote', 'list'],
+  })
+  md.renderer.rules['container_' + name + '_open'] = render
+  md.renderer.rules['container_' + name + '_close'] = render
 }

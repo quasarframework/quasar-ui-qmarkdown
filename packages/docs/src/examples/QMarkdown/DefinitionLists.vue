@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import deflist from "markdown-it-deflist";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import deflist from 'markdown-it-deflist'
 
 const markdown = `Term 1
 
@@ -30,9 +30,9 @@ Term 1
 
 Term 2
   ~ Definition 2a
-  ~ Definition 2b`;
+  ~ Definition 2b`
 
-defineOptions({ name: "DefinitionLists" });
+defineOptions({ name: 'DefinitionLists' })
 
-const plugins = [deflist];
+const plugins = [deflist]
 </script>

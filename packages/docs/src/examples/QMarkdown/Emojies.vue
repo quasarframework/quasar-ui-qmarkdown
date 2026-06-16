@@ -5,16 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import { full as emoji } from "markdown-it-emoji";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import { full as emoji } from 'markdown-it-emoji'
 
 const markdown = `Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:
 
-Shortcuts (emoticons): :-) :-( 8-) ;)`;
+Shortcuts (emoticons): :-) :-( 8-) ;)`
 
-defineOptions({ name: "Emojies" });
+defineOptions({ name: 'Emojies' })
 
-const plugins = [emoji];
+const plugins = [emoji]
 </script>

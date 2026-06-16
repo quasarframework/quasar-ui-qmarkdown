@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `[External Link](https://github.com/quasarframework/quasar)
 
@@ -19,10 +19,10 @@ const markdown = `[External Link](https://github.com/quasarframework/quasar)
 
 [link with title](https://github.com/quasarframework/quasar/ "title text!")
 
-Auto-converted link: https://github.com/quasarframework/quasar`;
+Auto-converted link: https://github.com/quasarframework/quasar`
 
-defineOptions({ name: "Links" });
+defineOptions({ name: 'Links' })
 
 const model = ref(false),
-  model1 = ref(false);
+  model1 = ref(false)
 </script>

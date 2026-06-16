@@ -1,7 +1,7 @@
-@use "sass:color";
+@use 'sass:color';
 
-@use "./quasar.variables.scss" as *;
-@use "./prism-theme.scss" as *;
+@use './quasar.variables.scss' as *;
+@use './prism-theme.scss' as *;
 
 .q-markdown {
   position: relative;
@@ -103,7 +103,7 @@
       cursor: pointer;
 
       &:after {
-        content: " #";
+        content: ' #';
         opacity: 0;
         transition: opacity 0.2s;
       }
@@ -141,7 +141,7 @@
     &-external {
       font-family: inherit;
       &:after {
-        content: "\e895";
+        content: '\e895';
         font-family: Material Icons;
         font-weight: normal;
         font-style: normal;
@@ -155,7 +155,7 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-feature-settings: "liga";
+        font-feature-settings: 'liga';
         margin: 0 0 0 3px;
         padding: 0;
       }
@@ -272,7 +272,7 @@
     margin: 0 0 1em 0;
     background: $blue-grey-1;
     color: $grey-10;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     border-radius: $generic-border-radius;
   }
 

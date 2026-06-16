@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import footnote from "markdown-it-footnote";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import footnote from 'markdown-it-footnote'
 
 const markdown = `Footnote 1 link[^first].
 
@@ -21,9 +21,9 @@ Duplicated footnote reference[^second].
 [^first]: Footnote **can have \`markup\`**
   and multiple paragraphs.
 
-[^second]: Footnote text.`;
+[^second]: Footnote text.`
 
-defineOptions({ name: "Footnotes" });
+defineOptions({ name: 'Footnotes' })
 
-const plugins = [footnote];
+const plugins = [footnote]
 </script>

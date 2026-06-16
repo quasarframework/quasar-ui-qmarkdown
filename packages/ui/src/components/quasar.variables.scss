@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 $space-base: 16px !default;
 $space-x-base: $space-base !default;
@@ -47,12 +47,12 @@ $space-xl: (
 
 // Keep long maps on one line to avoid changing generated CSS output
 $spaces: (
-  "none": $space-none,
-  "xs": $space-xs,
-  "sm": $space-sm,
-  "md": $space-md,
-  "lg": $space-lg,
-  "xl": $space-xl,
+  'none': $space-none,
+  'xs': $space-xs,
+  'sm': $space-sm,
+  'md': $space-md,
+  'lg': $space-lg,
+  'xl': $space-xl,
 ) !default;
 
 $animate-duration: 0.3s !default;
@@ -78,43 +78,43 @@ $body-line-height: 1.5 !default;
 
 // Keep long maps on one line to avoid changing generated CSS output
 $flex-gutter: (
-  "none": 0,
-  "xs": $flex-gutter-xs,
-  "sm": $flex-gutter-sm,
-  "md": $flex-gutter-md,
-  "lg": $flex-gutter-lg,
-  "xl": $flex-gutter-xl,
+  'none': 0,
+  'xs': $flex-gutter-xs,
+  'sm': $flex-gutter-sm,
+  'md': $flex-gutter-md,
+  'lg': $flex-gutter-lg,
+  'xl': $flex-gutter-xl,
 ) !default;
 
 // Keep long maps on one line to avoid changing generated CSS output
 $sizes: (
-  "xs": 0,
-  "sm": (
+  'xs': 0,
+  'sm': (
     $breakpoint-xs + 1,
   ),
-  "md": (
+  'md': (
     $breakpoint-sm + 1,
   ),
-  "lg": (
+  'lg': (
     $breakpoint-md + 1,
   ),
-  "xl": (
+  'xl': (
     $breakpoint-lg + 1,
   ),
 ) !default;
 
-$breakpoint-xs-max: (map.get($sizes, "sm") - 0.02) !default;
+$breakpoint-xs-max: (map.get($sizes, 'sm') - 0.02) !default;
 
-$breakpoint-sm-min: map.get($sizes, "sm") !default;
-$breakpoint-sm-max: (map.get($sizes, "md") - 0.02) !default;
+$breakpoint-sm-min: map.get($sizes, 'sm') !default;
+$breakpoint-sm-max: (map.get($sizes, 'md') - 0.02) !default;
 
-$breakpoint-md-min: map.get($sizes, "md") !default;
-$breakpoint-md-max: (map.get($sizes, "lg") - 0.02) !default;
+$breakpoint-md-min: map.get($sizes, 'md') !default;
+$breakpoint-md-max: (map.get($sizes, 'lg') - 0.02) !default;
 
-$breakpoint-lg-min: map.get($sizes, "lg") !default;
-$breakpoint-lg-max: (map.get($sizes, "xl") - 0.02) !default;
+$breakpoint-lg-min: map.get($sizes, 'lg') !default;
+$breakpoint-lg-max: (map.get($sizes, 'xl') - 0.02) !default;
 
-$breakpoint-xl-min: map.get($sizes, "xl") !default;
+$breakpoint-xl-min: map.get($sizes, 'xl') !default;
 
 $h1: (
   size: 6rem,
@@ -191,28 +191,28 @@ $caption: (
 
 // Keep long maps on one line to avoid changing generated CSS output
 $headings: (
-  "h1": $h1,
-  "h2": $h2,
-  "h3": $h3,
-  "h4": $h4,
-  "h5": $h5,
-  "h6": $h6,
-  "subtitle1": $subtitle1,
-  "subtitle2": $subtitle2,
-  "body1": $body1,
-  "body2": $body2,
-  "overline": $overline,
-  "caption": $caption,
+  'h1': $h1,
+  'h2': $h2,
+  'h3': $h3,
+  'h4': $h4,
+  'h5': $h5,
+  'h6': $h6,
+  'subtitle1': $subtitle1,
+  'subtitle2': $subtitle2,
+  'body1': $body1,
+  'body2': $body2,
+  'overline': $overline,
+  'caption': $caption,
 ) !default;
 
 // Keep long maps on one line to avoid changing generated CSS output
 $h-tags: (
-  h1: map.get($headings, "h1"),
-  h2: map.get($headings, "h2"),
-  h3: map.get($headings, "h3"),
-  h4: map.get($headings, "h4"),
-  h5: map.get($headings, "h5"),
-  h6: map.get($headings, "h6"),
+  h1: map.get($headings, 'h1'),
+  h2: map.get($headings, 'h2'),
+  h3: map.get($headings, 'h3'),
+  h4: map.get($headings, 'h4'),
+  h5: map.get($headings, 'h5'),
+  h6: map.get($headings, 'h6'),
 ) !default;
 
 // Keep long maps on one line to avoid changing generated CSS output
@@ -1079,7 +1079,7 @@ $dark-shadows-up: (
 $generic-border-radius: 4px !default;
 $generic-hover-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !default;
 $typography-font-family:
-  "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+  'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $min-line-height: 1.12 !default;
 
 $avatar-font-size: 48px !default;

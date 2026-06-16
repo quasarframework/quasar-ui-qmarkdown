@@ -5,16 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import insert from "markdown-it-ins";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import insert from 'markdown-it-ins'
 
 const markdown = `++This sentence is inserted.++
 
-This is ++inserted++ in the middle of a sentence.`;
+This is ++inserted++ in the middle of a sentence.`
 
-defineOptions({ name: "Insert" });
+defineOptions({ name: 'Insert' })
 
-const plugins = [insert];
+const plugins = [insert]
 </script>

@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `Copyright and marks:
 (c) (C) (r) (R) (tm) (TM)
@@ -27,9 +27,9 @@ word --- word
 Smartypants:
 "double quotes", 'single quotes', and it's John's book.
 
-Note: markdown-it 14 no longer replaces \`(p)\` or \`(P)\`. Use \`§\`, \`¶\`, or an HTML entity directly when you need those symbols.`;
+Note: markdown-it 14 no longer replaces \`(p)\` or \`(P)\`. Use \`§\`, \`¶\`, or an HTML entity directly when you need those symbols.`
 
-defineOptions({ name: "Typography" });
+defineOptions({ name: 'Typography' })
 
-const model = ref(false);
+const model = ref(false)
 </script>

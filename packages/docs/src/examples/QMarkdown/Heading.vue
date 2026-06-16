@@ -24,27 +24,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
 ##### h5 Heading
-###### h6 Heading`;
+###### h6 Heading`
 
-defineOptions({ name: "Heading" });
+defineOptions({ name: 'Heading' })
 
-const model = ref(false);
+const model = ref(false)
 const range = ref({
   min: 1,
   max: 3,
-});
-const results = ref<unknown>({});
+})
+const results = ref<unknown>({})
 
 function onToc(data: unknown) {
-  results.value = data;
+  results.value = data
 }
 </script>

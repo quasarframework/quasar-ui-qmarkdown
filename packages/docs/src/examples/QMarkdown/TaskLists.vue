@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import taskLists from "markdown-it-task-lists";
+import { ref, watch } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import taskLists from 'markdown-it-task-lists'
 
 const markdown = `### Solar System Exploration, 1950s – 1960s
 
@@ -20,9 +20,9 @@ const markdown = `### Solar System Exploration, 1950s – 1960s
 - [ ] Saturn
 - [ ] Uranus
 - [ ] Neptune
-- [ ] Comet Haley`;
+- [ ] Comet Haley`
 
-defineOptions({ name: "TaskLists" });
+defineOptions({ name: 'TaskLists' })
 
-const plugins = [taskLists];
+const plugins = [taskLists]
 </script>

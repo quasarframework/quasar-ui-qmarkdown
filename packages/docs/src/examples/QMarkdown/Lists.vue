@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `Unordered
 
@@ -55,7 +55,7 @@ Start numbering with offset:
 
 57. foo
 1. bar
-2. baz`;
+2. baz`
 
-defineOptions({ name: "Lists" });
+defineOptions({ name: 'Lists' })
 </script>

@@ -14,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
-const intro = "Render **inline markdown** inside an existing paragraph.";
+const intro = 'Render **inline markdown** inside an existing paragraph.'
 
-const supportLines = ["**Support Hotline**", "mon-fri: +49 1234 56789", "weekends: +49 9876 54321"];
+const supportLines = ['**Support Hotline**', 'mon-fri: +49 1234 56789', 'weekends: +49 9876 54321']
 
-defineOptions({ name: "Inline" });
+defineOptions({ name: 'Inline' })
 </script>

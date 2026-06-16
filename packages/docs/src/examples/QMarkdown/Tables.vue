@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `Default
 
@@ -38,7 +38,7 @@ Left aligned columns
 | :----- | :---------- |
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |`;
+| ext    | extension to be used for dest files. |`
 
-defineOptions({ name: "Tables" });
+defineOptions({ name: 'Tables' })
 </script>

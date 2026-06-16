@@ -1,5 +1,5 @@
 // import container from 'markdown-it-container'
-import container from "./markdownitContainer";
+import container from './markdownitContainer'
 
 function createContainer(className: string, defaultTitle: string): any[] {
   return [
@@ -7,28 +7,28 @@ function createContainer(className: string, defaultTitle: string): any[] {
     className,
     {
       render(tokens: any[], idx: number) {
-        const token = tokens[idx];
-        const info = token.info.trim().slice(className.length).trim();
+        const token = tokens[idx]
+        const info = token.info.trim().slice(className.length).trim()
         if (token.nesting === 1) {
-          return `<div class="q-markdown--note q-markdown--note--${className}"><p class="q-markdown--note-title">${info || defaultTitle}</p>\n`;
+          return `<div class="q-markdown--note q-markdown--note--${className}"><p class="q-markdown--note-title">${info || defaultTitle}</p>\n`
         } else {
-          return "</div>\n";
+          return '</div>\n'
         }
       },
     },
-  ];
+  ]
 }
 
 export default function extendContainers(md: any): void {
-  md.use(...createContainer("info", "INFO"));
-  md.use(...createContainer("tip", "TIP"));
-  md.use(...createContainer("warning", "WARNING"));
-  md.use(...createContainer("danger", "IMPORTANT"));
-  md.use(...createContainer("", ""));
+  md.use(...createContainer('info', 'INFO'))
+  md.use(...createContainer('tip', 'TIP'))
+  md.use(...createContainer('warning', 'WARNING'))
+  md.use(...createContainer('danger', 'IMPORTANT'))
+  md.use(...createContainer('', ''))
 
   // explicitly escape Vue syntax
-  md.use(container, "v-pre", {
+  md.use(container, 'v-pre', {
     render: (tokens: any[], idx: number) =>
-      tokens[idx].nesting === 1 ? "<div v-pre>\n" : "</div>\n",
-  });
+      tokens[idx].nesting === 1 ? '<div v-pre>\n' : '</div>\n',
+  })
 }

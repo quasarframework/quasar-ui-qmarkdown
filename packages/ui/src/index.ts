@@ -1,13 +1,13 @@
-import type { App } from "vue";
+import type { App } from 'vue'
 
-import QMarkdown, { useQMarkdownGlobalProps } from "./components/QMarkdown";
-import getTagParts from "./util/getTagParts";
-import { version } from "./version";
+import QMarkdown, { useQMarkdownGlobalProps } from './components/QMarkdown'
+import getTagParts from './util/getTagParts'
+import { version } from './version'
 
-export { version, QMarkdown, useQMarkdownGlobalProps, getTagParts };
+export { version, QMarkdown, useQMarkdownGlobalProps, getTagParts }
 
 function install(app: App): void {
-  app.component(String(QMarkdown.name), QMarkdown);
+  app.component(String(QMarkdown.name), QMarkdown)
 }
 
 export default {
@@ -16,4 +16,4 @@ export default {
   useQMarkdownGlobalProps,
   getTagParts,
   install,
-};
+}

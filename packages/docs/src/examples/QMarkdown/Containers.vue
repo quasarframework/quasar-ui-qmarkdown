@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `:::
 here be **dragons**
@@ -47,10 +47,10 @@ with a \`token\` and a [link](https://quasar.dev)
   ::: warning
   here be **dragons**
   with a \`token\` and a [link](https://quasar.dev)
-::::::`;
+::::::`
 
-defineOptions({ name: "Containers" });
+defineOptions({ name: 'Containers' })
 
 const model = ref(false),
-  model2 = ref(false);
+  model2 = ref(false)
 </script>

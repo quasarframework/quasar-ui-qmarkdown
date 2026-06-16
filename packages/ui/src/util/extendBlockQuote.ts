@@ -6,9 +6,9 @@ export default function extendBlockQuote(md: any): void {
     env: any,
     self: any,
   ) => {
-    const token = tokens[idx];
+    const token = tokens[idx]
 
-    token.attrSet("class", "q-markdown--note");
-    return self.renderToken(tokens, idx, options);
-  };
+    token.attrSet('class', 'q-markdown--note')
+    return self.renderToken(tokens, idx, options)
+  }
 }

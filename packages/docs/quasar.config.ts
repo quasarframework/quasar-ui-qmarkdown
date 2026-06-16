@@ -1,44 +1,44 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
-import { defineConfig } from "@quasar/app-vite";
-import { viteExamplesPlugin, viteManualChunks } from "@md-plugins/vite-examples-plugin";
-import { viteMdPlugin, type MenuItem } from "@md-plugins/vite-md-plugin";
+import { defineConfig } from '@quasar/app-vite'
+import { viteExamplesPlugin, viteManualChunks } from '@md-plugins/vite-examples-plugin'
+import { viteMdPlugin, type MenuItem } from '@md-plugins/vite-md-plugin'
 
 export default defineConfig(async (ctx) => {
-  const siteConfig = await import("./src/siteConfig");
-  const { sidebar } = siteConfig.default;
+  const siteConfig = await import('./src/siteConfig')
+  const { sidebar } = siteConfig.default
 
   return {
     boot: [],
 
-    css: ["app.scss"],
+    css: ['app.scss'],
 
-    extras: ["fontawesome-v7", "roboto-font", "material-icons"],
+    extras: ['fontawesome-v7', 'roboto-font', 'material-icons'],
 
     build: {
       target: {
-        browser: ["es2022", "firefox115", "chrome115", "safari14"],
-        node: "node20",
+        browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
+        node: 'node20',
       },
 
       typescript: {
         strict: true,
         vueShim: true,
         extendTsConfig(tsConfig) {
-          tsConfig.compilerOptions ??= {};
-          tsConfig.compilerOptions.paths ??= {};
-          tsConfig.compilerOptions.paths["@quasar/quasar-ui-qmarkdown"] = [
-            "./../../ui/src/index.js",
-          ];
+          tsConfig.compilerOptions ??= {}
+          tsConfig.compilerOptions.paths ??= {}
+          tsConfig.compilerOptions.paths['@quasar/quasar-ui-qmarkdown'] = [
+            './../../ui/src/index.js',
+          ]
         },
       },
 
-      vueRouterMode: "history",
+      vueRouterMode: 'history',
 
       extendViteConf(viteConf, { isClient }) {
-        const alias = viteConf.resolve?.alias;
-        viteConf.resolve = viteConf.resolve || {};
+        const alias = viteConf.resolve?.alias
+        viteConf.resolve = viteConf.resolve || {}
         viteConf.resolve.alias = [
           ...(Array.isArray(alias)
             ? alias
@@ -46,35 +46,35 @@ export default defineConfig(async (ctx) => {
           // Consume workspace source in docs so examples track local UI edits.
           {
             find: /^@quasar\/quasar-ui-qmarkdown$/,
-            replacement: ctx.appPaths.appDir + "/../ui/src/index.js",
+            replacement: ctx.appPaths.appDir + '/../ui/src/index.js',
           },
-        ];
+        ]
 
         if (ctx.prod && isClient) {
-          viteConf.build = viteConf.build || {};
-          viteConf.build.chunkSizeWarningLimit = 650;
+          viteConf.build = viteConf.build || {}
+          viteConf.build.chunkSizeWarningLimit = 650
 
           const buildOptions = viteConf.build as typeof viteConf.build & {
             rolldownOptions?: {
               output?: {
                 codeSplitting?: {
                   groups?: Array<{
-                    name: (moduleId: string) => string | null;
-                  }>;
-                };
-              };
-            };
-          };
+                    name: (moduleId: string) => string | null
+                  }>
+                }
+              }
+            }
+          }
 
-          buildOptions.rolldownOptions = buildOptions.rolldownOptions || {};
-          buildOptions.rolldownOptions.output = buildOptions.rolldownOptions.output || {};
+          buildOptions.rolldownOptions = buildOptions.rolldownOptions || {}
+          buildOptions.rolldownOptions.output = buildOptions.rolldownOptions.output || {}
           buildOptions.rolldownOptions.output.codeSplitting = {
             groups: [
               {
                 name: (moduleId: string) => viteManualChunks(moduleId) ?? null,
               },
             ],
-          };
+          }
         }
       },
 
@@ -82,7 +82,7 @@ export default defineConfig(async (ctx) => {
         include: [/\.(vue|md)$/],
         template: {
           compilerOptions: {
-            isPreTag: (tag) => tag === "pre" || tag === "q-markdown" || tag === "QMarkdown",
+            isPreTag: (tag) => tag === 'pre' || tag === 'q-markdown' || tag === 'QMarkdown',
           },
         },
       },
@@ -91,7 +91,7 @@ export default defineConfig(async (ctx) => {
         [
           viteMdPlugin,
           {
-            path: ctx.appPaths.srcDir + "/markdown",
+            path: ctx.appPaths.srcDir + '/markdown',
             menu: sidebar as MenuItem[],
             config: {
               headersPlugin: {
@@ -104,11 +104,11 @@ export default defineConfig(async (ctx) => {
           viteExamplesPlugin,
           {
             isProd: ctx.prod,
-            path: ctx.appPaths.srcDir + "/examples",
+            path: ctx.appPaths.srcDir + '/examples',
           },
         ],
         [
-          "vite-plugin-checker",
+          'vite-plugin-checker',
           {
             vueTsc: true,
           },
@@ -124,25 +124,25 @@ export default defineConfig(async (ctx) => {
 
     framework: {
       config: {
-        dark: "auto",
+        dark: 'auto',
         loadingBar: {
-          color: "red",
-          position: "top",
+          color: 'red',
+          position: 'top',
         },
       },
 
       plugins: [
-        "Dark",
-        "Dialog",
-        "LoadingBar",
-        "LocalStorage",
-        "Meta",
-        "Notify",
-        "Platform",
-        "Screen",
+        'Dark',
+        'Dialog',
+        'LoadingBar',
+        'LocalStorage',
+        'Meta',
+        'Notify',
+        'Platform',
+        'Screen',
       ],
     },
 
     animations: [],
-  };
-});
+  }
+})

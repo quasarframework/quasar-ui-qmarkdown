@@ -37,11 +37,7 @@
 
         <q-page-container>
           <q-page padding>
-            <q-banner
-              v-if="bundleReady === false"
-              class="bg-red-1 text-negative q-mb-md"
-              rounded
-            >
+            <q-banner v-if="bundleReady === false" class="bg-red-1 text-negative q-mb-md" rounded>
               <div class="text-weight-medium">UMD bundle not detected.</div>
               <div>
                 Checked globals:
@@ -89,7 +85,7 @@
         }
 
         const scannedCandidate = Object.entries(globalThis).find(([, candidate]) =>
-          looksLikeMarkdownBundle(candidate)
+          looksLikeMarkdownBundle(candidate),
         )
 
         return {
@@ -146,7 +142,7 @@ console.log(greet('QMarkdown'))
       if (bundleReady === true) {
         app.component('QMarkdown', markdownPlugin.QMarkdown)
       }
-      app.mount("#q-app")
+      app.mount('#q-app')
     </script>
   </body>
 </html>

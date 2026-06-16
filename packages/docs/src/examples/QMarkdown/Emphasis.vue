@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const markdown = `**This is bold text**
 
@@ -21,7 +21,7 @@ _This is italic text, second way_
 
 ___This is bold italic text, second way___
 
-~~This is Strikethrough~~`;
+~~This is Strikethrough~~`
 
-defineOptions({ name: "Emphasis" });
+defineOptions({ name: 'Emphasis' })
 </script>

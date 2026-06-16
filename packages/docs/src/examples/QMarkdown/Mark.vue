@@ -5,16 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
-import "@quasar/quasar-ui-qmarkdown/dist/index.css";
-import mark from "markdown-it-mark";
+import { ref } from 'vue'
+import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import '@quasar/quasar-ui-qmarkdown/dist/index.css'
+import mark from 'markdown-it-mark'
 
 const markdown = `==This sentence is marked.==
 
-This is ==marked== in the middle of a sentence.`;
+This is ==marked== in the middle of a sentence.`
 
-defineOptions({ name: "QMarkdownMarkExample" });
+defineOptions({ name: 'QMarkdownMarkExample' })
 
-const plugins = [mark];
+const plugins = [mark]
 </script>

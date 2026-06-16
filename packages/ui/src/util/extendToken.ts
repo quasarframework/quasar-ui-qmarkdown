@@ -1,5 +1,5 @@
 export default function extendToken(md: any): void {
-  const defaultRender = md.renderer.rules.code_inline;
+  const defaultRender = md.renderer.rules.code_inline
 
   md.renderer.rules.code_inline = (
     tokens: any[],
@@ -8,9 +8,9 @@ export default function extendToken(md: any): void {
     env: any,
     self: any,
   ) => {
-    const token = tokens[idx];
+    const token = tokens[idx]
 
-    token.attrSet("class", "q-markdown--token");
-    return defaultRender(tokens, idx, options, env, self);
-  };
+    token.attrSet('class', 'q-markdown--token')
+    return defaultRender(tokens, idx, options, env, self)
+  }
 }
