@@ -210,6 +210,10 @@ function stripCompilerMacros(content: string) {
     .trim()
 }
 
+function stripTemplateTypeScriptAssertions(content: string) {
+  return content.replace(/(\]|\)|[\w$])!(?=\.|\[|\()/g, '$1')
+}
+
 function getScriptBlock(script: string, setup: boolean) {
   const re = setup
     ? /<script\s+setup([^>]*)>([\s\S]*?)<\/script>/
@@ -443,6 +447,10 @@ const jsPreProcessor = computed(() => {
   )
 })
 
+const jsModule = computed(() => {
+  return /^\s*import\s/m.test(js.value)
+})
+
 const html = computed(() => {
   const content = (def.parts.Template || '')
     .replace(/(<template>|<\/template>$)/g, '')
@@ -479,7 +487,7 @@ const html = computed(() => {
     .replace(/^\s{2}/gm, '')
     .trim()
 
-  return rewriteRootRelativeUrls(content)
+  return rewriteRootRelativeUrls(stripTemplateTypeScriptAssertions(content))
 })
 
 const editors = computed(() => {
@@ -526,6 +534,7 @@ ${html.value}
     css_external: cssResources.value,
     js: js.value,
     js_pre_processor: jsPreProcessor.value,
+    ...(jsModule.value ? { js_module: true } : {}),
     js_external: jsResources.value,
     head: siteConfig.codepen?.head ?? '',
     editors: editors.value,
