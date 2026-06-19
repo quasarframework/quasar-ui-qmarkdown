@@ -13,6 +13,23 @@ QMarkdown can be installed as a Quasar App Extension, as a Vue plugin, as a dire
 
 For Quasar CLI projects, the App Extension is the recommended path because it registers the boot file, adds the stylesheet, and configures Vue template handling for markdown content.
 
+## Recommended Path
+
+::: steps
+
+## Use the App Extension in Quasar CLI apps
+
+Choose the App Extension when you want QMarkdown registered automatically and you want the installer to configure markdown file imports.
+
+## Enable markdown import support when needed
+
+During install, keep the markdown importer enabled if your app imports `*.md` files directly into Vue components.
+
+## Use direct registration for non-extension apps
+
+Install the UI package directly when your app owns plugin registration, then add the Vue template compiler option so rendered markdown stays intact.
+:::
+
 ## Quasar CLI
 
 ### App Extension
