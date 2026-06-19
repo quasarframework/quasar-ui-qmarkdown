@@ -43,6 +43,7 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@hono/node-server": "^2.0.5",
     "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.9",
     "@md-plugins/search-ui": "0.1.0-rc.9",
     "@md-plugins/vite-examples-plugin": "0.1.0-rc.9",
@@ -55,6 +56,7 @@
     "@types/node": "^25.9.3",
     "@vue/server-renderer": "^3.5.38",
     "autoprefixer": "^10.5.0",
+    "hono": "^4.12.26",
     "markdown-it": "^14.2.0",
     "mermaid": "^11.15.0",
     "sass-embedded": "^1.100.0",
