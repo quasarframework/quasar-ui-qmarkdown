@@ -256,6 +256,54 @@ describe('QMarkdown component contract', () => {
     expect(vnode.props.innerHTML).not.toContain('<p>')
   })
 
+  it('renders reference-style images through the component path', () => {
+    const props = reactive(
+      createQMarkdownProps({
+        src: '![Alt text][id]\n\n[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"',
+      }),
+    )
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    const html = render().props.innerHTML
+
+    expect(html).toContain('src="https://octodex.github.com/images/dojocat.jpg"')
+    expect(html).toContain('alt="Alt text"')
+    expect(html).toContain('title="The Dojocat"')
+    expect(html).toContain('class="q-markdown--image"')
+  })
+
+  it('renders image alt text when image conversion is disabled', () => {
+    const props = reactive(
+      createQMarkdownProps({
+        noImage: true,
+        src: [
+          '![Minion](https://octodex.github.com/images/minion.png =200x200)',
+          '',
+          '![Alt text][id]',
+          '',
+          '[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"',
+        ].join('\n'),
+      }),
+    )
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    const html = render().props.innerHTML
+
+    expect(html).not.toContain('<img')
+    expect(html).not.toContain('<a ')
+    expect(html).toContain('Minion')
+    expect(html).toContain('Alt text')
+    expect(html).not.toContain('dojocat.jpg')
+  })
+
   it('applies markdown-it plugins supplied with options', () => {
     const optionPlugin = (md, options) => {
       md.core.ruler.push('replace_text', (state) => {

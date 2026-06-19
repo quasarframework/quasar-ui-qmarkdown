@@ -21,11 +21,9 @@ Max fixed size image: 300x300; with title; responsive
 Responsive image - adjust browser to see auto-resize
 ![Minion](https://octodex.github.com/images/minion.png "Responsive Image")
 
-Like links, Images also have a footnote style syntax
+Like links, images can also use reference-style syntax. The image below gets its URL from the [id] definition in the source.
 
 ![Alt text][id]
-
-With a reference later in the document defining the URL location (see code for markdown):
 
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"`
 

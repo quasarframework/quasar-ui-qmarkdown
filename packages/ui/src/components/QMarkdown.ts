@@ -278,9 +278,7 @@ export default defineComponent({
 
         const md = markdownIt(opts)
 
-        if (__isEnabled(allProps.value.noImage)) {
-          md.use(imsize)
-        }
+        md.use(imsize)
 
         extendBlockQuote(md)
         extendHeading(
@@ -291,7 +289,9 @@ export default defineComponent({
           allProps.value.tocEnd,
           allProps.value.noHeadingAnchorLinks,
         )
-        extendImage(md)
+        extendImage(md, {
+          disabled: !__isEnabled(allProps.value.noImage),
+        })
         extendLink(md, {
           noopener: !allProps.value.noNoopener,
           noreferrer: !allProps.value.noNoreferrer,
@@ -308,9 +308,6 @@ export default defineComponent({
 
         // handle disabled rules
         const disabled = []
-        if (!__isEnabled(allProps.value.noImage)) {
-          disabled.push('image')
-        }
         if (!__isEnabled(allProps.value.noLink)) {
           disabled.push('link')
         }
