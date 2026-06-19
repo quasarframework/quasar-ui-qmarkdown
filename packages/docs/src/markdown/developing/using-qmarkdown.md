@@ -42,6 +42,54 @@ export default defineComponent({
 
 The `prismjs` package is used for language highlighting. When Prism is installed by QMarkdown, it loads itself globally. You can access it via `window.Prism`. Visit their [documentation](https://prismjs.com/) on modifying the run-time, like adding additional language support.
 
+For Quasar apps, place Prism setup in a boot file so the extra languages are registered before QMarkdown renders your markdown. If your app uses SSR, make the boot file client-only.
+
+```ts
+// src/boot/prism.client.ts
+import { defineBoot } from '#q-app'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-diff'
+import 'prismjs/components/prism-json'
+
+type PrismRuntime = typeof import('prismjs')
+
+export default defineBoot(() => {
+  const Prism = window.Prism as PrismRuntime | undefined
+
+  if (Prism === void 0) return
+
+  Prism.languages.todo = {
+    done: /^\s*\[x\].*$/im,
+    pending: /^\s*\[ \].*$/im,
+    punctuation: /\[[ x]\]/i,
+  }
+})
+```
+
+Register the boot file in `quasar.config.ts`:
+
+```ts
+import { defineConfig } from '#q-app'
+
+export default defineConfig(() => ({
+  boot: ['prism'],
+}))
+```
+
+Now QMarkdown can highlight fences that use the loaded Prism languages or your custom run-time grammar:
+
+````md
+```diff
++ QMarkdown can now highlight diff fences.
+- Missing language support falls back to plain output.
+```
+
+```todo
+[ ] Add a Prism language
+[x] Render it with QMarkdown
+```
+````
+
 ## Global Properties
 
 QMarkdown has the ability to set global properties via the `useQMarkdownGlobalProps` function.
