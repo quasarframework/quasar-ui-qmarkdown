@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">QMarkdown social preview</title>
+  <desc id="desc">A polished social preview card for QMarkdown, the Quasar UI Markdown component.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071321" />
+      <stop offset=".48" stop-color="#0d3552" />
+      <stop offset="1" stop-color="#172044" />
+    </linearGradient>
+    <radialGradient id="glowCyan" cx="0" cy="0" r="1" gradientTransform="translate(375 250) rotate(46) scale(500 290)">
+      <stop offset="0" stop-color="#1fc8ff" stop-opacity=".36" />
+      <stop offset=".48" stop-color="#1fc8ff" stop-opacity=".08" />
+      <stop offset="1" stop-color="#1fc8ff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowIndigo" cx="0" cy="0" r="1" gradientTransform="translate(1040 130) rotate(123) scale(430 380)">
+      <stop offset="0" stop-color="#6d7cff" stop-opacity=".33" />
+      <stop offset=".56" stop-color="#6d7cff" stop-opacity=".08" />
+      <stop offset="1" stop-color="#6d7cff" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#c5eaff" stroke-opacity=".055" />
+    </pattern>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000814" flood-opacity=".48" />
+    </filter>
+    <filter id="chipGlow" x="-40%" y="-80%" width="180%" height="260%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#16b7ff" flood-opacity=".34" />
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)" />
+  <rect width="1280" height="640" fill="url(#grid)" />
+  <rect width="1280" height="640" fill="url(#glowCyan)" />
+  <rect width="1280" height="640" fill="url(#glowIndigo)" />
+
+  <circle cx="1120" cy="112" r="88" fill="#cfe8ff" opacity=".055" />
+  <circle cx="116" cy="518" r="118" fill="#14b9ff" opacity=".04" />
+  <circle cx="1092" cy="503" r="156" fill="#ffffff" opacity=".028" />
+
+  <g filter="url(#softShadow)">
+    <rect x="62" y="82" width="356" height="356" rx="56" fill="#031321" opacity=".88" />
+    <rect x="76" y="96" width="328" height="328" rx="48" fill="#eef4f2" opacity=".94" />
+    <image href="qmarkdown-logo.png" x="98" y="118" width="284" height="284" preserveAspectRatio="xMidYMid meet" />
+  </g>
+
+  <g font-family="'Inter', 'Avenir Next', 'Segoe UI', Arial, sans-serif">
+    <text x="470" y="145" fill="#7fe7ff" font-size="28" font-weight="800" letter-spacing="9">
+      QUASAR MARKDOWN COMPONENT
+    </text>
+    <text x="470" y="238" fill="#ffffff" font-size="88" font-weight="900" letter-spacing="-3">
+      QMarkdown
+    </text>
+    <text x="475" y="302" fill="#c9d8f2" font-size="34" font-weight="750">
+      Markdown rendering for Vue and Quasar apps.
+    </text>
+    <text x="475" y="352" fill="#b9c9e8" font-size="29" font-weight="700">
+      Code highlighting, typography controls, embedded HTML,
+    </text>
+    <text x="475" y="392" fill="#b9c9e8" font-size="29" font-weight="700">
+      UMD tests, SSR docs, and CodePen-ready examples.
+    </text>
+
+    <g font-size="25" font-weight="800" fill="#eef7ff">
+      <g filter="url(#chipGlow)">
+        <rect x="474" y="432" width="162" height="58" rx="18" fill="#165a84" stroke="#54cfff" stroke-opacity=".55" />
+        <text x="555" y="468" text-anchor="middle">Markdown-it</text>
+      </g>
+      <rect x="654" y="432" width="112" height="58" rx="18" fill="#174d75" stroke="#54cfff" stroke-opacity=".38" />
+      <text x="710" y="468" text-anchor="middle">Prism</text>
+      <rect x="784" y="432" width="100" height="58" rx="18" fill="#174d75" stroke="#54cfff" stroke-opacity=".38" />
+      <text x="834" y="468" text-anchor="middle">Vue</text>
+      <rect x="902" y="432" width="134" height="58" rx="18" fill="#174d75" stroke="#54cfff" stroke-opacity=".38" />
+      <text x="969" y="468" text-anchor="middle">Quasar</text>
+      <rect x="1054" y="432" width="126" height="58" rx="18" fill="#174d75" stroke="#54cfff" stroke-opacity=".38" />
+      <text x="1117" y="468" text-anchor="middle">CodePen</text>
+    </g>
+
+    <path d="M474 548h674" stroke="#6ecfff" stroke-width="2" stroke-opacity=".28" />
+    <text x="474" y="598" fill="#bed0ee" font-size="24" font-weight="750">
+      Built for Quasar docs, demos, and application content.
+    </text>
+  </g>
+</svg>
