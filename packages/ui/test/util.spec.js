@@ -1,7 +1,4 @@
 import { describe, expect, it, vi } from 'vitest'
-import { readFileSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import MarkdownIt from 'markdown-it'
 import { createSSRApp, h, nextTick, reactive } from 'vue'
 import { renderToString } from '@vue/server-renderer'
@@ -21,29 +18,6 @@ import slugify from '../src/util/slugify'
 
 function createMarkdown() {
   return new MarkdownIt({ html: true })
-}
-
-const testDir = dirname(fileURLToPath(import.meta.url))
-
-function readPackageFile(path) {
-  return readFileSync(resolve(testDir, '..', path), 'utf8')
-}
-
-function toKebabCase(value) {
-  return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
-}
-
-function getRange(from, to) {
-  return Array.from({ length: to - from + 1 }, (_, index) => from + index)
-}
-
-function getValidatorValues(source, propName) {
-  const propBlock = source.match(new RegExp(`^ {4}${propName}: \\{([\\s\\S]*?)^ {4}\\},`, 'm'))
-  const validator = propBlock?.[1].match(/validator: \(v(?:: \w+)?\) => v >= (\d+) && v <= (\d+)/)
-
-  return validator === undefined || validator === null
-    ? []
-    : getRange(Number(validator[1]), Number(validator[2]))
 }
 
 function createQMarkdownProps(overrides = {}) {
@@ -155,45 +129,6 @@ describe('makeTree', () => {
         children: [{ id: 'child-h3', label: 'Child H3', level: 3, children: [] }],
       },
     ])
-  })
-})
-
-describe('QMarkdown API JSON', () => {
-  it('documents the runtime props, events, slots and exposed methods', () => {
-    const source = readPackageFile('src/components/QMarkdown.ts')
-    const api = JSON.parse(readPackageFile('src/components/QMarkdown.json'))
-
-    const propsBlock = source.match(/props:\s*\{([\s\S]*?)\n\s{2}\},\n\n\s{2}emits:/)
-    const sourceProps = [...propsBlock[1].matchAll(/^ {4}([a-zA-Z]\w*):/gm)]
-      .map((match) => toKebabCase(match[1]))
-      .sort()
-
-    const emitsBlock = source.match(/emits:\s*\[([^\]]*)\]/)
-    const sourceEvents = [...emitsBlock[1].matchAll(/["']([^"']+)["']/g)]
-      .map((match) => match[1])
-      .sort()
-
-    const exposeBlock = source.match(/expose\(\s*\{([\s\S]*?)\}\s*\)/)
-    const sourceMethods = [...exposeBlock[1].matchAll(/\b([a-zA-Z]\w*)\b/g)]
-      .map((match) => match[1])
-      .sort()
-
-    const sourceSlots = [...source.matchAll(/\bslots\.([a-zA-Z]\w*)\b/g)]
-      .map((match) => match[1])
-      .sort()
-
-    expect(Object.keys(api.props).sort()).toEqual(sourceProps)
-    expect(Object.keys(api.events).sort()).toEqual(sourceEvents)
-    expect(Object.keys(api.slots).sort()).toEqual(sourceSlots)
-    expect(Object.keys(api.methods).sort()).toEqual(sourceMethods)
-  })
-
-  it('documents runtime validator ranges for numeric props', () => {
-    const source = readPackageFile('src/components/QMarkdown.ts')
-    const api = JSON.parse(readPackageFile('src/components/QMarkdown.json'))
-
-    expect(api.props['toc-start'].values).toEqual(getValidatorValues(source, 'tocStart'))
-    expect(api.props['toc-end'].values).toEqual(getValidatorValues(source, 'tocEnd'))
   })
 })
 

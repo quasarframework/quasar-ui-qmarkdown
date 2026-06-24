@@ -11,7 +11,6 @@ import { buildApi } from './build.api'
 import { createFolder } from './build.utils'
 import { cleanDist } from './script.clean'
 import { generateVersionFile } from './script.version'
-import { patchTypes } from './script.types'
 import { syncAppExt } from './script.app-ext'
 
 const nodeRequire = createRequire(import.meta.url)
@@ -53,7 +52,6 @@ async function main(): Promise<void> {
   createFolder('dist')
   generateVersionFile()
   await buildApi()
-  await patchTypes()
 
   const jobs = ['build/script.javascript.ts', 'build/script.css.ts']
 

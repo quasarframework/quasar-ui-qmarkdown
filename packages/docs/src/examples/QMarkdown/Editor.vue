@@ -61,7 +61,7 @@ import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const introMarkdown = `## Interactive Editor
 
-Add Markdown to the window on the left and the output will appear on the right.`
+Add Markdown to the editor pane on the left and the output will appear on the right.`
 
 import abbreviation from 'markdown-it-abbr'
 import deflist from 'markdown-it-deflist'

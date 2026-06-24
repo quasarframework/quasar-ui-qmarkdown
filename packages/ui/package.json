@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-ui-qmarkdown",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0-rc.2",
   "description": "Display inline markdown in your Quasar App",
   "keywords": [
     "markdown",
@@ -69,7 +69,7 @@
     "build": "tsx build/index.ts",
     "build:js": "tsx build/script.javascript.ts",
     "build:css": "tsx build/script.css.ts",
-    "build:api": "tsx build/build.api.ts && tsx build/script.types.ts",
+    "build:api": "tsx build/build.api.ts",
     "build:app-ext": "tsx build/script.app-ext.ts",
     "build:types": "pnpm exec tsc --project tsconfig.json",
     "typecheck": "pnpm build:api && tsc -p tsconfig.json --noEmit --pretty false && tsc -p test-d/tsconfig.json --noEmit --pretty false",
@@ -85,6 +85,7 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
+    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.15",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^26.0.0",
     "@types/prismjs": "^1.26.6",
@@ -120,9 +121,5 @@
   "engines": {
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
-  },
-  "vetur": {
-    "tags": "dist/vetur/tags.json",
-    "attributes": "dist/vetur/attributes.json"
   }
 }

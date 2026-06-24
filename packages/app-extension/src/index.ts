@@ -42,7 +42,7 @@ export default defineIndexScript((api) => {
   // package or a minimum version of "@quasar/app" CLI
   api.compatibleWith('quasar', '^2.0.0')
 
-  api.compatibleWith('@quasar/app-vite', '>=3.0.0-rc.2')
+  api.compatibleWith('@quasar/app-vite', '>=3.0.0-rc.3')
 
   // Uncomment the line below if you provide a JSON API for your component
   api.registerDescribeApi('QMarkdown', '~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json')

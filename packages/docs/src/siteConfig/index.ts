@@ -216,6 +216,7 @@ const docsMenus: SiteMenuItem[] = [
     mq: 1000,
     children: [
       { name: 'Using QMarkdown', path: '/developing/using-qmarkdown' },
+      { name: 'Advanced', path: '/developing/advanced' },
       { name: 'FAQ', path: '/developing/faq' },
     ],
   },

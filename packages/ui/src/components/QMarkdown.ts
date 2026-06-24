@@ -1,5 +1,21 @@
-import { computed, defineComponent, h, ref, reactive, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  ref,
+  reactive,
+  watch,
+  type PropType,
+  type SlotsType,
+  type VNode,
+} from 'vue'
 import type { PluginSimple, PluginWithOptions } from 'markdown-it'
+import type {
+  MarkdownItPluginsArray,
+  TocDefinitionArray,
+  VueClassProp,
+  VueStyleProp,
+} from '../../types/types'
 
 import markdownIt from 'markdown-it'
 
@@ -24,6 +40,13 @@ import { QBtn, QTooltip, copyToClipboard, useQuasar } from 'quasar'
 
 // QMarkdown global properties
 const globalProps = reactive<Record<string, any>>({})
+
+interface QMarkdownSlots {
+  /**
+   * Default markdown content. QMarkdown removes common template indentation before rendering so slotted markdown can be formatted naturally inside Vue templates.
+   */
+  default: () => VNode[]
+}
 
 export function getMarkdownCopyText(element: HTMLElement | null | undefined): string {
   if (!element) return ''
@@ -62,83 +85,244 @@ export function useQMarkdownGlobalProps(props: Record<string, any>): void {
 export default defineComponent({
   name: 'QMarkdown',
 
+  slots: Object as SlotsType<QMarkdownSlots>,
+
   props: {
-    // the markdown source, or use slot - slot overrides this property
+    /**
+     * Optional markdown source passed as a prop. Slotted markdown content overrides this value when both are provided.
+     *
+     * @category model
+     * @example src="Classic markup: :wink: :joy: :cry: :angel: :heart: :beers: :laughing: :yum:"
+     */
     src: {
       type: String,
       default: '',
     },
-    // no blockquotes
+    /**
+     * Disable blockquote conversion.
+     *
+     * @category content
+     */
     noBlockquote: Boolean,
-    // no breaks
+    /**
+     * Disable conversion of `\n` into `<br>`.
+     *
+     * @category content
+     */
     noBreaks: Boolean,
-    // no containers
+    /**
+     * Disable QMarkdown's custom `:::` container block parser.
+     *
+     * @category content
+     * @example :no-container="true"
+     */
     noContainer: Boolean,
-    // no code highlights
+    /**
+     * Disable code highlighting.
+     *
+     * @category content
+     */
     noHighlight: Boolean,
-    // no html entities
+    /**
+     * Disable HTML tags in source markdown.
+     *
+     * @category content
+     */
     noHtml: Boolean,
-    // no images
+    /**
+     * Disable image conversion.
+     *
+     * @category content
+     */
     noImage: Boolean,
-    // no line-numbers
+    /**
+     * Disable line numbers on code blocks.
+     *
+     * @category content
+     */
     noLineNumbers: Boolean,
-    // no links
+    /**
+     * Disable conversion of links.
+     *
+     * @category content
+     */
     noLink: Boolean,
-    // no automatic links
+    /**
+     * Disable auto-conversion of URL-like text into links.
+     *
+     * @category content
+     */
     noLinkify: Boolean,
-    // no heading (h1-h6) anchor (#) links
+    /**
+     * Disable automatic heading anchor links.
+     *
+     * @category content
+     */
     noHeadingAnchorLinks: Boolean,
-    // no typographer
+    /**
+     * Disable language-neutral replacements and quote beautification.
+     *
+     * @category content
+     */
     noTypographer: Boolean,
-    // alternative character to use instead of line numbers
+    /**
+     * Alternative single character to display instead of generated line numbers.
+     *
+     * @category content
+     * @example line-number-alt="$"
+     * @example line-number-alt=">"
+     */
     lineNumberAlt: {
       type: String,
       validator: (v: string) => v.length === 1,
     },
-    // set to true to enable Table of Contents (sent via emit)
+    /**
+     * Enable table-of-contents generation and emit the generated TOC data.
+     *
+     * @category behavior
+     */
     toc: Boolean,
-    // render markdown as inline content without generated paragraph wrappers
+    /**
+     * Render markdown as inline content with `markdown-it.renderInline()` and a `span` root. Useful when QMarkdown is used inside existing paragraph or text structure.
+     *
+     * @category content
+     */
     inline: Boolean,
+    /**
+     * Starting heading level for table-of-contents generation.
+     *
+     * @category behavior
+     * @values 1 | 2 | 3 | 4 | 5 | 6
+     */
     tocStart: {
       type: Number,
       default: 1,
       validator: (v: number) => v >= 1 && v <= 6,
     },
+    /**
+     * Ending heading level for table-of-contents generation.
+     *
+     * @category behavior
+     * @values 1 | 2 | 3 | 4 | 5 | 6
+     */
     tocEnd: {
       type: Number,
       default: 3,
       validator: (v: number) => v >= 1 && v <= 6,
     },
 
-    contentStyle: [Object, Array, String],
-    contentClass: [Object, Array, String],
+    /**
+     * Style definitions applied to the rendered markdown container.
+     *
+     * @category style
+     * @tsType VueStyleProp
+     * @example background-color: #ff0000
+     * @example :content-style="{ backgroundColor: '#ff0000' }"
+     */
+    contentStyle: [Object, Array, String] as PropType<VueStyleProp>,
+    /**
+     * Class definitions applied to the rendered markdown container.
+     *
+     * @category style
+     * @tsType VueClassProp
+     * @example my-special-class
+     * @example :content-class="{ 'my-special-class': condition }"
+     */
+    contentClass: [Object, Array, String] as PropType<VueClassProp>,
 
+    /**
+     * Prevent QMarkdown from adding `rel="noopener"` to external links.
+     *
+     * @category behavior
+     */
     noNoopener: Boolean,
+    /**
+     * Prevent QMarkdown from adding `rel="noreferrer"` to external links.
+     *
+     * @category behavior
+     */
     noNoreferrer: Boolean,
 
+    /**
+     * Show the copy-to-clipboard button for rendered markdown content.
+     *
+     * @category behavior
+     */
     showCopy: Boolean,
+    /**
+     * Icon used for the copy-to-clipboard button.
+     *
+     * @category behavior
+     * @example copy-icon="copy"
+     * @example :copy-icon="matCopy"
+     */
     copyIcon: String,
+    /**
+     * Hide the copy-to-clipboard tooltip.
+     *
+     * @category behavior
+     */
     noCopyTooltip: Boolean,
+    /**
+     * Icon used in the notify response after content is copied.
+     *
+     * @category behavior
+     * @example done-icon="done"
+     * @example :done-icon="matDone"
+     * @since v2.0.0-beta.1
+     */
     doneIcon: String,
+    /**
+     * Tooltip text for the copy-to-clipboard button.
+     *
+     * @category behavior
+     * @example copy-tooltip-text="Click here for content to be copied to the clipboard"
+     * @example :copy-tooltip-text="$t('copy-tooltip-text')"
+     */
     copyTooltipText: {
-      // tooltip
       type: String,
       default: 'Copy to clipboard',
     },
+    /**
+     * Notify text shown after content is copied. The Quasar Notify plugin must be installed for the response to display.
+     *
+     * @category behavior
+     * @example copy-response-text="The content was copied to the clipboard"
+     * @example :copy-response-text="$t('copy-response-text')"
+     */
     copyResponseText: {
       type: String,
       default: 'Copied to clipboard',
     },
+    /**
+     * Replace escaped `\n` sequences in the `src` prop with real newline characters before rendering.
+     *
+     * @category behavior
+     */
     fixCr: Boolean,
 
-    // markdown-it plugins
+    /**
+     * Optional array of `markdown-it` plugins or plugin configuration objects.
+     *
+     * @category extend
+     * @api-exemption examples
+     */
     plugins: {
-      type: Array,
+      type: Array as PropType<MarkdownItPluginsArray>,
       default: () => [],
     },
   },
 
-  emits: ['data'],
+  emits: [
+    /**
+     * Emitted when `toc` is true and a table of contents is generated.
+     *
+     * @param tocData Generated table-of-contents entries.
+     * @param-type tocData Array
+     * @param-tsType tocData TocDefinitionArray
+     */
+    'data',
+  ],
 
   setup(props, { slots, emit, expose }) {
     const $q = useQuasar()
@@ -214,8 +398,14 @@ export default defineComponent({
       return val === void 0 || val === false
     }
 
-    function makeTree(list: TocNode[]): TocNode[] {
-      return makeTreeUtil(list, allProps.value.tocStart)
+    /**
+     * Transform flat table-of-contents entries into a hierarchical tree.
+     *
+     * @param data The results from the `data` event.
+     * @returns A hierarchical version of the passed TOC data.
+     */
+    function makeTree(data: TocDefinitionArray): TocDefinitionArray {
+      return makeTreeUtil(data as TocNode[], allProps.value.tocStart)
     }
 
     function __copyMarkdownToClipboard() {

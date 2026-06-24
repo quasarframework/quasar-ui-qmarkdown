@@ -1,8 +1,32 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import fs, { existsSync, rmSync } from 'node:fs'
+import path, { extname, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 import { createFolder, writeFile } from './build.utils'
+
+type QPressApiEntry = {
+  docsUrl?: string
+  generatedSuffix?: string
+  group?: 'functions' | 'methods'
+  input: string
+  output: string
+  type?: string
+}
+
+type QPressConfig = {
+  api?: {
+    entries?: QPressApiEntry[]
+  }
+}
+
+type QPressApiModule = {
+  generateQPressApi: (options: {
+    cwd: string
+    entries: QPressApiEntry[]
+    generatedSuffix?: string
+    writeOutput?: boolean
+  }) => Promise<unknown>
+}
 
 interface ApiEntry {
   desc?: string
@@ -21,10 +45,10 @@ interface ComponentApi {
 
 const buildDir = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(buildDir, '..')
-const srcDir = path.join(rootDir, 'src/components')
+const repoRoot = resolve(rootDir, '../..')
 const apiDir = path.join(rootDir, 'dist/api')
 const typesDir = path.join(rootDir, 'dist/types')
-const veturDir = path.join(rootDir, 'dist/vetur')
+const qpressConfigCandidates = ['qpress.config.mjs', 'qpress.config.js', 'qpress.config.json']
 const sourceTypesFile = path.join(rootDir, 'types/types.d.ts')
 const sourceVuePropTypesFile = path.join(rootDir, 'types/vue-prop-types.ts')
 const distTypesFile = path.join(typesDir, 'types.d.ts')
@@ -33,6 +57,71 @@ const distIndexFile = path.join(typesDir, 'index.d.ts')
 
 function camelCase(value: string): string {
   return value.replace(/-([a-z])/g, (_match, letter: string) => letter.toUpperCase())
+}
+
+function resolveModuleSpecifier(specifier: string): string {
+  if (specifier.startsWith('.') || specifier.startsWith('/')) {
+    return pathToFileURL(resolve(process.cwd(), specifier)).href
+  }
+
+  return specifier
+}
+
+async function loadQPressApiModule(): Promise<QPressApiModule> {
+  const specifier =
+    process.env.QPRESS_API_MODULE ??
+    '@md-plugins/quasar-app-extension-q-press/dist/api/qpress-api.js'
+
+  return import(resolveModuleSpecifier(specifier)) as Promise<QPressApiModule>
+}
+
+async function readQPressConfig(): Promise<QPressConfig> {
+  const qpressConfigPath = qpressConfigCandidates
+    .map((file) => resolve(repoRoot, file))
+    .find((file) => existsSync(file))
+
+  if (qpressConfigPath === undefined) {
+    throw new Error(`Missing Q-Press config: ${qpressConfigCandidates.join(', ')}`)
+  }
+
+  if (extname(qpressConfigPath) === '.json') {
+    return JSON.parse(fs.readFileSync(qpressConfigPath, 'utf-8')) as QPressConfig
+  }
+
+  const configModule = (await import(pathToFileURL(qpressConfigPath).href)) as {
+    default?: QPressConfig
+  }
+
+  return configModule.default ?? (configModule as QPressConfig)
+}
+
+async function getQPressEntries(): Promise<QPressApiEntry[]> {
+  const config = await readQPressConfig()
+  const entries = config.api?.entries ?? []
+
+  if (entries.length === 0) {
+    throw new Error('No Q-Press API entries configured.')
+  }
+
+  return entries
+}
+
+async function generateApiJson(): Promise<ComponentApi> {
+  const entries = await getQPressEntries()
+  const qpressApi = await loadQPressApiModule()
+
+  rmSync(apiDir, { force: true, recursive: true })
+  createFolder('dist')
+  createFolder('dist/api')
+
+  await qpressApi.generateQPressApi({
+    cwd: repoRoot,
+    entries,
+    generatedSuffix: '',
+    writeOutput: true,
+  })
+
+  return JSON.parse(fs.readFileSync(path.join(apiDir, 'QMarkdown.json'), 'utf-8')) as ComponentApi
 }
 
 function getDescription(entry: ApiEntry): string {
@@ -53,16 +142,26 @@ function normalizeType(type: string | string[] | undefined): string | undefined 
   return Array.isArray(type) ? type[0] : type
 }
 
+function getValueType(value: unknown, entryType: string | undefined): string {
+  if (entryType === 'Number' && typeof value === 'string' && /^-?\d+(\.\d+)?$/.test(value)) {
+    return value
+  }
+
+  return JSON.stringify(value)
+}
+
 function getType(entry: ApiEntry): string {
   if (entry.tsType) {
     return entry.tsType
   }
 
+  const normalizedType = normalizeType(entry.type)
+
   if (Array.isArray(entry.values) && entry.values.length > 0) {
-    return entry.values.map((value) => JSON.stringify(value)).join(' | ')
+    return entry.values.map((value) => getValueType(value, normalizedType)).join(' | ')
   }
 
-  switch (normalizeType(entry.type)) {
+  switch (normalizedType) {
     case 'Array':
       return 'unknown[]'
     case 'Boolean':
@@ -141,46 +240,14 @@ export as namespace QMarkdown
 `
 }
 
-function getVeturTags(api: ComponentApi): Record<string, unknown> {
-  return {
-    'q-markdown': {
-      description: 'Display inline markdown in your Quasar App',
-      attributes: Object.keys(api.props || {}),
-    },
-  }
-}
-
-function getVeturAttributes(api: ComponentApi): Record<string, unknown> {
-  return Object.fromEntries(
-    Object.entries(api.props || {}).map(([name, entry]) => [
-      `q-markdown/${name}`,
-      {
-        type: getType(entry),
-        description: getDescription(entry),
-      },
-    ]),
-  )
-}
-
 export async function buildApi(): Promise<void> {
-  const api = JSON.parse(
-    fs.readFileSync(path.join(srcDir, 'QMarkdown.json'), 'utf-8'),
-  ) as ComponentApi
+  const api = await generateApiJson()
 
-  createFolder('dist')
-  createFolder('dist/api')
   createFolder('dist/types')
-  createFolder('dist/vetur')
 
   await Promise.all([
-    writeFile(path.join(apiDir, 'QMarkdown.json'), JSON.stringify(api, null, 2) + '\n'),
     writeFile(distTypesFile, fs.readFileSync(sourceTypesFile, 'utf-8')),
     writeFile(distVuePropTypesFile, fs.readFileSync(sourceVuePropTypesFile, 'utf-8')),
-    writeFile(path.join(veturDir, 'tags.json'), JSON.stringify(getVeturTags(api), null, 2) + '\n'),
-    writeFile(
-      path.join(veturDir, 'attributes.json'),
-      JSON.stringify(getVeturAttributes(api), null, 2) + '\n',
-    ),
     writeFile(distIndexFile, getTypesFile(api)),
   ])
 

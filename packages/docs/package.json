@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0-rc.2",
   "private": true,
   "description": "QMarkdown Docs",
   "author": "Jeff Galbraith <galbraith64@gmail.com>",
@@ -16,10 +16,11 @@
     "build": "pnpm run build:ssg",
     "postinstall": "quasar prepare --silent",
     "build:spa": "quasar build",
-    "build:ssg": "quasar prepare && quasar build && qpress-ssg",
+    "build:ssg": "quasar prepare && quasar build && qpress ssg",
     "build:ssg:renderer": "quasar prepare && quasar build -m ssr",
-    "prerender:ssg": "qpress-ssg",
-    "preview:ssg": "quasar serve dist/spa --history"
+    "prerender:ssg": "qpress ssg",
+    "preview:ssg": "quasar serve dist/spa --history",
+    "check:qpress": "qpress check"
   },
   "dependencies": {
     "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
@@ -44,12 +45,12 @@
   },
   "devDependencies": {
     "@hono/node-server": "^2.0.6",
-    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.13",
-    "@md-plugins/search-ui": "0.1.0-rc.13",
-    "@md-plugins/vite-examples-plugin": "0.1.0-rc.13",
-    "@md-plugins/vite-md-plugin": "0.1.0-rc.13",
-    "@md-plugins/vite-search-plugin": "0.1.0-rc.13",
-    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.13",
+    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.15",
+    "@md-plugins/search-ui": "0.1.0-rc.15",
+    "@md-plugins/vite-examples-plugin": "0.1.0-rc.15",
+    "@md-plugins/vite-md-plugin": "0.1.0-rc.15",
+    "@md-plugins/vite-search-plugin": "0.1.0-rc.15",
+    "@md-plugins/vite-ssg-plugin": "0.1.0-rc.15",
     "@quasar/app-vite": "3.0.0-rc.3",
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/markdown-it": "^14.1.2",

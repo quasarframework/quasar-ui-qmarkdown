@@ -58,7 +58,7 @@ Add the appropriate prerelease tag, such as `@beta`, only when publishing under 
 ## Documentation
 
 - Docs: https://qmarkdown.netlify.app/
-- Installation: https://qmarkdown.netlify.app/getting-started/installation
+- Installation: https://qmarkdown.netlify.app/getting-started/installation-types
 - Upgrade Guide: https://qmarkdown.netlify.app/other/upgrade-guide
 
 ## Full Changelog

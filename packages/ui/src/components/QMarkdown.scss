@@ -4,6 +4,9 @@
 @use './prism-theme.scss' as *;
 
 .q-markdown {
+  --q-markdown-link-color: var(--qpress-color-primary, var(--q-primary, #{$primary}));
+  --q-markdown-link-hover-color: color-mix(in srgb, var(--q-markdown-link-color) 82%, currentColor);
+
   position: relative;
 
   &--inline {
@@ -127,12 +130,41 @@
     height: auto;
   }
 
+  :where(a) {
+    color: var(--q-markdown-link-color);
+    text-decoration-color: color-mix(in srgb, var(--q-markdown-link-color) 64%, transparent);
+    text-underline-offset: 0.16em;
+    transition:
+      color 0.2s,
+      opacity 0.2s,
+      text-decoration-color 0.2s;
+
+    &:focus-visible,
+    &:hover {
+      color: var(--q-markdown-link-hover-color);
+      text-decoration-color: currentColor;
+      opacity: 0.92;
+    }
+  }
+
   &--link {
+    color: var(--q-markdown-link-color);
     font-weight: 500;
     text-decoration: none;
     outline: 0;
     text-align: center;
-    transition: opacity 0.2s;
+    border-bottom: 1px solid color-mix(in srgb, var(--q-markdown-link-color) 56%, transparent);
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      opacity 0.2s;
+
+    &:focus-visible,
+    &:hover {
+      color: var(--q-markdown-link-hover-color);
+      border-bottom-color: currentColor;
+      opacity: 0.92;
+    }
 
     &-local {
       font-family: inherit;
@@ -377,6 +409,13 @@ blockquote.q-markdown--note {
 
 .body--dark {
   .q-markdown {
+    --q-markdown-link-color: var(--qpress-color-primary, #{$light-blue-4});
+    --q-markdown-link-hover-color: color-mix(
+      in srgb,
+      var(--q-markdown-link-color) 76%,
+      var(--qpress-text-primary, #{$grey-2})
+    );
+
     color: $grey-2;
 
     code {
