@@ -10,7 +10,7 @@
       <div>Loading release notes from GitHub</div>
     </q-card-section>
     <template v-else>
-      <!-- <q-tabs v-model="currentPackage" align="left" active-color="primary" active-bg-color="blue-1" indicator-color="primary" class="text-grey-7">
+      <!-- <q-tabs v-model="currentPackage" align="left" active-color="primary" indicator-color="primary" class="text-grey-7">
         <q-tab v-for="(packageReleases, packageName) in packages" :label="packageName" :name="packageName" :key="packageName" />
       </q-tabs> -->
       <q-separator />
