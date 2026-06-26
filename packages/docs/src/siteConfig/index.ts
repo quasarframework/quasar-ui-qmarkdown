@@ -99,7 +99,6 @@ export interface SiteConfig {
   lang: string
   title: string
   description: string
-  theme: string
   version: string
   copyright: CopyrightConfig
   githubEditRootSrc: string
@@ -269,7 +268,6 @@ const config: SiteConfig = {
   lang: 'en-US',
   title: productName,
   description: 'Inline markdown for Vue and Quasar applications',
-  theme: 'doc',
   version,
   copyright: {
     line1: `Copyright © 2019-${new Date().getFullYear()} Jeff Galbraith`,

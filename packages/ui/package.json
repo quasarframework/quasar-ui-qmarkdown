@@ -85,7 +85,7 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
-    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.16",
+    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.17",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^26.0.0",
     "@types/prismjs": "^1.26.6",
