@@ -85,7 +85,7 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
-    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.17",
+    "@md-plugins/quasar-app-extension-q-press": "0.1.0-rc.18",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^26.0.0",
     "@types/prismjs": "^1.26.6",
@@ -106,7 +106,7 @@
     "tsx": "^4.22.4",
     "typescript": "~6.0.3",
     "uglify-js": "^3.19.3",
-    "vue": "^3.5.38"
+    "vue": "^3.5.39"
   },
   "browserslist": [
     "last 10 Chrome versions",

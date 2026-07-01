@@ -9,11 +9,13 @@
     "packages/*/node_modules",
     "packages/*/.quasar",
     "packages/*/dist",
+    "packages/docs/src/.q-press/**",
     "packages/docs/css",
     "packages/docs/fonts",
     "packages/docs/js",
     "packages/docs/public",
     "packages/dev/public",
+    "pnpm-lock.yaml",
     "yarn.lock",
     "packages/dev/yarn.lock",
     "**/*.md"
