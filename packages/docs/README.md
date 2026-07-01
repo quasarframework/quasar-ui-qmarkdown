@@ -1,31 +1,47 @@
 # QMarkdown Docs
 
-This package contains the QMarkdown documentation, demos, and examples source.
+<span class="badge-github-sponsors"><a href="https://github.com/sponsors/hawkeye64" title="Sponsor this project on GitHub"><img src="https://img.shields.io/badge/github-sponsors-ea4aaa.svg?logo=githubsponsors&logoColor=white" alt="GitHub Sponsors button" /></a></span>
+<span class="badge-paypal"><a href="https://paypal.me/hawkeye64" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 
-The docs package is being migrated to the shared Quasar CLI Vite 3 workspace layout used by the other app extensions. Until that migration is complete, use the root task list to track known docs build blockers.
+[![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
+[![X](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=x&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
 
-## Workspace Setup
+This package contains the Q-Press documentation site for QMarkdown. It owns the public documentation source, live demos, example-viewer content, generated API pages, and static-search output for Markdown rendering, syntax examples, and app-extension setup.
 
-From the repo root:
+The docs app is a Quasar CLI Vite project inside the monorepo. Production docs should be built from the repository root so the UI package, app extension, generated API data, Q-Press route checks, and static output all describe the same release candidate.
+
+## Development
+
+From the repository root:
 
 ```bash
 pnpm install
-# yarn install
-# npm install
-# bun install
+pnpm build:ui
+pnpm --filter docs dev
 ```
 
 ## Build
 
-From the repo root:
+Build the full release set, including docs:
+
+```bash
+pnpm build
+```
+
+Build only the docs site after the UI package is already current:
 
 ```bash
 pnpm build:docs
-# yarn build:docs
-# npm run build:docs
-# bun run build:docs
 ```
 
-## Customize The Configuration
+The docs package runs `quasar build` and `qpress ssg`; production output is emitted to `packages/docs/dist/spa`.
 
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+## Checks
+
+Useful repository-level checks for docs work:
+
+```bash
+pnpm api:check
+pnpm check:qpress
+pnpm --filter docs typecheck
+```

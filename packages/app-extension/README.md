@@ -1,12 +1,17 @@
 # Quasar App Extension QMarkdown
 
-The **QMarkdown App Extension** adds the [QMarkdown](../ui) component to a Quasar CLI Vite application. It registers the boot file, adds the QMarkdown stylesheet, configures Vue template handling for markdown content, and can optionally allow importing raw markdown (`*.md`) files.
+[![npm version](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown?label=%40quasar%2Fquasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+[![npm downloads](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+[![npm monthly downloads](https://img.shields.io/npm/dm/@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+[![license](https://img.shields.io/npm/l/@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
 
-[![npm](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qmarkdown?label=@quasar/quasar-app-extension-qmarkdown)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
-[![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qmarkdown.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qmarkdown)
+<span class="badge-github-sponsors"><a href="https://github.com/sponsors/hawkeye64" title="Sponsor this project on GitHub"><img src="https://img.shields.io/badge/github-sponsors-ea4aaa.svg?logo=githubsponsors&logoColor=white" alt="GitHub Sponsors button" /></a></span>
+<span class="badge-paypal"><a href="https://paypal.me/hawkeye64" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 
 [![Discord](https://img.shields.io/badge/discord-join%20server-738ADB?style=for-the-badge&logo=discord&logoColor=738ADB)](https://chat.quasar.dev)
 [![X](https://img.shields.io/badge/follow-@jgalbraith64-1DA1F2?style=for-the-badge&logo=x&logoColor=1DA1F2)](https://twitter.com/jgalbraith64)
+
+The **QMarkdown App Extension** adds the [QMarkdown](../ui) component to a Quasar CLI Vite application. It registers the boot file, adds the QMarkdown stylesheet, configures Vue template handling for markdown content, and can optionally allow importing raw markdown (`*.md`) files.
 
 ## QMarkdown v3.0.0 RC
 
