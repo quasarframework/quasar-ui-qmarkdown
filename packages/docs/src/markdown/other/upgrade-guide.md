@@ -8,19 +8,19 @@ related:
   - /other/releases
 ---
 
-Use this guide to migrate from QMarkdown v2.x to QMarkdown v3.0.0 RC.
+Use this guide to migrate from QMarkdown v2.x to QMarkdown v3.0.0.
 
 > QMarkdown v3 targets Vue 3, Quasar 2, and Quasar CLI Vite 3. If your app still uses Vue 2 or `@quasar/app-webpack`, migrate the app before installing QMarkdown v3.
 
-> The information below is not exhaustive. Check the [Releases](/other/releases) page for the latest RC notes, and please open an issue or PR if something is missing.
+> The information below is not exhaustive. Check the [Releases](/other/releases) page for the latest notes, and please open an issue or PR if something is missing.
 
-## QMarkdown v3.0.0 RC
+## QMarkdown v3.0.0
 
 QMarkdown v3 prepares the package for Quasar CLI Vite 3 and the shared app-extension workspace standard.
 
 Important changes:
 
-- The app extension is Vite-only and requires `@quasar/app-vite` >=3.0.0-rc.6.
+- The app extension is Vite-only and requires `@quasar/app-vite` >=3.0.0.
 - The webpack app-extension path is no longer supported.
 - The package now uses ESM-first exports for Quasar/Vite consumers.
 - UMD bundles remain available for CDN and CodePen examples.
@@ -30,18 +30,18 @@ Important changes:
 
 ## Requirements
 
-| Area                          | QMarkdown v3 RC           |
+| Area                          | QMarkdown v3              |
 | ----------------------------- | ------------------------- |
 | Vue                           | Vue 3                     |
 | Quasar                        | Quasar 2                  |
-| Quasar CLI                    | `@quasar/app-vite` >=3.0.0-rc.6 |
+| Quasar CLI                    | `@quasar/app-vite` >=3.0.0 |
 | App extension                 | Vite only                 |
 | Node.js for this repo and CI  | `>=22.13`                 |
 | Package manager for this repo | `pnpm >=11.5.0`           |
 
-## Installing the RC
+## Installing QMarkdown v3
 
-QMarkdown v3 RC is published on the `latest` dist tag.
+QMarkdown v3 is published on the `latest` dist tag.
 
 ```tabs
 <<| bash App Extension |>>
@@ -60,7 +60,7 @@ npm install @quasar/quasar-ui-qmarkdown
 
 The QMarkdown app extension now targets Quasar CLI Vite only.
 
-- Install it only in apps using `@quasar/app-vite` >=3.0.0-rc.6.
+- Install it only in apps using `@quasar/app-vite` >=3.0.0.
 - The extension registers the Vite boot file only.
 - The extension remains the recommended install path for Quasar apps because it also configures Vue template handling for markdown content.
 - The optional markdown raw importer still lets you import `*.md` files as strings when enabled during install.
@@ -125,10 +125,10 @@ If you maintain custom CodePen or script-tag examples, load the QMarkdown CSS an
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-rc.2/dist/index.min.css"
+  href="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0/dist/index.min.css"
   rel="stylesheet"
 />
-<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0-rc.2/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qmarkdown@3.0.0/dist/index.umd.min.js"></script>
 ```
 
 Then register the component from the browser global:
@@ -141,7 +141,7 @@ app.component("QMarkdown", QMarkdown.QMarkdown);
 
 The QMarkdown repository now uses:
 
-- `pnpm@11.4.0`
+- `pnpm@11.10.0`
 - Node.js `>=22.13`
 - `oxlint` instead of ESLint
 - `oxfmt` instead of Prettier

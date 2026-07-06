@@ -28,7 +28,7 @@ Install the UI package directly only when you want to register QMarkdown manuall
 
 :::details Q. Does QMarkdown v3 support webpack-based Quasar apps?
 
-No. QMarkdown v3 targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0-rc.6. If your app still uses `@quasar/app-webpack`, migrate the app to Quasar CLI Vite before installing QMarkdown v3.
+No. QMarkdown v3 targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0. If your app still uses `@quasar/app-webpack`, migrate the app to Quasar CLI Vite before installing QMarkdown v3.
 
 :::
 

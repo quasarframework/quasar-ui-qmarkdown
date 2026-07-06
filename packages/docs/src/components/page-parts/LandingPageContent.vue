@@ -191,7 +191,7 @@ import siteConfig from '../../siteConfig'
 const productName = 'QMarkdown'
 const logoSrc = '/qmarkdown-logo.svg'
 const logoAlt = 'QMarkdown Logo'
-const githubTreeUrl = 'https://github.com/quasarframework/quasar-ui-qmarkdown/tree/v3-beta'
+const githubTreeUrl = 'https://github.com/quasarframework/quasar-ui-qmarkdown/tree/dev'
 const githubRepoUrl = 'https://github.com/quasarframework/quasar-ui-qmarkdown'
 const heroEyebrow = 'Vue 3 + Quasar 2'
 const heroLede =
