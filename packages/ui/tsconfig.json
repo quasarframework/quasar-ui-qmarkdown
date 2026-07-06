@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["es2022", "dom"],
+    "module": "preserve",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "types": ["node"]
+  },
+  "include": ["src/**/*", "build/**/*", "test/**/*", "types/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

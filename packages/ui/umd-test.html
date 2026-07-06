@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"
+    />
+
+    <link rel="icon" href="data:," />
+    <title>UMD test</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.prod.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="dist/index.css?ae=qmarkdown" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="q-app">
+      <q-layout view="lHh Lpr fff">
+        <q-header class="glossy bg-primary">
+          <q-toolbar>
+            <q-toolbar-title> QMarkdown v{{ version }} </q-toolbar-title>
+
+            <div>Quasar v{{ $q.version }}</div>
+          </q-toolbar>
+        </q-header>
+
+        <q-page-container>
+          <q-page padding>
+            <q-banner v-if="bundleReady === false" class="bg-red-1 text-negative q-mb-md" rounded>
+              <div class="text-weight-medium">UMD bundle not detected.</div>
+              <div>
+                Checked globals:
+                <code>{{ bundleDiagnostics.checkedGlobals.join(', ') }}</code>
+              </div>
+              <div>
+                Available matches:
+                <code>{{ bundleDiagnostics.availableGlobals }}</code>
+              </div>
+            </q-banner>
+            <q-markdown :src="sampleMarkdown"></q-markdown>
+          </q-page>
+        </q-page-container>
+      </q-layout>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2/dist/quasar.umd.prod.js"></script>
+    <script src="dist/index.umd.js?ae=qmarkdown"></script>
+
+    <script>
+      function looksLikeMarkdownBundle(candidate) {
+        return (
+          candidate !== null &&
+          typeof candidate === 'object' &&
+          candidate.QMarkdown !== void 0 &&
+          typeof candidate.version === 'string'
+        )
+      }
+
+      function resolveMarkdownBundle() {
+        const checkedGlobals = ['QMarkdown', 'QMarkdownPlugin', 'index']
+        const namedCandidates = checkedGlobals
+          .map((name) => [name, globalThis[name]])
+          .find(([, candidate]) => looksLikeMarkdownBundle(candidate))
+
+        if (namedCandidates !== void 0) {
+          return {
+            bundle: namedCandidates[1],
+            diagnostics: {
+              checkedGlobals,
+              availableGlobals: namedCandidates[0],
+            },
+          }
+        }
+
+        const scannedCandidate = Object.entries(globalThis).find(([, candidate]) =>
+          looksLikeMarkdownBundle(candidate),
+        )
+
+        return {
+          bundle: scannedCandidate?.[1] ?? null,
+          diagnostics: {
+            checkedGlobals,
+            availableGlobals: scannedCandidate?.[0] ?? 'none',
+          },
+        }
+      }
+
+      const { bundle: markdownPlugin, diagnostics: bundleDiagnostics } = resolveMarkdownBundle()
+      const bundleReady = markdownPlugin !== null
+
+      const app = Vue.createApp({
+        setup() {
+          const sampleMarkdown = `
+# UMD markdown smoke test
+
+This sample checks that the UMD bundle handles common markdown blocks in order.
+
+## Inline formatting
+
+This is a **test** with a \`token\` and a [link](https://quasar.dev).
+
+## List rendering
+
+- headings render above their content
+- emphasis, inline code, and links render inside paragraphs
+- list items render in sequence
+
+## Blockquote rendering
+
+> Rendered through the Vue 3 Composition API test page.
+
+## Fenced code rendering
+
+\`\`\`js
+const greet = (name) => \`Hello \${name}\`
+console.log(greet('QMarkdown'))
+\`\`\`
+          `.trim()
+
+          return {
+            bundleDiagnostics,
+            bundleReady,
+            sampleMarkdown,
+            version: bundleReady === true ? markdownPlugin.version : 'bundle missing',
+          }
+        },
+      })
+
+      app.use(Quasar)
+      if (bundleReady === true) {
+        app.component('QMarkdown', markdownPlugin.QMarkdown)
+      }
+      app.mount('#q-app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "name": "@quasar/quasar-app-extension-qmarkdown",
+  "version": "3.0.0",
+  "description": "A Quasar App Extension for @quasar/quasar-ui-qmarkdown",
+  "keywords": [
+    "app",
+    "app extension",
+    "extension",
+    "markdown",
+    "quasar"
+  ],
+  "homepage": "https://github.com/quasarframework/quasar-ui-qmarkdown",
+  "bugs": "https://github.com/quasarframework/quasar-ui-qmarkdown/issues",
+  "license": "MIT",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar-ui-qmarkdown.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "imports": {
+    "#q-app": "@quasar/app-vite"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
+    "lint": "oxlint src",
+    "lint-fix": "oxlint src --fix",
+    "prepack": "pnpm build",
+    "release": "pnpm publish --tag latest"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.7.0",
+    "@quasar/quasar-ui-qmarkdown": "workspace:^",
+    "front-matter": "^4.0.2",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-deflist": "^3.0.1",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "markdown-it-task-lists": "^2.1.1"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "3.0.0",
+    "typescript": "~6.0.3"
+  },
+  "peerDependencies": {
+    "@quasar/app-vite": ">=3.0.0"
+  },
+  "engines": {
+    "node": ">=22.13",
+    "pnpm": ">=11.5.0"
+  }
+}
