@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0",
   "description": "A Quasar App Extension for @quasar/quasar-ui-qmarkdown",
   "keywords": [
     "app",
@@ -37,7 +37,7 @@
     "release": "pnpm publish --tag latest"
   },
   "dependencies": {
-    "@clack/prompts": "^1.6.0",
+    "@clack/prompts": "^1.7.0",
     "@quasar/quasar-ui-qmarkdown": "workspace:^",
     "front-matter": "^4.0.2",
     "markdown-it-abbr": "^2.0.0",
@@ -51,11 +51,11 @@
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "@quasar/app-vite": "3.0.0-rc.6",
+    "@quasar/app-vite": "3.0.0",
     "typescript": "~6.0.3"
   },
   "peerDependencies": {
-    "@quasar/app-vite": ">=3.0.0-rc.6"
+    "@quasar/app-vite": ">=3.0.0"
   },
   "engines": {
     "node": ">=22.13",

@@ -12,6 +12,7 @@ allowBuilds:
   esbuild: true
   vue-demi: true
 minimumReleaseAgeExclude:
+  - '@quasar/app-vite'
   - '@clack/core'
   - '@clack/prompts'
   - '@md-plugins/md-plugin-blockquote'
@@ -72,7 +73,6 @@ minimumReleaseAgeExclude:
   - '@oxlint/binding-win32-arm64-msvc@1.68.0'
   - '@oxlint/binding-win32-ia32-msvc@1.68.0'
   - '@oxlint/binding-win32-x64-msvc@1.68.0'
-  - '@quasar/app-vite'
   - '@quasar/art@1.0.0'
   - '@quasar/extras'
   - '@quasar/render-ssr-error@2.2.3'
@@ -135,7 +135,7 @@ minimumReleaseAgeExclude:
   - 'postcss-reduce-transforms@8.0.1'
   - 'postcss-svgo@8.0.1'
   - 'postcss-unique-selectors@8.0.1'
-  - 'quasar@2.21.0'
+  - 'quasar@2.21.1'
   - 'rolldown@1.1.1'
   - semver
   - 'stylehacks@8.0.1'
@@ -145,6 +145,15 @@ minimumReleaseAgeExclude:
   - 'vue@3.5.38'
   - 'vue-router@5.1.0'
   - 'vue-tsc@3.3.5'
-  - hono@4.12.27
+  - hono@4.12.27 || 4.12.28
   - vite@8.1.0
+  - '@vitest/coverage-v8@4.1.10'
+  - '@vitest/expect@4.1.10'
+  - '@vitest/mocker@4.1.10'
+  - '@vitest/pretty-format@4.1.10'
+  - '@vitest/runner@4.1.10'
+  - '@vitest/snapshot@4.1.10'
+  - '@vitest/spy@4.1.10'
+  - '@vitest/utils@4.1.10'
+  - vitest@4.1.10
 trustLockfile: true
