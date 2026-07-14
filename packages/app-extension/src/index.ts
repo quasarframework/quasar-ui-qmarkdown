@@ -14,8 +14,6 @@ function extendConf(conf: any): any {
   return {
     boot: ['~@quasar/quasar-app-extension-qmarkdown/dist/boot/vite-register.js'],
 
-    css: ['~@quasar/quasar-ui-qmarkdown/src/index.scss'],
-
     framework: {
       plugins: ['Notify', 'Dark'],
     },
