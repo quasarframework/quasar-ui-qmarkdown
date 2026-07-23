@@ -2,11 +2,11 @@
 name: Bug report
 about: Create a report to help us improve
 title: ""
-labels: ""
+labels: "bug"
 assignees: ""
 ---
 
-For a legitimate bug, in order to process faster, please go here https://codepen.io/Hawkeye64/pen/PojXVmV, fork the codepen, add code to reproduce the bug and submit link here:
+For a legitimate bug, find the closest matching example on the [QMarkdown website](https://qmarkdown.netlify.app/) and click its CodePen link. Make sure you are signed in to CodePen so your changes are saved, update the example to reproduce the problem, save the Pen, and paste its URL here:
 
 **Describe the bug**
 A clear and concise description of what the bug is.
