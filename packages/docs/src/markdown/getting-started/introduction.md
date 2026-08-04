@@ -13,7 +13,7 @@ related:
 And, if you're looking to help out, check out our [Call to action](/other/contributing/call-to-action) in the **Contributing** section.
 :::
 
-> If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) for QMarkdown v3.
+> If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) for QMarkdown v4.
 
 ## Everything you need for a complete solution
 
@@ -45,23 +45,23 @@ Try out these fine plugins for additional functionality:
 6. [Mark](https://www.npmjs.com/package/markdown-it-mark)
 7. [Subscript](https://www.npmjs.com/package/markdown-it-sub)/[Superscript](https://www.npmjs.com/package/markdown-it-sup)
 8. [Task lists](https://www.npmjs.com/package/markdown-it-task-lists)
-9. [Mermaid](https://www.npmjs.com/package/@datatraccorporation/markdown-it-mermaid)
+9. [Mermaid](https://www.npmjs.com/package/@markslides/markdown-it-mermaid)
 
 
 ## Global Properties
 
 For all properties that can be used with QMarkdown, you can set the global properties via the `useQMarkdownGlobalProps` function.
 
-Here is an example using the `markdown-it-mermaid` plugin from a boot file:
+Here is an example using the `markdown-it-emoji` plugin from a boot file:
 
 ```js
 import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
-import mermaid from '@datatraccorporation/markdown-it-mermaid'
+import { full as emoji } from 'markdown-it-emoji'
 
 // defaults for QMarkdown
 useQMarkdownGlobalProps({
-  plugins: [mermaid]
+  plugins: [emoji]
 })
 ```
 
-The `markdown-it-mermaid` plugin is now globally available wherever you use QMarkdown.
+The emoji plugin is now globally available wherever you use QMarkdown.

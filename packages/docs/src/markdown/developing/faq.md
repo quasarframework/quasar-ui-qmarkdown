@@ -26,9 +26,9 @@ Install the UI package directly only when you want to register QMarkdown manuall
 
 :::
 
-:::details Q. Does QMarkdown v3 support webpack-based Quasar apps?
+:::details Q. Does QMarkdown v4 support webpack-based Quasar apps?
 
-No. QMarkdown v3 targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0. If your app still uses `@quasar/app-webpack`, migrate the app to Quasar CLI Vite before installing QMarkdown v3.
+No. QMarkdown v4 targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0. If your app still uses `@quasar/app-webpack`, migrate the app to Quasar CLI Vite before installing QMarkdown v4.
 
 :::
 
@@ -51,6 +51,29 @@ css: [
   "~@quasar/quasar-ui-qmarkdown/dist/index.css",
 ],
 ```
+
+:::
+
+:::details Q. How do I type an App Extension-registered QMarkdown template ref?
+
+Keep runtime component registration in the App Extension and import only the component instance type in `<script setup>`:
+
+```ts
+import { useTemplateRef } from "vue";
+import type { QMarkdown } from "@quasar/quasar-ui-qmarkdown";
+
+const markdownRef = useTemplateRef<QMarkdown>("markdown");
+```
+
+A normal value import of `QMarkdown` creates a local component binding in `<script setup>` and takes precedence over the globally registered component. Use a normal import only when you intend to use the UI component directly, and follow the manual boot file installation path instead of registering it through both paths.
+
+Because application source imports the type, add the UI package as a direct application dependency:
+
+```bash
+pnpm add @quasar/quasar-ui-qmarkdown
+```
+
+Applications that only use the globally registered component in templates do not need this extra direct dependency.
 
 :::
 
@@ -137,10 +160,10 @@ Pass plugins directly to a QMarkdown instance or register them globally with `us
 
 ```js
 import { useQMarkdownGlobalProps } from "@quasar/quasar-ui-qmarkdown";
-import markdownItMermaid from "@datatraccorporation/markdown-it-mermaid";
+import { full as emoji } from "markdown-it-emoji";
 
 useQMarkdownGlobalProps({
-  plugins: [markdownItMermaid],
+  plugins: [emoji],
 });
 ```
 

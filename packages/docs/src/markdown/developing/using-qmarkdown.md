@@ -21,7 +21,7 @@ This page covers everyday rendering and built-in QMarkdown handling. For Prism c
 
 ## Importing Markdown
 
-The app extension needs to be installed in order to import markdown (`*.md`) files. In QMarkdown v3, this is supported through Quasar CLI Vite. To import markdown files, **DO NOT** place them into your `public` folder. Put them into your `assets` folder.
+The app extension needs to be installed in order to import markdown (`*.md`) files. In QMarkdown v4, this is supported through Quasar CLI Vite. To import markdown files, **DO NOT** place them into your `public` folder. Put them into your `assets` folder.
 
 ```js
 <template>

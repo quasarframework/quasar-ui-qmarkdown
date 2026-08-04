@@ -1,6 +1,6 @@
 declare module 'markdown-it-imsize/dist/markdown-it-imsize.js' {
-  import type { PluginSimple } from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
 
-  const plugin: PluginSimple
+  const plugin: (md: MarkdownIt) => void
   export default plugin
 }

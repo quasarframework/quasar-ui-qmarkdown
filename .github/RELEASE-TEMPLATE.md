@@ -6,7 +6,7 @@ Release drafting notes:
 - Keep the summary short and concrete.
 -->
 
-# QMarkdown v3.x.x
+# QMarkdown v4.x.x
 
 Release date: YYYY-MM-DD
 

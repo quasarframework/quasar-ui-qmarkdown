@@ -1,6 +1,5 @@
 /// <reference types="@quasar/app-vite/client" />
 
-declare module '@datatraccorporation/markdown-it-mermaid'
 declare module 'markdown-it-abbr'
 declare module 'markdown-it-deflist'
 declare module 'markdown-it-emoji' {

@@ -9,8 +9,8 @@ import {
   type SlotsType,
   type VNode,
 } from 'vue'
-import type { PluginSimple, PluginWithOptions } from 'markdown-it'
 import type {
+  MarkdownItPlugin,
   MarkdownItPluginsArray,
   TocDefinitionArray,
   VueClassProp,
@@ -511,10 +511,10 @@ export default defineComponent({
         if (allProps.value.plugins.length > 0) {
           allProps.value.plugins.forEach((plugin: unknown) => {
             if (typeof plugin === 'function') {
-              md.use(plugin as PluginSimple)
+              md.use(plugin as MarkdownItPlugin)
             } else {
               const pluginConfig = plugin as {
-                plugin?: PluginWithOptions
+                plugin?: MarkdownItPlugin
                 options?: unknown
               }
               if (typeof pluginConfig.plugin === 'function' && pluginConfig.options) {

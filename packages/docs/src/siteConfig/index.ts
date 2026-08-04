@@ -299,11 +299,11 @@ const config: SiteConfig = {
       },
       {
         packageName: 'markdown-it-deflist',
-        importUrl: 'https://cdn.jsdelivr.net/npm/markdown-it-deflist@3.0.1/+esm',
+        importUrl: 'https://cdn.jsdelivr.net/npm/markdown-it-deflist@4.0.0/+esm',
       },
       {
         packageName: 'markdown-it-emoji',
-        importUrl: 'https://cdn.jsdelivr.net/npm/markdown-it-emoji@3.0.0/+esm',
+        importUrl: 'https://cdn.jsdelivr.net/npm/markdown-it-emoji@3.1.0/+esm',
       },
       {
         packageName: 'markdown-it-footnote',
@@ -328,11 +328,6 @@ const config: SiteConfig = {
       {
         packageName: 'markdown-it-task-lists',
         importUrl: 'https://cdn.jsdelivr.net/npm/markdown-it-task-lists@2.1.1/+esm',
-      },
-      {
-        packageName: '@datatraccorporation/markdown-it-mermaid',
-        importUrl:
-          'https://cdn.jsdelivr.net/npm/@datatraccorporation/markdown-it-mermaid@0.5.0/+esm',
       },
       {
         packageName: 'katex',

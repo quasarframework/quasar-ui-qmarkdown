@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { nextTick, onMounted } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
 import '@quasar/quasar-ui-qmarkdown/dist/index.css'
-import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
+import { mermaidPlugin, renderMermaid } from './markdownItMermaid'
 
-const markdown = `\`\`\`mermaid Optional Title
+const markdown = `\`\`\`mermaid
 graph TD
 A[Christmas] -->|Get money| B(Go shopping)
 B --> C{Let me think}
@@ -21,5 +21,10 @@ C -->|Three| F[Car]
 
 defineOptions({ name: 'Mermaid' })
 
-const plugins = [markdownItMermaid]
+const plugins = [mermaidPlugin]
+
+onMounted(async () => {
+  await nextTick()
+  await renderMermaid()
+})
 </script>

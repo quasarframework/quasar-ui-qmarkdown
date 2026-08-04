@@ -1,6 +1,6 @@
 ---
 title: Upgrade Guide
-desc: Migrate to QMarkdown v3
+desc: Migrate to QMarkdown v4
 keys: Help, upgrade, migration
 related:
   - /getting-started/installation-types
@@ -8,7 +8,34 @@ related:
   - /other/releases
 ---
 
-Use this guide to migrate from QMarkdown v2.x to QMarkdown v3.0.0.
+Use this guide to migrate to QMarkdown v4.0.0. The QMarkdown v3 migration notes remain below for applications upgrading across multiple major versions.
+
+## QMarkdown v4.0.0
+
+QMarkdown v4 updates its Markdown parser and public plugin types to Markdown-it 15.
+
+Important changes:
+
+- QMarkdown now uses `markdown-it ^15.0.0`.
+- Markdown-it now bundles its TypeScript declarations, so applications should remove `@types/markdown-it`.
+- Markdown-it 15 removes package-internal imports such as `markdown-it/lib/token.mjs`. Custom plugins must import public runtime values and types from `markdown-it`.
+- Markdown-it 15 upgrades linkify-it and changes some URL parsing boundaries, including Unicode punctuation and authenticated URLs. Review representative rendered output if your application depends on exact linkification behavior.
+- QMarkdown's `MarkdownItPlugin` public type now uses Markdown-it 15's bundled `MarkdownIt` type.
+
+Update QMarkdown and any direct Markdown-it dependency together:
+
+```bash
+pnpm up @quasar/quasar-ui-qmarkdown@^4 markdown-it@^15
+pnpm remove @types/markdown-it
+```
+
+Custom plugin types should use Markdown-it's public exports:
+
+```ts
+import type { MarkdownIt, Renderer, Token } from 'markdown-it'
+```
+
+QMarkdown v4 retains the Vue 3, Quasar 2, and Quasar CLI Vite 3 requirements from v3. The app extension remains Vite-only and requires `@quasar/app-vite` >=3.0.0.
 
 > QMarkdown v3 targets Vue 3, Quasar 2, and Quasar CLI Vite 3. If your app still uses Vue 2 or `@quasar/app-webpack`, migrate the app before installing QMarkdown v3.
 

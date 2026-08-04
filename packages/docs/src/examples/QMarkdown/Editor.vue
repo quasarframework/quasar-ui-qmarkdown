@@ -17,7 +17,6 @@
     <q-toggle v-model="noImage" label="Disable Image" />
     <q-toggle v-model="noTasklist" label="Disable Tasklist" />
     <q-toggle v-model="noContainer" label="Disable Container" />
-    <q-toggle v-model="noMermaid" label="Disable Mermaid" />
     <div class="q-pa-md q-gutter-sm fit">
       <q-markdown :src="introMarkdown" />
       <q-splitter v-model="splitterModel" style="height: 500px">
@@ -57,6 +56,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { QMarkdown } from '@quasar/quasar-ui-qmarkdown'
+import type { MarkdownItPluginsArray } from '@quasar/quasar-ui-qmarkdown'
 import '@quasar/quasar-ui-qmarkdown/dist/index.css'
 
 const introMarkdown = `## Interactive Editor
@@ -72,7 +72,6 @@ import mark from 'markdown-it-mark'
 import subscript from 'markdown-it-sub'
 import superscript from 'markdown-it-sup'
 import taskLists from 'markdown-it-task-lists'
-import mermaid from '@datatraccorporation/markdown-it-mermaid'
 
 defineOptions({ name: 'Editor' })
 
@@ -95,8 +94,7 @@ const splitterModel = ref(50),
   noImage = ref(false),
   noTasklist = ref(false),
   noContainer = ref(false),
-  noMermaid = ref(false),
-  plugins = ref<unknown[]>([]),
+  plugins = ref<MarkdownItPluginsArray>([]),
   count = ref(0)
 
 watch(
@@ -110,7 +108,6 @@ watch(
     noSubscript,
     noSuperscript,
     noTasklist,
-    noMermaid,
   ],
   () => {
     rebuildPlugins()
@@ -129,7 +126,6 @@ function rebuildPlugins() {
   if (noSubscript.value !== true) plugins.value.push(subscript)
   if (noSuperscript.value !== true) plugins.value.push(superscript)
   if (noTasklist.value !== true) plugins.value.push(taskLists)
-  if (noMermaid.value !== true) plugins.value.push(mermaid)
 
   // by having `:key="count"` on the q-markdown component,
   // we can force Vue to do a refresh when the plugins change

@@ -93,15 +93,15 @@ The `plugins` property can be registered globally when every QMarkdown instance 
 
 ```js
 import { useQMarkdownGlobalProps } from '@quasar/quasar-ui-qmarkdown'
-import markdownItMermaid from '@datatraccorporation/markdown-it-mermaid'
+import { full as emoji } from 'markdown-it-emoji'
 
 // defaults for QMarkdown
 useQMarkdownGlobalProps({
-  plugins: [markdownItMermaid]
+  plugins: [emoji]
 })
 ```
 
-In this case, the `markdown-it-mermaid` plugin will be made available to all QMarkdown instances.
+In this case, the `markdown-it-emoji` plugin will be made available to all QMarkdown instances.
 
 ## Extending with Plugins
 
@@ -128,11 +128,11 @@ Install only the plugins your project actually uses. To run every example in thi
 ```json
 {
   "dependencies": {
-    "@datatraccorporation/markdown-it-mermaid": "^0.5.0",
+    "@markslides/markdown-it-mermaid": "^0.4.6",
     "katex": "^0.17.0",
     "markdown-it-abbr": "^2.0.0",
-    "markdown-it-deflist": "^3.0.1",
-    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-deflist": "^4.0.0",
+    "markdown-it-emoji": "^3.1.0",
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-ins": "^4.0.0",
     "markdown-it-mark": "^4.0.0",
@@ -147,7 +147,6 @@ Install only the plugins your project actually uses. To run every example in thi
 Some markdown-it plugins do not ship TypeScript declarations. If your project reports a missing module type, add an ambient declaration in a local file such as `src/env.d.ts`:
 
 ```ts
-declare module "@datatraccorporation/markdown-it-mermaid";
 declare module "markdown-it-abbr";
 declare module "markdown-it-deflist";
 declare module "markdown-it-emoji";

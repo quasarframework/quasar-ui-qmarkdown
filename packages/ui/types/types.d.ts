@@ -1,4 +1,4 @@
-import type MarkdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import type { VueClassProp, VueStyleProp } from './vue-prop-types'
 
 export * from './vue-prop-types'
@@ -12,10 +12,7 @@ export interface TocDefinition {
 
 export type TocDefinitionArray = TocDefinition[]
 
-export type MarkdownItPlugin =
-  | MarkdownIt.PluginSimple
-  | MarkdownIt.PluginWithOptions
-  | MarkdownIt.PluginWithParams
+export type MarkdownItPlugin = (md: MarkdownIt, ...params: any[]) => void
 
 export interface MarkdownItPluginWithOptions {
   plugin: MarkdownItPlugin

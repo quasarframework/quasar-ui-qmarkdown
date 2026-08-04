@@ -40,7 +40,11 @@ To add QMarkdown to your Quasar application, run the following in your Quasar ap
 quasar ext add @quasar/qmarkdown
 ```
 
-The QMarkdown v3 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0. It does not support webpack-based Quasar applications.
+The QMarkdown v4 App Extension targets Quasar CLI Vite 3 and requires `@quasar/app-vite` >=3.0.0. It does not support webpack-based Quasar applications.
+
+::: tip
+The App Extension can register QMarkdown without an import from application source. If your application imports a component or type from `@quasar/quasar-ui-qmarkdown`, add the UI package as a direct application dependency (for example, `pnpm add @quasar/quasar-ui-qmarkdown`). Do not rely on the App Extension's transitive dependency, especially with strict package managers such as pnpm.
+:::
 
 If you are upgrading an existing app, read the [Upgrade Guide](/other/upgrade-guide) before changing packages.
 
