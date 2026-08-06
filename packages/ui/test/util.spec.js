@@ -191,6 +191,36 @@ describe('QMarkdown component contract', () => {
     expect(vnode.props.innerHTML).not.toContain('<p>')
   })
 
+  it('does not linkify bare domains by default', () => {
+    const props = reactive(createQMarkdownProps({ src: 'Visit example.com' }))
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    expect(render().props.innerHTML).toBe('<p>Visit example.com</p>\n')
+  })
+
+  it('passes linkify options to markdown-it', () => {
+    const props = reactive(
+      createQMarkdownProps({
+        linkifyOptions: { fuzzyLink: true },
+        src: 'Visit example.com',
+      }),
+    )
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    const html = render().props.innerHTML
+
+    expect(html).toContain('href="http://example.com"')
+    expect(html).toContain('>example.com</a>')
+  })
+
   it('renders reference-style images through the component path', () => {
     const props = reactive(
       createQMarkdownProps({

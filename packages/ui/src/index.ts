@@ -9,6 +9,7 @@ export type {
   MarkdownItPlugin,
   MarkdownItPluginWithOptions,
   MarkdownItPluginsArray,
+  MarkdownItLinkifyOptions,
 } from '../types/types'
 
 function install(app: App): void {

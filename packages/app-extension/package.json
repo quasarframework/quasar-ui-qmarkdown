@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "A Quasar App Extension for @quasar/quasar-ui-qmarkdown",
   "keywords": [
     "app",
@@ -51,7 +51,7 @@
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^3.4.1",
+    "@quasar/app-vite": "^3.5.0",
     "typescript": "~6.0.3"
   },
   "peerDependencies": {

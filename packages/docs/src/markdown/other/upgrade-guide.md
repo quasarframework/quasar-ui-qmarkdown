@@ -19,7 +19,7 @@ Important changes:
 - QMarkdown now uses `markdown-it ^15.0.0`.
 - Markdown-it now bundles its TypeScript declarations, so applications should remove `@types/markdown-it`.
 - Markdown-it 15 removes package-internal imports such as `markdown-it/lib/token.mjs`. Custom plugins must import public runtime values and types from `markdown-it`.
-- Markdown-it 15 upgrades linkify-it and changes some URL parsing boundaries, including Unicode punctuation and authenticated URLs. Review representative rendered output if your application depends on exact linkification behavior.
+- Markdown-it 15 upgrades linkify-it and changes some URL parsing boundaries, including Unicode punctuation and authenticated URLs. Bare domains such as `example.com` are no longer linkified by default. Set `:linkify-options="{ fuzzyLink: true }"` to retain the previous behavior, and review representative rendered output if your application depends on exact linkification behavior.
 - QMarkdown's `MarkdownItPlugin` public type now uses Markdown-it 15's bundled `MarkdownIt` type.
 
 Update QMarkdown and any direct Markdown-it dependency together:

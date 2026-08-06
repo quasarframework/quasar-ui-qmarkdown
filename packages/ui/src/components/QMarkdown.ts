@@ -11,6 +11,7 @@ import {
 } from 'vue'
 import type {
   MarkdownItPlugin,
+  MarkdownItLinkifyOptions,
   MarkdownItPluginsArray,
   TocDefinitionArray,
   VueClassProp,
@@ -153,6 +154,17 @@ export default defineComponent({
      * @category content
      */
     noLinkify: Boolean,
+    /**
+     * Options passed to markdown-it's linkifier. For example, enable links without a protocol with `{ fuzzyLink: true }`.
+     *
+     * @category content
+     * @tsType MarkdownItLinkifyOptions
+     * @example :linkify-options="{ fuzzyLink: true }"
+     */
+    linkifyOptions: {
+      type: Object as PropType<MarkdownItLinkifyOptions>,
+      default: () => ({}),
+    },
     /**
      * Disable automatic heading anchor links.
      *
@@ -376,6 +388,7 @@ export default defineComponent({
         allProps.value.noLineNumbers,
         allProps.value.noLink,
         allProps.value.noLinkify,
+        allProps.value.linkifyOptions,
         allProps.value.noHeadingAnchorLinks,
         allProps.value.noTypographer,
         allProps.value.lineNumberAlt,
@@ -467,6 +480,8 @@ export default defineComponent({
         }
 
         const md = markdownIt(opts)
+
+        md.linkify.set(allProps.value.linkifyOptions)
 
         md.use(imsize)
 

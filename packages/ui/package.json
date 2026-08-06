@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-ui-qmarkdown",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Display inline markdown in your Quasar App",
   "keywords": [
     "markdown",
@@ -85,7 +85,7 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
-    "@md-plugins/quasar-app-extension-q-press": "2.0.0",
+    "@md-plugins/quasar-app-extension-q-press": "2.0.2",
     "@types/node": "^26.1.2",
     "@types/prismjs": "^1.26.6",
     "@types/rtlcss": "^3.5.4",

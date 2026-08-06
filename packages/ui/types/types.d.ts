@@ -21,6 +21,8 @@ export interface MarkdownItPluginWithOptions {
 
 export type MarkdownItPluginsArray = Array<MarkdownItPlugin | MarkdownItPluginWithOptions>
 
+export type MarkdownItLinkifyOptions = Parameters<MarkdownIt['linkify']['set']>[0]
+
 export interface QMarkdownGlobalProps {
   src?: string
   lineNumberAlt?: string
@@ -40,6 +42,7 @@ export interface QMarkdownGlobalProps {
   noLineNumbers?: boolean
   noLink?: boolean
   noLinkify?: boolean
+  linkifyOptions?: MarkdownItLinkifyOptions
   noNoopener?: boolean
   noNoreferrer?: boolean
   noTypographer?: boolean

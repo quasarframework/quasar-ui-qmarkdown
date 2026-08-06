@@ -95,7 +95,7 @@
                   class="preview-card"
                   :class="index === 0 ? 'preview-card--primary' : 'preview-card--secondary'"
                 >
-                  <q-img :src="image.src" :alt="image.alt" fit="contain" />
+                  <q-img :src="image.src" :alt="image.alt" :ratio="image.ratio" fit="contain" />
                 </div>
               </div>
             </div>
@@ -216,6 +216,7 @@ const previewImages = [
   {
     src: '/qmarkdown--interactive-editor.png',
     alt: 'QMarkdown interactive editor preview',
+    ratio: 771 / 388,
   },
 ]
 

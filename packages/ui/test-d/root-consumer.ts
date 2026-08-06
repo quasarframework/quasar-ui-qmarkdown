@@ -29,6 +29,7 @@ useQMarkdownGlobalProps({
   contentStyle: [{ color: 'var(--q-primary)' }],
   inline: true,
   showCopy: true,
+  linkifyOptions: { fuzzyLink: true },
   plugins: [],
 })
 

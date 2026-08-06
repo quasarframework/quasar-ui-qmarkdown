@@ -154,6 +154,18 @@ The App Extension adds a Vite raw importer for `*.md` files when that prompt is 
 
 ## Markdown features
 
+:::details Q. How do I automatically link bare domains such as example.com?
+
+Markdown-it 15 does not linkify domains without a protocol by default. Enable `fuzzyLink` through QMarkdown's `linkify-options` prop:
+
+```html
+<q-markdown :linkify-options="{ fuzzyLink: true }" :src="markdown" />
+```
+
+Use `useQMarkdownGlobalProps({ linkifyOptions: { fuzzyLink: true } })` when every QMarkdown instance should use this behavior.
+
+:::
+
 :::details Q. How do I add markdown-it plugins?
 
 Pass plugins directly to a QMarkdown instance or register them globally with `useQMarkdownGlobalProps`.
