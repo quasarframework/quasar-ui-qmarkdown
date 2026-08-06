@@ -1,6 +1,6 @@
 {
   "name": "qmarkdown",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": true,
   "description": "QMarkdown mono-repo",
   "license": "MIT",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.10",
-    "@vue/server-renderer": "^3.5.40",
+    "@vue/server-renderer": "^3.5.41",
     "npm-check-updates": "^23.0.1",
     "oxfmt": "^0.62.0",
     "oxlint": "^1.77.0",

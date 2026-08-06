@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": true,
   "description": "QMarkdown Docs",
   "author": "Jeff Galbraith <galbraith64@gmail.com>",
@@ -39,8 +39,8 @@
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-texmath": "^1.0.0",
     "pinia": "^4.0.2",
-    "quasar": "^2.23.5",
-    "vue": "^3.5.40",
+    "quasar": "^2.24.0",
+    "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
@@ -51,16 +51,16 @@
     "@md-plugins/vite-md-plugin": "2.0.0",
     "@md-plugins/vite-search-plugin": "2.0.0",
     "@md-plugins/vite-ssg-plugin": "2.0.0",
-    "@quasar/app-vite": "3.3.1",
+    "@quasar/app-vite": "3.4.1",
     "@quasar/quasar-ui-qmarkdown": "workspace:*",
     "@types/node": "^26.1.2",
-    "@vue/server-renderer": "^3.5.40",
+    "@vue/server-renderer": "^3.5.41",
     "autoprefixer": "^10.5.4",
     "hono": "^4.13.0",
     "markdown-it": "^15.0.0",
     "mermaid": "^11.16.1",
     "sass-embedded": "1.100.0",
-    "shiki": "^4.4.1",
+    "shiki": "^4.4.2",
     "typescript": "~6.0.3",
     "vite-plugin-checker": "^0.14.5",
     "vue-tsc": "^3.3.9"

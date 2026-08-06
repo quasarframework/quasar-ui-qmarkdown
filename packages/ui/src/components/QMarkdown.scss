@@ -6,6 +6,10 @@
 .q-markdown {
   --q-markdown-link-color: var(--qpress-color-primary, var(--q-primary, #{$primary}));
   --q-markdown-link-hover-color: color-mix(in srgb, var(--q-markdown-link-color) 82%, currentColor);
+  --q-markdown-link-external-icon: url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%3E%3Cpath%20d=%27M14%203v2h3.59L7.76%2014.83l1.41%201.41L19%206.41V10h2V3m-2%2016H5V5h7V3H5a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h14a2%202%200%200%200%202-2v-7h-2z%27/%3E%3C/svg%3E');
+  --q-markdown-link-external-icon-display: inline-block;
+  --q-markdown-link-external-icon-size: 0.875em;
+  --q-markdown-link-external-icon-gap: 0.2em;
 
   position: relative;
 
@@ -172,24 +176,24 @@
 
     &-external {
       font-family: inherit;
+
       &:after {
-        content: '\e895';
-        font-family: Material Icons;
-        font-weight: normal;
-        font-style: normal;
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-feature-settings: 'liga';
-        margin: 0 0 0 3px;
+        content: '';
+        display: var(--q-markdown-link-external-icon-display);
+        width: var(--q-markdown-link-external-icon-size);
+        height: var(--q-markdown-link-external-icon-size);
+        margin-inline-start: var(--q-markdown-link-external-icon-gap);
         padding: 0;
+        vertical-align: -0.1em;
+        background-color: currentColor;
+        -webkit-mask-image: var(--q-markdown-link-external-icon);
+        mask-image: var(--q-markdown-link-external-icon);
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
       }
     }
   }
