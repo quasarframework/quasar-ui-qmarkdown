@@ -5,6 +5,10 @@ packageExtensions:
     dependencies:
       '@babel/parser': '7.29.3'
 overrides:
+  brace-expansion: 5.0.9
+  dompurify: 3.4.13
+  fast-uri: 3.1.5
+  js-yaml: 3.15.1
   sass-embedded: 1.100.0
 
 allowBuilds:

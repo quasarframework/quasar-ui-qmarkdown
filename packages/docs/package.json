@@ -17,7 +17,6 @@
     "postinstall": "quasar prepare --silent",
     "build:spa": "quasar build",
     "build:ssg": "quasar prepare && quasar build && qpress ssg",
-    "build:ssg:renderer": "quasar prepare && quasar build -m ssr",
     "prerender:ssg": "qpress ssg",
     "preview:ssg": "quasar serve dist/spa --history",
     "check:qpress": "qpress check"
@@ -44,7 +43,6 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@hono/node-server": "^2.1.0",
     "@md-plugins/quasar-app-extension-q-press": "2.0.3",
     "@md-plugins/search-ui": "2.0.3",
     "@md-plugins/vite-examples-plugin": "2.0.3",
@@ -56,7 +54,6 @@
     "@types/node": "^26.1.2",
     "@vue/server-renderer": "^3.5.41",
     "autoprefixer": "^10.5.4",
-    "hono": "^4.13.1",
     "markdown-it": "^15.0.0",
     "mermaid": "^11.16.1",
     "sass-embedded": "1.100.0",
