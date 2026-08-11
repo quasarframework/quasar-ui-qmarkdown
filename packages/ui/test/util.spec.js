@@ -202,6 +202,27 @@ describe('QMarkdown component contract', () => {
     expect(render().props.innerHTML).toBe('<p>Visit example.com</p>\n')
   })
 
+  it('escapes HTML in container titles when noHtml is enabled', () => {
+    const props = reactive(
+      createQMarkdownProps({
+        noHtml: true,
+        src: '::: info <img src=x onerror=alert(1)>\nBody\n:::',
+      }),
+    )
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    const html = render().props.innerHTML
+
+    expect(html).toContain(
+      '<p class="q-markdown--note-title">&lt;img src=x onerror=alert(1)&gt;</p>',
+    )
+    expect(html).not.toContain('<img')
+  })
+
   it('passes linkify options to markdown-it', () => {
     const props = reactive(
       createQMarkdownProps({
@@ -366,6 +387,18 @@ describe('markdown-it render extensions', () => {
     expect(html).toContain(
       '<div class="q-markdown--note q-markdown--note--warning"><p class="q-markdown--note-title">Pay attention</p>',
     )
+  })
+
+  it('escapes HTML in note container titles when HTML rendering is disabled', () => {
+    const md = new MarkdownIt({ html: false })
+    extendContainers(md)
+
+    const html = md.render('::: info <img src=x onerror=alert(1)>\nBody\n:::')
+
+    expect(html).toContain(
+      '<p class="q-markdown--note-title">&lt;img src=x onerror=alert(1)&gt;</p>',
+    )
+    expect(html).not.toContain('<img')
   })
 
   it('classifies local and external links', () => {
