@@ -50,6 +50,7 @@ export interface QMarkdownGlobalProps {
   copyIcon?: string
   doneIcon?: string
   noCopyTooltip?: boolean
+  noNotification?: boolean
   copyTooltipText?: string
   copyResponseText?: string
   fixCr?: boolean

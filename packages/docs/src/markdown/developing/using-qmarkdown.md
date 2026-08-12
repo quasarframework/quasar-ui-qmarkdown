@@ -56,6 +56,8 @@ QMarkdown has a number of built-in processors to handle inline markdown. These a
 <MarkdownExample title="Code" file="Code"/>
 
 ### Copy to clipboard
+When copying succeeds, the copy button temporarily changes to the configured `done-icon`. By default, QMarkdown also shows a notification; use `no-notification` when the icon is sufficient feedback.
+
 <MarkdownExample title="CopyToClipboard" file="CopyToClipboard"/>
 
 ### Containers

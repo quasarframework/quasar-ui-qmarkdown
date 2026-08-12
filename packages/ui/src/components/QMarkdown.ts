@@ -1,7 +1,9 @@
 import {
   computed,
   defineComponent,
+  getCurrentInstance,
   h,
+  onBeforeUnmount,
   ref,
   reactive,
   watch,
@@ -276,7 +278,13 @@ export default defineComponent({
      */
     noCopyTooltip: Boolean,
     /**
-     * Icon used in the notify response after content is copied.
+     * Do not show a notification after content is copied. The copy button still temporarily changes to the done icon.
+     *
+     * @category behavior
+     */
+    noNotification: Boolean,
+    /**
+     * Icon temporarily shown by the copy button and used in the notify response after content is copied.
      *
      * @category behavior
      * @example done-icon="done"
@@ -377,6 +385,15 @@ export default defineComponent({
         : 'M0 0h24v24H0z@@fill:none;&&M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'
     })
 
+    const copied = ref(false)
+    let copyResetTimer: ReturnType<typeof setTimeout> | undefined
+
+    if (getCurrentInstance()) {
+      onBeforeUnmount(() => {
+        clearTimeout(copyResetTimer)
+      })
+    }
+
     watch(
       () => [
         allProps.value.noBlockquote,
@@ -421,10 +438,20 @@ export default defineComponent({
       return makeTreeUtil(data as TocNode[], allProps.value.tocStart)
     }
 
-    function __copyMarkdownToClipboard() {
-      copyToClipboard(getMarkdownCopyText(markdownRef.value as HTMLElement | null))
+    async function __copyMarkdownToClipboard() {
+      try {
+        await copyToClipboard(getMarkdownCopyText(markdownRef.value as HTMLElement | null))
+      } catch {
+        return
+      }
 
-      if ($q.notify) {
+      copied.value = true
+      clearTimeout(copyResetTimer)
+      copyResetTimer = setTimeout(() => {
+        copied.value = false
+      }, 2000)
+
+      if (allProps.value.noNotification !== true && $q.notify) {
         $q.notify({
           message: allProps.value.copyResponseText,
           color: $q.dark.isActive ? 'grey-10' : 'white',
@@ -446,10 +473,8 @@ export default defineComponent({
           dense: true,
           flat: true,
           round: true,
-          icon: parsedCopyIcon.value,
-          onClick: () => {
-            __copyMarkdownToClipboard()
-          },
+          icon: copied.value ? parsedDoneIcon.value : parsedCopyIcon.value,
+          onClick: __copyMarkdownToClipboard,
         },
         () => [
           allProps.value.noCopyTooltip !== true &&

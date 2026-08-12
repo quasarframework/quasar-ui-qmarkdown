@@ -1,7 +1,8 @@
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import MarkdownIt from 'markdown-it'
 import { createSSRApp, h, nextTick, reactive } from 'vue'
 import { renderToString } from '@vue/server-renderer'
+import { copyToClipboard, notify } from 'quasar'
 
 import QMarkdownComponent, { getMarkdownCopyText } from '../src/components/QMarkdown'
 import extendBlockQuote from '../src/util/extendBlockQuote'
@@ -133,6 +134,24 @@ describe('makeTree', () => {
 })
 
 describe('QMarkdown component contract', () => {
+  beforeEach(() => {
+    copyToClipboard.mockClear()
+    notify.mockClear()
+  })
+
+  function getCopyButton(propsOverrides = {}) {
+    const props = reactive(
+      createQMarkdownProps({ src: 'Copy me', showCopy: true, ...propsOverrides }),
+    )
+    const render = QMarkdownComponent.setup(props, {
+      slots: {},
+      emit: vi.fn(),
+      expose: vi.fn(),
+    })
+
+    return { props, render, button: () => render().children[1] }
+  }
+
   it('excludes generated line numbers from copied rendered text', () => {
     const lineNumbers = { style: { display: '' } }
     const element = {
@@ -157,6 +176,58 @@ describe('QMarkdown component contract', () => {
     expect(QMarkdownComponent.props.tocEnd.validator(1)).toBe(true)
     expect(QMarkdownComponent.props.tocEnd.validator(6)).toBe(true)
     expect(QMarkdownComponent.props.tocEnd.validator(7)).toBe(false)
+  })
+
+  it('temporarily shows the done icon after copying succeeds', async () => {
+    vi.useFakeTimers()
+    const { button } = getCopyButton({ copyIcon: 'copy', doneIcon: 'done' })
+
+    expect(button().props.icon).toBe('copy')
+
+    await button().props.onClick()
+
+    expect(copyToClipboard).toHaveBeenCalledOnce()
+    expect(button().props.icon).toBe('done')
+
+    vi.advanceTimersByTime(2000)
+
+    expect(button().props.icon).toBe('copy')
+    vi.useRealTimers()
+  })
+
+  it('can suppress the copy notification without suppressing icon feedback', async () => {
+    vi.useFakeTimers()
+    const { button } = getCopyButton({ doneIcon: 'done', noNotification: true })
+
+    await button().props.onClick()
+
+    expect(button().props.icon).toBe('done')
+    expect(notify).not.toHaveBeenCalled()
+    vi.runAllTimers()
+    vi.useRealTimers()
+  })
+
+  it('keeps the existing copy notification by default', async () => {
+    vi.useFakeTimers()
+    const { button } = getCopyButton({ copyResponseText: 'Copied', doneIcon: 'done' })
+
+    await button().props.onClick()
+
+    expect(notify).toHaveBeenCalledWith(
+      expect.objectContaining({ message: 'Copied', icon: 'done', timeout: 2000 }),
+    )
+    vi.runAllTimers()
+    vi.useRealTimers()
+  })
+
+  it('does not show success feedback when copying fails', async () => {
+    copyToClipboard.mockRejectedValueOnce(new Error('Clipboard unavailable'))
+    const { button } = getCopyButton({ copyIcon: 'copy', doneIcon: 'done' })
+
+    await button().props.onClick()
+
+    expect(button().props.icon).toBe('copy')
+    expect(notify).not.toHaveBeenCalled()
   })
 
   it('invalidates rendered markdown when fix-cr changes the effective source', async () => {
