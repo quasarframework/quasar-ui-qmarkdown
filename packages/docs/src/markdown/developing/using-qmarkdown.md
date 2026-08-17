@@ -128,6 +128,16 @@ Use the `inline` prop when markdown needs to live inside existing paragraph or t
 | `no-noopener` | Prevents QMarkdown from adding `rel="noopener"` to external links. |
 | `no-noreferrer` | Prevents QMarkdown from adding `rel="noreferrer"` to external links. |
 
+External-link icons are styled with CSS variables. Set `--q-markdown-link-external-icon` to a CSS image, such as an SVG URL, on the QMarkdown content container:
+
+```scss
+.custom-markdown-links {
+  --q-markdown-link-external-icon: url('/icons/open-in-new.svg');
+}
+```
+
+Apply the class with `content-class="custom-markdown-links"`. The icon can also be hidden, resized, or repositioned with the related variables documented under [CSS Variables](/developing/advanced#css-variables).
+
 <MarkdownExample title="Links" file="Links"/>
 
 ### Lists

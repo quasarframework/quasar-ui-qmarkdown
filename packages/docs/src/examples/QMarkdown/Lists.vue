@@ -12,11 +12,11 @@ const markdown = `Unordered
 
 + Create an unordered list by starting a line with \`+\`, \`-\`, or \`*\`
 + Sub-lists are made by indenting 2 spaces:
-- Marker character change forces new list start:
-* Ac tristique libero volutpat at
-+ Facilisis in pretium nisl aliquet
-- Nulla volutpat aliquam velit
+  - Ac tristique libero volutpat at
+  - Facilisis in pretium nisl aliquet
+    * Nulla volutpat aliquam velit
 + Very easy!
+- Changing the marker character starts a new list
 
 Ordered
 
@@ -28,7 +28,8 @@ Ordered
 
 1. You can use sequential numbers...
 1. ...or keep all the numbers as \`1.\`
-indented
+   1. Ordered lists can also be nested
+   1. Nested items can keep using \`1.\`
 1. List with a container
     ::: info
     use 3 or more spaces
