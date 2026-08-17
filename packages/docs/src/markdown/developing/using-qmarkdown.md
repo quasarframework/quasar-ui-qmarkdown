@@ -45,6 +45,17 @@ export default defineComponent({
 
 For Prism customization, site-wide defaults, and global markdown-it plugins, see [Advanced](/developing/advanced).
 
+## Source and rendering
+
+These properties control how QMarkdown handles its source before and during rendering.
+
+| Property | Description |
+| --- | --- |
+| `src` | Supplies the Markdown source when content is not provided through the default slot. |
+| `fix-cr` | Replaces escaped `\n` sequences in `src` with newline characters before rendering. |
+| `no-html` | Prevents HTML tags in the Markdown source from being rendered as HTML. |
+| `no-breaks` | Prevents newline characters from being converted to `<br>` elements. |
+
 ## QMarkdown Native Handling
 
 QMarkdown has a number of built-in processors to handle inline markdown. These are listed below:
@@ -53,10 +64,27 @@ QMarkdown has a number of built-in processors to handle inline markdown. These a
 <MarkdownExample title="Blockquotes" file="Blockquotes"/>
 
 ### Code
+
+| Property | Description |
+| --- | --- |
+| `no-highlight` | Disables syntax highlighting in code blocks. |
+| `no-line-numbers` | Hides line numbers in code blocks. |
+| `line-number-alt` | Replaces generated line numbers with a single alternative character. |
+
 <MarkdownExample title="Code" file="Code"/>
 
 ### Copy to clipboard
 When copying succeeds, the copy button temporarily changes to the configured `done-icon`. By default, QMarkdown also shows a notification; use `no-notification` when the icon is sufficient feedback.
+
+| Property | Description |
+| --- | --- |
+| `show-copy` | Shows the copy-to-clipboard button. |
+| `copy-icon` | Sets the icon displayed before the content is copied. |
+| `done-icon` | Sets the icon temporarily displayed after the content is copied successfully. |
+| `no-copy-tooltip` | Hides the copy button tooltip. |
+| `copy-tooltip-text` | Sets the text displayed in the copy button tooltip. |
+| `no-notification` | Prevents the notification from being shown after the content is copied. |
+| `copy-response-text` | Sets the text displayed in the notification after the content is copied. |
 
 <MarkdownExample title="CopyToClipboard" file="CopyToClipboard"/>
 
@@ -67,6 +95,16 @@ When copying succeeds, the copy button temporarily changes to the configured `do
 <MarkdownExample title="Emphasis" file="Emphasis"/>
 
 ### Heading
+
+Use the `data` event to receive the generated table-of-contents entries when `toc` is enabled.
+
+| Property | Description |
+| --- | --- |
+| `toc` | Enables table-of-contents generation and the `data` event. |
+| `toc-start` | Sets the first heading level included in the table of contents and generated heading anchor links. |
+| `toc-end` | Sets the last heading level included in the table of contents and generated heading anchor links. |
+| `no-heading-anchor-links` | Prevents automatic anchor links from being added to headings. |
+
 <MarkdownExample title="Heading" file="Heading"/>
 
 ### Horizontal rules
@@ -81,6 +119,15 @@ Use the `inline` prop when markdown needs to live inside existing paragraph or t
 <MarkdownExample title="Inline" file="Inline"/>
 
 ### Links
+
+| Property | Description |
+| --- | --- |
+| `no-link` | Prevents Markdown links from being converted to anchor elements. |
+| `no-linkify` | Prevents URL-like text from being converted automatically to links. |
+| `linkify-options` | Configures markdown-it's automatic link detection. |
+| `no-noopener` | Prevents QMarkdown from adding `rel="noopener"` to external links. |
+| `no-noreferrer` | Prevents QMarkdown from adding `rel="noreferrer"` to external links. |
+
 <MarkdownExample title="Links" file="Links"/>
 
 ### Lists
