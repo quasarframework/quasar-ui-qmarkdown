@@ -1,6 +1,6 @@
 {
   "name": "qmarkdown",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "private": true,
   "description": "QMarkdown mono-repo",
   "license": "MIT",
@@ -33,15 +33,15 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.10",
     "@vue/server-renderer": "^3.5.41",
-    "npm-check-updates": "^23.0.1",
-    "oxfmt": "^0.62.0",
-    "oxlint": "^1.77.0",
-    "sass-embedded": "1.100.0",
+    "npm-check-updates": "^23.0.2",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "sass-embedded": "1.102.0",
     "vitest": "^4.1.10"
   },
   "engines": {
     "node": ">=22.13",
     "pnpm": ">=11.5.0"
   },
-  "packageManager": "pnpm@11.20.0"
+  "packageManager": "pnpm@11.22.0"
 }

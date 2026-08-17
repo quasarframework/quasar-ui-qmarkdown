@@ -35,8 +35,8 @@ Short user-facing summary of what changed for QMarkdown component/app-extension 
 ## Compatibility
 
 - Node.js: `>=22.13`
-- Quasar: `^2.21.1`
-- Quasar App Vite target: `@quasar/app-vite@3.0.0`
+- Quasar: `^2.25.0`
+- Quasar App Vite target: `@quasar/app-vite@3.6.0`
 - npm dist-tag: `latest`
 
 ## Installation
