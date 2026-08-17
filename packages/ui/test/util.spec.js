@@ -443,9 +443,11 @@ describe('markdown-it render extensions', () => {
     const md = createMarkdown()
     extendFenceLineNumbers(md)
 
-    expect(md.render('```js\none\ntwo\nthree\n```')).toContain(
-      '<div class="q-markdown--line-numbers-wrapper">',
-    )
+    const rendered = md.render('```js\none\ntwo\nthree\n```')
+
+    expect(rendered).toContain('<div class="q-markdown--line-numbers-wrapper">')
+    expect(rendered).toContain('<div class="q-markdown--line-number">1</div>')
+    expect(rendered).not.toContain('q-markup--line-number')
     expect(md.render('```js\none\n```')).not.toContain('q-markdown--line-numbers non-selectable')
   })
 
