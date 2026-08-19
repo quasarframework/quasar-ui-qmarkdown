@@ -42,6 +42,12 @@ export default defineIndexScript((api) => {
 
   api.compatibleWith('@quasar/app-vite', '>=3.0.0')
 
+  api.extendViteConf(() => ({
+    optimizeDeps: {
+      exclude: ['@quasar/quasar-ui-qmarkdown'],
+    },
+  }))
+
   // Uncomment the line below if you provide a JSON API for your component
   api.registerDescribeApi('QMarkdown', '~@quasar/quasar-ui-qmarkdown/dist/api/QMarkdown.json')
 
