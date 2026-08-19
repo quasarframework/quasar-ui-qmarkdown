@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qmarkdown",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "A Quasar App Extension for @quasar/quasar-ui-qmarkdown",
   "keywords": [
     "app",
