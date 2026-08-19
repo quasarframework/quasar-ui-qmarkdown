@@ -51,7 +51,7 @@
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^3.6.0",
+    "@quasar/app-vite": "^3.7.0",
     "typescript": "~6.0.3"
   },
   "peerDependencies": {
