@@ -73,13 +73,13 @@ QMarkdown v3 is published on the `latest` dist tag.
 ```tabs
 <<| bash App Extension |>>
 quasar ext add @quasar/qmarkdown
-<<| bash pnpm |>>
+<<| bash [icon=pnpm] pnpm |>>
 pnpm add @quasar/quasar-ui-qmarkdown
-<<| bash bun |>>
+<<| bash [icon=bun] bun |>>
 bun add @quasar/quasar-ui-qmarkdown
-<<| bash yarn |>>
+<<| bash [icon=yarn] yarn |>>
 yarn add @quasar/quasar-ui-qmarkdown
-<<| bash npm |>>
+<<| bash [icon=npm] npm |>>
 npm install @quasar/quasar-ui-qmarkdown
 ```
 
