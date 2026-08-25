@@ -36,7 +36,7 @@
     "npm-check-updates": "^23.0.2",
     "oxfmt": "^0.64.0",
     "oxlint": "^1.79.0",
-    "sass-embedded": "1.102.0",
+    "sass-embedded": "1.103.1",
     "vitest": "^4.1.11"
   },
   "engines": {
