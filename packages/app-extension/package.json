@@ -37,7 +37,7 @@
     "release": "pnpm publish --tag latest"
   },
   "dependencies": {
-    "@clack/prompts": "^1.7.0",
+    "@clack/prompts": "^1.8.1",
     "@quasar/quasar-ui-qmarkdown": "workspace:^",
     "front-matter": "^4.0.2",
     "markdown-it-abbr": "^2.0.0",
@@ -51,7 +51,7 @@
     "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^3.8.0",
+    "@quasar/app-vite": "^3.8.4",
     "typescript": "~6.0.3"
   },
   "peerDependencies": {
